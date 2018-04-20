@@ -7,10 +7,10 @@ namespace Entrega_2
   class Alumno : Usuario
   {
     List<Taller> talleresInscritos;
-    List<Boolean> horario;
+    Dictionary<String, List<Boolean>> horario;
 
     // Constructor con todos los parametros
-    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Taller> talleresInscritos, List<Boolean> horario)
+    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Taller> talleresInscritos, Dictionary<String,List<Boolean>> horario)
         : base(rut, nombre, apellido, email, telefono, clave)
     {
       this.talleresInscritos = talleresInscritos;
@@ -18,7 +18,7 @@ namespace Entrega_2
     }
 
     // Constructor sin talleres inscritos. Esta pensado en que luego se le incriben talleres al alumno.
-    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Boolean> horario)
+    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, Dictionary<String, List<Boolean>> horario)
             : base(rut, nombre, apellido, email, telefono, clave)
     {
       this.talleresInscritos = new List<Taller>();
@@ -31,7 +31,7 @@ namespace Entrega_2
       return true;
     }
 
-    public List<Boolean> GetHorario()
+    public Dictionary<String, List<Boolean>>GetHorario()
     {
       return horario;
     }

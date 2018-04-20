@@ -8,15 +8,15 @@ namespace Entrega_2
   {
     
     String nombre;
-    List<Boolean> horario;
+    Dictionary<String,List<Boolean>> horario;
 
-    public Sala(String nombre, List<Boolean> horario)
+    public Sala(String nombre, Dictionary<String, List<Boolean>> horario)
     {
       this.nombre = nombre;
       this.horario = horario;
     }
 
-    public List<Boolean> GetHorario()
+    public Dictionary<String, List<Boolean>> GetHorario()
     {
       return horario;
     }

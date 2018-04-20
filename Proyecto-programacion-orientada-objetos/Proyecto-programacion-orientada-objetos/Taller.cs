@@ -8,13 +8,13 @@ namespace Entrega_2
   {
     public String nombre { get; set; }
     int cupos, precio, actualInscritos;
-    List<Boolean> horario;
+    Dictionary<String, List<Boolean>> horario;
     List<Foro> foros =new List<Foro>();
     List<Encuesta> encuestas= new List<Encuesta>();
     Sala sala;
     Categoria categoria;
 
-    public Taller(String nombre, int cupos, int precio, List<Boolean> horario, Sala sala, Categoria categoria)
+    public Taller(String nombre, int cupos, int precio, Dictionary<String,List<Boolean>> horario, Sala sala, Categoria categoria)
     {
       this.nombre = nombre;
       this.cupos = cupos;
@@ -24,7 +24,7 @@ namespace Entrega_2
       this.categoria = categoria;
     }
 
-    public List<Boolean> GetHorario()
+    public Dictionary<String, List<Boolean>> GetHorario()
     {
       return horario;
     }

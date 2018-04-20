@@ -16,6 +16,7 @@ namespace Entrega_2
     List<Taller> talleres=new List<Taller>();
     List<Categoria> categorias= new List<Categoria>();
     List<Sala> salas =new List<Sala>();
+    List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
 
     public Sistema()
     {
@@ -32,9 +33,29 @@ namespace Entrega_2
             }
             return false;
     }
-    public List<Taller> MostrarTallerresDisponibles()
+    public Dictionary<Taller, List<String>> GetTallerresDisponibles(Alumno alumno)
     {
-            return talleres;
+            Dictionary<Taller, List<String>> disponibles = new Dictionary<Taller, List<String>>();
+            Dictionary<String,List<Boolean>> studentSchedule = alumno.GetHorario();
+            Dictionary<String, List<Boolean>> wsSchedule = new Dictionary<string, List<bool>>();
+
+            foreach (Taller ws in talleres)
+            {
+                wsSchedule = ws.GetHorario();
+                List<String> avaliableBlocks = new List<String>();
+                foreach (String day in wsSchedule.Keys)
+                {
+                    int i = 0;
+                    foreach (Boolean avaliable in studentSchedule[day]) if (studentSchedule[day][i++] && wsSchedule[day][i])
+                        {
+                            avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
+                            Console.WriteLine(String.Concat(day, ": ", bloques[i]));
+                        }
+                }
+                disponibles.Add(ws, avaliableBlocks);
+            }
+
+            return disponibles;
     }
     public bool CrearForo(Taller taller, string nombreForo, bool privacidad)
     {
@@ -51,7 +72,7 @@ namespace Entrega_2
             foro.AgregarMensaje(usuario, texto, media);
             return true;
     }
-    public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, List<bool>horario)
+    public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, Dictionary<String, List<bool>>horario)
     {
             alumnos.Add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
             return true;
@@ -74,7 +95,7 @@ namespace Entrega_2
             alumnos.RemoveAll(x => x.rut == alumno.rut);
             return true;
     }
-    public bool CrearTaller(string nombre, int cupos, int precio, List<bool> horario, Sala sala, Categoria categoria)
+    public bool CrearTaller(string nombre, int cupos, int precio, Dictionary<String,List<bool>> horario, Sala sala, Categoria categoria)
     {
             talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
             return true;
@@ -111,18 +132,82 @@ namespace Entrega_2
             return estadisticas;
     }
     public void Menu()
-        {
-            //LoadData();
-            Taller futbol = new Taller("futbol", 40, 15000, new List<bool>() { false, true, false, false, false }, new Sala("CanchaFutbol", new List<bool>() { false, true, false, false, false }), new Categoria());
-            talleres.Add(futbol);
+    {
+            LoadData();
+            Interfaz interfaz = new Interfaz();
+            List<String> credenciales = new List<String>{"",""};
+            while (!VerifyUser(credenciales))
+            {
+                credenciales=interfaz.LogInLogOut();
+                interfaz.ErrorCredenciales(VerifyUser(credenciales));
+            }
 
 
 
-            SaveData(usuarios);
+            if (GetUser(credenciales).GetType() == typeof(Alumno))
+            {
+                List<Boolean> studentOption = new List<Boolean>();
+                studentOption = interfaz.StudentsMenu();
+                if (studentOption[0])
+                {
+                    interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+            //Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
+            //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Martes", new List<Boolean>() { false, false, false, false, false } },
+            //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+            //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+            //Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
+            //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Martes", new List<Boolean>() { false, false, true, false, false } },
+            //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+            //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+
+            //Taller futbol = new Taller("futbol", 40, 15000, schedulea,new Sala("CanchaFutbol", schedulea), new Categoria());
+            //talleres.Add(futbol);
+            //Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
+            //administradores.Add(administrador1);
+            //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
+            //profesores.Add(profesor1);
+            //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+            //alumnos.Add(alumno1);
+            //usuarios.Add(administrador1);
+            //usuarios.Add(profesor1);
+            //usuarios.Add(alumno1);
+
+
+
+
+
+            SaveData(usuarios, talleres);
             Console.ReadLine();
-        }
+    }
 
-    private static void SaveData(List<Usuario> usuarios)
+    private Boolean VerifyUser(List<String> credenciales)
+    {
+            foreach (Usuario user in usuarios) if (credenciales[0].Equals(user.email) && credenciales[1].Equals(user.clave)) return true;
+            return false;
+    }
+    
+    private Usuario GetUser(List<String> credenciales)
+    {
+            List<Usuario> users = usuarios.Where(x => x.email == credenciales[0]).ToList();
+            return users[0];
+    }
+    private static void SaveData(List<Usuario> usuarios, List<Taller> talleres)
     {
         // Creamos el Stream donde guardaremos nuestros usuarios
         string fileName = "Users.txt";
@@ -132,7 +217,7 @@ namespace Entrega_2
         fs.Close();
         fileName = "WorkShops.txt";
         fs = new FileStream(fileName, FileMode.Create);
-        formatter.Serialize(fs, FileMode.Create);
+        formatter.Serialize(fs, talleres);
         fs.Close();
         
 
@@ -141,23 +226,24 @@ namespace Entrega_2
     private void LoadData()
     {
         string fileName = "Users.txt";
-        // Creamos el Stream donde se encuentra nuestro juego
         FileStream fs = new FileStream(fileName, FileMode.Open);
         IFormatter formatter = new BinaryFormatter();
-        List<Usuario> usuarios = formatter.Deserialize(fs) as List<Usuario>;
-        fs.Close();
-        foreach (Usuario u in usuarios)
+        List<Usuario> users = formatter.Deserialize(fs) as List<Usuario>;
+        foreach (Usuario u in users)
         {
             Type t = u.GetType();
             if (t == typeof(Alumno)) alumnos.Add((Alumno)u);
             else if (t == typeof(Profesor)) profesores.Add((Profesor)u);
             else administradores.Add((Administrador)u);
+            usuarios.Add(u);
         }
+        fs.Close();
         fileName = "Workshops.txt";
         fs = new FileStream(fileName, FileMode.Open);
-        List<Taller> talleres =formatter.Deserialize(fs) as List<Taller>;
+        List<Taller> workshops =formatter.Deserialize(fs) as List<Taller>;
+        foreach (Taller t in workshops) talleres.Add(t);
         fs.Close();
-
+        
         }
 
 
