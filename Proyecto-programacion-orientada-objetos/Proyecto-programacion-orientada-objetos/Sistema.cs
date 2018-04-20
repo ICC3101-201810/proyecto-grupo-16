@@ -148,12 +148,22 @@ namespace Entrega_2
             {
                 List<Boolean> studentOption = new List<Boolean>();
                 studentOption = interfaz.StudentsMenu();
-                if (studentOption[0])
+                while (!studentOption[3])
                 {
-                    interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                    if (studentOption[0])
+                    {
+                        interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                    }
+                    else if (studentOption[1])
+                    {
+                        interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                    }
+                    else if (studentOption[2])
+                    {
+                        interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                    }
+                    studentOption = interfaz.StudentsMenu();
                 }
-
-
             }
 
 
@@ -193,7 +203,6 @@ namespace Entrega_2
 
 
             SaveData(usuarios, talleres);
-            Console.ReadLine();
     }
 
     private Boolean VerifyUser(List<String> credenciales)

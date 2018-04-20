@@ -6,8 +6,12 @@ namespace Entrega_2
 {
     class Interfaz
     {
-        List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Prueba 2" };
-        List<Boolean> studentOption = new List<Boolean>() { false, false };
+        List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
+        List<String> studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
+        List<String> studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
+        List<String> studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
+        List<String> studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
+        List<Boolean> studentOption = new List<Boolean>() { false, false, false ,false };
 
         public Interfaz() { }
 
