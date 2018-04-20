@@ -13,14 +13,12 @@ namespace Entrega_2
     Sala sala;
     Categoria categoria;
 
-    public Taller(String nombre, int cupos, int precio, List<Boolean> horario, List<Foro> foros, List<Encuesta> encuestas, Sala sala, Categoria categoria)
+    public Taller(String nombre, int cupos, int precio, List<Boolean> horario, Sala sala, Categoria categoria)
     {
       this.nombre = nombre;
       this.cupos = cupos;
       this.precio = precio;
       this.horario = horario;
-      this.foros = foros;
-      this.encuestas = encuestas;
       this.sala = sala;
       this.categoria = categoria;
     }
