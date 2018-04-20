@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Entrega_2
 {
@@ -108,9 +110,36 @@ namespace Entrega_2
             estadisticas.Add(cantidadPorcentual);
             return estadisticas;
     }
+    private static void SaveUsers(List<Usuario> usuarios)
+    {
+        // Creamos el Stream donde guardaremos nuestros usuarios
+        string fileName = "Users.txt";
+        FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+        IFormatter formatter = new BinaryFormatter();
+        formatter.Serialize(fs, usuarios);
+        fs.Close();
+    }
+
+    private void LoadUsers()
+    {
+        string fileName = "Users.txt";
+        // Creamos el Stream donde se encuentra nuestro juego
+        FileStream fs = new FileStream(fileName, FileMode.Open);
+        IFormatter formatter = new BinaryFormatter();
+        List<Usuario> usuarios = formatter.Deserialize(fs) as List<Usuario>;
+        fs.Close();
+        foreach (Usuario u in usuarios)
+        {
+            Type t = u.GetType();
+            if (t == typeof(Alumno)) alumnos.Add((Alumno)u);
+            else if (t == typeof(Profesor)) profesores.Add((Profesor)u);
+            else administradores.Add((Administrador)u);
+        }
+
+    }
 
 
 
 
-  }
+    }
 }
