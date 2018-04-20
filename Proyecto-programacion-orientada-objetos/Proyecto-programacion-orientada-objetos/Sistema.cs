@@ -98,8 +98,16 @@ namespace Entrega_2
         e[0].SetRespuesta(alumno, respuestaAlternativas);
         return true;
     }
-    public void GenerarEstadisticaEncuesta(Taller taller, Encuesta encuesta)
-    { }
+    public List<String> GenerarEstadisticaEncuesta(Taller taller, Encuesta encuesta)
+    {
+            List<String> estadisticas = new List<string>();
+            string cantidadRespondida, cantidadPorcentual;
+            cantidadRespondida = String.Concat("Respuesta: ",encuesta.GetRespuesta().Count);
+            cantidadPorcentual = String.Concat("% Respondido: ", encuesta.GetRespuesta().Count/ encuesta.GetPreguntas().Count);
+            estadisticas.Add(cantidadRespondida);
+            estadisticas.Add(cantidadPorcentual);
+            return estadisticas;
+    }
 
 
 
