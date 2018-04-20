@@ -6,13 +6,12 @@ namespace Entrega_2
   class Foro
   {
     String tema;
-    List<Mensaje> mensajes;
+    List<Mensaje> mensajes = new List<Mensaje>();
     Boolean privacidad;
 
-    public Foro(String tema, List<Mensaje> mensajes, Boolean privacidad)
+    public Foro(String tema, Boolean privacidad)
     {
       this.tema = tema;
-      this.mensajes = mensajes;
       this.privacidad = privacidad;
     }
 

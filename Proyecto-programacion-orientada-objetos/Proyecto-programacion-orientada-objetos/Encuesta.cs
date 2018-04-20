@@ -7,13 +7,12 @@ namespace Entrega_2
   {
     String tema;
     List<Pregunta> preguntas;
-    List<Respuesta> respuestas;
+    List<Respuesta> respuestas= new List<Respuesta>();
 
-    public Encuesta(String tema, List<Pregunta> preguntas, List<Respuesta> respuestas)
+    public Encuesta(String tema, List<Pregunta> preguntas)
     {
       this.tema = tema;
       this.preguntas = preguntas;
-      this.respuestas = respuestas;
     }
     public List<Pregunta> GetPreguntas()
     {

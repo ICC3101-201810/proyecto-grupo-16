@@ -42,7 +42,7 @@ namespace Entrega_2
 
     public Boolean Inscribible()
     {
-      //if (GetCupos() > 0) return true;
+      if (GetCuposDisponibles() > 0) return true;
       return false;
     }
 
@@ -52,8 +52,9 @@ namespace Entrega_2
       return true;
     }
 
-    public Boolean CrearForo(String nombre, Boolean provacidad)
+    public Boolean CrearForo(String nombre, Boolean privacidad)
     {
+      foros.add(new Foro(nombre, privacidad);
       return true;
     }
 
@@ -64,6 +65,7 @@ namespace Entrega_2
 
     public Boolean CrearEncuesta(String tema, List<Pregunta> preguntas)
     {
+      encuestas.add(new Encuesta(tema, preguntas));
       return true;
     }
 
