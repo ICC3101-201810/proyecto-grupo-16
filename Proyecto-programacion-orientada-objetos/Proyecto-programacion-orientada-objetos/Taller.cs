@@ -54,7 +54,7 @@ namespace Entrega_2
 
     public Boolean CrearForo(String nombre, Boolean privacidad)
     {
-      foros.add(new Foro(nombre, privacidad);
+      foros.add(new Foro(nombre, privacidad));
       return true;
     }
 
