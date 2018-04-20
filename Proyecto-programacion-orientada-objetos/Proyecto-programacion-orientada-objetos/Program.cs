@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entrega_2
 {
@@ -11,6 +8,7 @@ namespace Entrega_2
 
     static void Main(string[] args)
     {
+      Console.BackgroundColor = ConsoleColor.Black;
       ConsoleColor color = Console.ForegroundColor;
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine("\tMódulo de talleres de la Universiad de los Andes\n");
