@@ -5,13 +5,13 @@ namespace Entrega_2
 {
   class Sistema
   {
-    List<Usuario> usuarios;
-    List<Administrador> administradores;
-    List<Profesor> profesores;
-    List<Alumno> alumnos;
-    List<Taller> talleres;
-    List<Categoria> categorias;
-    List<Sala> salas;
+    List<Usuario> usuarios = new List<Usuario>();
+    List<Administrador> administradores= new List<Administrador>();
+    List<Profesor> profesores= new List<Profesor>();
+    List<Alumno> alumnos=new List<Alumno>();
+    List<Taller> talleres=new List<Taller>();
+    List<Categoria> categorias= new List<Categoria>();
+    List<Sala> salas =new List<Sala>();
 
     public Sistema()
     {
@@ -49,12 +49,12 @@ namespace Entrega_2
     }
     public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, List<bool>horario)
     {
-            alumnos.add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
+            alumnos.Add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
             return true;
     }
     public bool RegistrarProfesor(string rut, string nombre, string apellido, string email, string telefono, string clave)
     {
-            profesores.add(new Profesor(rut, nombre, apellido, email, telefono, clave));
+            profesores.Add(new Profesor(rut, nombre, apellido, email, telefono, clave));
             return true;
     }
     public bool EliminarMensaje(Taller taller, Foro foro, Mensaje mensaje)
@@ -66,7 +66,7 @@ namespace Entrega_2
     { return true; }
     public bool CrearTaller(string nombre, int cupos, int precio, List<bool> horario, Sala sala, Categoria categoria)
     {
-            talleres.add(new Taller(nombre, cupos, precio, horario, sala, categoria));
+            talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
             return true;
     }
     public bool ModificarTaller(Taller taller)

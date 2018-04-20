@@ -25,5 +25,11 @@ namespace Entrega_2
     {
       return mensajes;
     }
-  }
+
+    public bool DeleteMessage()
+    {
+       
+       return true;
+    }
+    }
 }
