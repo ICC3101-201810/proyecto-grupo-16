@@ -10,8 +10,7 @@ namespace Entrega_2
         public DateTime fecha { get; }
         public List<Media> media {get;}
         public String codigo { get; }
-
-    Boolean tieneMedia;
+        Boolean tieneMedia;
     //String codigo_mensaje_string
 
     public Mensaje(Usuario autor, String texto, DateTime fecha, List<Media> media)
@@ -25,9 +24,10 @@ namespace Entrega_2
 
     public Boolean TieneMedia()
     {
-      if (media.Count > 0)
-        tieneMedia = true;
-      return false;
+            if (media.Count > 0) tieneMedia = true;
+            else tieneMedia = false;
+            return tieneMedia;
+      
     }
   }
 }

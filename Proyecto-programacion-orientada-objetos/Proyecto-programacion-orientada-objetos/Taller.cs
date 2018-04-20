@@ -8,8 +8,8 @@ namespace Entrega_2
     public String nombre { get; set; }
     int cupos, precio, actualInscritos;
     List<Boolean> horario;
-    List<Foro> foros;
-    List<Encuesta> encuestas;
+    List<Foro> foros =new List<Foro>();
+    List<Encuesta> encuestas= new List<Encuesta>();
     Sala sala;
     Categoria categoria;
 
