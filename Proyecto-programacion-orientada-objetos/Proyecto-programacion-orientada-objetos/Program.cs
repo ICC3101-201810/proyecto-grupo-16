@@ -8,7 +8,10 @@ namespace Entrega_2
 
         static void Main(string[] args)
         {
-
+            //Interfaz i = new Interfaz();
+            //i.LogInLogOut();
+            Sistema s = new Sistema();
+            s.Menu();
         }
     }
 }

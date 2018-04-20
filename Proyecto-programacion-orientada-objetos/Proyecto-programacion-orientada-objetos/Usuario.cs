@@ -1,7 +1,9 @@
 ﻿using System;
 
+
 namespace Entrega_2
 {
+  [Serializable]
   public class Usuario
   {
     public String rut, nombre, apellido, email, telefono, clave;

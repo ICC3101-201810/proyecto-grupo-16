@@ -110,17 +110,35 @@ namespace Entrega_2
             estadisticas.Add(cantidadPorcentual);
             return estadisticas;
     }
-    private static void SaveUsers(List<Usuario> usuarios)
+    public void Menu()
+        {
+            //LoadData();
+            Taller futbol = new Taller("futbol", 40, 15000, new List<bool>() { false, true, false, false, false }, new Sala("CanchaFutbol", new List<bool>() { false, true, false, false, false }), new Categoria());
+            talleres.Add(futbol);
+
+
+
+            SaveData(usuarios);
+            Console.ReadLine();
+        }
+
+    private static void SaveData(List<Usuario> usuarios)
     {
         // Creamos el Stream donde guardaremos nuestros usuarios
         string fileName = "Users.txt";
-        FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+        FileStream fs = new FileStream(fileName, FileMode.Create);
         IFormatter formatter = new BinaryFormatter();
         formatter.Serialize(fs, usuarios);
         fs.Close();
-    }
+        fileName = "WorkShops.txt";
+        fs = new FileStream(fileName, FileMode.Create);
+        formatter.Serialize(fs, FileMode.Create);
+        fs.Close();
+        
 
-    private void LoadUsers()
+        }
+
+    private void LoadData()
     {
         string fileName = "Users.txt";
         // Creamos el Stream donde se encuentra nuestro juego
@@ -135,8 +153,12 @@ namespace Entrega_2
             else if (t == typeof(Profesor)) profesores.Add((Profesor)u);
             else administradores.Add((Administrador)u);
         }
+        fileName = "Workshops.txt";
+        fs = new FileStream(fileName, FileMode.Open);
+        List<Taller> talleres =formatter.Deserialize(fs) as List<Taller>;
+        fs.Close();
 
-    }
+        }
 
 
 

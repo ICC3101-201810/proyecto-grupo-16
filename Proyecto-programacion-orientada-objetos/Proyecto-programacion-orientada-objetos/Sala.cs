@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace Entrega_2
 {
+  [Serializable]
   class Sala
   {
+    
     String nombre;
     List<Boolean> horario;
 

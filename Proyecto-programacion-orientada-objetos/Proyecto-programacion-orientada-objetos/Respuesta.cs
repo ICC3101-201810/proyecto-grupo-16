@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Entrega_2
 {
+  [Serializable]
   class Respuesta
   {
     Alumno autor;

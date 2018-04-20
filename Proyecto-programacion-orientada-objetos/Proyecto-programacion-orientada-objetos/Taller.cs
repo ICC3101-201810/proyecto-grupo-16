@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Entrega_2
 {
+  [Serializable]
   class Taller
   {
     public String nombre { get; set; }

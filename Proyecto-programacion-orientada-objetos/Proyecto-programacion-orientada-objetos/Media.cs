@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entrega_2
 {
+  [Serializable]
   class Media
   {
     String tipo, path;
