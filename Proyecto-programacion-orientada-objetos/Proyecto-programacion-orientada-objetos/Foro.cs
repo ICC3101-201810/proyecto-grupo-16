@@ -26,10 +26,10 @@ namespace Entrega_2
       return mensajes;
     }
 
-    public bool DeleteMessage()
+    public bool DeleteMessage(Mensaje mensaje)
     {
-       
+       mensajes.RemoveAll(x=>x.codigo==mensaje.codigo);  
        return true;
     }
-    }
+  }
 }

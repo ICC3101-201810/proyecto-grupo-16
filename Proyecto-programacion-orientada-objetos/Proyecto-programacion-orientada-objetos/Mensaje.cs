@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace Entrega_2
 {
-  class Mensaje
-  {
-    Usuario autor;
-    String texto;
-    DateTime fecha;
-    List<Media> media;
+    class Mensaje
+    {
+        public Usuario autor { get; }
+        public String texto { get; set; }
+        public DateTime fecha { get; }
+        public List<Media> media {get;}
+        public String codigo { get; }
+
     Boolean tieneMedia;
     //String codigo_mensaje_string
 
@@ -18,7 +20,7 @@ namespace Entrega_2
       this.texto = texto;
       this.fecha = fecha;
       this.media = media;
-      TieneMedia();
+      codigo= String.Concat(DateTime.Now.ToString(), autor.GetNombre());
     }
 
     public Boolean TieneMedia()

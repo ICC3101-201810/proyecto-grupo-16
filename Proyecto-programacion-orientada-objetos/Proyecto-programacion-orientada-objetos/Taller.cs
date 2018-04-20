@@ -5,7 +5,7 @@ namespace Entrega_2
 {
   class Taller
   {
-    String nombre;
+    public String nombre { get; set; }
     int cupos, precio, actualInscritos;
     List<Boolean> horario;
     List<Foro> foros;
@@ -33,7 +33,11 @@ namespace Entrega_2
       return cupos - actualInscritos;
     }
 
-    public int GetCuposIniciales()
+    public void SetCuposDisponibles()
+    {
+            actualInscritos+=1;
+    }
+        public int GetCuposIniciales()
     {
       return cupos;
     }
@@ -52,7 +56,7 @@ namespace Entrega_2
 
     public Boolean CrearForo(String nombre, Boolean privacidad)
     {
-      foros.add(new Foro(nombre, privacidad));
+      foros.Add(new Foro(nombre, privacidad));
       return true;
     }
 
@@ -63,7 +67,7 @@ namespace Entrega_2
 
     public Boolean CrearEncuesta(String tema, List<Pregunta> preguntas)
     {
-      encuestas.add(new Encuesta(tema, preguntas));
+      encuestas.Add(new Encuesta(tema, preguntas));
       return true;
     }
 

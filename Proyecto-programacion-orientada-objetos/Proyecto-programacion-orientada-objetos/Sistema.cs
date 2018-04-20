@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Entrega_2
 {
@@ -34,7 +36,7 @@ namespace Entrega_2
     }
     public bool CrearForo(Taller taller, string nombreForo, bool privacidad)
     {
-            taller.CrearForo(nombre, privacidad);
+            taller.CrearForo(nombreForo, privacidad);
             return true;
     }
     public List<Mensaje> LeerForo(Taller taller, Foro foro)
@@ -57,22 +59,34 @@ namespace Entrega_2
             profesores.Add(new Profesor(rut, nombre, apellido, email, telefono, clave));
             return true;
     }
+        //Es necesario pasar el taller?
     public bool EliminarMensaje(Taller taller, Foro foro, Mensaje mensaje)
     {
-
+            foro.DeleteMessage(mensaje);
             return true;
     }
     public bool EliminarAlumno(Alumno alumno)
-    { return true; }
+    {
+            List<Taller> talleresAlumno = alumno.GetTalleres();
+            foreach (Taller t in talleresAlumno) t.SetCuposDisponibles();
+            alumnos.RemoveAll(x => x.rut == alumno.rut);
+            return true;
+    }
     public bool CrearTaller(string nombre, int cupos, int precio, List<bool> horario, Sala sala, Categoria categoria)
     {
             talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
             return true;
     }
+        //Que es esto?
     public bool ModificarTaller(Taller taller)
     { return true; }
+        
     public bool DesinscribirAlumno(Taller taller, Alumno alumno)
-    { return true; }
+    {
+            taller.SetCuposDisponibles();
+            alumno.DeleteWS(taller);
+            return true;
+    }
     public bool CrearEncuesta(Taller taller, string tema, List<Pregunta> preguntas)
     {
             taller.CrearEncuesta(tema, preguntas);
@@ -80,9 +94,9 @@ namespace Entrega_2
     }
     public bool ResponderEncuesta(Taller taller, string tema, Alumno alumno, List<String> respuestaAlternativas)
     {
-            Encuesta e = taller.GetEncuestas().Where(x => x.tema == tema);
-            e.SetRespuesta(alumno, respuestaAlternativas);
-            return true;
+        List <Encuesta> e = taller.GetEncuestas().Where(x => x.tema == tema).ToList();
+        e[0].SetRespuesta(alumno, respuestaAlternativas);
+        return true;
     }
     public void GenerarEstadisticaEncuesta(Taller taller, Encuesta encuesta)
     { }

@@ -5,7 +5,7 @@ namespace Entrega_2
 {
   class Encuesta
   {
-    String tema;
+    public String tema { get; set; }
     List<Pregunta> preguntas;
     List<Respuesta> respuestas= new List<Respuesta>();
 

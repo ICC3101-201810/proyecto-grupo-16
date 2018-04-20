@@ -44,10 +44,17 @@ namespace Entrega_2
     {
       return talleresInscritos;
     }
+    
 
     public void SetTalleres()
     {
 
     }
-  }
+
+    public bool DeleteWS(Taller taller)
+    {
+        talleresInscritos.RemoveAll(x => x.nombre == taller.nombre);
+        return true;
+    }
+    }
 }
