@@ -56,22 +56,16 @@ namespace Entrega_2
     {
       int i = 1;
       String schedule = "";
-      if (wsAvaliable.Count > 1)
-      {
-<<<<<<< HEAD
-        GreenColorConsole("\nTalleres Disponibles:\n");
-=======
-        foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-        WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
-      }
->>>>>>> 14cb91caa1a96e9f6a100a84cdac6dd19dc993e8
-
-        foreach (Taller ws in wsAvaliable.Keys)
-        {
-          foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-          WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
-        }
-      }
+            if (wsAvaliable.Count > 0)
+            {
+                GreenColorConsole("\nTalleres Disponibles:\n");
+                foreach (Taller ws in wsAvaliable.Keys)
+                {
+                    foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
+                    WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
+                }
+            }
+            else ErrorColorConsole("\nERROR: No existen talleres en horario disponible.\n");
     }
 
 
