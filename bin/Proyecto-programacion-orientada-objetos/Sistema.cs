@@ -208,13 +208,13 @@ namespace Entrega_2
               student.InscribirTaller(GetTalleresDisponibles(student).ElementAt(select - 1).Key);
               foreach (String day in GetTalleresDisponibles(student).ElementAt(select - 1).Key.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
               {
-                                for (int i = 0; i < student.GetHorario()[day].Count; i++)
-                                {
-                                    if (student.GetHorario()[day][i] && GetTalleresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
-                                    {
-                                        student.GetHorario()[day][i] = false;
-                                    }
-                                }
+                for (int i = 0; i < student.GetHorario()[day].Count; i++)
+                {
+                  if (student.GetHorario()[day][i] && GetTalleresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
+                  {
+                    student.GetHorario()[day][i] = false;
+                  }
+                }
               }
               interfaz.SuccesColorConsole("EXITO: Taller inscrito");
             }
