@@ -42,15 +42,15 @@ namespace Entrega_2
       studentsOption[Int32.Parse(Console.ReadLine()) - 1] = true;
       return studentsOption;
     }
-    
-    public void ShowStudentWS(List<Taller> talleres)
-        {
-            int i = 1;
-            GreenColorConsole("\nTalleres Inscritos:\n");
-            foreach (Taller ws in talleres) WhiteColorConsole("(" + (i++) + ") " + ws.nombre);
-        }
 
-    
+    public void ShowStudentWS(List<Taller> talleres)
+    {
+      int i = 1;
+      GreenColorConsole("\nTalleres Inscritos:\n");
+      foreach (Taller ws in talleres) WhiteColorConsole("(" + (i++) + ") " + ws.nombre);
+    }
+
+
 
     public void WorkShopAvailable(Dictionary<Taller, List<String>> wsAvaliable)
     {
@@ -61,14 +61,14 @@ namespace Entrega_2
       foreach (Taller ws in wsAvaliable.Keys)
       {
         foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-        WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule+"\n");
+        WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
       }
 
     }
-    
-    
 
-        public void RedColorConsole(String s)
+
+
+    public void RedColorConsole(String s)
     {
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine(s);
@@ -101,12 +101,12 @@ namespace Entrega_2
     }
     public void SuccesColorConsole(String s)
     {
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.BackgroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine(s);
-        Console.Beep();
-        Console.ResetColor();
-        Console.BackgroundColor = ConsoleColor.Black;
+      Console.ForegroundColor = ConsoleColor.White;
+      Console.BackgroundColor = ConsoleColor.DarkGreen;
+      Console.WriteLine(s);
+      Console.Beep();
+      Console.ResetColor();
+      Console.BackgroundColor = ConsoleColor.Black;
     }
-    }
+  }
 }
