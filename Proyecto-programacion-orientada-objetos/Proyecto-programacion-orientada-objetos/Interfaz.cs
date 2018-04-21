@@ -6,12 +6,12 @@ namespace Entrega_2
 {
     class Interfaz
     {
-        List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
-        List<String> studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
-        List<String> studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
-        List<String> studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
-        List<String> studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
-        List<Boolean> studentOption = new List<Boolean>() { false, false, false ,false };
+        //List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
+        //List<String> studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
+        //List<String> studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
+        //List<String> studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
+        //List<String> studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
+        //List<Boolean> studentOption = new List<Boolean>() { false, false, false ,false };
 
         public Interfaz() { }
 
@@ -35,12 +35,12 @@ namespace Entrega_2
         public List<Boolean> StudentsMenu(List<String> studentsMenu, List<Boolean> studentsOption)
         {
             int i = 1;
-            //for (int j =0; j<studentOption.Count; j++) studentOption[i]= false;
+            for (int j =0; j<studentsOption.Count; j++) studentsOption[i]= false;
             RedColorConsole("\tMenu Estudiante\n");
             GreenColorConsole("Seleccione Opcion:\n");
             foreach (String index in studentsMenu) Console.WriteLine("("+ (i++) +") "+index);
-            studentOption[Int32.Parse(Console.ReadLine()) - 1]=true;
-            return studentOption;
+            studentsOption[Int32.Parse(Console.ReadLine()) - 1]=true;
+            return studentsOption;
         }
 
 
