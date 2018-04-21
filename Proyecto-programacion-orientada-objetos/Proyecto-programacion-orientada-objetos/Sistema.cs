@@ -171,6 +171,10 @@ namespace Entrega_2
             LoadData();
             Interfaz interfaz = new Interfaz();
             List<String> credenciales = new List<String>{"",""};
+            List<Boolean> Option = new List<Boolean>();
+            List<Boolean> Option2 = new List<Boolean>();
+            List<Boolean> Option3 = new List<Boolean>();
+            List<Boolean> Option4 = new List<Boolean>();
             while (!VerifyUser(credenciales))
             {
                 credenciales=interfaz.LogInLogOut();
@@ -181,31 +185,48 @@ namespace Entrega_2
 
             if (GetUser(credenciales).GetType() == typeof(Alumno))
             {
-                List<Boolean> studentOption = new List<Boolean>();
-                List<Boolean> studentOption2 = new List<Boolean>();
-                studentOption = interfaz.StudentsMenu(studentsMenu,studentOptionMenu);
-                while (!studentOption[3])
+                
+                Option = interfaz.StudentsMenu(studentsMenu,studentOptionMenu);
+                while (!Option[3])
                 {
-                    if (studentOption[0])
+                    if (Option[0])
                     {
                         interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
                     }
-                    else if (studentOption[1])
+                    else if (Option[1])
                     {
                         
                     }
-                    else if (studentOption[2])
+                    else if (Option[2])
                     {
-                        studentOption2=interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
-                        while (!studentOption2[2])
+                        Option2=interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
+                        while (!Option2[2])
                         {
-                            if (studentOption2[0]) { }
-                            else if (studentOption2[1]) { }
-                            studentOption2 = interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
+                            if (Option2[0])
+                            {
+                                Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
+                                while (!Option3[2])
+                                {
+                                    if (Option3[0])
+                                    {
+                                        Option4 = interfaz.StudentsMenu(studentsSubMenuForum,studentOptionForum);
+                                        while (!Option4[1]) Option4 = interfaz.StudentsMenu(studentsSubMenuForum, studentOptionForum);
+                                    }
+                                    else if (Option3[1])
+                                    {
+                                        Option4 = interfaz.StudentsMenu(studentsSubMenuEnc, studentOptionEnc);
+                                        while (!Option4[1]) Option4 = interfaz.StudentsMenu(studentsSubMenuEnc, studentOptionEnc);
+                                    }
+                                    Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
+                                }
+                            }
+                            else if (Option2[1]) { }
+                            Option2 = interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
                         }
+
                         
                     }
-                    studentOption = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
+                    Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
                 }
             }
 
