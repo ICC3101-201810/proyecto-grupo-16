@@ -168,7 +168,10 @@ namespace Entrega_2
     }
     public void Menu()
     {
-      LoadData();
+      if (!LoadData())
+      {
+        InicializaUsuariosIniciales();
+      }
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };
       List<Boolean> Option = new List<Boolean>();
@@ -229,45 +232,65 @@ namespace Entrega_2
           Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
         }
       }
-
-
-
-
-
-
-
-
-      //Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
-      //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Martes", new List<Boolean>() { false, false, false, false, false } },
-      //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Jueves", new List<Boolean>() {false, false, false, false, false } },
-      //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
-      //Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
-      //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Martes", new List<Boolean>() { false, false, true, false, false } },
-      //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Jueves", new List<Boolean>() {false, false, true, false, false } },
-      //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
-
-      //Taller futbol = new Taller("futbol", 40, 15000, schedulea,new Sala("CanchaFutbol", schedulea), new Categoria());
-      //talleres.Add(futbol);
-      //Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
-      //administradores.Add(administrador1);
-      //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
-      //profesores.Add(profesor1);
-      //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
-      //alumnos.Add(alumno1);
-      //usuarios.Add(administrador1);
-      //usuarios.Add(profesor1);
-      //usuarios.Add(alumno1);
-
-
-
-
-
       SaveData(usuarios, talleres);
     }
+
+    public void InicializaUsuariosIniciales()
+    {
+      Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
+          {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+          { "Martes", new List<Boolean>() { false, false, false, false, false } },
+          { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+          { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+          { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+      Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
+          {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+          { "Martes", new List<Boolean>() { false, false, true, false, false } },
+          { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+          { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+          { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+      Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
+      talleres.Add(futbol);
+      Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
+      administradores.Add(administrador1);
+      Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
+      profesores.Add(profesor1);
+      Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+      alumnos.Add(alumno1);
+      usuarios.Add(administrador1);
+      usuarios.Add(profesor1);
+      usuarios.Add(alumno1);
+    }
+
+
+    //Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
+    //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+    //    { "Martes", new List<Boolean>() { false, false, false, false, false } },
+    //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+    //    { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+    //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+    //Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
+    //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+    //    { "Martes", new List<Boolean>() { false, false, true, false, false } },
+    //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+    //    { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+    //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+
+    //Taller futbol = new Taller("futbol", 40, 15000, schedulea,new Sala("CanchaFutbol", schedulea), new Categoria());
+    //talleres.Add(futbol);
+    //Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
+    //administradores.Add(administrador1);
+    //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
+    //profesores.Add(profesor1);
+    //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+    //alumnos.Add(alumno1);
+    //usuarios.Add(administrador1);
+    //usuarios.Add(profesor1);
+    //usuarios.Add(alumno1);
+
+
+    //  SaveData(usuarios, talleres);
+    //}
 
     private Boolean VerifyUser(List<String> credenciales)
     {
@@ -283,12 +306,12 @@ namespace Entrega_2
     private static void SaveData(List<Usuario> usuarios, List<Taller> talleres)
     {
       // Creamos el Stream donde guardaremos nuestros usuarios
-      String fileName = Path.Combine(Directory.GetCurrentDirectory(), "Users.txt");
+      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
       FileStream fs = new FileStream(fileName, FileMode.Create);
       IFormatter formatter = new BinaryFormatter();
       formatter.Serialize(fs, usuarios);
       fs.Close();
-      fileName = Path.Combine(Directory.GetCurrentDirectory(), "WorkShops.txt");
+      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WorkShops.txt");
       fs = new FileStream(fileName, FileMode.Create);
       formatter.Serialize(fs, talleres);
       fs.Close();
@@ -296,9 +319,14 @@ namespace Entrega_2
 
     }
 
-    private void LoadData()
+    private Boolean LoadData()
     {
-      string fileName = Path.Combine(Directory.GetCurrentDirectory(), "Users.txt");
+      //string fileName = Path.Combine(Directory.GetCurrentDirectory(), "Users.txt");
+      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
+      if (!File.Exists(fileName))
+      {
+        return false;
+      }
       FileStream fs = new FileStream(fileName, FileMode.Open);
       IFormatter formatter = new BinaryFormatter();
       List<Usuario> users = formatter.Deserialize(fs) as List<Usuario>;
@@ -311,12 +339,12 @@ namespace Entrega_2
         usuarios.Add(u);
       }
       fs.Close();
-      fileName = Path.Combine(Directory.GetCurrentDirectory(), "Workshops.txt");
+      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Workshops.txt");
       fs = new FileStream(fileName, FileMode.Open);
       List<Taller> workshops = formatter.Deserialize(fs) as List<Taller>;
       foreach (Taller t in workshops) talleres.Add(t);
       fs.Close();
-
+      return true;
     }
 
     private List<Boolean> CreateListOption(int Length)
