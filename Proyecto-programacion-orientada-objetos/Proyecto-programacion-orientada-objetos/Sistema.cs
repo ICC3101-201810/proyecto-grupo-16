@@ -261,23 +261,23 @@ namespace Entrega_2
     }
     private static void SaveData(List<Usuario> usuarios, List<Taller> talleres)
     {
-        // Creamos el Stream donde guardaremos nuestros usuarios
-        string fileName = "Users.txt";
+      // Creamos el Stream donde guardaremos nuestros usuarios
+      String fileName = Path.Combine( Directory.GetCurrentDirectory(), "Users.txt");
         FileStream fs = new FileStream(fileName, FileMode.Create);
         IFormatter formatter = new BinaryFormatter();
         formatter.Serialize(fs, usuarios);
         fs.Close();
-        fileName = "WorkShops.txt";
+        fileName = Path.Combine(Directory.GetCurrentDirectory(), "WorkShops.txt");
         fs = new FileStream(fileName, FileMode.Create);
         formatter.Serialize(fs, talleres);
-        fs.Close();
+      fs.Close();
         
 
         }
 
     private void LoadData()
     {
-        string fileName = "Users.txt";
+        string fileName = Path.Combine(Directory.GetCurrentDirectory(), "Users.txt");
         FileStream fs = new FileStream(fileName, FileMode.Open);
         IFormatter formatter = new BinaryFormatter();
         List<Usuario> users = formatter.Deserialize(fs) as List<Usuario>;
@@ -290,7 +290,7 @@ namespace Entrega_2
             usuarios.Add(u);
         }
         fs.Close();
-        fileName = "Workshops.txt";
+        fileName = Path.Combine(Directory.GetCurrentDirectory(), "Workshops.txt");
         fs = new FileStream(fileName, FileMode.Open);
         List<Taller> workshops =formatter.Deserialize(fs) as List<Taller>;
         foreach (Taller t in workshops) talleres.Add(t);
