@@ -80,11 +80,9 @@ namespace Entrega_2
         List<String> avaliableBlocks = new List<String>();
         foreach (String day in wsSchedule.Keys)
         {
-          int i = 0;
-          foreach (Boolean avaliable in studentSchedule[day]) if (studentSchedule[day][i++] && wsSchedule[day][i])
+          for(int i=0; i<studentSchedule[day].Count;i++) if (studentSchedule[day][i] && wsSchedule[day][i])
             {
               avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
-              Console.WriteLine(String.Concat(day, ": ", bloques[i]));
             }
         }
         disponibles.Add(ws, avaliableBlocks);
@@ -185,20 +183,21 @@ namespace Entrega_2
 
       if (GetUser(credenciales).GetType() == typeof(Alumno))
       {
-
+        Alumno student = (Alumno)GetUser(credenciales);
         Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
         while (!Option[3])
         {
           if (Option[0])
           {
-            interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+            interfaz.WorkShopAvailable(GetTallerresDisponibles(student));
           }
           else if (Option[1])
           {
-
+            
           }
           else if (Option[2])
           {
+            interfaz.ShowStudentWS(student.GetTalleres());
             Option2 = interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
             while (!Option2[2])
             {
@@ -237,36 +236,36 @@ namespace Entrega_2
 
 
 
-      //Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
-      //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Martes", new List<Boolean>() { false, false, false, false, false } },
-      //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Jueves", new List<Boolean>() {false, false, false, false, false } },
-      //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
-      //Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
-      //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Martes", new List<Boolean>() { false, false, true, false, false } },
-      //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-      //    { "Jueves", new List<Boolean>() {false, false, true, false, false } },
-      //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+            //Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
+            //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Martes", new List<Boolean>() { false, false, false, false, false } },
+            //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+            //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+            //Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
+            //    {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Martes", new List<Boolean>() { false, false, true, false, false } },
+            //    { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+            //    { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+            //    { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
 
-      //Taller futbol = new Taller("futbol", 40, 15000, schedulea,new Sala("CanchaFutbol", schedulea), new Categoria());
-      //talleres.Add(futbol);
-      //Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
-      //administradores.Add(administrador1);
-      //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
-      //profesores.Add(profesor1);
-      //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
-      //alumnos.Add(alumno1);
-      //usuarios.Add(administrador1);
-      //usuarios.Add(profesor1);
-      //usuarios.Add(alumno1);
-
-
+            //Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
+            //talleres.Add(futbol);
+            //Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
+            //administradores.Add(administrador1);
+            //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
+            //profesores.Add(profesor1);
+            //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+            //alumnos.Add(alumno1);
+            //usuarios.Add(administrador1);
+            //usuarios.Add(profesor1);
+            //usuarios.Add(alumno1);
 
 
 
-      SaveData(usuarios, talleres);
+
+
+            SaveData(usuarios, talleres);
     }
 
     private Boolean VerifyUser(List<String> credenciales)

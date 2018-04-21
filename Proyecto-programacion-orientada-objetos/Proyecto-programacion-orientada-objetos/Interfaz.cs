@@ -42,8 +42,14 @@ namespace Entrega_2
       studentsOption[Int32.Parse(Console.ReadLine()) - 1] = true;
       return studentsOption;
     }
+    
+    public void ShowStudentWS(List<Taller> talleres)
+        {
+          int i = 0;
+          foreach (Taller ws in talleres) Console.WriteLine("(" + (i++) + ") " + ws.nombre);
+        }
 
-
+    
 
 
     public void WorkShopAvailable(Dictionary<Taller, List<String>> wsAvaliable)
@@ -55,7 +61,7 @@ namespace Entrega_2
       foreach (Taller ws in wsAvaliable.Keys)
       {
         foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-        Console.WriteLine("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule);
+        Console.WriteLine("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule+"\n");
       }
 
     }
