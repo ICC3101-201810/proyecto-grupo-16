@@ -38,15 +38,16 @@ namespace Entrega_2
       for (int j = 0; j < studentsOption.Count; j++) studentsOption[j] = false;
       RedColorConsole("\tMenu Estudiante\n");
       GreenColorConsole("Seleccione Opcion:\n");
-      foreach (String index in studentsMenu) Console.WriteLine("(" + (i++) + ") " + index);
+      foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
       studentsOption[Int32.Parse(Console.ReadLine()) - 1] = true;
       return studentsOption;
     }
     
     public void ShowStudentWS(List<Taller> talleres)
         {
-          int i = 0;
-          foreach (Taller ws in talleres) Console.WriteLine("(" + (i++) + ") " + ws.nombre);
+            int i = 1;
+            GreenColorConsole("Talleres Inscritos:\n");
+            foreach (Taller ws in talleres) WhiteColorConsole("(" + (i++) + ") " + ws.nombre);
         }
 
     
@@ -60,7 +61,7 @@ namespace Entrega_2
       foreach (Taller ws in wsAvaliable.Keys)
       {
         foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-        Console.WriteLine("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule+"\n");
+        WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule+"\n");
       }
 
     }
