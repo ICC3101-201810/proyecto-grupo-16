@@ -178,6 +178,7 @@ namespace Entrega_2
       List<Boolean> Option2 = new List<Boolean>();
       List<Boolean> Option3 = new List<Boolean>();
       List<Boolean> Option4 = new List<Boolean>();
+      Taller ws;
       while (!VerifyUser(credenciales))
       {
         credenciales = interfaz.LogInLogOut();
@@ -202,19 +203,17 @@ namespace Entrega_2
             interfaz.WorkShopAvailable(GetTalleresDisponibles(student));
             interfaz.GreenColorConsole("Seleccione Opcion:\n");
             select = Int32.Parse(Console.ReadLine());
-            if (GetTalleresDisponibles(student).ElementAt(select - 1).Key.Inscribible())
+            ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
+            if (ws.Inscribible())
             {
-              GetTalleresDisponibles(student).ElementAt(select - 1).Key.Inscribir();
-              student.InscribirTaller(GetTalleresDisponibles(student).ElementAt(select - 1).Key);
-              foreach (String day in GetTalleresDisponibles(student).ElementAt(select - 1).Key.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+              ws.Inscribir();
+              student.InscribirTaller(ws);
+              foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
               {
-                                for (int i = 0; i < student.GetHorario()[day].Count; i++)
-                                {
-                                    if (student.GetHorario()[day][i] && GetTalleresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
-                                    {
-                                        student.GetHorario()[day][i] = false;
-                                    }
-                                }
+                for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+                {
+                  if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
+                }
               }
               interfaz.SuccesColorConsole("EXITO: Taller inscrito");
             }
