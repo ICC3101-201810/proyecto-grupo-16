@@ -213,6 +213,7 @@ namespace Entrega_2
                 for (int i = 0; i < ws.GetHorario()[day].Count; i++)
                 {
                   if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
+
                 }
               }
               interfaz.SuccesColorConsole("EXITO: Taller inscrito");
