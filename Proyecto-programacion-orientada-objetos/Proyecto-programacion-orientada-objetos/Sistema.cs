@@ -85,7 +85,7 @@ namespace Entrega_2
               avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
             }
         }
-        disponibles.Add(ws, avaliableBlocks);
+        if (avaliableBlocks.Count>0) disponibles.Add(ws, avaliableBlocks);
       }
 
       return disponibles;
