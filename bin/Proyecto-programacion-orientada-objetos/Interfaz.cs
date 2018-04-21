@@ -20,7 +20,7 @@ namespace Entrega_2
       List<String> credenciales = new List<string>();
       Console.BackgroundColor = ConsoleColor.Black;
       RedColorConsole("\tMódulo de talleres de la Universidad de los Andes\n");
-      GreenColorConsole("\tInicio de Sesión\n");
+      GreenColorConsole("Inicio de Sesión\n");
       WhiteColorConsole("Ingrese Usuario: ");
       credenciales.Add(Console.ReadLine());
       WhiteColorConsole("Ingrese contraseña: ");
@@ -43,11 +43,26 @@ namespace Entrega_2
       return studentsOption;
     }
 
-    public void ShowStudentWS(List<Taller> talleres)
+    public void ShowWS(Taller ws, List<String> bloques)
+    {
+            string schedule = "";
+            GreenColorConsole("\nTaller: " + ws.nombre+"\n");
+
+            foreach (String day in ws.GetHorario().Keys)
+                for (int i=0; i< ws.GetHorario()[day].Count; i++)
+                    if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ",day+": "+ bloques[i]);
+            WhiteColorConsole("Horario: " + schedule + "\n");
+            WhiteColorConsole("Cupos Disponibles: "+ws.GetCuposDisponibles().ToString());
+            WhiteColorConsole("Encuestas: "+ws.GetEncuestas().Count);
+            WhiteColorConsole("Foros: " + ws.GetForos().Count+"\n");
+        }
+
+        public void ShowStudentWS(List<Taller> talleres)
     {
       int i = 1;
       GreenColorConsole("\nTalleres Inscritos:\n");
       foreach (Taller ws in talleres) WhiteColorConsole("(" + (i++) + ") " + ws.nombre);
+      WhiteColorConsole("\n");
     }
 
 

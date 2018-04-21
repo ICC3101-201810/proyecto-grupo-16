@@ -231,7 +231,15 @@ namespace Entrega_2
             {
               if (Option2[0])
               {
-                Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
+                if (student.GetTalleres().Count > 0)
+                {
+                    interfaz.ShowStudentWS(student.GetTalleres());
+                    interfaz.GreenColorConsole("Seleccione Opcion:\n");
+                    int select = Int32.Parse(Console.ReadLine());
+                    ws = student.GetTalleres()[select - 1];
+                    interfaz.ShowWS(ws, bloques);
+                }
+                                    Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
                 while (!Option3[2])
                 {
                   if (Option3[0])
