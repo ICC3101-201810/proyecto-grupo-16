@@ -24,7 +24,6 @@ namespace Entrega_2
     // Ingresa el horario de la sala. Retorna true si fue ingresado con exito.
     public Boolean SetHorario()
     {
-
       return true;
     }
   }

@@ -80,18 +80,18 @@ namespace Entrega_2
         List<String> avaliableBlocks = new List<String>();
         foreach (String day in wsSchedule.Keys)
         {
-          for(int i=0; i<studentSchedule[day].Count;i++) if (studentSchedule[day][i] && wsSchedule[day][i])
+          for (int i = 0; i < studentSchedule[day].Count; i++) if (studentSchedule[day][i] && wsSchedule[day][i])
             {
               avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
             }
         }
-        if (avaliableBlocks.Count>0) disponibles.Add(ws, avaliableBlocks);
+        if (avaliableBlocks.Count > 0) disponibles.Add(ws, avaliableBlocks);
       }
 
       return disponibles;
     }
 
-    
+
     public bool CrearForo(Taller taller, string nombreForo, bool privacidad)
     {
       taller.CrearForo(nombreForo, privacidad);
@@ -201,22 +201,22 @@ namespace Entrega_2
             int select = 0;
             interfaz.WorkShopAvailable(GetTallerresDisponibles(student));
             interfaz.GreenColorConsole("Seleccione Opcion:\n");
-            select=Int32.Parse(Console.ReadLine());
+            select = Int32.Parse(Console.ReadLine());
             if (GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribible())
             {
-                GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribir();
-                student.InscribirTaller(GetTallerresDisponibles(student).ElementAt(select - 1).Key);
-                foreach (String day in GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
-                {
-                    for (int i = 0; i < student.GetHorario()[day].Count; i++) if (student.GetHorario()[day][i] && GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
-                    {
-                        student.GetHorario()[day][i] = false;
-                    }
-                }
-                interfaz.SuccesColorConsole("EXITO: Taller inscrito");
+              GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribir();
+              student.InscribirTaller(GetTallerresDisponibles(student).ElementAt(select - 1).Key);
+              foreach (String day in GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+              {
+                for (int i = 0; i < student.GetHorario()[day].Count; i++) if (student.GetHorario()[day][i] && GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
+                  {
+                    student.GetHorario()[day][i] = false;
+                  }
+              }
+              interfaz.SuccesColorConsole("EXITO: Taller inscrito");
             }
             else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
-            }
+          }
           else if (Option[2])
           {
             interfaz.ShowStudentWS(student.GetTalleres());
