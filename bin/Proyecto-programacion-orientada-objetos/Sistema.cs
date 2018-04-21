@@ -201,24 +201,27 @@ namespace Entrega_2
           {
             int select = 0;
             interfaz.WorkShopAvailable(GetTalleresDisponibles(student));
-            interfaz.GreenColorConsole("Seleccione Opcion:\n");
-            select = Int32.Parse(Console.ReadLine());
-            ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
-            if (ws.Inscribible())
+            if (GetTalleresDisponibles(student).Count > 0)
             {
-              ws.Inscribir();
-              student.InscribirTaller(ws);
-              foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
-              {
-                for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+                interfaz.GreenColorConsole("Seleccione Opcion:\n");
+                select = Int32.Parse(Console.ReadLine());
+                ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
+                if (ws.Inscribible())
                 {
-                  if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
+                    ws.Inscribir();
+                    student.InscribirTaller(ws);
+                    foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+                    {
+                        for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+                        {
+                            if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
 
+                        }
+                    }
+                    interfaz.SuccesColorConsole("EXITO: Taller inscrito");
                 }
-              }
-              interfaz.SuccesColorConsole("EXITO: Taller inscrito");
+                else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
             }
-            else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
           }
           else if (Option[2])
           {
@@ -244,11 +247,30 @@ namespace Entrega_2
                   Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
                 }
               }
-              else if (Option2[1]) { }
+              else if (Option2[1])
+              {
+                if (student.GetTalleres().Count > 0)
+                {
+                    interfaz.ShowStudentWS(student.GetTalleres());
+                    interfaz.GreenColorConsole("Seleccione Opcion:\n");
+                    int select = Int32.Parse(Console.ReadLine());
+                    ws = student.GetTalleres()[select - 1];
+                    student.DeleteWS(ws);
+                    ws.SetCuposDisponibles();
+                    foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+                    {
+                        for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+                        {
+                            if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = true;
+
+                        }
+                    }
+                     interfaz.SuccesColorConsole("\nEXITO: Taller eliminado\n");
+                }
+                else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
+              }
               Option2 = interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
             }
-
-
           }
           Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
         }
