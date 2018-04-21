@@ -90,6 +90,8 @@ namespace Entrega_2
 
       return disponibles;
     }
+
+    
     public bool CrearForo(Taller taller, string nombreForo, bool privacidad)
     {
       taller.CrearForo(nombreForo, privacidad);
@@ -204,6 +206,13 @@ namespace Entrega_2
             {
                 GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribir();
                 student.InscribirTaller(GetTallerresDisponibles(student).ElementAt(select - 1).Key);
+                foreach (String day in GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+                {
+                    for (int i = 0; i < student.GetHorario()[day].Count; i++) if (student.GetHorario()[day][i] && GetTallerresDisponibles(student).ElementAt(select - 1).Key.GetHorario()[day][i])
+                    {
+                        student.GetHorario()[day][i] = false;
+                    }
+                }
                 interfaz.SuccesColorConsole("EXITO: Taller inscrito");
             }
             else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");

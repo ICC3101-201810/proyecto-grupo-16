@@ -46,7 +46,7 @@ namespace Entrega_2
     public void ShowStudentWS(List<Taller> talleres)
         {
             int i = 1;
-            GreenColorConsole("Talleres Inscritos:\n");
+            GreenColorConsole("\nTalleres Inscritos:\n");
             foreach (Taller ws in talleres) WhiteColorConsole("(" + (i++) + ") " + ws.nombre);
         }
 
@@ -56,7 +56,7 @@ namespace Entrega_2
     {
       int i = 1;
       String schedule = "";
-      GreenColorConsole("Talleres Disponibles:\n");
+      GreenColorConsole("\nTalleres Disponibles:\n");
 
       foreach (Taller ws in wsAvaliable.Keys)
       {
