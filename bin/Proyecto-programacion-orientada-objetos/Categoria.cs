@@ -8,7 +8,7 @@ namespace Entrega_2
   {
     List<String> categorias;
 
-    public List<String> GetCategorias()
+    public List<String> GetCategoria()
     { return categorias; }
   }
 }

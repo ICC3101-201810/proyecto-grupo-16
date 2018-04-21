@@ -7,6 +7,7 @@ namespace Entrega_2
   public class Usuario
   {
     public String rut, nombre, apellido, email, telefono, clave;
+
     public Usuario(String rut, String nombre, String apellido, String email, String telefono, String clave)
     {
       this.rut = rut;
