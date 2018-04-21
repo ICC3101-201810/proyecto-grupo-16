@@ -51,7 +51,6 @@ namespace Entrega_2
 
     
 
-
     public void WorkShopAvailable(Dictionary<Taller, List<String>> wsAvaliable)
     {
       int i = 1;
