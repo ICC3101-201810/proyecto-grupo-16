@@ -35,7 +35,7 @@ namespace Entrega_2
         public List<Boolean> StudentsMenu(List<String> studentsMenu, List<Boolean> studentsOption)
         {
             int i = 1;
-            for (int j =0; j<studentsOption.Count; j++) studentsOption[i]= false;
+            for (int j =0; j<studentsOption.Count; j++) studentsOption[j]= false;
             RedColorConsole("\tMenu Estudiante\n");
             GreenColorConsole("Seleccione Opcion:\n");
             foreach (String index in studentsMenu) Console.WriteLine("("+ (i++) +") "+index);
