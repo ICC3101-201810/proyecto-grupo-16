@@ -32,16 +32,19 @@ namespace Entrega_2
             if(!verifyUser)ErrorColorConsole("\tERROR: Usuario/Contraseña Incorrecta\n");
         }
 
-        public List<Boolean> StudentsMenu()
+        public List<Boolean> StudentsMenu(List<String> studentsMenu, List<Boolean> studentsOption)
         {
             int i = 1;
-            for (int j =0; j<studentOption.Count; j++) studentOption[i]= false;
+            //for (int j =0; j<studentOption.Count; j++) studentOption[i]= false;
             RedColorConsole("\tMenu Estudiante\n");
             GreenColorConsole("Seleccione Opcion:\n");
             foreach (String index in studentsMenu) Console.WriteLine("("+ (i++) +") "+index);
             studentOption[Int32.Parse(Console.ReadLine()) - 1]=true;
             return studentOption;
         }
+
+
+
 
         public void WorkShopAvailable(Dictionary<Taller,List<String>> wsAvaliable)
         {

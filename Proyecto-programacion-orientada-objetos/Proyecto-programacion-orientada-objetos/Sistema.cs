@@ -9,18 +9,53 @@ namespace Entrega_2
 {
   class Sistema
   {
-    List<Usuario> usuarios = new List<Usuario>();
-    List<Administrador> administradores= new List<Administrador>();
-    List<Profesor> profesores= new List<Profesor>();
-    List<Alumno> alumnos=new List<Alumno>();
-    List<Taller> talleres=new List<Taller>();
-    List<Categoria> categorias= new List<Categoria>();
-    List<Sala> salas =new List<Sala>();
-    List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
+        List<Usuario> usuarios;
+        List<Administrador> administradores;
+        List<Profesor> profesores;
+        List<Alumno> alumnos;
+        List<Taller> talleres;
+        List<Categoria> categorias;
+        List<Sala> salas;
+        List<String> bloques;
 
-    public Sistema()
-    {
-    }
+        //Menu estudiante
+        List<String> studentsMenu;
+        List<String> studentsSubMenuListWs;
+        List<String> studentsSubMenuWs;
+        List<String> studentsSubMenuForum;
+        List<String> studentsSubMenuEnc;
+        List<Boolean> studentOptionMenu;
+        List<Boolean> studentOptionListWs;
+        List<Boolean> studentOptionMenuWs;
+        List<Boolean> studentOptionForum;
+        List<Boolean> studentOptionEnc;
+       
+       
+
+        public Sistema()
+        {
+            usuarios = new List<Usuario>();
+            administradores = new List<Administrador>();
+            profesores = new List<Profesor>();
+            alumnos = new List<Alumno>();
+            talleres = new List<Taller>();
+            categorias = new List<Categoria>();
+            salas = new List<Sala>();
+            bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
+
+            //Menu estudiante
+            studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
+            studentOptionMenu = CreateListOption(studentsMenu.Count);
+            studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
+            studentOptionListWs = CreateListOption(studentsSubMenuListWs.Count);
+            studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
+            studentOptionMenuWs = CreateListOption(studentsSubMenuWs.Count);
+            studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
+            studentOptionForum = CreateListOption(studentsSubMenuForum.Count);
+            studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
+            studentOptionEnc= CreateListOption(studentsSubMenuEnc.Count);
+
+        }
 
 
     public bool InscribirAlumno(Alumno alumno, Taller taller)
@@ -147,7 +182,8 @@ namespace Entrega_2
             if (GetUser(credenciales).GetType() == typeof(Alumno))
             {
                 List<Boolean> studentOption = new List<Boolean>();
-                studentOption = interfaz.StudentsMenu();
+                List<Boolean> studentOption2 = new List<Boolean>();
+                studentOption = interfaz.StudentsMenu(studentsMenu,studentOptionMenu);
                 while (!studentOption[3])
                 {
                     if (studentOption[0])
@@ -156,13 +192,20 @@ namespace Entrega_2
                     }
                     else if (studentOption[1])
                     {
-                        interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                        
                     }
                     else if (studentOption[2])
                     {
-                        interfaz.WorkShopAvailable(GetTallerresDisponibles((Alumno)GetUser(credenciales)));
+                        studentOption2=interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
+                        while (!studentOption2[2])
+                        {
+                            if (studentOption2[0]) { }
+                            else if (studentOption2[1]) { }
+                            studentOption2 = interfaz.StudentsMenu(studentsSubMenuListWs, studentOptionListWs);
+                        }
+                        
                     }
-                    studentOption = interfaz.StudentsMenu();
+                    studentOption = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
                 }
             }
 
@@ -253,9 +296,14 @@ namespace Entrega_2
         foreach (Taller t in workshops) talleres.Add(t);
         fs.Close();
         
+    }
+
+    private List<Boolean> CreateListOption(int Length)
+        {
+            List<Boolean> option = new List<Boolean>(Length);
+            for (int i = 0; i < Length; i++) option.Add(false);
+            return option;
         }
-
-
 
 
     }
