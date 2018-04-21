@@ -64,8 +64,10 @@ namespace Entrega_2
       }
 
     }
+    
+    
 
-    public void RedColorConsole(String s)
+        public void RedColorConsole(String s)
     {
       Console.ForegroundColor = ConsoleColor.Red;
       Console.WriteLine(s);
@@ -96,5 +98,14 @@ namespace Entrega_2
       Console.ResetColor();
       Console.BackgroundColor = ConsoleColor.Black;
     }
-  }
+    public void SuccesColorConsole(String s)
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(s);
+        Console.Beep();
+        Console.ResetColor();
+        Console.BackgroundColor = ConsoleColor.Black;
+    }
+    }
 }

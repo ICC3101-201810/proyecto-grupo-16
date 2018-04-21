@@ -196,8 +196,18 @@ namespace Entrega_2
           }
           else if (Option[1])
           {
-            
-          }
+            int select = 0;
+            interfaz.WorkShopAvailable(GetTallerresDisponibles(student));
+            interfaz.GreenColorConsole("Seleccione Opcion:\n");
+            select=Int32.Parse(Console.ReadLine());
+            if (GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribible())
+            {
+                GetTallerresDisponibles(student).ElementAt(select - 1).Key.Inscribir();
+                student.InscribirTaller(GetTallerresDisponibles(student).ElementAt(select - 1).Key);
+                interfaz.SuccesColorConsole("EXITO: Taller inscrito");
+            }
+            else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
+            }
           else if (Option[2])
           {
             interfaz.ShowStudentWS(student.GetTalleres());
