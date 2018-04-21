@@ -29,8 +29,8 @@ namespace Entrega_2
 
     public bool DeleteMessage(Mensaje mensaje)
     {
-       mensajes.RemoveAll(x=>x.codigo==mensaje.codigo);  
-       return true;
+      mensajes.RemoveAll(x => x.codigo == mensaje.codigo);
+      return true;
     }
   }
 }

@@ -9,12 +9,12 @@ namespace Entrega_2
     public String nombre { get; set; }
     int cupos, precio, actualInscritos;
     Dictionary<String, List<Boolean>> horario;
-    List<Foro> foros =new List<Foro>();
-    List<Encuesta> encuestas= new List<Encuesta>();
+    List<Foro> foros = new List<Foro>();
+    List<Encuesta> encuestas = new List<Encuesta>();
     Sala sala;
     Categoria categoria;
 
-    public Taller(String nombre, int cupos, int precio, Dictionary<String,List<Boolean>> horario, Sala sala, Categoria categoria)
+    public Taller(String nombre, int cupos, int precio, Dictionary<String, List<Boolean>> horario, Sala sala, Categoria categoria)
     {
       this.nombre = nombre;
       this.cupos = cupos;
@@ -36,9 +36,9 @@ namespace Entrega_2
 
     public void SetCuposDisponibles()
     {
-            actualInscritos+=1;
+      actualInscritos += 1;
     }
-        public int GetCuposIniciales()
+    public int GetCuposIniciales()
     {
       return cupos;
     }

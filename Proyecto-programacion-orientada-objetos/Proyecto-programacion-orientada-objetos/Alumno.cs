@@ -10,7 +10,7 @@ namespace Entrega_2
     Dictionary<String, List<Boolean>> horario;
 
     // Constructor con todos los parametros
-    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Taller> talleresInscritos, Dictionary<String,List<Boolean>> horario)
+    public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Taller> talleresInscritos, Dictionary<String, List<Boolean>> horario)
         : base(rut, nombre, apellido, email, telefono, clave)
     {
       this.talleresInscritos = talleresInscritos;
@@ -31,7 +31,7 @@ namespace Entrega_2
       return true;
     }
 
-    public Dictionary<String, List<Boolean>>GetHorario()
+    public Dictionary<String, List<Boolean>> GetHorario()
     {
       return horario;
     }
@@ -45,7 +45,7 @@ namespace Entrega_2
     {
       return talleresInscritos;
     }
-    
+
 
     public void SetTalleres()
     {
@@ -54,8 +54,8 @@ namespace Entrega_2
 
     public bool DeleteWS(Taller taller)
     {
-        talleresInscritos.RemoveAll(x => x.nombre == taller.nombre);
-        return true;
+      talleresInscritos.RemoveAll(x => x.nombre == taller.nombre);
+      return true;
     }
-    }
+  }
 }

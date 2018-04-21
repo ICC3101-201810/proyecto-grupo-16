@@ -6,9 +6,9 @@ namespace Entrega_2
   [Serializable]
   class Sala
   {
-    
+
     String nombre;
-    Dictionary<String,List<Boolean>> horario;
+    Dictionary<String, List<Boolean>> horario;
 
     public Sala(String nombre, Dictionary<String, List<Boolean>> horario)
     {

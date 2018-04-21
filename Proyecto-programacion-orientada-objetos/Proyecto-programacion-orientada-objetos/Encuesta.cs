@@ -8,7 +8,7 @@ namespace Entrega_2
   {
     public String tema { get; set; }
     List<Pregunta> preguntas;
-    List<Respuesta> respuestas= new List<Respuesta>();
+    List<Respuesta> respuestas = new List<Respuesta>();
 
     public Encuesta(String tema, List<Pregunta> preguntas)
     {
