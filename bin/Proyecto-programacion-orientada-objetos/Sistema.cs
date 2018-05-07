@@ -328,7 +328,29 @@ namespace Entrega_2
                //select = Int32.Parse(Console.ReadLine());
                 Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
                 while (!Option2[3])
-                { Console.WriteLine("?"); }
+                {
+                  if(Option2[0])//Foros
+                  {
+                    Option3 = interfaz.TeachersMenu(teachersSubMenuForo, teachersOptionForum);
+                    while (!Option3[2])
+                    {
+                    }
+                  }
+                  else if (Option2[1])//Encuestas
+                  {
+                    Option3 = interfaz.TeachersMenu(teachersSubMenuEnc, teachersOptionEnc);
+                    while (!Option3[2])
+                    {
+                    }
+                  }
+                  else if (Option2[2])//Ver participantes
+                  {
+                  }
+                  
+                  
+                  Console.WriteLine("?");
+                }
+
               }
               
 
