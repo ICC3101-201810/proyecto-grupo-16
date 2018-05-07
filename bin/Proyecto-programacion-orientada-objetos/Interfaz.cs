@@ -43,8 +43,16 @@ namespace Entrega_2
       return studentsOption;
     }
 
-    public List<Boolean> ProfessorsMenu(List<Boolean> professorsMenu, List<Boolean> professorsOption){
-      
+    public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption){
+      int i = 1;
+      for (int j = 0; j < teachersOption.Count; j++)
+        teachersOption[j] = false;
+      RedColorConsole("\tMenu Profesor\n");
+      GreenColorConsole("Seleccione Opcion:\n");
+      foreach (String index in teachersMenu)
+        WhiteColorConsole("(" + (i++) + ") " + index);
+      teachersOption[Int32.Parse(Console.ReadLine()) - 1] = true;
+      return teachersOption;
     }
 
     public void ShowWS(Taller ws, List<String> bloques)

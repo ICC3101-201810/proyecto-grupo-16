@@ -31,8 +31,16 @@ namespace Entrega_2
     List<Boolean> studentOptionEnc;
 
     // Menu profesor
-    List<String> professorsMenu;
-    List<Boolean> professorsOptionMenu;
+    List<String> teachersMenu;
+    List<String> teachersSubMenuListWs;
+    List<String> teachersSubMenuWs;
+    List<String> teachersSubMenuForo;
+    List<String> teachersSubMenuEnc;
+    List<Boolean> teachersOptionMenu;
+    List<Boolean> teachersOptionListWs;
+    List<Boolean> teachersOptionMenuWs;
+    List<Boolean> teachersOptionForum;
+    List<Boolean> teachersOptionEnc;
 
 
 
@@ -60,8 +68,14 @@ namespace Entrega_2
       studentOptionEnc = CreateListOption(studentsSubMenuEnc.Count);
 
       // Menu profesor
-      professorsMenu = new List<String> { };
-      professorsOptionMenu = CreateListOption(professorsMenu.Count);
+      teachersMenu = new List<String>() { "Talleres dictados", "Salir" };
+      teachersOptionMenu = CreateListOption(teachersMenu.Count);
+      teachersSubMenuWs = new List<String>() { "Foros", "Encuestas", "Ver Participantes", "Volver a Menu" };
+      teachersOptionMenuWs = CreateListOption(teachersSubMenuWs.Count);
+      teachersSubMenuForo = new List<String>() { "Mostrar Foros", "Crear nuevo Foro", "Volver a Taller" };
+      teachersOptionForum = CreateListOption(teachersSubMenuForo.Count);
+      teachersSubMenuEnc = new List<String>() { "Mostrar encuestas", "Crear nueva encuesta", "Volver a Taller" };
+      teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
 
     }
 
@@ -187,6 +201,7 @@ namespace Entrega_2
       List<Boolean> Option3 = new List<Boolean>();
       List<Boolean> Option4 = new List<Boolean>();
       Taller ws;
+      List<Taller> talleresDictados = new List<Taller>() { };
       while (!VerifyUser(credenciales))
       {
         credenciales = interfaz.LogInLogOut();
@@ -298,8 +313,25 @@ namespace Entrega_2
        *  PROFESOR
        * */
       else if (GetUser(credenciales).GetType() == typeof(Profesor)){
-        Profesor professor = (Profesor)GetUser(credenciales);
-        Option = interfaz.ProfessorMenu(professorsMenu, professorsOptionMenu);
+        Profesor teacher = (Profesor)GetUser(credenciales);
+        Option = interfaz.TeachersMenu(teachersMenu, teachersOptionMenu);
+        while(!Option[1]){
+          if (Option[0]){
+            Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
+            int select = 0;
+            int i = 0;
+            talleresDictados = teacher.GetTalleres();
+            //foreach (Taller t in talleresDictados)){
+            //  Console.WriteLine("({0})", t.nombre, i);
+            //  i++;
+            //}
+            interfaz.GreenColorConsole("Seleccione Taller:\n");
+            select = Int32.Parse(Console.ReadLine());
+            while(!Option2[3]){
+              Console.WriteLine("?");
+            }
+          }
+        }
       }
       SaveData(usuarios, talleres);
     }
