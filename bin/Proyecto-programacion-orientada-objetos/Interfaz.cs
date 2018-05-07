@@ -42,19 +42,17 @@ namespace Entrega_2
       studentsOption[Int32.Parse(Console.ReadLine()) - 1] = true;
       return studentsOption;
     }
-
-    public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption){
+    public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption)
+    {
       int i = 1;
-      for (int j = 0; j < teachersOption.Count; j++)
-        teachersOption[j] = false;
+      for (int j = 0; j < teachersOption.Count; j++) teachersOption[j] = false;
       RedColorConsole("\tMenu Profesor\n");
       GreenColorConsole("Seleccione Opcion:\n");
-      foreach (String index in teachersMenu)
-        WhiteColorConsole("(" + (i++) + ") " + index);
+      foreach (String index in teachersMenu) WhiteColorConsole("(" + (i++) + ") " + index);
       teachersOption[Int32.Parse(Console.ReadLine()) - 1] = true;
       return teachersOption;
-    }
 
+    }
     public void ShowWS(Taller ws, List<String> bloques)
     {
             string schedule = "";
@@ -69,7 +67,7 @@ namespace Entrega_2
             WhiteColorConsole("Foros: " + ws.GetForos().Count+"\n");
         }
 
-        public void ShowStudentWS(List<Taller> talleres)
+    public void ShowStudentWS(List<Taller> talleres)
     {
       int i = 1;
       GreenColorConsole("\nTalleres Inscritos:\n");
@@ -94,7 +92,16 @@ namespace Entrega_2
             }
             else ErrorColorConsole("\nERROR: No existen talleres en horario disponible.\n");
     }
-
+    public void MostrarTalleres(List<Taller> talleres)
+    {
+      int i=1;
+      foreach(Taller t in talleres)
+      {
+        Console.WriteLine("({0}){1}", i,t.nombre);
+        i += 1;
+      }
+        
+    }
 
 
     public void RedColorConsole(String s)

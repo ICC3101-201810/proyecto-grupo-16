@@ -29,8 +29,7 @@ namespace Entrega_2
     List<Boolean> studentOptionMenuWs;
     List<Boolean> studentOptionForum;
     List<Boolean> studentOptionEnc;
-
-    // Menu profesor
+    //Menu profesor
     List<String> teachersMenu;
     List<String> teachersSubMenuListWs;
     List<String> teachersSubMenuWs;
@@ -41,7 +40,7 @@ namespace Entrega_2
     List<Boolean> teachersOptionMenuWs;
     List<Boolean> teachersOptionForum;
     List<Boolean> teachersOptionEnc;
-
+   
 
 
     public Sistema()
@@ -66,20 +65,20 @@ namespace Entrega_2
       studentOptionForum = CreateListOption(studentsSubMenuForum.Count);
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
       studentOptionEnc = CreateListOption(studentsSubMenuEnc.Count);
-
-      // Menu profesor
-      teachersMenu = new List<String>() { "Talleres dictados", "Salir" };
-      teachersOptionMenu = CreateListOption(teachersMenu.Count);
-      teachersSubMenuWs = new List<String>() { "Foros", "Encuestas", "Ver Participantes", "Volver a Menu" };
+      //Menu profesor
+      teachersMenu=new List<String>() {"Talleres dictados", "Salir" };
+      teachersOptionMenu=CreateListOption(teachersMenu.Count);
+      teachersSubMenuWs=new List<String>() { "Foros", "Encuestas", "Ver Participantes", "Volver a Menu" };
       teachersOptionMenuWs = CreateListOption(teachersSubMenuWs.Count);
-      teachersSubMenuForo = new List<String>() { "Mostrar Foros", "Crear nuevo Foro", "Volver a Taller" };
+      teachersSubMenuForo=new List<String>() { "Mostrar Foros", "Crear nuevo Foro", "Volver a Taller" };
       teachersOptionForum = CreateListOption(teachersSubMenuForo.Count);
-      teachersSubMenuEnc = new List<String>() { "Mostrar encuestas", "Crear nueva encuesta", "Volver a Taller" };
+      teachersSubMenuEnc = new List<String>() {"Mostrar encuestas","Crear nueva encuesta","Volver a Taller"};
       teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
-
+      //List<String> teachersSubMenuEnc=new List<String>() { };
+      //List<Boolean> teachersOptionListWs;
     }
 
-
+    
     public bool InscribirAlumno(Alumno alumno, Taller taller)
     {
       if (taller.Inscribible())
@@ -112,8 +111,6 @@ namespace Entrega_2
 
       return disponibles;
     }
-
-
     public bool CrearForo(Taller taller, string nombreForo, bool privacidad)
     {
       taller.CrearForo(nombreForo, privacidad);
@@ -134,9 +131,9 @@ namespace Entrega_2
       alumnos.Add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
       return true;
     }
-    public bool RegistrarProfesor(string rut, string nombre, string apellido, string email, string telefono, string clave)
+    public bool RegistrarProfesor(string rut, string nombre, string apellido, string email, string telefono, string clave,List<Taller> talleresDictados)
     {
-      profesores.Add(new Profesor(rut, nombre, apellido, email, telefono, clave));
+      profesores.Add(new Profesor(rut, nombre, apellido, email, telefono, clave, talleresDictados));
       return true;
     }
     //Es necesario pasar el taller?
@@ -152,7 +149,7 @@ namespace Entrega_2
       alumnos.RemoveAll(x => x.rut == alumno.rut);
       return true;
     }
-    public bool CrearTaller(string nombre, int cupos, int precio, Dictionary<String, List<bool>> horario, Sala sala, Categoria categoria)
+    public bool CrearTaller(string nombre, int cupos, int precio, Dictionary<String, List<bool>> horario, Sala sala, Categoria categoria,Profesor profesor)
     {
       talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
       return true;
@@ -194,6 +191,7 @@ namespace Entrega_2
       {
         InicializaUsuariosIniciales();
       }
+      //InicializaUsuariosIniciales();
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };
       List<Boolean> Option = new List<Boolean>();
@@ -201,18 +199,22 @@ namespace Entrega_2
       List<Boolean> Option3 = new List<Boolean>();
       List<Boolean> Option4 = new List<Boolean>();
       Taller ws;
-      List<Taller> talleresDictados = new List<Taller>() { };
+      List<Taller> talleresD = new List<Taller>() { };
       while (!VerifyUser(credenciales))
       {
         credenciales = interfaz.LogInLogOut();
         interfaz.ErrorCredenciales(VerifyUser(credenciales));
       }
+      int c = 0;
+      foreach (Taller t in talleresD)
+      {
+          Console.WriteLine("({0})", t.nombre, c);
+          c += 1;
+      }
 
-
-      /*
-       *  ALUMNO
-       * */
+      //Menu Estudiante
       if (GetUser(credenciales).GetType() == typeof(Alumno))
+
       {
         Alumno student = (Alumno)GetUser(credenciales);
         Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
@@ -264,7 +266,7 @@ namespace Entrega_2
                     ws = student.GetTalleres()[select - 1];
                     interfaz.ShowWS(ws, bloques);
                 }
-                                    Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
+                Option3 = interfaz.StudentsMenu(studentsSubMenuWs, studentOptionMenuWs);
                 while (!Option3[2])
                 {
                   if (Option3[0])
@@ -308,55 +310,67 @@ namespace Entrega_2
           Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
         }
       }
+      //Menu Profesor
+      else if (GetUser(credenciales).GetType() == typeof(Profesor))
+      {
+          Profesor teacher = (Profesor)GetUser(credenciales);
+          talleresD = teacher.GetTalleres();
+          Option = interfaz.TeachersMenu(teachersMenu, teachersOptionMenu);
+          while (!Option[1])
+          {
+              if (Option[0])
+              {
+                int select =0;
+                interfaz.GreenColorConsole("Seleccione Taller:\n");
+                interfaz.MostrarTalleres(talleresD);
+                select = Int32.Parse(Console.ReadLine());
+                ws=talleresD[select-1];
+               //select = Int32.Parse(Console.ReadLine());
+                Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
+                while (!Option2[3])
+                { Console.WriteLine("?"); }
+              }
+              
 
-      /*
-       *  PROFESOR
-       * */
-      else if (GetUser(credenciales).GetType() == typeof(Profesor)){
-        Profesor teacher = (Profesor)GetUser(credenciales);
-        Option = interfaz.TeachersMenu(teachersMenu, teachersOptionMenu);
-        while(!Option[1]){
-          if (Option[0]){
-            Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
-            int select = 0;
-            int i = 0;
-            talleresDictados = teacher.GetTalleres();
-            //foreach (Taller t in talleresDictados)){
-            //  Console.WriteLine("({0})", t.nombre, i);
-            //  i++;
-            //}
-            interfaz.GreenColorConsole("Seleccione Taller:\n");
-            select = Int32.Parse(Console.ReadLine());
-            while(!Option2[3]){
-              Console.WriteLine("?");
-            }
+                //interfaz.WorkShopAvailable(GetTalleresDisponibles(teacher));
           }
-        }
       }
       SaveData(usuarios, talleres);
-    }
+  }  
+
 
     public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
-          {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-          { "Martes", new List<Boolean>() { false, false, false, false, false } },
-          { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-          { "Jueves", new List<Boolean>() {false, false, false, false, false } },
-          { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+      {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, false, false, false } },
+      { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+      Dictionary<String, List<Boolean>> schedulec = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", new List<Boolean>() {false, false, false, false, true } },
+      { "Martes", new List<Boolean>() { false, true, false, false, false } },
+      { "Miercoles", new List<Boolean>() {false, false, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
-          {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-          { "Martes", new List<Boolean>() { false, false, true, false, false } },
-          { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-          { "Jueves", new List<Boolean>() {false, false, true, false, false } },
-          { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
-      Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
-      talleres.Add(futbol);
+      {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, true, false, false } },
+      { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
       administradores.Add(administrador1);
-      Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234");
-      profesores.Add(profesor1);
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+      Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
+      Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
+      List<Taller> talleresD=new List<Taller>();
+      talleresD.Add(futbol);
+      talleresD.Add(tenis);
+      Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234",talleresD);
+      profesores.Add(profesor1);
+      talleres.Add(futbol);
+      talleres.Add(tenis);
       alumnos.Add(alumno1);
       usuarios.Add(administrador1);
       usuarios.Add(profesor1);
