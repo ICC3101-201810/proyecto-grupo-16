@@ -30,6 +30,10 @@ namespace Entrega_2
     List<Boolean> studentOptionForum;
     List<Boolean> studentOptionEnc;
 
+    // Menu profesor
+    List<String> professorsMenu;
+    List<Boolean> professorsOptionMenu;
+
 
 
     public Sistema()
@@ -54,6 +58,10 @@ namespace Entrega_2
       studentOptionForum = CreateListOption(studentsSubMenuForum.Count);
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
       studentOptionEnc = CreateListOption(studentsSubMenuEnc.Count);
+
+      // Menu profesor
+      professorsMenu = new List<String> { };
+      professorsOptionMenu = CreateListOption(professorsMenu.Count);
 
     }
 
@@ -186,7 +194,9 @@ namespace Entrega_2
       }
 
 
-
+      /*
+       *  ALUMNO
+       * */
       if (GetUser(credenciales).GetType() == typeof(Alumno))
       {
         Alumno student = (Alumno)GetUser(credenciales);
@@ -282,6 +292,14 @@ namespace Entrega_2
           }
           Option = interfaz.StudentsMenu(studentsMenu, studentOptionMenu);
         }
+      }
+
+      /*
+       *  PROFESOR
+       * */
+      else if (GetUser(credenciales).GetType() == typeof(Profesor)){
+        Profesor professor = (Profesor)GetUser(credenciales);
+        Option = interfaz.ProfessorMenu(professorsMenu, professorsOptionMenu);
       }
       SaveData(usuarios, talleres);
     }

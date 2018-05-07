@@ -43,6 +43,10 @@ namespace Entrega_2
       return studentsOption;
     }
 
+    public List<Boolean> ProfessorsMenu(List<Boolean> professorsMenu, List<Boolean> professorsOption){
+      
+    }
+
     public void ShowWS(Taller ws, List<String> bloques)
     {
             string schedule = "";
