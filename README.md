@@ -7,3 +7,4 @@ Consiste en una aplicacion para llevar el control de los talleres que dicta la u
 - Israel Cea
 - Carlos Diaz
 - Andres Howard
+.
