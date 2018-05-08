@@ -398,7 +398,7 @@ namespace Entrega_2
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> schedulec = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, false, false, false, true } },
-      { "Martes", new List<Boolean>() { false, true, false, false, false } },
+      { "Martes", new List<Boolean>() { false, true, true, false, false } },
       { "Miercoles", new List<Boolean>() {false, false, false, false, false } },
       { "Jueves", new List<Boolean>() {false, false, false, false, false } },
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
