@@ -107,15 +107,17 @@ namespace Entrega_2
       foreach (Taller ws in talleres)
       {
         wsSchedule = ws.GetHorario();
+        bool fullavaliable = true;
         List<String> avaliableBlocks = new List<String>();
         foreach (String day in wsSchedule.Keys)
         {
-          for (int i = 0; i < studentSchedule[day].Count; i++) if (studentSchedule[day][i] && wsSchedule[day][i])
-            {
-              avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
-            }
+          for (int i = 0; i < studentSchedule[day].Count; i++)
+          {
+            if (studentSchedule[day][i] && wsSchedule[day][i]) avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
+            if (!studentSchedule[day][i] && wsSchedule[day][i]) fullavaliable = false;
+          }
         }
-        if (avaliableBlocks.Count > 0) disponibles.Add(ws, avaliableBlocks);
+        if (avaliableBlocks.Count > 0 && fullavaliable) disponibles.Add(ws, avaliableBlocks);
       }
 
       return disponibles;
@@ -206,24 +208,27 @@ namespace Entrega_2
       OptionMostrarTalleresDisponibles(student, interfaz);
       if (GetTalleresDisponibles(student).Count > 0)
       {
-        interfaz.GreenColorConsole("Seleccione Opcion:\n");
+        interfaz.GreenColorConsole("Seleccione Opcion (Ingrese un numero mayor a la ultima opcion para volver):\n");
         select = Int32.Parse(Console.ReadLine());
-        Taller ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
-        if (ws.Inscribible())
+        if (select <= GetTalleresDisponibles(student).Count)
         {
-          ws.Inscribir();
-          student.InscribirTaller(ws);
-          foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+          Taller ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
+          if (ws.Inscribible())
           {
-            for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+            ws.Inscribir();
+            student.InscribirTaller(ws);
+            foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
             {
-              if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
+              for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+              {
+                if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = false;
 
+              }
             }
+            interfaz.SuccesColorConsole("EXITO: Taller inscrito");
           }
-          interfaz.SuccesColorConsole("EXITO: Taller inscrito");
+          else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
         }
-        else interfaz.ErrorColorConsole("ERROR: Taller no inscrito. Falta de cupos.");
       }
     }
 
@@ -305,11 +310,11 @@ namespace Entrega_2
 
       public void Menu()
     {
-      if (!LoadData())
+      /*if (!LoadData())
       {
         InicializaUsuariosIniciales();
-      }
-      //InicializaUsuariosIniciales();
+      }*/
+      InicializaUsuariosIniciales();
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };
       List<Boolean> Option = new List<Boolean>();
@@ -400,16 +405,16 @@ namespace Entrega_2
       { "Jueves", new List<Boolean>() {false, false, false, false, false } },
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> schedulec = new Dictionary<String, List<Boolean>>(){
-      {"Lunes", new List<Boolean>() {false, false, false, false, true } },
-      { "Martes", new List<Boolean>() { false, true, true, false, false } },
+      {"Lunes", new List<Boolean>() {false, false, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, false, true, false } },
       { "Miercoles", new List<Boolean>() {false, false, false, false, false } },
-      { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, false, true, false } },
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> scheduleb = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, true, false, false, false } },
-      { "Martes", new List<Boolean>() { false, false, true, false, false } },
+      { "Martes", new List<Boolean>() { false, false, true, true, false } },
       { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
-      { "Jueves", new List<Boolean>() {false, false, true, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, true, true, false } },
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
       administradores.Add(administrador1);

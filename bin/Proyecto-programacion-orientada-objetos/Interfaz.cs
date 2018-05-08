@@ -78,6 +78,7 @@ namespace Entrega_2
                 GreenColorConsole("\nTalleres Disponibles:\n");
                 foreach (Taller ws in wsAvaliable.Keys)
                 {
+                    schedule = "";
                     foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
                     WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
                 }
