@@ -6,12 +6,6 @@ namespace Entrega_2
 {
   class Interfaz
   {
-    //List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
-    //List<String> studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
-    //List<String> studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
-    //List<String> studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
-    //List<String> studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
-    //List<Boolean> studentOption = new List<Boolean>() { false, false, false ,false };
 
     public Interfaz() { }
 
@@ -32,15 +26,13 @@ namespace Entrega_2
       if (!verifyUser) ErrorColorConsole("\tERROR: Usuario/Contraseña Incorrecta\n");
     }
 
-    public List<Boolean> StudentsMenu(List<String> studentsMenu, List<Boolean> studentsOption)
+    public int StudentsMenu(List<String> studentsMenu)
     {
       int i = 1;
-      for (int j = 0; j < studentsOption.Count; j++) studentsOption[j] = false;
       RedColorConsole("\tMenu Estudiante\n");
       GreenColorConsole("Seleccione Opcion:\n");
       foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
-      studentsOption[Int32.Parse(Console.ReadLine()) - 1] = true;
-      return studentsOption;
+      return Int32.Parse(Console.ReadLine()) - 1;
     }
     public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption)
     {
