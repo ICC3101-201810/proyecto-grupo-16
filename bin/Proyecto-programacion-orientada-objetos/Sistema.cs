@@ -59,10 +59,10 @@ namespace Entrega_2
       categorias = new List<Categoria>();
       salas = new List<Sala>();
       bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
-      studentMenuOption = new menuOption[] { Option0StudentMenu, Option1StudentMenu, Option2StudentMenu };
-      studentMenuOption2 = new menuOption[] { Option20StudentMenu, Option21StudentMenu };
-      studentMenuOption20 = new menuOption[] { Option200StudentMenu, Option201StudentMenu };
-
+      studentMenuOption = new menuOption[] { OptionMostrarTalleresDisponibles, OptionInscribirTaller, OptionVerTalleresInscritos};
+      studentMenuOption2 = new menuOption[] { OptionSeleccionarTaller, OptionEliminarTaller };
+      studentMenuOption20 = new menuOption[] { OptionVerForos, OptionVerEncuestas };
+      
       //Menu estudiante
       studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
       studentOptionMenu = CreateListOption(studentsMenu.Count);
@@ -195,15 +195,15 @@ namespace Entrega_2
       return estadisticas;
     }
 
-    public void Option0StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionMostrarTalleresDisponibles(Alumno student, Interfaz interfaz)
     {
       interfaz.WorkShopAvailable(GetTalleresDisponibles(student));
     }
 
-    public void Option1StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionInscribirTaller(Alumno student, Interfaz interfaz)
     {
       int select = 0;
-      Option0StudentMenu(student, interfaz);
+      OptionMostrarTalleresDisponibles(student, interfaz);
       if (GetTalleresDisponibles(student).Count > 0)
       {
         interfaz.GreenColorConsole("Seleccione Opcion:\n");
@@ -227,7 +227,7 @@ namespace Entrega_2
       }
     }
 
-    public void Option2StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionVerTalleresInscritos(Alumno student, Interfaz interfaz)
     {
       int Option = 0;
       if (student.GetTalleres().Count > 0)
@@ -243,7 +243,7 @@ namespace Entrega_2
       else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
     }
 
-    public void Option20StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionSeleccionarTaller(Alumno student, Interfaz interfaz)
     {
       if (student.GetTalleres().Count > 0)
       {
@@ -263,19 +263,19 @@ namespace Entrega_2
       else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
     }
 
-    public void Option200StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionVerForos(Alumno student, Interfaz interfaz)
     {
       int Option = interfaz.StudentsMenu(studentsSubMenuForum);
       while (Option < studentsSubMenuForum.Count-1) Option = interfaz.StudentsMenu(studentsSubMenuForum);
     }
 
-    public void Option201StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionVerEncuestas(Alumno student, Interfaz interfaz)
     {
       int Option = interfaz.StudentsMenu(studentsSubMenuEnc);
       while (Option < studentsSubMenuEnc.Count-1) Option = interfaz.StudentsMenu(studentsSubMenuEnc);
     }
 
-    public void Option21StudentMenu(Alumno student, Interfaz interfaz)
+    public void OptionEliminarTaller(Alumno student, Interfaz interfaz)
     {
       if (student.GetTalleres().Count > 0)
       {
