@@ -12,6 +12,7 @@ namespace Entrega_2
   class Sistema
   {
     delegate void menuOption(Alumno student, Interfaz interfaz);
+    delegate void menuOptionAdmin(Administrador admin, Interfaz interfaz);
     List<Usuario> usuarios;
     List<Administrador> administradores;
     List<Profesor> profesores;
@@ -23,6 +24,7 @@ namespace Entrega_2
     menuOption[] studentMenuOption;
     menuOption[] studentMenuOption2;
     menuOption[] studentMenuOption20;
+    menuOptionAdmin[] adminMenuOption;
 
     //Menu estudiante
     List<String> studentsMenu;
@@ -46,7 +48,10 @@ namespace Entrega_2
     List<Boolean> teachersOptionMenuWs;
     List<Boolean> teachersOptionForum;
     List<Boolean> teachersOptionEnc;
-   
+    // Menu administrador
+    List<String> adminsMenu;
+    List<Boolean> adminsOptionMenu;
+  
 
 
     public Sistema()
@@ -85,6 +90,11 @@ namespace Entrega_2
       teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
+      // Menu adminstrador
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Agregar usuarios", "Eliminar usuarios", "Salir"};
+      adminsOptionMenu = CreateListOption(adminsMenu.Count);
+      adminMenuOption = new menuOptionAdmin[] {  };
+
     }
 
     
@@ -391,6 +401,20 @@ namespace Entrega_2
 
                 //interfaz.WorkShopAvailable(GetTalleresDisponibles(teacher));
           }
+      }
+
+      // Menu administrador
+      else if (GetUser(credenciales).GetType() == typeof(Administrador)){
+        Administrador admin = (Administrador)GetUser(credenciales);
+        int Optioni = interfaz.AdminsMenu(adminsMenu);
+
+        while(Optioni != adminMenuOption.Length){
+          if (Optioni >= adminMenuOption.Length)
+            interfaz.ErrorColorConsole("Opción no permitida.\n");
+          else
+            adminMenuOption[Optioni](admin, interfaz);
+          Optioni = interfaz.AdminsMenu(adminsMenu);
+        }
       }
       SaveData(usuarios, talleres);
   }  

@@ -34,6 +34,14 @@ namespace Entrega_2
       foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
       return Int32.Parse(Console.ReadLine()) - 1;
     }
+    public int AdminsMenu(List<String> adminsMenu)
+    {
+      int i = 1;
+      RedColorConsole("\tMenu Administrador\n");
+      GreenColorConsole("Seleccione Opcion:\n");
+      foreach (String index in adminsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
+      return Int32.Parse(Console.ReadLine()) - 1;
+    }
     public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption)
     {
       int i = 1;
