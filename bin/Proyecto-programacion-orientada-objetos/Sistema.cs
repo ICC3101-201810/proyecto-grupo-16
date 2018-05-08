@@ -93,7 +93,7 @@ namespace Entrega_2
       // Menu adminstrador
       adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Agregar usuarios", "Eliminar usuarios", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] {  };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres };
 
     }
 
@@ -312,7 +312,9 @@ namespace Entrega_2
       }
       else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
     }
-
+    public void OptionMostrarTalleres(Administrador admin, Interfaz interfaz){
+      interfaz.AdminMostrarTalleres(talleres);
+    }
 
 
 

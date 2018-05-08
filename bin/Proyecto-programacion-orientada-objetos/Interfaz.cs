@@ -96,12 +96,17 @@ namespace Entrega_2
     public void MostrarTalleres(List<Taller> talleres)
     {
       int i=1;
-      foreach(Taller t in talleres)
+      foreach(Taller ws in talleres)
       {
-        Console.WriteLine("({0}){1}", i,t.nombre);
+        WhiteColorConsole("(" + (i++) + ") " + ws.nombre);// + ", Horario: " + schedule + "\n");
+        //Console.WriteLine("({0}){1}", i,t.nombre);
         i += 1;
       }
         
+    }
+    public void AdminMostrarTalleres(List<Taller> talleres){
+      GreenColorConsole("\nTalleres:\n");
+      MostrarTalleres(talleres);
     }
 
 
