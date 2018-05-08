@@ -67,6 +67,7 @@ namespace Entrega_2
     {
       return foros;
     }
+    
 
     public Boolean CrearEncuesta(String tema, List<Pregunta> preguntas)
     {

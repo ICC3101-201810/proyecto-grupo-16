@@ -6,7 +6,7 @@ namespace Entrega_2
   [Serializable]
   class Foro
   {
-    String tema;
+    public String tema; 
     List<Mensaje> mensajes = new List<Mensaje>();
     Boolean privacidad;
 
@@ -32,5 +32,7 @@ namespace Entrega_2
       mensajes.RemoveAll(x => x.codigo == mensaje.codigo);
       return true;
     }
+    public string GetTema()
+    { return tema; }
   }
 }

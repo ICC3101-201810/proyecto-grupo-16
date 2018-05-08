@@ -14,6 +14,7 @@ namespace Entrega_2
     Boolean tieneMedia;
     //String codigo_mensaje_string
 
+    //Consructor con media
     public Mensaje(Usuario autor, String texto, DateTime fecha, List<Media> media)
     {
       this.autor = autor;
@@ -22,7 +23,7 @@ namespace Entrega_2
       this.media = media;
       codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre());
     }
-
+    
     public Boolean TieneMedia()
     {
       if (media.Count > 0) tieneMedia = true;
@@ -30,5 +31,7 @@ namespace Entrega_2
       return tieneMedia;
 
     }
+    
+    
   }
 }

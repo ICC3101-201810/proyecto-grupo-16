@@ -40,7 +40,10 @@ namespace Entrega_2
     List<Boolean> teachersOptionMenuWs;
     List<Boolean> teachersOptionForum;
     List<Boolean> teachersOptionEnc;
-   
+    List<String>teachersSubMenuForo2;
+    List<Boolean>teachersOptionForum2;
+
+
 
 
     public Sistema()
@@ -72,11 +75,12 @@ namespace Entrega_2
       teachersOptionMenuWs = CreateListOption(teachersSubMenuWs.Count);
       teachersSubMenuForo=new List<String>() { "Mostrar Foros", "Crear nuevo Foro", "Volver a Taller" };
       teachersOptionForum = CreateListOption(teachersSubMenuForo.Count);
+      teachersSubMenuForo2 = new List<String>() { "Leer foro","Agregar Mensaje", "Volver a foros" };
+      teachersOptionForum2 = CreateListOption(teachersSubMenuForo.Count);
       teachersSubMenuEnc = new List<String>() {"Mostrar encuestas","Crear nueva encuesta","Volver a Taller"};
       teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
-      //List<String> teachersSubMenuEnc=new List<String>() { };
-      //List<Boolean> teachersOptionListWs;
-    }
+      
+        }
 
     
     public bool InscribirAlumno(Alumno alumno, Taller taller)
@@ -120,10 +124,15 @@ namespace Entrega_2
     {
       return foro.GetMensajes();
     }
-    //No deberia pasarse el taller
-    public bool EnviarMensaje(Taller taller, Foro foro, string texto, Usuario usuario, List<Media> media)
+    //No deberia pasarse el taller----->Ya no se pasa taller!
+    public bool EnviarMensaje( Foro foro, Usuario usuario)
     {
-      foro.AgregarMensaje(usuario, texto, media);
+      Console.WriteLine("Escriba aquí su mensaje:");
+      string texto = Console.ReadLine();
+      Console.WriteLine("");
+      Console.WriteLine("");
+      List<Media> media = new List<Media>(); 
+      foro.AgregarMensaje(usuario, texto,media);
       return true;
     }
     public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, Dictionary<String, List<bool>> horario)
@@ -199,6 +208,7 @@ namespace Entrega_2
       List<Boolean> Option3 = new List<Boolean>();
       List<Boolean> Option4 = new List<Boolean>();
       Taller ws;
+      Foro f;
       List<Taller> talleresD = new List<Taller>() { };
       while (!VerifyUser(credenciales))
       {
@@ -331,9 +341,31 @@ namespace Entrega_2
                 {
                   if(Option2[0])//Foros
                   {
+                    
                     Option3 = interfaz.TeachersMenu(teachersSubMenuForo, teachersOptionForum);
                     while (!Option3[2])
                     {
+                        if(Option3[0])//Mostrar foros
+                        {
+                          interfaz.MostrarForos(ws);
+                          select = Int32.Parse(Console.ReadLine());
+                          f = ws.GetForos()[select - 1];
+                          Option4 = interfaz.TeachersMenu(teachersSubMenuForo2, teachersOptionForum2);
+                          while(!Option4[2])
+                          { 
+                            if(Option4[0])
+                            {
+                              interfaz.LeerForo(f);
+                            }
+                            else if (Option4[1])
+                            {
+                            }
+                            
+                          }
+                          
+                          
+                        }
+                        
                     }
                   }
                   else if (Option2[1])//Encuestas
