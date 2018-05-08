@@ -96,6 +96,25 @@ namespace Entrega_2
         
     }
 
+    public void ShowForums(List<Foro> foros)
+    {
+      GreenColorConsole("\nSeleccionar foro a ingresar:\n");
+      int i = 1;
+      foreach (Foro foro in foros)
+        if (!foro.privacidad)
+          WhiteColorConsole("(" + (i++) + ") " + foro.tema);
+    }
+
+    public void ShowForumMessages(Foro foro)
+    {
+      GreenColorConsole(("\nMensajes en foro "+ foro.tema + ":\n"));
+      foreach (Mensaje mensaje in foro.GetMensajes())
+      {
+        GreenColorConsole("\nPor "+ mensaje.autor.GetNombre() + " - "+ mensaje.fecha + ":\n");
+        WhiteColorConsole(mensaje.texto);
+      }
+    }
+
 
     public void RedColorConsole(String s)
     {
