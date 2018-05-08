@@ -124,15 +124,10 @@ namespace Entrega_2
     {
       return foro.GetMensajes();
     }
-    //No deberia pasarse el taller----->Ya no se pasa taller!
-    public bool EnviarMensaje( Foro foro, Usuario usuario)
+    //No deberia pasarse el taller
+    public bool EnviarMensaje(Taller taller, Foro foro, string texto, Usuario usuario, List<Media> media)
     {
-      Console.WriteLine("Escriba aquí su mensaje:");
-      string texto = Console.ReadLine();
-      Console.WriteLine("");
-      Console.WriteLine("");
-      List<Media> media = new List<Media>(); 
-      foro.AgregarMensaje(usuario, texto,media);
+      foro.AgregarMensaje(usuario, texto, media);
       return true;
     }
     public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, Dictionary<String, List<bool>> horario)
@@ -355,12 +350,8 @@ namespace Entrega_2
                           { 
                             if(Option4[0])
                             {
-                              interfaz.LeerForo(f);
-                            }
-                            else if (Option4[1])
-                            {
-                            }
-                            
+                              }
+                            interfaz.LeerForo(f);
                           }
                           
                           
