@@ -330,9 +330,12 @@ namespace Entrega_2
       {
         Alumno student = (Alumno)GetUser(credenciales);
         int Optioni = interfaz.StudentsMenu(studentsMenu);
-        while (Optioni<studentMenuOption.Length)
+        while (Optioni != studentMenuOption.Length)
         {
-          studentMenuOption[Optioni](student, interfaz);
+          if (Optioni >= studentMenuOption.Length)
+            interfaz.ErrorColorConsole("Opción no permitida.\n");
+          else
+            studentMenuOption[Optioni](student, interfaz);
           Optioni = interfaz.StudentsMenu(studentsMenu);
         }
       }
