@@ -346,17 +346,25 @@ namespace Entrega_2
                           select = Int32.Parse(Console.ReadLine());
                           f = ws.GetForos()[select - 1];
                           Option4 = interfaz.TeachersMenu(teachersSubMenuForo2, teachersOptionForum2);
-                          while(!Option4[2])
+                          while(!Option4[2])//Leer foro y agregar mensaje
                           { 
-                            if(Option4[0])
+                            if(Option4[0])//Leer foro
                             {
-                              }
-                            interfaz.LeerForo(f);
+                              interfaz.LeerForo(f);
+                            }
+                            if (Option4[1])//Agregar Mensaje
+                            {
+                              string texto=interfaz.PedirTextoMensaje();
+                              List<Media> media=new List<Media>();
+                              EnviarMensaje(ws, f, texto, teacher, media);
+                              interfaz.SuccesColorConsole("Mensaje Publicado");
+                            } 
                           }
-                          
-                          
                         }
-                        
+                        else if(Option3[1])//Crear nuevo foro
+                        {
+                         
+                        }
                     }
                   }
                   else if (Option2[1])//Encuestas

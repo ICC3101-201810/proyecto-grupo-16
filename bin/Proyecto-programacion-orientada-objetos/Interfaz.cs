@@ -128,6 +128,19 @@ namespace Entrega_2
             }
         }
 
+        public string PedirTextoMensaje()
+        {
+            Console.WriteLine("Escriba aquí su mensaje:");
+            string texto = Console.ReadLine();
+            return texto;
+        }
+        public string PedirForo()
+        {
+            Console.WriteLine("Tema del Foro");
+            string tema = Console.ReadLine();
+            return tema;
+        }
+
 
         public void RedColorConsole(String s)
         {
