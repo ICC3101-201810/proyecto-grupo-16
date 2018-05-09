@@ -71,14 +71,14 @@ namespace Entrega_2
       //Menu profesor
       teachersMenu=new List<String>() {"Talleres dictados", "Salir" };
       teachersOptionMenu=CreateListOption(teachersMenu.Count);
-      teachersSubMenuWs=new List<String>() { "Foros", "Encuestas", "Ver Participantes", "Volver a Menu" };
+      teachersSubMenuWs=new List<String>() { "Foros", "Ver Participantes", "Volver a Menu" };
       teachersOptionMenuWs = CreateListOption(teachersSubMenuWs.Count);
       teachersSubMenuForo=new List<String>() { "Mostrar Foros", "Crear nuevo Foro", "Volver a Taller" };
       teachersOptionForum = CreateListOption(teachersSubMenuForo.Count);
-      teachersSubMenuForo2 = new List<String>() { "Leer foro","Agregar Mensaje", "Volver a foros" };
+      teachersSubMenuForo2 = new List<String>() { "Leer foro","Agregar Mensaje","Eliminar Mensaje", "Volver a foros" };
       teachersOptionForum2 = CreateListOption(teachersSubMenuForo.Count);
-      teachersSubMenuEnc = new List<String>() {"Mostrar encuestas","Crear nueva encuesta","Volver a Taller"};
-      teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
+      //teachersSubMenuEnc = new List<String>() {"Mostrar encuestas","Crear nueva encuesta","Volver a Taller"};
+      //teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
       
         }
 
@@ -330,9 +330,9 @@ namespace Entrega_2
                 interfaz.MostrarTalleres(talleresD);
                 select = Int32.Parse(Console.ReadLine());
                 ws=talleresD[select-1];
-               //select = Int32.Parse(Console.ReadLine());
+        
                 Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
-                while (!Option2[3])
+                while (!Option2[2])
                 {
                   if(Option2[0])//Foros
                   {
@@ -342,50 +342,68 @@ namespace Entrega_2
                     {
                         if(Option3[0])//Mostrar foros
                         {
+                          
                           interfaz.MostrarForos(ws);
                           select = Int32.Parse(Console.ReadLine());
                           f = ws.GetForos()[select - 1];
                           Option4 = interfaz.TeachersMenu(teachersSubMenuForo2, teachersOptionForum2);
-                          while(!Option4[2])//Leer foro y agregar mensaje
+                          while(!Option4[3])//Leer foro, agregar y eliminar mensaje
                           { 
                             if(Option4[0])//Leer foro
                             {
                               interfaz.LeerForo(f);
                             }
-                            if (Option4[1])//Agregar Mensaje
+                            else if (Option4[1])//Agregar Mensaje
                             {
                               string texto=interfaz.PedirTextoMensaje();
                               List<Media> media=new List<Media>();
                               EnviarMensaje(ws, f, texto, teacher, media);
                               interfaz.SuccesColorConsole("Mensaje Publicado");
-                            } 
+                              
+                            }
+                            else if (Option4[2])//Eliminar Mensaje
+                            {
+                              //f.BorrarMensaje();
+                              if (f.BorrarMensaje())
+                              { interfaz.SuccesColorConsole("Mensaje borrado!"); }
+                              else
+                              { interfaz.ErrorColorConsole("No hay mensajes para borrar"); }
+                            }
+
+                            Option4 = interfaz.TeachersMenu(teachersSubMenuForo2, teachersOptionForum2);
                           }
                         }
                         else if(Option3[1])//Crear nuevo foro
                         {
-                         
+                           string tema=interfaz.PedirForo();
+                           ws.CrearForo(tema, false);
+                           interfaz.SuccesColorConsole("Foro creado!");
+                          
                         }
+                        Option3 = interfaz.TeachersMenu(teachersSubMenuForo, teachersOptionForum);
                     }
                   }
-                  else if (Option2[1])//Encuestas
+                  //OPCION ENCUESTAS
+                  //else if (Option2[1])//Encuestas
+                  //{
+                  //  Option3 = interfaz.TeachersMenu(teachersSubMenuEnc, teachersOptionEnc);
+                  //  while (!Option3[2])
+                  //  {
+                  //    Option3 = interfaz.TeachersMenu(teachersSubMenuEnc, teachersOptionEnc);
+                  //  
+                  //}
+                  else if (Option2[1])//Ver participantes
                   {
-                    Option3 = interfaz.TeachersMenu(teachersSubMenuEnc, teachersOptionEnc);
-                    while (!Option3[2])
-                    {
-                    }
-                  }
-                  else if (Option2[2])//Ver participantes
-                  {
+                    interfaz.MostrarParticipantes(alumnos, ws);
                   }
                   
-                  
-                  Console.WriteLine("?");
+                  Option2 = interfaz.TeachersMenu(teachersSubMenuWs, teachersOptionMenuWs);
                 }
 
               }
               
-
-                //interfaz.WorkShopAvailable(GetTalleresDisponibles(teacher));
+              Option = interfaz.TeachersMenu(teachersMenu, teachersOptionMenu);
+     
           }
       }
       SaveData(usuarios, talleres);
@@ -489,7 +507,7 @@ namespace Entrega_2
     private List<Boolean> CreateListOption(int Length)
     {
       List<Boolean> option = new List<Boolean>(Length);
-      for (int i = 0; i < Length; i++) option.Add(false);
+      for (int i = 0; i < Length+1; i++) option.Add(false);
       return option;
     }
 

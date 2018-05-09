@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -123,7 +124,7 @@ namespace Entrega_2
             int i = 1;
             foreach (Mensaje mensaje in mensajes)
             {
-                Console.WriteLine("|{1}|:{2}", mensaje.fecha.ToLongDateString(), mensaje.texto);
+                Console.WriteLine("({4})|{0},{1}:{2}|:{3}", mensaje.fecha.ToShortDateString(), mensaje.fecha.Hour,mensaje.fecha.Minute,mensaje.texto,i);
                 i += 1;
             }
         }
@@ -136,9 +137,30 @@ namespace Entrega_2
         }
         public string PedirForo()
         {
-            Console.WriteLine("Tema del Foro");
+            Console.WriteLine("Tema del Foro:");
             string tema = Console.ReadLine();
             return tema;
+        }
+        public void MostrarParticipantes(List<Alumno> alumnos,Taller taller)
+        {
+            List<Alumno> inscritos = new List<Alumno>();
+            string nombreTaller = taller.nombre;
+            foreach (Alumno a in alumnos)
+             {
+                foreach(Taller t in a.talleresInscritos)
+                {
+                    if(t.nombre==nombreTaller)
+                    {
+                        inscritos.Add(a);
+                    }
+                }
+
+            }
+            Console.WriteLine("Participantes del Taller {0}", nombreTaller);
+            foreach(Alumno a in inscritos)
+            {
+                Console.WriteLine("| {0} {1} | {2}",a.nombre,a.apellido,a.email);
+            }
         }
 
 
