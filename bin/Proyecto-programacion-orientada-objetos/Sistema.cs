@@ -91,9 +91,9 @@ namespace Entrega_2
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
       // Menu adminstrador
-      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Agregar alumno", "Eliminar alumno", "Agregar profesor", "Eliminar profesor", "Salir"};
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Agregar alumno", "Eliminar alumno", "Agregar profesor", "Eliminar profesor", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionAgregarAlumno, OptionEliminarAlumno, OptionAgregarProfesor, OptionEliminarProfesor };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionAgregarAlumno, OptionEliminarAlumno, OptionAgregarProfesor, OptionEliminarProfesor };
 
     }
 
@@ -182,6 +182,10 @@ namespace Entrega_2
         talleres.Add(taller);
         return true;
       }
+      return false;
+    }
+
+    public Boolean EliminarTaller(Taller taller){
       return false;
     }
     //Que es esto?
@@ -337,6 +341,12 @@ namespace Entrega_2
       
     }
 
+    public void OptionEliminarTaller(Administrador administrador, Interfaz interfaz){
+      int indexToRemove = interfaz.AdminEliminarTaller(talleres);
+      Console.WriteLine(indexToRemove);
+      talleres.RemoveAt(indexToRemove-1);
+    }
+
     public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
       
     }
@@ -355,10 +365,10 @@ namespace Entrega_2
 
       public void Menu()
     {
-      /*if (!LoadData())
+      if (!LoadData())
       {
         InicializaUsuariosIniciales();
-      }*/
+      }
       InicializaUsuariosIniciales();
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };

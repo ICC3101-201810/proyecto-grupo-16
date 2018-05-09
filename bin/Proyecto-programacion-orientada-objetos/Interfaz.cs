@@ -100,7 +100,7 @@ namespace Entrega_2
       {
         WhiteColorConsole("(" + (i++) + ") " + ws.nombre);// + ", Horario: " + schedule + "\n");
         //Console.WriteLine("({0}){1}", i,t.nombre);
-        i += 1;
+        //i += 1;
       }
         
     }
@@ -109,12 +109,21 @@ namespace Entrega_2
       MostrarTalleres(talleres);
     }
 
+    public int AdminEliminarTaller(List<Taller> talleres){
+      GreenColorConsole("\nSeleccione el taller a eliminar");
+      MostrarTalleres(talleres);
+      return Int32.Parse(Console.ReadLine());
+    }
+
     public Taller AgregarTaller(){
       // string nombre, int cupos, int precio, Dictionary<String, List<bool>> horario, Sala sala, Categoria categoria,Profesor profesor
       GreenColorConsole("\nAgregar Taller:\n");
       WhiteColorConsole("Ingrese el nombre del taller: ");
       String nombre = Console.ReadLine();
       WhiteColorConsole("Ingrese la cantidad de cupos: ");
+
+
+
       int cupos = Int32.Parse(Console.ReadLine());
       // Ingresar el horario
       // Ingresar la sala
