@@ -91,9 +91,9 @@ namespace Entrega_2
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
       // Menu adminstrador
-      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Agregar alumno", "Eliminar alumno", "Agregar profesor", "Eliminar profesor", "Salir"};
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionAgregarAlumno, OptionEliminarAlumno, OptionAgregarProfesor, OptionEliminarProfesor };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor };
 
     }
 
@@ -343,8 +343,12 @@ namespace Entrega_2
 
     public void OptionEliminarTaller(Administrador administrador, Interfaz interfaz){
       int indexToRemove = interfaz.AdminEliminarTaller(talleres);
-      Console.WriteLine(indexToRemove);
+      //Console.WriteLine(indexToRemove);
       talleres.RemoveAt(indexToRemove-1);
+    }
+
+    public void OptionMostrarAlumnos(Administrador administrador, Interfaz interfaz){
+      interfaz.AdminMostrarAlumnos(alumnos);
     }
 
     public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
@@ -352,14 +356,21 @@ namespace Entrega_2
     }
 
     public void OptionEliminarAlumno(Administrador administrador, Interfaz interfaz){
+      int indexToRemove = interfaz.AdminEliminarAlumno(alumnos);
+      alumnos.RemoveAt(indexToRemove - 1);
+    }
 
+    public void OptionMostrarProfesores(Administrador administrador, Interfaz interfaz){
+      interfaz.AdminMostrarProfesores(profesores);
     }
 
     public void OptionAgregarProfesor(Administrador administrador, Interfaz interfaz){
       
     }
+
     public void OptionEliminarProfesor(Administrador adminstrador, Interfaz interfaz){
-      
+      int indexToRemove = interfaz.AdminEliminarProfesor(profesores);
+      profesores.RemoveAt(indexToRemove - 1);
     }
 
 
@@ -369,7 +380,7 @@ namespace Entrega_2
       {
         InicializaUsuariosIniciales();
       }
-      InicializaUsuariosIniciales();
+      //InicializaUsuariosIniciales();
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };
       List<Boolean> Option = new List<Boolean>();
@@ -378,6 +389,8 @@ namespace Entrega_2
       List<Boolean> Option4 = new List<Boolean>();
       Taller ws;
       List<Taller> talleresD = new List<Taller>() { };
+      for (int i = 0; i < alumnos.Count; i++)
+        Console.WriteLine(alumnos[i].GetApellido() + ", " + alumnos[i].GetNombre());
       while (!VerifyUser(credenciales))
       {
         credenciales = interfaz.LogInLogOut();
@@ -488,18 +501,23 @@ namespace Entrega_2
       Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
       administradores.Add(administrador1);
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+      Alumno alumno2 = new Alumno("18884427-8", "Israel", "Borrar", "i@m.cl", "+56999404286", "1234", scheduleb);
       Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
       Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
       List<Taller> talleresD=new List<Taller>();
       talleresD.Add(futbol);
       talleresD.Add(tenis);
       Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234",talleresD);
+      Profesor profesor2 = new Profesor("18234567-8", "Andres", "Borrar", "a@m.cl", "+5699293949596", "1234", talleresD);
       profesores.Add(profesor1);
+      profesores.Add(profesor2);
       talleres.Add(futbol);
       talleres.Add(tenis);
       alumnos.Add(alumno1);
+      alumnos.Add(alumno2);
       usuarios.Add(administrador1);
       usuarios.Add(profesor1);
+      usuarios.Add(profesor2);
       usuarios.Add(alumno1);
     }
 
@@ -551,11 +569,13 @@ namespace Entrega_2
         usuarios.Add(u);
       }
       fs.Close();
+      File.Delete(fileName);
       fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Workshops.txt");
       fs = new FileStream(fileName, FileMode.Open);
       List<Taller> workshops = formatter.Deserialize(fs) as List<Taller>;
       foreach (Taller t in workshops) talleres.Add(t);
       fs.Close();
+      File.Delete(fileName);
       return true;
     }
 

@@ -99,19 +99,46 @@ namespace Entrega_2
       foreach(Taller ws in talleres)
       {
         WhiteColorConsole("(" + (i++) + ") " + ws.nombre);// + ", Horario: " + schedule + "\n");
-        //Console.WriteLine("({0}){1}", i,t.nombre);
-        //i += 1;
-      }
-        
+      } 
     }
+
+    public void MostrarAlumnos(List<Alumno> alumnos){
+      for (int i = 0; i < alumnos.Count; i++)
+        WhiteColorConsole("(" + (i+1) + ") " + alumnos[i].GetApellido() + ", " + alumnos[i].GetNombre());
+    }
+
+    public void MostrarProfesores(List<Profesor> profesores){
+      int i = 0;
+      foreach(Profesor p in profesores){
+        WhiteColorConsole("(" + (i + 1) + ") " + p.GetApellido() + ", " + p.GetNombre());
+        i++;
+      }
+    }
+
     public void AdminMostrarTalleres(List<Taller> talleres){
       GreenColorConsole("\nTalleres:\n");
       MostrarTalleres(talleres);
     }
 
     public int AdminEliminarTaller(List<Taller> talleres){
-      GreenColorConsole("\nSeleccione el taller a eliminar");
+      GreenColorConsole("\nSeleccione el taller a eliminar\n");
       MostrarTalleres(talleres);
+      return Int32.Parse(Console.ReadLine());
+    }
+
+    public void AdminMostrarProfesores(List<Profesor> profesores){
+      GreenColorConsole("\nProfesores vigentes:\n");
+      MostrarProfesores(profesores);
+    }
+
+    public void AdminMostrarAlumnos(List<Alumno> alumnos){
+      GreenColorConsole("\nAlumnos vigentes:\n");
+      MostrarAlumnos(alumnos);
+    }
+
+    public int AdminEliminarAlumno(List<Alumno> alumnos){
+      GreenColorConsole("\nSeleccione el alumno a eliminar\n");
+      MostrarAlumnos(alumnos);
       return Int32.Parse(Console.ReadLine());
     }
 
@@ -130,6 +157,12 @@ namespace Entrega_2
       //Ingresar la categoria
       //Ingresar el profesor
       return null;
+    }
+
+    public int AdminEliminarProfesor(List<Profesor> profesores){
+      GreenColorConsole("\nSelecione el profesor a eliminar\n");
+      MostrarProfesores(profesores);
+      return Int32.Parse(Console.ReadLine());
     }
 
     public void RedColorConsole(String s)
