@@ -109,6 +109,19 @@ namespace Entrega_2
       MostrarTalleres(talleres);
     }
 
+    public Taller AgregarTaller(){
+      // string nombre, int cupos, int precio, Dictionary<String, List<bool>> horario, Sala sala, Categoria categoria,Profesor profesor
+      GreenColorConsole("\nAgregar Taller:\n");
+      WhiteColorConsole("Ingrese el nombre del taller: ");
+      String nombre = Console.ReadLine();
+      WhiteColorConsole("Ingrese la cantidad de cupos: ");
+      int cupos = Int32.Parse(Console.ReadLine());
+      // Ingresar el horario
+      // Ingresar la sala
+      //Ingresar la categoria
+      //Ingresar el profesor
+      return null;
+    }
 
     public void RedColorConsole(String s)
     {

@@ -91,9 +91,9 @@ namespace Entrega_2
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
       // Menu adminstrador
-      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Agregar usuarios", "Eliminar usuarios", "Salir"};
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Agregar alumno", "Eliminar alumno", "Agregar profesor", "Eliminar profesor", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionAgregarAlumno, OptionEliminarAlumno, OptionAgregarProfesor, OptionEliminarProfesor };
 
     }
 
@@ -174,6 +174,15 @@ namespace Entrega_2
     {
       talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
       return true;
+    }
+
+    public Boolean CrearTaller(Taller taller){
+      if (taller != null)
+      {
+        talleres.Add(taller);
+        return true;
+      }
+      return false;
     }
     //Que es esto?
     public bool ModificarTaller(Taller taller)
@@ -316,8 +325,32 @@ namespace Entrega_2
       interfaz.AdminMostrarTalleres(talleres);
     }
 
+    public void OptionAgregarTaller(Administrador administrador, Interfaz interfaz){
+      //talleres.Add(interfaz.AgregarTaller());
+      if (CrearTaller(interfaz.AgregarTaller()))
+        interfaz.SuccesColorConsole("\nEXITO: Taller creado\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Taller no creado\n");
+    }
 
+    public void OptionModificarTaller(Administrador administrador, Interfaz interfaz){
+      
+    }
 
+    public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
+      
+    }
+
+    public void OptionEliminarAlumno(Administrador administrador, Interfaz interfaz){
+
+    }
+
+    public void OptionAgregarProfesor(Administrador administrador, Interfaz interfaz){
+      
+    }
+    public void OptionEliminarProfesor(Administrador adminstrador, Interfaz interfaz){
+      
+    }
 
 
       public void Menu()
