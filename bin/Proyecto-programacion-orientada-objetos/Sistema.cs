@@ -26,6 +26,7 @@ namespace Entrega_2
     menuOption[] studentMenuOption2;
     subMenuOption[] studentMenuOption20;
     subMenuOptionForum[] studentMenuOption200;
+    subMenuOptionForum[] studentMenuOption2000;
     //Menu estudiante
     List<String> studentsMenu;
     List<String> studentsSubMenuListWs;
@@ -62,14 +63,15 @@ namespace Entrega_2
       studentMenuOption2 = new menuOption[] { OptionSeleccionarTaller, OptionEliminarTaller };
       studentMenuOption20 = new subMenuOption[] { OptionVerForos};
       studentMenuOption200 = new subMenuOptionForum[] { OptionIngresarAForo };
+      studentMenuOption2000 = new subMenuOptionForum[] { OptionAgregarMensaje, OptionEliminarMensaje };
 
 
       //Menu estudiante
       studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
       studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
-      studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
+      studentsSubMenuWs = new List<String>() { "Ver Foros", "Volver a Lista Talleres" };
       studentsSubMenuForum = new List<String>() { "Seleccione numero de foro a ver en detalle (Ingrese un numero mayor que ultimo para volver al Taller)"};
-      studentsSubMenuForumMessage = new List<String>() { "Agregar Mensaje", "Volver a seleccion de foros" };
+      studentsSubMenuForumMessage = new List<String>() { "Agregar Mensaje","Eliminar Mensaje", "Volver a seleccion de foros" };
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
       //Menu profesor
       teachersMenu=new List<String>() {"Talleres dictados", "Salir" };
@@ -124,7 +126,7 @@ namespace Entrega_2
       taller.CrearForo(nombreForo, privacidad);
       return true;
     }
-    public List<Mensaje> LeerForo(Taller taller, Foro foro)
+    public List<Mensaje> LeerForo(Foro foro)
     {
       return foro.GetMensajes();
     }
@@ -134,6 +136,17 @@ namespace Entrega_2
       foro.AgregarMensaje(usuario, texto);
       return true;
     }
+    public List<Mensaje> GetUserMessages(Foro foro, Usuario user)
+    {
+      List<Mensaje> userMessages = new List<Mensaje>();
+      foreach(Mensaje m in LeerForo(foro))
+        if (m.autor.rut.Equals(user.rut))
+        {
+          userMessages.Add(m);
+        }
+      return userMessages;
+    }
+
     public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, Dictionary<String, List<bool>> horario)
     {
       alumnos.Add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
@@ -145,7 +158,7 @@ namespace Entrega_2
       return true;
     }
     //Es necesario pasar el taller?
-    public bool EliminarMensaje(Taller taller, Foro foro, Mensaje mensaje)
+    public bool EliminarMensaje(Foro foro, Mensaje mensaje)
     {
       foro.DeleteMessage(mensaje);
       return true;
@@ -274,17 +287,59 @@ namespace Entrega_2
 
     public void OptionVerForos(Alumno student, Interfaz interfaz, Taller ws)
     {
-      interfaz.ShowForums(ws.GetForos());
-      int option = interfaz.StudentsMenu(studentsSubMenuForum);
-      if (option < ws.GetForos().Count)
-      {
-        studentMenuOption200[option](student, interfaz, ws.GetForos()[option]);
+      if (ws.GetForos().Count > 0) {
+        interfaz.ShowForums(ws.GetForos());
+        int option = interfaz.StudentsMenu(studentsSubMenuForum);
+        if (option < ws.GetForos().Count)
+        {
+          studentMenuOption200[option](student, interfaz, ws.GetForos()[option]);
+        }
       }
+      else interfaz.ErrorColorConsole("ERROR: Taller no posee foros");
     }
 
     public void OptionIngresarAForo(Alumno student, Interfaz interfaz, Foro foro)
     {
-      interfaz.ShowForumMessages(foro.GetMensajes());
+      interfaz.ShowForumMessages(LeerForo(foro));
+      int option = interfaz.StudentsMenu(studentsSubMenuForumMessage);
+      while (option < studentMenuOption2000.Length)
+      {
+        studentMenuOption2000[option](student, interfaz, foro);
+        option = interfaz.StudentsMenu(studentsSubMenuForumMessage);
+      }
+    }
+
+    public void OptionAgregarMensaje(Alumno student, Interfaz interfaz, Foro foro)
+    {
+      string mensaje = interfaz.GetForumMessage();
+      if (EnviarMensaje(foro, mensaje, student))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Mensaje enviado correctamente");
+        interfaz.ShowForumMessages(foro.GetMensajes());
+      }
+      }
+
+    public void OptionEliminarMensaje(Alumno student, Interfaz interfaz, Foro foro)
+    {
+      if (GetUserMessages(foro, student).Count > 0)
+      {
+        int option = 0;
+        interfaz.ShowForumMessages(GetUserMessages(foro, student));
+        interfaz.WhiteColorConsole("\nSeleccione mensaje a eliminar (Ingrese numero mayor que el ultimo para cancelar):\n");
+        while (!(Int32.TryParse(Console.ReadLine(), out option) && option > 0))
+        {
+          interfaz.ErrorColorConsole("ERROR: Opcion no valida");
+          interfaz.WhiteColorConsole("\nSeleccione mensaje a eliminar (Ingrese numero mayor que el ultimo para cancelar):\n");
+        }
+        option = option - 1;
+        if (option < GetUserMessages(foro, student).Count)
+          if (EliminarMensaje(foro, GetUserMessages(foro, student)[option]))
+          {
+            interfaz.SuccesColorConsole("\nEXITO: Mensaje eliminado correctamente");
+            interfaz.ShowForumMessages(foro.GetMensajes());
+          }
+      }
+      else interfaz.ErrorColorConsole("ERROR: Usuario ha escrito mensajes en el foro");
     }
 
     public void OptionVerEncuestas(Alumno student, Interfaz interfaz)
@@ -323,11 +378,11 @@ namespace Entrega_2
 
       public void Menu()
     {
-      /*if (!LoadData())
+      if (!LoadData())
       {
         InicializaUsuariosIniciales();
-      }*/
-      InicializaUsuariosIniciales();
+      }
+      //InicializaUsuariosIniciales();
       Interfaz interfaz = new Interfaz();
       List<String> credenciales = new List<String> { "", "" };
       List<Boolean> Option = new List<Boolean>();

@@ -31,7 +31,7 @@ namespace Entrega_2
     {
       int i = 1;
       int option = 0;
-      RedColorConsole("\tMenu Estudiante\n");
+      RedColorConsole("\n\tMenu Estudiante\n");
       GreenColorConsole("Seleccione Opcion:\n");
       if (studentsMenu.Count > 1)
         foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
@@ -64,7 +64,7 @@ namespace Entrega_2
               if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ",day+": "+ bloques[i]);
       WhiteColorConsole("Horario: " + schedule + "\n");
       WhiteColorConsole("Cupos Disponibles: "+ws.GetCuposDisponibles().ToString());
-      WhiteColorConsole("Encuestas: "+ws.GetEncuestas().Count);
+      //WhiteColorConsole("Encuestas: "+ws.GetEncuestas().Count);
       WhiteColorConsole("Foros: " + ws.GetForos().Count+"\n");
     }
 
@@ -116,16 +116,23 @@ namespace Entrega_2
 
     public void ShowForumMessages(List<Mensaje> mesagges)
     {
+      int i = 1;
       RedColorConsole(("\n-------------------------------------------------------------------------"));
       GreenColorConsole(("Mensajes en foro:\n"));
       foreach (Mensaje mensaje in mesagges)
       {
-        GreenColorConsole("\nPor "+ mensaje.autor.GetNombre() +" "+ mensaje.autor.apellido+ " - " + mensaje.fecha + ":\n");
+        GreenColorConsole("\n("+(i++)+") Por "+ mensaje.autor.GetNombre() +" "+ mensaje.autor.apellido+ " - " + mensaje.fecha + ":\n");
         WhiteColorConsole(mensaje.texto);
       }
-      RedColorConsole(("-------------------------------------------------------------------------\n"));
+      RedColorConsole(("\n-------------------------------------------------------------------------\n"));
     }
 
+
+    public String GetForumMessage()
+    {
+      WhiteColorConsole("\nIngrese mensaje que desea agregar al foro\n");
+      return Console.ReadLine();
+    }
 
     public void RedColorConsole(String s)
     {
