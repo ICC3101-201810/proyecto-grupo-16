@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Entrega_2
 {
@@ -29,10 +30,18 @@ namespace Entrega_2
     public int StudentsMenu(List<String> studentsMenu)
     {
       int i = 1;
+      int option = 0;
       RedColorConsole("\tMenu Estudiante\n");
       GreenColorConsole("Seleccione Opcion:\n");
-      foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
-      return Int32.Parse(Console.ReadLine()) - 1;
+      if (studentsMenu.Count > 1)
+        foreach (String index in studentsMenu) WhiteColorConsole("(" + (i++) + ") " + index);
+      else
+        WhiteColorConsole(studentsMenu[0]);
+      while (!Int32.TryParse(Console.ReadLine(), out option)){
+        ErrorColorConsole("Ingrese opcion valida\n");
+        WhiteColorConsole(studentsMenu[0]);
+      }
+      return option - 1;
     }
     public List<Boolean> TeachersMenu(List<String> teachersMenu, List<Boolean> teachersOption)
     {
@@ -47,17 +56,17 @@ namespace Entrega_2
     }
     public void ShowWS(Taller ws, List<String> bloques)
     {
-            string schedule = "";
-            GreenColorConsole("\nTaller: " + ws.nombre+"\n");
+      string schedule = "";
+      GreenColorConsole("\nTaller: " + ws.nombre+"\n");
 
-            foreach (String day in ws.GetHorario().Keys)
-                for (int i=0; i< ws.GetHorario()[day].Count; i++)
-                    if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ",day+": "+ bloques[i]);
-            WhiteColorConsole("Horario: " + schedule + "\n");
-            WhiteColorConsole("Cupos Disponibles: "+ws.GetCuposDisponibles().ToString());
-            WhiteColorConsole("Encuestas: "+ws.GetEncuestas().Count);
-            WhiteColorConsole("Foros: " + ws.GetForos().Count+"\n");
-        }
+      foreach (String day in ws.GetHorario().Keys)
+          for (int i=0; i< ws.GetHorario()[day].Count; i++)
+              if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ",day+": "+ bloques[i]);
+      WhiteColorConsole("Horario: " + schedule + "\n");
+      WhiteColorConsole("Cupos Disponibles: "+ws.GetCuposDisponibles().ToString());
+      WhiteColorConsole("Encuestas: "+ws.GetEncuestas().Count);
+      WhiteColorConsole("Foros: " + ws.GetForos().Count+"\n");
+    }
 
     public void ShowStudentWS(List<Taller> talleres)
     {
@@ -73,17 +82,17 @@ namespace Entrega_2
     {
       int i = 1;
       String schedule = "";
-            if (wsAvaliable.Count > 0)
-            {
-                GreenColorConsole("\nTalleres Disponibles:\n");
-                foreach (Taller ws in wsAvaliable.Keys)
-                {
-                    schedule = "";
-                    foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
-                    WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
-                }
-            }
-            else ErrorColorConsole("\nERROR: No existen talleres en horario disponible.\n");
+      if (wsAvaliable.Count > 0)
+      {
+          GreenColorConsole("\nTalleres Disponibles:\n");
+          foreach (Taller ws in wsAvaliable.Keys)
+          {
+              schedule = "";
+              foreach (String blocks in wsAvaliable[ws]) schedule = String.Concat(schedule, "| ", blocks);
+              WhiteColorConsole("(" + (i++) + ") " + ws.nombre + ", Horario: " + schedule + "\n");
+          }
+      }
+      else ErrorColorConsole("\nERROR: No existen talleres en horario disponible.\n");
     }
     public void MostrarTalleres(List<Taller> talleres)
     {
@@ -105,14 +114,16 @@ namespace Entrega_2
           WhiteColorConsole("(" + (i++) + ") " + foro.tema);
     }
 
-    public void ShowForumMessages(Foro foro)
+    public void ShowForumMessages(List<Mensaje> mesagges)
     {
-      GreenColorConsole(("\nMensajes en foro "+ foro.tema + ":\n"));
-      foreach (Mensaje mensaje in foro.GetMensajes())
+      RedColorConsole(("\n-------------------------------------------------------------------------"));
+      GreenColorConsole(("Mensajes en foro:\n"));
+      foreach (Mensaje mensaje in mesagges)
       {
-        GreenColorConsole("\nPor "+ mensaje.autor.GetNombre() + " - "+ mensaje.fecha + ":\n");
+        GreenColorConsole("\nPor "+ mensaje.autor.GetNombre() +" "+ mensaje.autor.apellido+ " - " + mensaje.fecha + ":\n");
         WhiteColorConsole(mensaje.texto);
       }
+      RedColorConsole(("-------------------------------------------------------------------------\n"));
     }
 
 
@@ -146,6 +157,7 @@ namespace Entrega_2
       Console.Beep();
       Console.ResetColor();
       Console.BackgroundColor = ConsoleColor.Black;
+      Thread.Sleep(350);
     }
     public void SuccesColorConsole(String s)
     {
@@ -155,6 +167,7 @@ namespace Entrega_2
       Console.Beep();
       Console.ResetColor();
       Console.BackgroundColor = ConsoleColor.Black;
+      Thread.Sleep(350);
     }
   }
 }

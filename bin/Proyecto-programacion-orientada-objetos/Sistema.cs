@@ -13,6 +13,7 @@ namespace Entrega_2
   {
     delegate void menuOption(Alumno student, Interfaz interfaz);
     delegate void subMenuOption(Alumno student, Interfaz interfaz, Taller ws);
+    delegate void subMenuOptionForum(Alumno student, Interfaz interfaz, Foro foro);
     List<Usuario> usuarios;
     List<Administrador> administradores;
     List<Profesor> profesores;
@@ -24,7 +25,7 @@ namespace Entrega_2
     menuOption[] studentMenuOption;
     menuOption[] studentMenuOption2;
     subMenuOption[] studentMenuOption20;
-
+    subMenuOptionForum[] studentMenuOption200;
     //Menu estudiante
     List<String> studentsMenu;
     List<String> studentsSubMenuListWs;
@@ -32,11 +33,7 @@ namespace Entrega_2
     List<String> studentsSubMenuForum;
     List<String> studentsSubMenuForumMessage;
     List<String> studentsSubMenuEnc;
-    List<Boolean> studentOptionMenu;
-    List<Boolean> studentOptionListWs;
-    List<Boolean> studentOptionMenuWs;
-    List<Boolean> studentOptionForum;
-    List<Boolean> studentOptionEnc;
+
     //Menu profesor
     List<String> teachersMenu;
     List<String> teachersSubMenuListWs;
@@ -64,13 +61,14 @@ namespace Entrega_2
       studentMenuOption = new menuOption[] { OptionMostrarTalleresDisponibles, OptionInscribirTaller, OptionVerTalleresInscritos};
       studentMenuOption2 = new menuOption[] { OptionSeleccionarTaller, OptionEliminarTaller };
       studentMenuOption20 = new subMenuOption[] { OptionVerForos};
-      //studentMenuOption200 = new subMenuOption[] { OptionIngresarAForo };
+      studentMenuOption200 = new subMenuOptionForum[] { OptionIngresarAForo };
+
 
       //Menu estudiante
       studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
       studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
       studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
-      studentsSubMenuForum = new List<String>() { "Ingresar a Foro", "Volver a Taller" };
+      studentsSubMenuForum = new List<String>() { "Seleccione numero de foro a ver en detalle (Ingrese un numero mayor que ultimo para volver al Taller)"};
       studentsSubMenuForumMessage = new List<String>() { "Agregar Mensaje", "Volver a seleccion de foros" };
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
       //Menu profesor
@@ -204,11 +202,17 @@ namespace Entrega_2
     public void OptionInscribirTaller(Alumno student, Interfaz interfaz)
     {
       int select = 0;
+
       OptionMostrarTalleresDisponibles(student, interfaz);
       if (GetTalleresDisponibles(student).Count > 0)
       {
         interfaz.GreenColorConsole("Seleccione Opcion (Ingrese un numero mayor a la ultima opcion para volver):\n");
-        select = Int32.Parse(Console.ReadLine());
+        while (!Int32.TryParse(Console.ReadLine(), out select))
+        {
+          interfaz.ErrorColorConsole("Ingrese opcion valida\n");
+          interfaz.GreenColorConsole("Seleccione Opcion (Ingrese un numero mayor a la ultima opcion para volver):\n");
+        }
+
         if (select <= GetTalleresDisponibles(student).Count)
         {
           Taller ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
@@ -271,13 +275,16 @@ namespace Entrega_2
     public void OptionVerForos(Alumno student, Interfaz interfaz, Taller ws)
     {
       interfaz.ShowForums(ws.GetForos());
-      int Option = interfaz.StudentsMenu(studentsSubMenuForum);
-      while (Option < studentMenuOption20.Length)
+      int option = interfaz.StudentsMenu(studentsSubMenuForum);
+      if (option < ws.GetForos().Count)
       {
-        interfaz.GreenColorConsole("\nSeleccione foro:\n");
-        
-        Option = interfaz.StudentsMenu(studentsSubMenuForum);
+        studentMenuOption200[option](student, interfaz, ws.GetForos()[option]);
       }
+    }
+
+    public void OptionIngresarAForo(Alumno student, Interfaz interfaz, Foro foro)
+    {
+      interfaz.ShowForumMessages(foro.GetMensajes());
     }
 
     public void OptionVerEncuestas(Alumno student, Interfaz interfaz)
