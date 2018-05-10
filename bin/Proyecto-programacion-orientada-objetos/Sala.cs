@@ -26,5 +26,9 @@ namespace Entrega_2
     {
       return true;
     }
+
+    public String GetNombre(){
+      return nombre;
+    }
   }
 }
