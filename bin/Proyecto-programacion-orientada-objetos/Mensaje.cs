@@ -9,19 +9,19 @@ namespace Entrega_2
     public Usuario autor { get; }
     public String texto { get; set; }
     public DateTime fecha { get; }
-    //public List<Media> media { get; }
+    public List<Media> media { get; }
     public String codigo { get; }
     //Boolean tieneMedia;
     //String codigo_mensaje_string
 
-    /*public Mensaje(Usuario autor, String texto, DateTime fecha, List<Media> media)
+    public Mensaje(Usuario autor, String texto, DateTime fecha, List<Media> media)
     {
       this.autor = autor;
       this.texto = texto;
       this.fecha = DateTime.Now;
       this.media = media;
       codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre());
-    }*/
+    }
 
     //Constructor sin media
     public Mensaje(Usuario autor, String texto)

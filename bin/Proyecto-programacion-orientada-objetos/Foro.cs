@@ -22,6 +22,12 @@ namespace Entrega_2
       return true;
     }
 
+    public Boolean AgregarMensaje(Usuario usuario, String texto, List<Media> media)
+    {
+      mensajes.Add(new Mensaje(usuario, texto, DateTime.Now, media));
+      return true;
+    }
+
     public List<Mensaje> GetMensajes()
     {
       return mensajes;
