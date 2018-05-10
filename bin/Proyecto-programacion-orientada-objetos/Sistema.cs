@@ -13,6 +13,8 @@ namespace Entrega_2
   {
     delegate void menuOption(Alumno student, Interfaz interfaz);
     delegate void menuOptionAdmin(Administrador admin, Interfaz interfaz);
+    delegate void subMenuOption(Alumno student, Interfaz interfaz, Taller ws);
+    delegate void subMenuOptionForum(Alumno student, Interfaz interfaz, Foro foro);
     List<Usuario> usuarios;
     List<Administrador> administradores;
     List<Profesor> profesores;
@@ -23,20 +25,17 @@ namespace Entrega_2
     List<String> bloques;
     menuOption[] studentMenuOption;
     menuOption[] studentMenuOption2;
-    menuOption[] studentMenuOption20;
-    menuOptionAdmin[] adminMenuOption;
-
+    subMenuOption[] studentMenuOption20;
+    subMenuOption[] studentMenuOption200;
+    subMenuOptionForum[] studentMenuOption2000;
     //Menu estudiante
     List<String> studentsMenu;
     List<String> studentsSubMenuListWs;
     List<String> studentsSubMenuWs;
     List<String> studentsSubMenuForum;
+    List<String> studentsSubMenuForumMessage;
     List<String> studentsSubMenuEnc;
-    List<Boolean> studentOptionMenu;
-    List<Boolean> studentOptionListWs;
-    List<Boolean> studentOptionMenuWs;
-    List<Boolean> studentOptionForum;
-    List<Boolean> studentOptionEnc;
+
     //Menu profesor
     List<String> teachersMenu;
     List<String> teachersSubMenuListWs;
@@ -66,19 +65,18 @@ namespace Entrega_2
       bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
       studentMenuOption = new menuOption[] { OptionMostrarTalleresDisponibles, OptionInscribirTaller, OptionVerTalleresInscritos};
       studentMenuOption2 = new menuOption[] { OptionSeleccionarTaller, OptionEliminarTaller };
-      studentMenuOption20 = new menuOption[] { OptionVerForos, OptionVerEncuestas };
-      
+      studentMenuOption20 = new subMenuOption[] { OptionVerForos};
+      studentMenuOption200 = new subMenuOption[] { OptionIngresarAForo, OptionCrearForo };
+      studentMenuOption2000 = new subMenuOptionForum[] { OptionAgregarMensaje, OptionEliminarMensaje };
+
+
       //Menu estudiante
       studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
-      studentOptionMenu = CreateListOption(studentsMenu.Count);
       studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
-      studentOptionListWs = CreateListOption(studentsSubMenuListWs.Count);
-      studentsSubMenuWs = new List<String>() { "Ver Foros", "Ver Encuesta", "Volver a Lista Talleres" };
-      studentOptionMenuWs = CreateListOption(studentsSubMenuWs.Count);
-      studentsSubMenuForum = new List<String>() { "Enviar Mensaje", "Volver a Taller" };
-      studentOptionForum = CreateListOption(studentsSubMenuForum.Count);
+      studentsSubMenuWs = new List<String>() { "Ver Foros", "Volver a Lista Talleres" };
+      studentsSubMenuForum = new List<String>() { "Ingresar a foro", "Crear foro", "Volver a Menu"};
+      studentsSubMenuForumMessage = new List<String>() { "Agregar Mensaje","Eliminar Mensaje", "Volver a seleccion de foros" };
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
-      studentOptionEnc = CreateListOption(studentsSubMenuEnc.Count);
       //Menu profesor
       teachersMenu=new List<String>() {"Talleres dictados", "Salir" };
       teachersOptionMenu=CreateListOption(teachersMenu.Count);
@@ -137,16 +135,27 @@ namespace Entrega_2
       taller.CrearForo(nombreForo, privacidad);
       return true;
     }
-    public List<Mensaje> LeerForo(Taller taller, Foro foro)
+    public List<Mensaje> LeerForo(Foro foro)
     {
       return foro.GetMensajes();
     }
-    //No deberia pasarse el taller
-    public bool EnviarMensaje(Taller taller, Foro foro, string texto, Usuario usuario, List<Media> media)
+    //No deberia pasarse el taller, se elimina List<Media>
+    public bool EnviarMensaje(Foro foro, string texto, Usuario usuario)
     {
-      foro.AgregarMensaje(usuario, texto, media);
+      foro.AgregarMensaje(usuario, texto);
       return true;
     }
+    public List<Mensaje> GetUserMessages(Foro foro, Usuario user)
+    {
+      List<Mensaje> userMessages = new List<Mensaje>();
+      foreach(Mensaje m in LeerForo(foro))
+        if (m.autor.rut.Equals(user.rut))
+        {
+          userMessages.Add(m);
+        }
+      return userMessages;
+    }
+
     public bool RegistrarAlumno(string rut, string nombre, string apellido, string email, string telefono, string clave, Dictionary<String, List<bool>> horario)
     {
       alumnos.Add(new Alumno(rut, nombre, apellido, email, telefono, clave, horario));
@@ -158,7 +167,7 @@ namespace Entrega_2
       return true;
     }
     //Es necesario pasar el taller?
-    public bool EliminarMensaje(Taller taller, Foro foro, Mensaje mensaje)
+    public bool EliminarMensaje(Foro foro, Mensaje mensaje)
     {
       foro.DeleteMessage(mensaje);
       return true;
@@ -228,11 +237,17 @@ namespace Entrega_2
     public void OptionInscribirTaller(Alumno student, Interfaz interfaz)
     {
       int select = 0;
+
       OptionMostrarTalleresDisponibles(student, interfaz);
       if (GetTalleresDisponibles(student).Count > 0)
       {
         interfaz.GreenColorConsole("Seleccione Opcion (Ingrese un numero mayor a la ultima opcion para volver):\n");
-        select = Int32.Parse(Console.ReadLine());
+        while (!Int32.TryParse(Console.ReadLine(), out select))
+        {
+          interfaz.ErrorColorConsole("Ingrese opcion valida\n");
+          interfaz.GreenColorConsole("Seleccione Opcion (Ingrese un numero mayor a la ultima opcion para volver):\n");
+        }
+
         if (select <= GetTalleresDisponibles(student).Count)
         {
           Taller ws = GetTalleresDisponibles(student).ElementAt(select - 1).Key;
@@ -284,17 +299,88 @@ namespace Entrega_2
         int Option = interfaz.StudentsMenu(studentsSubMenuWs);
         while (Option < studentMenuOption20.Length)
         {
-          studentMenuOption20[Option](student, interfaz);
+
+          studentMenuOption20[Option](student, interfaz, ws);
           Option = interfaz.StudentsMenu(studentsSubMenuWs);
         }
       }
       else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
     }
 
-    public void OptionVerForos(Alumno student, Interfaz interfaz)
+    public void OptionVerForos(Alumno student, Interfaz interfaz, Taller ws)
     {
-      int Option = interfaz.StudentsMenu(studentsSubMenuForum);
-      while (Option < studentsSubMenuForum.Count-1) Option = interfaz.StudentsMenu(studentsSubMenuForum);
+      if (ws.GetForos().Count > 0) {
+        interfaz.ShowForums(ws.GetForos());
+        int option = interfaz.StudentsMenu(studentsSubMenuForum);
+        while (option < studentMenuOption200.Length)
+        {
+          studentMenuOption200[option](student, interfaz, ws);
+          interfaz.ShowForums(ws.GetForos());
+          option = interfaz.StudentsMenu(studentsSubMenuForum);
+        }
+      }
+      else interfaz.ErrorColorConsole("ERROR: Taller no posee foros");
+    }
+
+    public void OptionIngresarAForo(Alumno student, Interfaz interfaz, Taller ws)
+    {
+      int select = 0;
+      interfaz.WhiteColorConsole("\nIngrese el numero de foro al que desea acceder:\n");
+      while(!(Int32.TryParse(Console.ReadLine(), out select) && select > 0))
+      {
+        interfaz.ErrorColorConsole("Ingrese opcion valida\n");
+        interfaz.WhiteColorConsole("Ingrese el numero de foro al que desea acceder:\n");
+      }
+      Foro foro = ws.GetForos()[select-1];
+      interfaz.ShowForumMessages(LeerForo(foro));
+      int option = interfaz.StudentsMenu(studentsSubMenuForumMessage);
+      while (option < studentMenuOption2000.Length)
+      {
+        studentMenuOption2000[option](student, interfaz, foro);
+        option = interfaz.StudentsMenu(studentsSubMenuForumMessage);
+      }
+    }
+
+    public void OptionAgregarMensaje(Alumno student, Interfaz interfaz, Foro foro)
+    {
+      string mensaje = interfaz.GetForumMessage();
+      if (EnviarMensaje(foro, mensaje, student))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Mensaje enviado correctamente");
+        interfaz.ShowForumMessages(foro.GetMensajes());
+      }
+      }
+
+    public void OptionEliminarMensaje(Alumno student, Interfaz interfaz, Foro foro)
+    {
+      if (GetUserMessages(foro, student).Count > 0)
+      {
+        int option = 0;
+        interfaz.ShowForumMessages(GetUserMessages(foro, student));
+        interfaz.WhiteColorConsole("\nSeleccione mensaje a eliminar (Ingrese numero mayor que el ultimo para cancelar):\n");
+        while (!(Int32.TryParse(Console.ReadLine(), out option) && option > 0))
+        {
+          interfaz.ErrorColorConsole("ERROR: Opcion no valida");
+          interfaz.WhiteColorConsole("\nSeleccione mensaje a eliminar (Ingrese numero mayor que el ultimo para cancelar):\n");
+        }
+        option = option - 1;
+        if (option < GetUserMessages(foro, student).Count)
+          if (EliminarMensaje(foro, GetUserMessages(foro, student)[option]))
+          {
+            interfaz.SuccesColorConsole("\nEXITO: Mensaje eliminado correctamente");
+            interfaz.ShowForumMessages(foro.GetMensajes());
+          }
+      }
+      else interfaz.ErrorColorConsole("ERROR: Usuario ha escrito mensajes en el foro");
+    }
+
+    public void OptionCrearForo(Alumno student, Interfaz interfaz, Taller ws)
+    {
+      string nombre = interfaz.GetForumName();
+      if (CrearForo(ws, nombre, false))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Foro creado correctamente");
+      }
     }
 
     public void OptionVerEncuestas(Alumno student, Interfaz interfaz)
@@ -553,6 +639,9 @@ namespace Entrega_2
       Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
       Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
       List<Taller> talleresD=new List<Taller>();
+      tenis.CrearForo("Por qué Gohan es un papanatas?", false);
+      tenis.GetForos()[0].AgregarMensaje(alumno1, "Gohan es un quesito miedoso, hasta el verde le gana");
+      tenis.GetForos()[0].AgregarMensaje(alumno1, "Busco mujer de 1,70 rubia, asiatica, buena para comer gohan. Esto no es Tinder?");
       talleresD.Add(futbol);
       talleresD.Add(tenis);
       Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234",talleresD);
