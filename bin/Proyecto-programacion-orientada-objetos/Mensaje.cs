@@ -31,14 +31,12 @@ namespace Entrega_2
       this.fecha = DateTime.Now;
       codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre());
     }
-
-
+    
     /*public Boolean TieneMedia()
     {
       if (media.Count > 0) tieneMedia = true;
       else tieneMedia = false;
       return tieneMedia;
-
     }*/
   }
 }

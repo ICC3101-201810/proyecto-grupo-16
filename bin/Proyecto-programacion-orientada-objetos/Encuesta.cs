@@ -8,6 +8,7 @@ namespace Entrega_2
   {
     public String tema { get; set; }
     List<Pregunta> preguntas;
+    List<string> respuestasCorrectas; //esta lista guarda las alternativas correctas para su posterior comparación con la lista de respuestas que entrega el alumno 
     List<Respuesta> respuestas;
 
     public Encuesta(String tema, List<Pregunta> preguntas)
