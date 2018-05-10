@@ -6,8 +6,8 @@ namespace Entrega_2
   [Serializable]
   class Alumno : Usuario
   {
-    List<Taller> talleresInscritos;
-    Dictionary<String, List<Boolean>> horario;
+    public List<Taller> talleresInscritos;
+    public Dictionary<String, List<Boolean>> horario;
 
     // Constructor con todos los parametros
     public Alumno(String rut, String nombre, String apellido, String email, String telefono, String clave, List<Taller> talleresInscritos, Dictionary<String, List<Boolean>> horario)
@@ -57,5 +57,7 @@ namespace Entrega_2
       talleresInscritos.RemoveAll(x => x.nombre == taller.nombre);
       return true;
     }
+    //public override string GetNombre()
+    //    { return nombre; }
   }
 }

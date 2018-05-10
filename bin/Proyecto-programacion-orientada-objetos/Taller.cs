@@ -13,6 +13,7 @@ namespace Entrega_2
     List<Encuesta> encuestas = new List<Encuesta>();
     Sala sala;
     Categoria categoria;
+    
 
     public Taller(String nombre, int cupos, int precio, Dictionary<String, List<Boolean>> horario, Sala sala, Categoria categoria)
     {
@@ -22,6 +23,7 @@ namespace Entrega_2
       this.horario = horario;
       this.sala = sala;
       this.categoria = categoria;
+      
     }
 
     public Dictionary<String, List<Boolean>> GetHorario()
@@ -65,6 +67,7 @@ namespace Entrega_2
     {
       return foros;
     }
+    
 
     public Boolean CrearEncuesta(String tema, List<Pregunta> preguntas)
     {
@@ -74,7 +77,7 @@ namespace Entrega_2
 
     public List<Encuesta> GetEncuestas()
     {
-      return encuestas;
+        return encuestas;
     }
   }
 }

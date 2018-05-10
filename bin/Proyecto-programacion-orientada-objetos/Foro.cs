@@ -6,19 +6,19 @@ namespace Entrega_2
   [Serializable]
   class Foro
   {
-    String tema;
+    public String tema { get; }
     List<Mensaje> mensajes = new List<Mensaje>();
-    Boolean privacidad;
+    public Boolean privacidad { get; }
 
     public Foro(String tema, Boolean privacidad)
     {
       this.tema = tema;
       this.privacidad = privacidad;
     }
-
-    public Boolean AgregarMensaje(Usuario usuario, String texto, List<Media> media)
+    //public Boolean AgregarMensaje(Usuario usuario, String texto, List<Media> media)
+    public Boolean AgregarMensaje(Usuario usuario, String texto)
     {
-      mensajes.Add(new Mensaje(usuario, texto, DateTime.Now, media));
+      mensajes.Add(new Mensaje(usuario, texto));
       return true;
     }
 
@@ -32,5 +32,18 @@ namespace Entrega_2
       mensajes.RemoveAll(x => x.codigo == mensaje.codigo);
       return true;
     }
+    public bool BorrarMensaje()
+    {
+            if (mensajes.Count > 0)
+            {
+                Console.WriteLine("Escriba el número del mensaje que desea eliminar:");
+                int i = Int32.Parse(Console.ReadLine());
+                mensajes.Remove(mensajes[i - 1]);
+                return true;
+            }
+            else { return false; }
+    }
+    public string GetTema()
+    { return tema; }
   }
 }
