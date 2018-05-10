@@ -10,7 +10,6 @@ namespace Entrega_2
   {
     /*
     public Interfaz() { }
-
     public List<String> LogInLogOut()
     {
         //List<String> studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
@@ -59,13 +58,11 @@ namespace Entrega_2
         foreach (String index in teachersMenu) WhiteColorConsole("(" + (i++) + ") " + index);
         teachersOption[Int32.Parse(Console.ReadLine()) - 1] = true;
         return teachersOption;
-
     }
     public void ShowWS(Taller ws, List<String> bloques)
     {
         string schedule = "";
         GreenColorConsole("\nTaller: " + ws.nombre + "\n");
-
         foreach (String day in ws.GetHorario().Keys)
             for (int i = 0; i < ws.GetHorario()[day].Count; i++)
                 if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
@@ -159,7 +156,6 @@ namespace Entrega_2
                   Console.WriteLine("({0}){1}", i, t.nombre);
                   i += 1;
               }
-
           }
           */
     public void MostrarForos(Taller taller)

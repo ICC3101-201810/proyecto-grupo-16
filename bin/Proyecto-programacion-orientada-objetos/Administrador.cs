@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 
 namespace Entrega_2
@@ -13,4 +14,3 @@ namespace Entrega_2
     }
   }
 }
-
