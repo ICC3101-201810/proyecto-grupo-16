@@ -154,6 +154,7 @@ namespace Entrega_2
       int cupos = Int32.Parse(Console.ReadLine());
       // Ingresar el horario
       // Ingresar la sala
+
       //Ingresar la categoria
       //Ingresar el profesor
       return null;
@@ -163,6 +164,65 @@ namespace Entrega_2
       GreenColorConsole("\nSelecione el profesor a eliminar\n");
       MostrarProfesores(profesores);
       return Int32.Parse(Console.ReadLine());
+    }
+
+    public Sala AdminAgregarSala(List<Sala> salas){
+      GreenColorConsole("\nAgregar Sala\n");
+      WhiteColorConsole("Ingrese el nombre de la sala: ");
+      String nombre = Console.ReadLine();
+      return new Sala(nombre, GenerarHorario(0.75));
+    }
+
+    public Alumno AdminAgregarAlumno(){
+      GreenColorConsole("\nAgregar alumno\n");
+      //Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+      WhiteColorConsole("Ingrese el rut: ");
+      String rut = Console.ReadLine();
+      WhiteColorConsole("Ingrese el nombre: ");
+      String nombre = Console.ReadLine();
+      WhiteColorConsole("Ingrese el apellido: ");
+      String apellido = Console.ReadLine();
+      WhiteColorConsole("Ingrese el mail: ");
+      String mail = Console.ReadLine();
+      WhiteColorConsole("Ingrese el teléfono: ");
+      String telefono = Console.ReadLine();
+      WhiteColorConsole("Ingrese la clave de acceso: ");
+      String clave = Console.ReadLine();
+      Dictionary<String, List <Boolean>> horario = GenerarHorario(0.5);
+      return new Alumno(rut, nombre, apellido, mail, telefono, clave, horario);
+    }
+
+    public void MostrarSalas(List<Sala> salas){
+      GreenColorConsole("\nSalas:\n");
+      int i = 1;
+      foreach(Sala s in salas){
+        WhiteColorConsole("(" + (i++) + ") " + s.GetNombre());
+      }
+    }
+
+    public Dictionary<String, List<Boolean>> GenerarHorario(double probability){
+      Dictionary<String, List<Boolean>> ret = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", GenerarRandomBooleanList(probability) },
+      { "Martes", GenerarRandomBooleanList(probability) },
+      { "Miercoles", GenerarRandomBooleanList(probability) },
+      { "Jueves", GenerarRandomBooleanList(probability) },
+      { "Viernes", GenerarRandomBooleanList(probability)}};
+      return ret;
+    }
+
+    public List<Boolean> GenerarRandomBooleanList(double probability){
+      List<Boolean> ret = new List<Boolean>();
+      Random random = new Random();
+      int temp = 0;
+      for (int i = 0; i < 5; i++)
+      {
+        temp = random.Next(0, 100);
+        if (temp >= probability * 100)
+          ret.Add(true);
+        else
+          ret.Add(false);
+      }
+      return ret;
     }
 
     public void RedColorConsole(String s)

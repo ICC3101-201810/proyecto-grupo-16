@@ -91,9 +91,9 @@ namespace Entrega_2
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
       // Menu adminstrador
-      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Salir"};
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Ingresar nueva sala", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor, OptionAgregarSala };
 
     }
 
@@ -352,7 +352,7 @@ namespace Entrega_2
     }
 
     public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
-      
+      alumnos.Add(interfaz.AdminAgregarAlumno());
     }
 
     public void OptionEliminarAlumno(Administrador administrador, Interfaz interfaz){
@@ -371,6 +371,10 @@ namespace Entrega_2
     public void OptionEliminarProfesor(Administrador adminstrador, Interfaz interfaz){
       int indexToRemove = interfaz.AdminEliminarProfesor(profesores);
       profesores.RemoveAt(indexToRemove - 1);
+    }
+
+    public void OptionAgregarSala(Administrador administrador, Interfaz interfaz){
+      salas.Add(interfaz.AdminAgregarSala(salas));
     }
 
 
