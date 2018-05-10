@@ -142,8 +142,7 @@ namespace Entrega_2
       return Int32.Parse(Console.ReadLine());
     }
 
-    public Taller AgregarTaller(){
-      // string nombre, int cupos, int precio, Dictionary<String, List<bool>> horario, Sala sala, Categoria categoria,Profesor profesor
+    public Taller AgregarTaller(Sala sala){
       GreenColorConsole("\nAgregar Taller:\n");
       WhiteColorConsole("Ingrese el nombre del taller: ");
       String nombre = Console.ReadLine();
@@ -152,12 +151,7 @@ namespace Entrega_2
       WhiteColorConsole("Ingrese el precio (sin decimales): ");
       int precio = Int32.Parse(Console.ReadLine());
       Dictionary<String, List<Boolean>> horario = GenerarHorario(0.95);
-      // Ingresar el horario
-      // Ingresar la sala
-
-      //Ingresar la categoria
-      //Ingresar el profesor
-      return null;
+      return new Taller(nombre, cupos, precio, horario, sala, new Categoria());
     }
 
     public int AdminEliminarProfesor(List<Profesor> profesores){
@@ -217,6 +211,17 @@ namespace Entrega_2
       foreach(Sala s in salas){
         WhiteColorConsole("(" + (i++) + ") " + s.GetNombre());
       }
+    }
+
+    public int AdminSeleccionarSala(List<Sala> salas){
+      GreenColorConsole("\nSeleccione una sala:\n");
+      if (salas.Count > 0)
+      {
+        MostrarSalas(salas);
+        return Int32.Parse(Console.ReadLine());
+      }
+      else
+        return -1;
     }
 
     public Dictionary<String, List<Boolean>> GenerarHorario(double probability){

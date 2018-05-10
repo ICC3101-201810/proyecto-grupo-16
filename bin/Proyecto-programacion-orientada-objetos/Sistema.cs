@@ -331,7 +331,13 @@ namespace Entrega_2
 
     public void OptionAgregarTaller(Administrador administrador, Interfaz interfaz){
       //talleres.Add(interfaz.AgregarTaller());
-      if (CrearTaller(interfaz.AgregarTaller()))
+      int indexOfSala = interfaz.AdminSeleccionarSala(salas);
+      if (indexOfSala == -1)
+      {
+        OptionAgregarSala(administrador, interfaz);
+        indexOfSala = interfaz.AdminSeleccionarSala(salas);
+      }
+      if (CrearTaller(interfaz.AgregarTaller(salas[indexOfSala - 1])))
         interfaz.SuccesColorConsole("\nEXITO: Taller creado\n");
       else
         interfaz.ErrorColorConsole("\nERROR: Taller no creado\n");
