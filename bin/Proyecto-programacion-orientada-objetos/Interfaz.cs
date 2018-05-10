@@ -134,6 +134,13 @@ namespace Entrega_2
       return Console.ReadLine();
     }
 
+    public String GetForumName()
+    {
+      WhiteColorConsole("\nIngrese nombre del nuevo foro\n");
+      return Console.ReadLine();
+    }
+
+
     public void RedColorConsole(String s)
     {
       Console.ForegroundColor = ConsoleColor.Red;

@@ -25,7 +25,7 @@ namespace Entrega_2
     menuOption[] studentMenuOption;
     menuOption[] studentMenuOption2;
     subMenuOption[] studentMenuOption20;
-    subMenuOptionForum[] studentMenuOption200;
+    subMenuOption[] studentMenuOption200;
     subMenuOptionForum[] studentMenuOption2000;
     //Menu estudiante
     List<String> studentsMenu;
@@ -62,7 +62,7 @@ namespace Entrega_2
       studentMenuOption = new menuOption[] { OptionMostrarTalleresDisponibles, OptionInscribirTaller, OptionVerTalleresInscritos};
       studentMenuOption2 = new menuOption[] { OptionSeleccionarTaller, OptionEliminarTaller };
       studentMenuOption20 = new subMenuOption[] { OptionVerForos};
-      studentMenuOption200 = new subMenuOptionForum[] { OptionIngresarAForo };
+      studentMenuOption200 = new subMenuOption[] { OptionIngresarAForo, OptionCrearForo };
       studentMenuOption2000 = new subMenuOptionForum[] { OptionAgregarMensaje, OptionEliminarMensaje };
 
 
@@ -70,7 +70,7 @@ namespace Entrega_2
       studentsMenu = new List<String>() { "Mostrar talleres Disponibles", "Incribir Taller", "Ver Talleres Inscritos", "Salir" };
       studentsSubMenuListWs = new List<String>() { "Seleccionar Taller", "Eliminar Taller", "Volver a Menu" };
       studentsSubMenuWs = new List<String>() { "Ver Foros", "Volver a Lista Talleres" };
-      studentsSubMenuForum = new List<String>() { "Seleccione numero de foro a ver en detalle (Ingrese un numero mayor que ultimo para volver al Taller)"};
+      studentsSubMenuForum = new List<String>() { "Ingresar a foro", "Crear foro", "Volver a Menu"};
       studentsSubMenuForumMessage = new List<String>() { "Agregar Mensaje","Eliminar Mensaje", "Volver a seleccion de foros" };
       studentsSubMenuEnc = new List<String>() { "Responder Encuesta", "Volver a Taller" };
       //Menu profesor
@@ -290,16 +290,26 @@ namespace Entrega_2
       if (ws.GetForos().Count > 0) {
         interfaz.ShowForums(ws.GetForos());
         int option = interfaz.StudentsMenu(studentsSubMenuForum);
-        if (option < ws.GetForos().Count)
+        while (option < studentMenuOption200.Length)
         {
-          studentMenuOption200[option](student, interfaz, ws.GetForos()[option]);
+          studentMenuOption200[option](student, interfaz, ws);
+          interfaz.ShowForums(ws.GetForos());
+          option = interfaz.StudentsMenu(studentsSubMenuForum);
         }
       }
       else interfaz.ErrorColorConsole("ERROR: Taller no posee foros");
     }
 
-    public void OptionIngresarAForo(Alumno student, Interfaz interfaz, Foro foro)
+    public void OptionIngresarAForo(Alumno student, Interfaz interfaz, Taller ws)
     {
+      int select = 0;
+      interfaz.WhiteColorConsole("\nIngrese el numero de foro al que desea acceder:\n");
+      while(!(Int32.TryParse(Console.ReadLine(), out select) && select > 0))
+      {
+        interfaz.ErrorColorConsole("Ingrese opcion valida\n");
+        interfaz.WhiteColorConsole("Ingrese el numero de foro al que desea acceder:\n");
+      }
+      Foro foro = ws.GetForos()[select-1];
       interfaz.ShowForumMessages(LeerForo(foro));
       int option = interfaz.StudentsMenu(studentsSubMenuForumMessage);
       while (option < studentMenuOption2000.Length)
@@ -340,6 +350,15 @@ namespace Entrega_2
           }
       }
       else interfaz.ErrorColorConsole("ERROR: Usuario ha escrito mensajes en el foro");
+    }
+
+    public void OptionCrearForo(Alumno student, Interfaz interfaz, Taller ws)
+    {
+      string nombre = interfaz.GetForumName();
+      if (CrearForo(ws, nombre, false))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Foro creado correctamente");
+      }
     }
 
     public void OptionVerEncuestas(Alumno student, Interfaz interfaz)
