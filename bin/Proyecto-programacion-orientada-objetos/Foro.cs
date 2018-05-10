@@ -40,14 +40,14 @@ namespace Entrega_2
     }
     public bool BorrarMensaje()
     {
-            if (mensajes.Count > 0)
-            {
-                Console.WriteLine("Escriba el número del mensaje que desea eliminar:");
-                int i = Int32.Parse(Console.ReadLine());
-                mensajes.Remove(mensajes[i - 1]);
-                return true;
-            }
-            else { return false; }
+      if (mensajes.Count > 0)
+      {
+        Console.WriteLine("Escriba el número del mensaje que desea eliminar:");
+        int i = Int32.Parse(Console.ReadLine());
+        mensajes.Remove(mensajes[i - 1]);
+        return true;
+      }
+      else { return false; }
     }
     public string GetTema()
     { return tema; }

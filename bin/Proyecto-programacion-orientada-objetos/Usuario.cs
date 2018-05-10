@@ -33,7 +33,8 @@ namespace Entrega_2
       return nombre;
     }
 
-    public String GetApellido(){
+    public String GetApellido()
+    {
       return apellido;
     }
   }
