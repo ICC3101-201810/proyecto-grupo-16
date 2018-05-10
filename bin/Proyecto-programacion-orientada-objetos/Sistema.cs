@@ -12,6 +12,7 @@ namespace Entrega_2
   class Sistema
   {
     delegate void menuOption(Alumno student, Interfaz interfaz);
+    delegate void menuOptionAdmin(Administrador admin, Interfaz interfaz);
     delegate void subMenuOption(Alumno student, Interfaz interfaz, Taller ws);
     delegate void subMenuOptionForum(Alumno student, Interfaz interfaz, Foro foro);
     List<Usuario> usuarios;
@@ -46,7 +47,10 @@ namespace Entrega_2
     List<Boolean> teachersOptionMenuWs;
     List<Boolean> teachersOptionForum;
     List<Boolean> teachersOptionEnc;
-   
+    // Menu administrador
+    List<String> adminsMenu;
+    List<Boolean> adminsOptionMenu;
+  
 
 
     public Sistema()
@@ -84,6 +88,11 @@ namespace Entrega_2
       teachersOptionEnc = CreateListOption(teachersSubMenuEnc.Count);
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
+      // Menu adminstrador
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Ingresar nueva sala", "Salir"};
+      adminsOptionMenu = CreateListOption(adminsMenu.Count);
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor, OptionAgregarSala };
+
     }
 
     
@@ -174,6 +183,19 @@ namespace Entrega_2
     {
       talleres.Add(new Taller(nombre, cupos, precio, horario, sala, categoria));
       return true;
+    }
+
+    public Boolean CrearTaller(Taller taller){
+      if (taller != null)
+      {
+        talleres.Add(taller);
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean EliminarTaller(Taller taller){
+      return false;
     }
     //Que es esto?
     public bool ModificarTaller(Taller taller)
@@ -389,10 +411,100 @@ namespace Entrega_2
       }
       else interfaz.ErrorColorConsole("\nERROR: No existen talleres inscritos\n");
     }
+    public void OptionMostrarTalleres(Administrador admin, Interfaz interfaz){
+      interfaz.AdminMostrarTalleres(talleres);
+    }
 
+    public void OptionAgregarTaller(Administrador administrador, Interfaz interfaz){
+      //talleres.Add(interfaz.AgregarTaller());
+      int indexOfSala = interfaz.AdminSeleccionarSala(salas);
+      if (indexOfSala == -1)
+      {
+        OptionAgregarSala(administrador, interfaz);
+        indexOfSala = interfaz.AdminSeleccionarSala(salas);
+      }
+      if (CrearTaller(interfaz.AgregarTaller(salas[indexOfSala - 1])))
+        interfaz.SuccesColorConsole("\nEXITO: Taller creado\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Taller no creado\n");
+    }
 
+    public void OptionEliminarTaller(Administrador administrador, Interfaz interfaz){
+      int indexToRemove = interfaz.AdminEliminarTaller(talleres);
+      //Console.WriteLine(indexToRemove);
+      talleres.RemoveAt(indexToRemove-1);
+    }
 
+    public void OptionMostrarAlumnos(Administrador administrador, Interfaz interfaz){
+      interfaz.AdminMostrarAlumnos(alumnos);
+    }
 
+    public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
+      //alumnos.Add(interfaz.AdminAgregarAlumno());
+      if (CrearAlumno(interfaz.AdminAgregarAlumno()))
+        interfaz.SuccesColorConsole("\nEXITO: Alumno creado\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Alumno no creado\n");
+    }
+
+    public void OptionEliminarAlumno(Administrador administrador, Interfaz interfaz){
+      int indexToRemove = interfaz.AdminEliminarAlumno(alumnos);
+      alumnos.RemoveAt(indexToRemove - 1);
+    }
+
+    public void OptionMostrarProfesores(Administrador administrador, Interfaz interfaz){
+      interfaz.AdminMostrarProfesores(profesores);
+    }
+
+    public void OptionAgregarProfesor(Administrador administrador, Interfaz interfaz){
+      if (CrearProfesor(interfaz.AdminAgregarProfesor()))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Profesor creado\n");
+        interfaz.RedColorConsole("\nADVERTENCIA: Es responsabilidad del profesor crear sus talleres.\n");
+      }
+      
+      else
+        interfaz.ErrorColorConsole("\nERROR: Profesor no creado\n");
+    }
+
+    public void OptionEliminarProfesor(Administrador adminstrador, Interfaz interfaz){
+      int indexToRemove = interfaz.AdminEliminarProfesor(profesores);
+      profesores.RemoveAt(indexToRemove - 1);
+    }
+
+    public void OptionAgregarSala(Administrador administrador, Interfaz interfaz){
+      if (CrearSala(interfaz.AdminAgregarSala()))
+        interfaz.SuccesColorConsole("\nEXITO: Sala creada\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Sala no creado\n");
+    }
+
+    public Boolean CrearProfesor(Profesor profesor){
+      if (profesor != null){
+        profesores.Add(profesor);
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean CrearAlumno(Alumno alumno){
+      if (alumno != null)
+      {
+        alumnos.Add(alumno);
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean CrearSala(Sala sala)
+    {
+      if (sala != null)
+      {
+        salas.Add(sala);
+        return true;
+      }
+      return false;
+    }
 
 
       public void Menu()
@@ -410,6 +522,8 @@ namespace Entrega_2
       List<Boolean> Option4 = new List<Boolean>();
       Taller ws;
       List<Taller> talleresD = new List<Taller>() { };
+      for (int i = 0; i < alumnos.Count; i++)
+        Console.WriteLine(alumnos[i].GetApellido() + ", " + alumnos[i].GetNombre());
       while (!VerifyUser(credenciales))
       {
         credenciales = interfaz.LogInLogOut();
@@ -479,6 +593,20 @@ namespace Entrega_2
                 //interfaz.WorkShopAvailable(GetTalleresDisponibles(teacher));
           }
       }
+
+      // Menu administrador
+      else if (GetUser(credenciales).GetType() == typeof(Administrador)){
+        Administrador admin = (Administrador)GetUser(credenciales);
+        int Optioni = interfaz.AdminsMenu(adminsMenu);
+
+        while(Optioni != adminMenuOption.Length){
+          if (Optioni >= adminMenuOption.Length)
+            interfaz.ErrorColorConsole("Opción no permitida.\n");
+          else
+            adminMenuOption[Optioni](admin, interfaz);
+          Optioni = interfaz.AdminsMenu(adminsMenu);
+        }
+      }
       SaveData(usuarios, talleres);
   }  
 
@@ -506,7 +634,9 @@ namespace Entrega_2
       Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
       administradores.Add(administrador1);
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
+      Alumno alumno2 = new Alumno("18884427-8", "Israel", "Borrar", "i@m.cl", "+56999404286", "1234", scheduleb);
       Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
+      Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
       Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
       List<Taller> talleresD=new List<Taller>();
       tenis.CrearForo("Por qué Gohan es un papanatas?", false);
@@ -515,12 +645,17 @@ namespace Entrega_2
       talleresD.Add(futbol);
       talleresD.Add(tenis);
       Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234",talleresD);
+      Profesor profesor2 = new Profesor("18234567-8", "Andres", "Borrar", "a@m.cl", "+5699293949596", "1234", talleresD);
       profesores.Add(profesor1);
+      profesores.Add(profesor2);
       talleres.Add(futbol);
       talleres.Add(tenis);
+      talleres.Add(futbol2);
       alumnos.Add(alumno1);
+      alumnos.Add(alumno2);
       usuarios.Add(administrador1);
       usuarios.Add(profesor1);
+      usuarios.Add(profesor2);
       usuarios.Add(alumno1);
     }
 
@@ -572,11 +707,13 @@ namespace Entrega_2
         usuarios.Add(u);
       }
       fs.Close();
+      File.Delete(fileName);
       fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Workshops.txt");
       fs = new FileStream(fileName, FileMode.Open);
       List<Taller> workshops = formatter.Deserialize(fs) as List<Taller>;
       foreach (Taller t in workshops) talleres.Add(t);
       fs.Close();
+      File.Delete(fileName);
       return true;
     }
 
