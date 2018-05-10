@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Entrega_2
+namespace Vistas
 {
-  class Program
+  static class Program
   {
-
-    static void Main(string[] args)
+    /// <summary>
+    /// Punto de entrada principal para la aplicación.
+    /// </summary>
+    [STAThread]
+    static void Main()
     {
-      //Interfaz i = new Interfaz();
-      //i.LogInLogOut();
-      Sistema s = new Sistema();
-      s.Menu();
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new Form1());
     }
   }
 }
