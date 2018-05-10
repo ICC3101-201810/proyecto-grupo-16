@@ -91,9 +91,9 @@ namespace Entrega_2
       //List<String> teachersSubMenuEnc=new List<String>() { };
       //List<Boolean> teachersOptionListWs;
       // Menu adminstrador
-      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Modificar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Ingresar nueva sala", "Salir"};
+      adminsMenu = new List<String>() { "Ver talleres", "Agregar taller", "Eliminar Taller", "Mostrar alumnos", "Agregar alumno", "Eliminar alumno", "Mostrar profesores", "Agregar profesor", "Eliminar profesor", "Ingresar nueva sala", "Salir"};
       adminsOptionMenu = CreateListOption(adminsMenu.Count);
-      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionModificarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor, OptionAgregarSala };
+      adminMenuOption = new menuOptionAdmin[] { OptionMostrarTalleres, OptionAgregarTaller, OptionEliminarTaller, OptionMostrarAlumnos, OptionAgregarAlumno, OptionEliminarAlumno, OptionMostrarProfesores, OptionAgregarProfesor, OptionEliminarProfesor, OptionAgregarSala };
 
     }
 
@@ -337,10 +337,6 @@ namespace Entrega_2
         interfaz.ErrorColorConsole("\nERROR: Taller no creado\n");
     }
 
-    public void OptionModificarTaller(Administrador administrador, Interfaz interfaz){
-      
-    }
-
     public void OptionEliminarTaller(Administrador administrador, Interfaz interfaz){
       int indexToRemove = interfaz.AdminEliminarTaller(talleres);
       //Console.WriteLine(indexToRemove);
@@ -352,7 +348,11 @@ namespace Entrega_2
     }
 
     public void OptionAgregarAlumno(Administrador administrador, Interfaz interfaz){
-      alumnos.Add(interfaz.AdminAgregarAlumno());
+      //alumnos.Add(interfaz.AdminAgregarAlumno());
+      if (CrearAlumno(interfaz.AdminAgregarAlumno()))
+        interfaz.SuccesColorConsole("\nEXITO: Alumno creado\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Alumno no creado\n");
     }
 
     public void OptionEliminarAlumno(Administrador administrador, Interfaz interfaz){
@@ -365,7 +365,14 @@ namespace Entrega_2
     }
 
     public void OptionAgregarProfesor(Administrador administrador, Interfaz interfaz){
+      if (CrearProfesor(interfaz.AdminAgregarProfesor()))
+      {
+        interfaz.SuccesColorConsole("\nEXITO: Profesor creado\n");
+        interfaz.RedColorConsole("\nADVERTENCIA: Es responsabilidad del profesor crear sus talleres.\n");
+      }
       
+      else
+        interfaz.ErrorColorConsole("\nERROR: Profesor no creado\n");
     }
 
     public void OptionEliminarProfesor(Administrador adminstrador, Interfaz interfaz){
@@ -374,7 +381,37 @@ namespace Entrega_2
     }
 
     public void OptionAgregarSala(Administrador administrador, Interfaz interfaz){
-      salas.Add(interfaz.AdminAgregarSala(salas));
+      if (CrearSala(interfaz.AdminAgregarSala()))
+        interfaz.SuccesColorConsole("\nEXITO: Sala creada\n");
+      else
+        interfaz.ErrorColorConsole("\nERROR: Sala no creado\n");
+    }
+
+    public Boolean CrearProfesor(Profesor profesor){
+      if (profesor != null){
+        profesores.Add(profesor);
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean CrearAlumno(Alumno alumno){
+      if (alumno != null)
+      {
+        alumnos.Add(alumno);
+        return true;
+      }
+      return false;
+    }
+
+    public Boolean CrearSala(Sala sala)
+    {
+      if (sala != null)
+      {
+        salas.Add(sala);
+        return true;
+      }
+      return false;
     }
 
 
@@ -507,6 +544,7 @@ namespace Entrega_2
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
       Alumno alumno2 = new Alumno("18884427-8", "Israel", "Borrar", "i@m.cl", "+56999404286", "1234", scheduleb);
       Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
+      Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
       Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
       List<Taller> talleresD=new List<Taller>();
       talleresD.Add(futbol);
@@ -517,6 +555,7 @@ namespace Entrega_2
       profesores.Add(profesor2);
       talleres.Add(futbol);
       talleres.Add(tenis);
+      talleres.Add(futbol2);
       alumnos.Add(alumno1);
       alumnos.Add(alumno2);
       usuarios.Add(administrador1);

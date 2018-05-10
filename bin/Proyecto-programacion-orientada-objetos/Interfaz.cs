@@ -148,10 +148,10 @@ namespace Entrega_2
       WhiteColorConsole("Ingrese el nombre del taller: ");
       String nombre = Console.ReadLine();
       WhiteColorConsole("Ingrese la cantidad de cupos: ");
-
-
-
       int cupos = Int32.Parse(Console.ReadLine());
+      WhiteColorConsole("Ingrese el precio (sin decimales): ");
+      int precio = Int32.Parse(Console.ReadLine());
+      Dictionary<String, List<Boolean>> horario = GenerarHorario(0.95);
       // Ingresar el horario
       // Ingresar la sala
 
@@ -166,7 +166,7 @@ namespace Entrega_2
       return Int32.Parse(Console.ReadLine());
     }
 
-    public Sala AdminAgregarSala(List<Sala> salas){
+    public Sala AdminAgregarSala(){
       GreenColorConsole("\nAgregar Sala\n");
       WhiteColorConsole("Ingrese el nombre de la sala: ");
       String nombre = Console.ReadLine();
@@ -190,6 +190,25 @@ namespace Entrega_2
       String clave = Console.ReadLine();
       Dictionary<String, List <Boolean>> horario = GenerarHorario(0.5);
       return new Alumno(rut, nombre, apellido, mail, telefono, clave, horario);
+    }
+
+    public Profesor AdminAgregarProfesor(){
+      //Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234",talleresD);
+      GreenColorConsole("\nAgregar profesor\n");
+      WhiteColorConsole("Ingrese el rut: ");
+      String rut = Console.ReadLine();
+      WhiteColorConsole("Ingrese el nombre: ");
+      String nombre = Console.ReadLine();
+      WhiteColorConsole("Ingrese el apellido: ");
+      String apellido = Console.ReadLine();
+      WhiteColorConsole("Ingrese el mail: ");
+      String mail = Console.ReadLine();
+      WhiteColorConsole("Ingrese el teléfono: ");
+      String telefono = Console.ReadLine();
+      WhiteColorConsole("Ingrese la clave de acceso: ");
+      String clave = Console.ReadLine();
+      Dictionary<String, List<Boolean>> horario = GenerarHorario(0.4);
+      return new Profesor(rut, nombre, apellido, mail, telefono, clave, new List<Taller>());
     }
 
     public void MostrarSalas(List<Sala> salas){
