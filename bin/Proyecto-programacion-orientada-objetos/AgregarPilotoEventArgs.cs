@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Vistas
 {
-  public class AgregarPilotoEventArgs : EventArgs
+  public class LogInEventArgs : EventArgs
   {
-    public string nombre { get; set; }
-    public Modelos.Rol rol { get; set; }
+    public string user { get; set; }
+    public string password { get; set; }
   }
 }

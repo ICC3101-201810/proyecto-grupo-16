@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Modelos
 {
   [Serializable]
-  class Taller
+  public class Taller
   {
     public String nombre { get; set; }
     int cupos, precio, actualInscritos;

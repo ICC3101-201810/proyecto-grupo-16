@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Modelos
 {
   [Serializable]
-  class Sala
+  public class Sala
   {
 
     String nombre;

@@ -13,53 +13,30 @@ namespace Vistas
 {
   public partial class Login : Form
   {
-    public event EventHandler<AgregarPilotoEventArgs> OnAgregarPiloto;
+    public event EventHandler<LogInEventArgs> OnLogIn;
 
     public Login()
     {
       InitializeComponent();
     }
 
-    private void AgregarPilotoButton_Click(object sender, EventArgs e)
+    private void LogInButton_Click(object sender, EventArgs e)
     {
-      if (OnAgregarPiloto != null)
+      if (OnLogIn != null)
       {
-        AgregarPilotoEventArgs pilotoArgs = new AgregarPilotoEventArgs();
-        pilotoArgs.nombre = this.nametxtbox.Text;
-        /*if (this.RolComboBox.Text == "Navegante")
-            pilotoArgs.rol = Rol.Navegante;
-        else if (this.RolComboBox.Text == "Piloto")
-            pilotoArgs.rol = Rol.Piloto;*/
-        pilotoArgs.rol = (Rol)Enum.Parse(typeof(Rol), this.RolComboBox.Text, true);
-        OnAgregarPiloto(this, pilotoArgs);
+        LogInEventArgs logInArgs = new LogInEventArgs();
+        logInArgs.user = this.nametxtbox.Text;
+        logInArgs.password = this.pwdtxtbox.Text;
+        OnLogIn(this, logInArgs);
       }
     }
-    public void ActualizarListadoPilotos(Usuario pilotoNuevo)
-    {
-      PilotNameComboBox.Items.Add(pilotoNuevo);
-    }
-
-    private void PilotNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void NameTextBox_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
+  
     private void label3_Click(object sender, EventArgs e)
     {
 
     }
 
     private void label2_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void RolComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }

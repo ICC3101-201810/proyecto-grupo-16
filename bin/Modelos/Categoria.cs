@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Modelos
 {
   [Serializable]
-  class Categoria
+  public class Categoria
   {
     List<String> categorias;
 

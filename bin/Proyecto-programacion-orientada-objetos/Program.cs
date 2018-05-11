@@ -17,12 +17,12 @@ namespace Vistas
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
+      Dictionary<String, Form> vistas = new Dictionary<String, Form>();
+      vistas.Add("Login", new Login());
+      Controller controlador = new Controller(vistas);
 
-      Login vista = new Login();
-      Controller controlador = new Controller(vista);
 
-
-      Application.Run(vista);
+      Application.Run(vistas["Login"]);
     }
   }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Modelos
 {
   [Serializable]
-  class Respuesta
+  public class Respuesta
   {
     Alumno autor;
     List<String> respuestaAlternativas;

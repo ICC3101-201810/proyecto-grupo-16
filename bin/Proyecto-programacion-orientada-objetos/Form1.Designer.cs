@@ -31,7 +31,7 @@
       this.nametxtbox = new System.Windows.Forms.TextBox();
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.AgregarPilotoButton = new System.Windows.Forms.Button();
+      this.LogInButton = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.pwdtxtbox = new System.Windows.Forms.TextBox();
@@ -63,15 +63,15 @@
       this.label2.TabIndex = 11;
       this.label2.Text = "Usuario";
       // 
-      // AgregarPilotoButton
+      // LogInButton
       // 
-      this.AgregarPilotoButton.Location = new System.Drawing.Point(169, 168);
-      this.AgregarPilotoButton.Name = "AgregarPilotoButton";
-      this.AgregarPilotoButton.Size = new System.Drawing.Size(124, 23);
-      this.AgregarPilotoButton.TabIndex = 9;
-      this.AgregarPilotoButton.Text = "Ingresar";
-      this.AgregarPilotoButton.UseVisualStyleBackColor = true;
-      this.AgregarPilotoButton.Click += new System.EventHandler(this.AgregarPilotoButton_Click);
+      this.LogInButton.Location = new System.Drawing.Point(169, 168);
+      this.LogInButton.Name = "LogInButton";
+      this.LogInButton.Size = new System.Drawing.Size(124, 23);
+      this.LogInButton.TabIndex = 9;
+      this.LogInButton.Text = "Ingresar";
+      this.LogInButton.UseVisualStyleBackColor = true;
+      this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
       // 
       // label1
       // 
@@ -114,7 +114,7 @@
       this.Controls.Add(this.nametxtbox);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
-      this.Controls.Add(this.AgregarPilotoButton);
+      this.Controls.Add(this.LogInButton);
       this.Controls.Add(this.label1);
       this.Name = "Login";
       this.Text = "Login";
@@ -128,7 +128,7 @@
     private System.Windows.Forms.TextBox nametxtbox;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Button AgregarPilotoButton;
+    private System.Windows.Forms.Button LogInButton;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TextBox pwdtxtbox;

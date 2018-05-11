@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Modelos
 {
   [Serializable]
-  class Media
+  public class Media
   {
     String tipo, path;
 

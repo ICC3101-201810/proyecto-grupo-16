@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Modelos
 {
   [Serializable]
-  class Mensaje
+  public class Mensaje
   {
     public Usuario autor { get; }
     public String texto { get; set; }
