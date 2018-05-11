@@ -65,18 +65,18 @@
       this.nombreTaller = new System.Windows.Forms.Label();
       this.listForosTaller = new System.Windows.Forms.ListBox();
       this.tabPage4 = new System.Windows.Forms.TabPage();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.label14 = new System.Windows.Forms.Label();
+      this.alumnoEliminarMensaje = new System.Windows.Forms.Button();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.alumnoIngresarMensajeTexto = new System.Windows.Forms.TextBox();
-      this.alumnoSalirDeForo = new System.Windows.Forms.Button();
-      this.alumnoEliminarMensaje = new System.Windows.Forms.Button();
-      this.listMensajesForo = new System.Windows.Forms.ListBox();
       this.alumnoIngresarMensaje = new System.Windows.Forms.Button();
+      this.alumnoSalirDeForo = new System.Windows.Forms.Button();
+      this.listMensajesForo = new System.Windows.Forms.ListBox();
       this.label12 = new System.Windows.Forms.Label();
       this.ingresarAForo = new System.Windows.Forms.Button();
       this.label6 = new System.Windows.Forms.Label();
       this.listForosForoMenu = new System.Windows.Forms.ListBox();
-      this.groupBox3 = new System.Windows.Forms.GroupBox();
-      this.label14 = new System.Windows.Forms.Label();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -87,8 +87,8 @@
       this.tabPage3.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.tabPage4.SuspendLayout();
-      this.groupBox2.SuspendLayout();
       this.groupBox3.SuspendLayout();
+      this.groupBox2.SuspendLayout();
       this.SuspendLayout();
       // 
       // nametxtbox
@@ -154,6 +154,7 @@
       this.pwdtxtbox.Name = "pwdtxtbox";
       this.pwdtxtbox.Size = new System.Drawing.Size(178, 20);
       this.pwdtxtbox.TabIndex = 15;
+      this.pwdtxtbox.UseSystemPasswordChar = true;
       // 
       // loginpanel
       // 
@@ -172,7 +173,7 @@
       // StudentMenu
       // 
       this.StudentMenu.Controls.Add(this.InscribirTaller);
-      this.StudentMenu.Location = new System.Drawing.Point(3, 3);
+      this.StudentMenu.Location = new System.Drawing.Point(3, 12);
       this.StudentMenu.Name = "StudentMenu";
       this.StudentMenu.Size = new System.Drawing.Size(886, 642);
       this.StudentMenu.TabIndex = 24;
@@ -290,9 +291,9 @@
       // studentWSMenu
       // 
       this.studentWSMenu.Controls.Add(this.tabControl1);
-      this.studentWSMenu.Location = new System.Drawing.Point(3, 0);
+      this.studentWSMenu.Location = new System.Drawing.Point(3, 9);
       this.studentWSMenu.Name = "studentWSMenu";
-      this.studentWSMenu.Size = new System.Drawing.Size(902, 642);
+      this.studentWSMenu.Size = new System.Drawing.Size(895, 653);
       this.studentWSMenu.TabIndex = 27;
       // 
       // tabControl1
@@ -482,10 +483,43 @@
       this.tabPage4.Location = new System.Drawing.Point(4, 22);
       this.tabPage4.Name = "tabPage4";
       this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage4.Size = new System.Drawing.Size(861, 611);
+      this.tabPage4.Size = new System.Drawing.Size(861, 613);
       this.tabPage4.TabIndex = 1;
       this.tabPage4.Text = "Foros";
       this.tabPage4.UseVisualStyleBackColor = true;
+      // 
+      // groupBox3
+      // 
+      this.groupBox3.Controls.Add(this.label14);
+      this.groupBox3.Controls.Add(this.alumnoEliminarMensaje);
+      this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox3.Location = new System.Drawing.Point(11, 516);
+      this.groupBox3.Name = "groupBox3";
+      this.groupBox3.Size = new System.Drawing.Size(829, 89);
+      this.groupBox3.TabIndex = 25;
+      this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "Eliminar Mensaje";
+      // 
+      // label14
+      // 
+      this.label14.AutoSize = true;
+      this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label14.Location = new System.Drawing.Point(8, 19);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(419, 15);
+      this.label14.TabIndex = 16;
+      this.label14.Text = "Primero seleccionar el mensaje de la lista y luego pulsar Eliminar Mensaje";
+      // 
+      // alumnoEliminarMensaje
+      // 
+      this.alumnoEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoEliminarMensaje.Location = new System.Drawing.Point(6, 46);
+      this.alumnoEliminarMensaje.Name = "alumnoEliminarMensaje";
+      this.alumnoEliminarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.alumnoEliminarMensaje.TabIndex = 15;
+      this.alumnoEliminarMensaje.Text = "Eliminar Mensaje";
+      this.alumnoEliminarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoEliminarMensaje.Click += new System.EventHandler(this.alumnoEliminarMensaje_Click);
       // 
       // groupBox2
       // 
@@ -507,6 +541,17 @@
       this.alumnoIngresarMensajeTexto.Size = new System.Drawing.Size(812, 23);
       this.alumnoIngresarMensajeTexto.TabIndex = 23;
       // 
+      // alumnoIngresarMensaje
+      // 
+      this.alumnoIngresarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoIngresarMensaje.Location = new System.Drawing.Point(6, 58);
+      this.alumnoIngresarMensaje.Name = "alumnoIngresarMensaje";
+      this.alumnoIngresarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.alumnoIngresarMensaje.TabIndex = 13;
+      this.alumnoIngresarMensaje.Text = "Agregar Mensaje";
+      this.alumnoIngresarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoIngresarMensaje.Click += new System.EventHandler(this.alumnoIngresarMensaje_Click);
+      // 
       // alumnoSalirDeForo
       // 
       this.alumnoSalirDeForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -518,17 +563,6 @@
       this.alumnoSalirDeForo.UseVisualStyleBackColor = true;
       this.alumnoSalirDeForo.Click += new System.EventHandler(this.alumnoSalirDeForo_Click);
       // 
-      // alumnoEliminarMensaje
-      // 
-      this.alumnoEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.alumnoEliminarMensaje.Location = new System.Drawing.Point(6, 46);
-      this.alumnoEliminarMensaje.Name = "alumnoEliminarMensaje";
-      this.alumnoEliminarMensaje.Size = new System.Drawing.Size(206, 37);
-      this.alumnoEliminarMensaje.TabIndex = 15;
-      this.alumnoEliminarMensaje.Text = "Eliminar Mensaje";
-      this.alumnoEliminarMensaje.UseVisualStyleBackColor = true;
-      this.alumnoEliminarMensaje.Click += new System.EventHandler(this.alumnoEliminarMensaje_Click);
-      // 
       // listMensajesForo
       // 
       this.listMensajesForo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -538,17 +572,6 @@
       this.listMensajesForo.Name = "listMensajesForo";
       this.listMensajesForo.Size = new System.Drawing.Size(829, 214);
       this.listMensajesForo.TabIndex = 14;
-      // 
-      // alumnoIngresarMensaje
-      // 
-      this.alumnoIngresarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.alumnoIngresarMensaje.Location = new System.Drawing.Point(6, 58);
-      this.alumnoIngresarMensaje.Name = "alumnoIngresarMensaje";
-      this.alumnoIngresarMensaje.Size = new System.Drawing.Size(206, 37);
-      this.alumnoIngresarMensaje.TabIndex = 13;
-      this.alumnoIngresarMensaje.Text = "Agregar Mensaje";
-      this.alumnoIngresarMensaje.UseVisualStyleBackColor = true;
-      this.alumnoIngresarMensaje.Click += new System.EventHandler(this.alumnoIngresarMensaje_Click);
       // 
       // label12
       // 
@@ -591,34 +614,12 @@
       this.listForosForoMenu.Size = new System.Drawing.Size(585, 79);
       this.listForosForoMenu.TabIndex = 2;
       // 
-      // groupBox3
-      // 
-      this.groupBox3.Controls.Add(this.label14);
-      this.groupBox3.Controls.Add(this.alumnoEliminarMensaje);
-      this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox3.Location = new System.Drawing.Point(11, 516);
-      this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Size = new System.Drawing.Size(829, 89);
-      this.groupBox3.TabIndex = 25;
-      this.groupBox3.TabStop = false;
-      this.groupBox3.Text = "Eliminar Mensaje";
-      // 
-      // label14
-      // 
-      this.label14.AutoSize = true;
-      this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label14.Location = new System.Drawing.Point(8, 19);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(419, 15);
-      this.label14.TabIndex = 16;
-      this.label14.Text = "Primero seleccionar el mensaje de la lista y luego pulsar Eliminar Mensaje";
-      // 
       // TalleresVU
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(916, 674);
+      this.ClientSize = new System.Drawing.Size(899, 674);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
       this.Controls.Add(this.loginpanel);
@@ -642,10 +643,10 @@
       this.groupBox1.PerformLayout();
       this.tabPage4.ResumeLayout(false);
       this.tabPage4.PerformLayout();
-      this.groupBox2.ResumeLayout(false);
-      this.groupBox2.PerformLayout();
       this.groupBox3.ResumeLayout(false);
       this.groupBox3.PerformLayout();
+      this.groupBox2.ResumeLayout(false);
+      this.groupBox2.PerformLayout();
       this.ResumeLayout(false);
 
     }
