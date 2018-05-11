@@ -51,5 +51,10 @@ namespace Modelos
     }
     public string GetTema()
     { return tema; }
+
+    public override string ToString()
+    {
+      return tema;
+    }
   }
 }

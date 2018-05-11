@@ -50,6 +50,10 @@
       this.studentWSMenu = new System.Windows.Forms.Panel();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage3 = new System.Windows.Forms.TabPage();
+      this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.label13 = new System.Windows.Forms.Label();
+      this.temaForo = new System.Windows.Forms.TextBox();
+      this.alumnoCrearForo = new System.Windows.Forms.Button();
       this.label11 = new System.Windows.Forms.Label();
       this.numeroForos = new System.Windows.Forms.Label();
       this.cuposTaller = new System.Windows.Forms.Label();
@@ -61,14 +65,18 @@
       this.nombreTaller = new System.Windows.Forms.Label();
       this.listForosTaller = new System.Windows.Forms.ListBox();
       this.tabPage4 = new System.Windows.Forms.TabPage();
-      this.button3 = new System.Windows.Forms.Button();
+      this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.alumnoIngresarMensajeTexto = new System.Windows.Forms.TextBox();
+      this.alumnoSalirDeForo = new System.Windows.Forms.Button();
+      this.alumnoEliminarMensaje = new System.Windows.Forms.Button();
+      this.listMensajesForo = new System.Windows.Forms.ListBox();
+      this.alumnoIngresarMensaje = new System.Windows.Forms.Button();
+      this.label12 = new System.Windows.Forms.Label();
+      this.ingresarAForo = new System.Windows.Forms.Button();
       this.label6 = new System.Windows.Forms.Label();
       this.listForosForoMenu = new System.Windows.Forms.ListBox();
-      this.label12 = new System.Windows.Forms.Label();
-      this.button1 = new System.Windows.Forms.Button();
-      this.listBox1 = new System.Windows.Forms.ListBox();
-      this.button2 = new System.Windows.Forms.Button();
-      this.button4 = new System.Windows.Forms.Button();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.label14 = new System.Windows.Forms.Label();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -77,7 +85,10 @@
       this.studentWSMenu.SuspendLayout();
       this.tabControl1.SuspendLayout();
       this.tabPage3.SuspendLayout();
+      this.groupBox1.SuspendLayout();
       this.tabPage4.SuspendLayout();
+      this.groupBox2.SuspendLayout();
+      this.groupBox3.SuspendLayout();
       this.SuspendLayout();
       // 
       // nametxtbox
@@ -296,7 +307,7 @@
       // 
       // tabPage3
       // 
-      this.tabPage3.Controls.Add(this.button4);
+      this.tabPage3.Controls.Add(this.groupBox1);
       this.tabPage3.Controls.Add(this.label11);
       this.tabPage3.Controls.Add(this.numeroForos);
       this.tabPage3.Controls.Add(this.cuposTaller);
@@ -314,6 +325,48 @@
       this.tabPage3.TabIndex = 0;
       this.tabPage3.Text = "Informacion";
       this.tabPage3.UseVisualStyleBackColor = true;
+      // 
+      // groupBox1
+      // 
+      this.groupBox1.Controls.Add(this.label13);
+      this.groupBox1.Controls.Add(this.temaForo);
+      this.groupBox1.Controls.Add(this.alumnoCrearForo);
+      this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox1.Location = new System.Drawing.Point(38, 437);
+      this.groupBox1.Name = "groupBox1";
+      this.groupBox1.Size = new System.Drawing.Size(606, 100);
+      this.groupBox1.TabIndex = 22;
+      this.groupBox1.TabStop = false;
+      this.groupBox1.Text = "Crear Foro";
+      // 
+      // label13
+      // 
+      this.label13.AutoSize = true;
+      this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label13.Location = new System.Drawing.Point(15, 26);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(96, 19);
+      this.label13.TabIndex = 23;
+      this.label13.Text = "Ingrese Tema";
+      // 
+      // temaForo
+      // 
+      this.temaForo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.temaForo.Location = new System.Drawing.Point(19, 48);
+      this.temaForo.Name = "temaForo";
+      this.temaForo.Size = new System.Drawing.Size(374, 23);
+      this.temaForo.TabIndex = 22;
+      // 
+      // alumnoCrearForo
+      // 
+      this.alumnoCrearForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoCrearForo.Location = new System.Drawing.Point(408, 38);
+      this.alumnoCrearForo.Name = "alumnoCrearForo";
+      this.alumnoCrearForo.Size = new System.Drawing.Size(183, 37);
+      this.alumnoCrearForo.TabIndex = 20;
+      this.alumnoCrearForo.Text = "Crear Foro";
+      this.alumnoCrearForo.UseVisualStyleBackColor = true;
+      this.alumnoCrearForo.Click += new System.EventHandler(this.alumnoCrearForo_Click);
       // 
       // label11
       // 
@@ -388,7 +441,7 @@
       // volverPanel1
       // 
       this.volverPanel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.volverPanel1.Location = new System.Drawing.Point(80, 449);
+      this.volverPanel1.Location = new System.Drawing.Point(316, 557);
       this.volverPanel1.Name = "volverPanel1";
       this.volverPanel1.Size = new System.Drawing.Size(206, 37);
       this.volverPanel1.TabIndex = 11;
@@ -418,11 +471,12 @@
       // 
       // tabPage4
       // 
-      this.tabPage4.Controls.Add(this.button2);
-      this.tabPage4.Controls.Add(this.listBox1);
-      this.tabPage4.Controls.Add(this.button1);
+      this.tabPage4.Controls.Add(this.groupBox3);
+      this.tabPage4.Controls.Add(this.groupBox2);
+      this.tabPage4.Controls.Add(this.alumnoSalirDeForo);
+      this.tabPage4.Controls.Add(this.listMensajesForo);
       this.tabPage4.Controls.Add(this.label12);
-      this.tabPage4.Controls.Add(this.button3);
+      this.tabPage4.Controls.Add(this.ingresarAForo);
       this.tabPage4.Controls.Add(this.label6);
       this.tabPage4.Controls.Add(this.listForosForoMenu);
       this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -433,15 +487,88 @@
       this.tabPage4.Text = "Foros";
       this.tabPage4.UseVisualStyleBackColor = true;
       // 
-      // button3
+      // groupBox2
       // 
-      this.button3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button3.Location = new System.Drawing.Point(623, 48);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(206, 37);
-      this.button3.TabIndex = 10;
-      this.button3.Text = "Ingresar a Foro";
-      this.button3.UseVisualStyleBackColor = true;
+      this.groupBox2.Controls.Add(this.alumnoIngresarMensajeTexto);
+      this.groupBox2.Controls.Add(this.alumnoIngresarMensaje);
+      this.groupBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox2.Location = new System.Drawing.Point(11, 398);
+      this.groupBox2.Name = "groupBox2";
+      this.groupBox2.Size = new System.Drawing.Size(829, 111);
+      this.groupBox2.TabIndex = 24;
+      this.groupBox2.TabStop = false;
+      this.groupBox2.Text = "Agregar Mensaje";
+      // 
+      // alumnoIngresarMensajeTexto
+      // 
+      this.alumnoIngresarMensajeTexto.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoIngresarMensajeTexto.Location = new System.Drawing.Point(6, 29);
+      this.alumnoIngresarMensajeTexto.Name = "alumnoIngresarMensajeTexto";
+      this.alumnoIngresarMensajeTexto.Size = new System.Drawing.Size(812, 23);
+      this.alumnoIngresarMensajeTexto.TabIndex = 23;
+      // 
+      // alumnoSalirDeForo
+      // 
+      this.alumnoSalirDeForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoSalirDeForo.Location = new System.Drawing.Point(623, 91);
+      this.alumnoSalirDeForo.Name = "alumnoSalirDeForo";
+      this.alumnoSalirDeForo.Size = new System.Drawing.Size(206, 37);
+      this.alumnoSalirDeForo.TabIndex = 16;
+      this.alumnoSalirDeForo.Text = "Salir de Foro";
+      this.alumnoSalirDeForo.UseVisualStyleBackColor = true;
+      this.alumnoSalirDeForo.Click += new System.EventHandler(this.alumnoSalirDeForo_Click);
+      // 
+      // alumnoEliminarMensaje
+      // 
+      this.alumnoEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoEliminarMensaje.Location = new System.Drawing.Point(6, 46);
+      this.alumnoEliminarMensaje.Name = "alumnoEliminarMensaje";
+      this.alumnoEliminarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.alumnoEliminarMensaje.TabIndex = 15;
+      this.alumnoEliminarMensaje.Text = "Eliminar Mensaje";
+      this.alumnoEliminarMensaje.UseVisualStyleBackColor = true;
+      // 
+      // listMensajesForo
+      // 
+      this.listMensajesForo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.listMensajesForo.FormattingEnabled = true;
+      this.listMensajesForo.ItemHeight = 15;
+      this.listMensajesForo.Location = new System.Drawing.Point(11, 177);
+      this.listMensajesForo.Name = "listMensajesForo";
+      this.listMensajesForo.Size = new System.Drawing.Size(829, 214);
+      this.listMensajesForo.TabIndex = 14;
+      // 
+      // alumnoIngresarMensaje
+      // 
+      this.alumnoIngresarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoIngresarMensaje.Location = new System.Drawing.Point(6, 58);
+      this.alumnoIngresarMensaje.Name = "alumnoIngresarMensaje";
+      this.alumnoIngresarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.alumnoIngresarMensaje.TabIndex = 13;
+      this.alumnoIngresarMensaje.Text = "Agregar Mensaje";
+      this.alumnoIngresarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoIngresarMensaje.Click += new System.EventHandler(this.alumnoIngresarMensaje_Click);
+      // 
+      // label12
+      // 
+      this.label12.AutoSize = true;
+      this.label12.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label12.Location = new System.Drawing.Point(6, 142);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(107, 29);
+      this.label12.TabIndex = 12;
+      this.label12.Text = "Mensajes";
+      // 
+      // ingresarAForo
+      // 
+      this.ingresarAForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarAForo.Location = new System.Drawing.Point(623, 48);
+      this.ingresarAForo.Name = "ingresarAForo";
+      this.ingresarAForo.Size = new System.Drawing.Size(206, 37);
+      this.ingresarAForo.TabIndex = 10;
+      this.ingresarAForo.Text = "Ingresar a Foro";
+      this.ingresarAForo.UseVisualStyleBackColor = true;
+      this.ingresarAForo.Click += new System.EventHandler(this.ingresarAForo_Click);
       // 
       // label6
       // 
@@ -460,58 +587,30 @@
       this.listForosForoMenu.ItemHeight = 15;
       this.listForosForoMenu.Location = new System.Drawing.Point(11, 48);
       this.listForosForoMenu.Name = "listForosForoMenu";
-      this.listForosForoMenu.Size = new System.Drawing.Size(585, 64);
+      this.listForosForoMenu.Size = new System.Drawing.Size(585, 79);
       this.listForosForoMenu.TabIndex = 2;
       // 
-      // label12
+      // groupBox3
       // 
-      this.label12.AutoSize = true;
-      this.label12.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label12.Location = new System.Drawing.Point(6, 142);
-      this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(107, 29);
-      this.label12.TabIndex = 12;
-      this.label12.Text = "Mensajes";
+      this.groupBox3.Controls.Add(this.label14);
+      this.groupBox3.Controls.Add(this.alumnoEliminarMensaje);
+      this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox3.Location = new System.Drawing.Point(11, 516);
+      this.groupBox3.Name = "groupBox3";
+      this.groupBox3.Size = new System.Drawing.Size(829, 89);
+      this.groupBox3.TabIndex = 25;
+      this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "Eliminar Mensaje";
       // 
-      // button1
+      // label14
       // 
-      this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button1.Location = new System.Drawing.Point(11, 559);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(206, 37);
-      this.button1.TabIndex = 13;
-      this.button1.Text = "Agregar Mensaje";
-      this.button1.UseVisualStyleBackColor = true;
-      // 
-      // listBox1
-      // 
-      this.listBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.listBox1.FormattingEnabled = true;
-      this.listBox1.ItemHeight = 15;
-      this.listBox1.Location = new System.Drawing.Point(11, 177);
-      this.listBox1.Name = "listBox1";
-      this.listBox1.Size = new System.Drawing.Size(829, 364);
-      this.listBox1.TabIndex = 14;
-      // 
-      // button2
-      // 
-      this.button2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button2.Location = new System.Drawing.Point(238, 559);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(206, 37);
-      this.button2.TabIndex = 15;
-      this.button2.Text = "Eliminar Mensaje";
-      this.button2.UseVisualStyleBackColor = true;
-      // 
-      // button4
-      // 
-      this.button4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button4.Location = new System.Drawing.Point(316, 449);
-      this.button4.Name = "button4";
-      this.button4.Size = new System.Drawing.Size(206, 37);
-      this.button4.TabIndex = 20;
-      this.button4.Text = "Crear Foro";
-      this.button4.UseVisualStyleBackColor = true;
+      this.label14.AutoSize = true;
+      this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label14.Location = new System.Drawing.Point(8, 19);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(419, 15);
+      this.label14.TabIndex = 16;
+      this.label14.Text = "Primero seleccionar el mensaje de la lista y luego pulsar Eliminar Mensaje";
       // 
       // TalleresVU
       // 
@@ -538,8 +637,14 @@
       this.tabControl1.ResumeLayout(false);
       this.tabPage3.ResumeLayout(false);
       this.tabPage3.PerformLayout();
+      this.groupBox1.ResumeLayout(false);
+      this.groupBox1.PerformLayout();
       this.tabPage4.ResumeLayout(false);
       this.tabPage4.PerformLayout();
+      this.groupBox2.ResumeLayout(false);
+      this.groupBox2.PerformLayout();
+      this.groupBox3.ResumeLayout(false);
+      this.groupBox3.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -578,14 +683,22 @@
     private System.Windows.Forms.Label nombreTaller;
     private System.Windows.Forms.ListBox listForosTaller;
     private System.Windows.Forms.TabPage tabPage4;
-    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button ingresarAForo;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.ListBox listForosForoMenu;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.ListBox listBox1;
-    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.Button alumnoEliminarMensaje;
+    private System.Windows.Forms.ListBox listMensajesForo;
+    private System.Windows.Forms.Button alumnoIngresarMensaje;
     private System.Windows.Forms.Label label12;
-    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Button alumnoCrearForo;
+    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.TextBox temaForo;
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.Button alumnoSalirDeForo;
+    private System.Windows.Forms.TextBox alumnoIngresarMensajeTexto;
+    private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.GroupBox groupBox3;
+    private System.Windows.Forms.Label label14;
   }
 }
 

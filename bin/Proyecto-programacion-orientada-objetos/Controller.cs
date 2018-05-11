@@ -44,6 +44,10 @@ namespace Vistas
       logInView.OnAlumnoIngresarTaller += VistaIngresarTaller_OnAlumnoIngresarTaller;
       logInView.OnVolverMenuAlumno += VistaVolverMenuAlumno_OnVolverMenuAlumno;
       logInView.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
+      logInView.OnAlumnoCrearForo += VistaAlumnoCrearForo_OnAlumnoCrearForo;
+      logInView.OnAlumnoIngresarAForo += VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo;
+      logInView.OnAlumnoSalirDeForo += VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo;
+      logInView.OnAlumnoIngresarMensajeForo += VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo;
 
       if (!LoadData())
       {
@@ -118,6 +122,7 @@ namespace Vistas
       logInView.ActualizarPerfilTaller(ws);
       e.panels["StudentWsMenu"].Visible = true;
       e.panels["StudentMenu"].Visible = false;
+      logInView.ClearListaMensajesForo();
     }
 
     private void VistaVolverMenuAlumno_OnVolverMenuAlumno(object sender, LogInEventArgs e)
@@ -125,7 +130,40 @@ namespace Vistas
       e.panels["StudentMenu"].Visible = true;
       e.panels["StudentWsMenu"].Visible = false;
     }
-
+    private void VistaAlumnoCrearForo_OnAlumnoCrearForo(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      String tema = e.temaForo;
+      CrearForo(ws, tema);
+      logInView.ActualizarListaForos(ws.GetForos()[ws.GetForos().Count-1]);
+      logInView.ActualizarCantidadForosTaller(ws);
+      logInView.ClearIngresoTemaForoTaller();
+    }
+    private void VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      logInView.ClearListaMensajesForo();
+      if (forum.GetMensajes().Count > 0)
+      {
+        foreach (Mensaje m in forum.GetMensajes())
+        {
+          logInView.ActualizarListaMensajesForo(m);
+        }
+      }
+      else logInView.NoExistenMensajesForo();
+    }
+    private void VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      logInView.ClearListaMensajesForo();
+    }
+    private void VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
+      Mensaje mensaje = forum.GetMensajes().Last();
+      logInView.ActualizarListaMensajesForo(mensaje);
+    }
 
 
     //Grabar los datos antes de cerrar
@@ -179,9 +217,20 @@ namespace Vistas
       return disponibles;
     }
 
+    private bool CrearForo(Taller taller, string nombreForo, bool privacidad=false)
+    {
+      taller.CrearForo(nombreForo, privacidad);
+      return true;
+    }
 
-      //Metodos de incializacion y serialize!
-      public void InicializaUsuariosIniciales()
+    public bool EnviarMensaje(Foro foro, string texto, Usuario usuario)
+    {
+      foro.AgregarMensaje(usuario, texto);
+      return true;
+    }
+
+    //Metodos de incializacion y serialize!
+    public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, true, false, false, false } },

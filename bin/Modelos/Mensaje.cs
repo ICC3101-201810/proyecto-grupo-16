@@ -38,5 +38,10 @@ namespace Modelos
       else tieneMedia = false;
       return tieneMedia;
     }*/
+
+    public override string ToString()
+    {
+      return "---" + "Por " + autor.GetNombre() + " " + autor.apellido + " - " + fecha + ": "+ texto+ "---";
+    }
   }
 }

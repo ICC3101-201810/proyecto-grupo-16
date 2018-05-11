@@ -20,13 +20,17 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAlumnoIngresarTaller;
     public event EventHandler<LogInEventArgs> OnVolverMenuAlumno;
     public event EventHandler<LogInEventArgs> OnClosingApp;
+    public event EventHandler<LogInEventArgs> OnAlumnoCrearForo;
+    public event EventHandler<LogInEventArgs> OnAlumnoIngresarAForo;
+    public event EventHandler<LogInEventArgs> OnAlumnoSalirDeForo;
+    public event EventHandler<LogInEventArgs> OnAlumnoIngresarMensajeForo;
 
     LogInEventArgs logInArgs = new LogInEventArgs();
 
-    Dictionary<String,Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
+    Dictionary<String, Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
     List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
 
-  //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
+    //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
 
     public TalleresVU()
     {
@@ -42,7 +46,7 @@ namespace Vistas
       if (OnLogIn != null)
       {
         logInArgs.credenciales = new List<string>();
-        logInArgs.credenciales.Add(this.nametxtbox.Text); 
+        logInArgs.credenciales.Add(this.nametxtbox.Text);
         logInArgs.credenciales.Add(this.pwdtxtbox.Text);
         logInArgs.panels = this.panels;
         OnLogIn(this, logInArgs);
@@ -53,7 +57,7 @@ namespace Vistas
     {
       if (OnAlumnoInscribirTaller != null)
       {
-        if (listTalleresDisponibles.SelectedIndex>-1 && !listTalleresDisponibles.SelectedItem.Equals("No existen talleres disponibles en el horario del alumno"))
+        if (listTalleresDisponibles.SelectedIndex > -1 && !listTalleresDisponibles.SelectedItem.Equals("No existen talleres disponibles en el horario del alumno"))
         {
           logInArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
           OnAlumnoInscribirTaller(this, logInArgs);
@@ -97,6 +101,51 @@ namespace Vistas
       }
     }
 
+    private void alumnoCrearForo_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoCrearForo != null)
+      {
+        if (!temaForo.Text.Equals(""))
+        {
+          logInArgs.temaForo = temaForo.Text;
+          OnAlumnoCrearForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe ingresar un tema", "Error: No se entrega Tema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void ingresarAForo_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoIngresarAForo != null)
+      {
+        if (listForosForoMenu.SelectedIndex > -1)
+        {
+          logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
+          OnAlumnoIngresarAForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void alumnoSalirDeForo_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoSalirDeForo != null)
+      {
+        logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
+        OnAlumnoSalirDeForo(this, logInArgs);
+      }
+    }
+
+    private void alumnoIngresarMensaje_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoIngresarMensajeForo != null)
+      {
+        logInArgs.mensaje = alumnoIngresarMensajeTexto.Text;
+        OnAlumnoIngresarMensajeForo(this, logInArgs);
+      }
+    }
+
+
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
     //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
     //El for each deja visible solo el login 
@@ -111,6 +160,9 @@ namespace Vistas
 
     }
     
+
+    // Metodos 
+
     public void ActualizarTalleresDisponibles(Taller taller, bool borrar)
     {
       if (borrar)
@@ -165,15 +217,71 @@ namespace Vistas
           if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
       horarioTaller.Text = schedule;
       cuposTaller.Text = ws.GetCuposDisponibles().ToString();
-      numeroForos.Text = ws.GetForos().Count.ToString();
       listForosTaller.Items.Clear();
       listForosForoMenu.Items.Clear();
-      foreach (Foro foro in ws.GetForos())
+      if (ws.GetForos().Count > 0)
+        foreach (Foro foro in ws.GetForos())
+        {
+          ActualizarListaForos(foro);
+        }
+      else
+        NoHayForosTaller();
+      numeroForos.Text = ws.GetForos().Count.ToString();
+    }
+
+    public void ActualizarListaForos(Foro forum)
+    {
+      if (listForosTaller.Items.Count > 0 && listForosTaller.Items[0].Equals("No se han creado foros"))
       {
-        listForosTaller.Items.Add(foro.tema);
-        listForosForoMenu.Items.Add(foro.tema);
+        listForosTaller.Items.Add(forum);
+        listForosForoMenu.Items.Add(forum);
+        listForosTaller.Items.RemoveAt(0);
+        listForosForoMenu.Items.RemoveAt(0);
+      }
+      else
+      {
+        listForosTaller.Items.Add(forum);
+        listForosForoMenu.Items.Add(forum);
       }
     }
+    public void NoHayForosTaller()
+    {
+      listForosTaller.Items.Add("No se han creado foros");
+      listForosForoMenu.Items.Add("No se han creado foros");
+    }
+
+    public void ActualizarCantidadForosTaller(Taller ws)
+    {
+      numeroForos.Text = ws.GetForos().Count.ToString();
+    }
+
+    public void ClearIngresoTemaForoTaller()
+    {
+      temaForo.Clear();
+    }
+
+    public void ActualizarListaMensajesForo(Mensaje m)
+    {
+      if (listMensajesForo.Items.Count > 0 && listMensajesForo.Items[0].Equals("El foro no contiene mensajes"))
+      {
+        listMensajesForo.Items.Add(m);
+        listMensajesForo.Items.RemoveAt(0);
+      }
+      else
+        listMensajesForo.Items.Add(m);
+      alumnoIngresarMensajeTexto.Clear();
+    }
+
+    public void NoExistenMensajesForo()
+    {
+      listMensajesForo.Items.Add("El foro no contiene mensajes");
+    }
+
+    public void ClearListaMensajesForo()
+    {
+      listMensajesForo.Items.Clear();
+    }
+
 
 
 
@@ -182,7 +290,7 @@ namespace Vistas
     //Metodos para confirmar cierre
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
-      close_Click();
+      //close_Click();
       CloseCancel(e);
     }
     private void close_Click()
@@ -195,6 +303,18 @@ namespace Vistas
       if (MessageBox.Show("Are you sure you want to close?", "Close", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
         e.Cancel = true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

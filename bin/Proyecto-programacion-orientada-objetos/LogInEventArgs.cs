@@ -14,6 +14,8 @@ namespace Vistas
     public List<String> credenciales { get; set; }
     public Dictionary<String,Panel> panels {get; set;}
     public Taller taller { get; set; }
-
+    public String temaForo { get; set; }
+    public Foro foro { get; set; }
+    public String mensaje { get; set; }
   }
 }
