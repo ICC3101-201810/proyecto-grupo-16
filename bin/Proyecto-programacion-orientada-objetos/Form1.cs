@@ -31,6 +31,9 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminCrearTaller;
 
 
+
+
+
     LogInEventArgs logInArgs = new LogInEventArgs();
 
     Dictionary<String, Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
@@ -187,8 +190,8 @@ namespace Vistas
     {
       if (OnAdminCrearTaller != null)
       {
-        if (!(adminNombreTaller.Text.Equals("") && (Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0)) <= 0) && (Convert.ToInt32(Math.Round(adminPrecioTaller.Value, 0))<0) && adminListSalas.SelectedIndex < 0 &&
-          (adminListSalas.SelectedItem.Equals("No existen salas creadas") || adminListSalas.SelectedItem.Equals(""))) && (horarioLunes.CheckedItems.Count!=0 || horarioMartes.CheckedItems.Count != 0 ||
+        if (!adminNombreTaller.Text.Equals("") && Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0)) >0 && Convert.ToInt32(Math.Round(adminPrecioTaller.Value, 0))>00 && adminListSalas.SelectedIndex > -1 &&
+          !adminListSalas.SelectedItem.Equals("No existen salas creadas") && !adminListSalas.SelectedItem.Equals("") && (horarioLunes.CheckedItems.Count!=0 || horarioMartes.CheckedItems.Count != 0 ||
           horarioMiercoles.CheckedItems.Count != 0 || horarioJueves.CheckedItems.Count != 0 || horarioViernes.CheckedItems.Count != 0))
         {
           logInArgs.nombreTaller = adminNombreTaller.Text;
@@ -405,7 +408,14 @@ namespace Vistas
       adminCuposTaller.ResetText();
       adminPrecioTaller.ResetText();
       adminListSalas.ResetText();
-      horarioLunes.ClearSelected();
+      for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
+      {
+        horarioLunes.SetItemChecked(i,false);
+        horarioMartes.SetItemChecked(i, false);
+        horarioMiercoles.SetItemChecked(i, false);
+        horarioJueves.SetItemChecked(i, false);
+        horarioViernes.SetItemChecked(i, false);
+      }
     }
 
 

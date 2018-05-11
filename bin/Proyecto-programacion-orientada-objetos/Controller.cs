@@ -52,6 +52,9 @@ namespace Vistas
       logInView.OnAdminEliminarTaller += VistaAdminEliminarTaller_OnAdminEliminarTaller;
       logInView.OnAdminCrearTaller += VistaAdminCrearTaller_OnAdminCrearTaller;
 
+
+
+
       //if (!LoadData())
       //{
         InicializaUsuariosIniciales();
