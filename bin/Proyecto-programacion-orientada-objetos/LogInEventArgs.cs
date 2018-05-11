@@ -17,5 +17,6 @@ namespace Vistas
     public String temaForo { get; set; }
     public Foro foro { get; set; }
     public String mensaje { get; set; }
+    public Mensaje objetoMensaje { get; set; }
   }
 }

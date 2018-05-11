@@ -48,6 +48,7 @@ namespace Vistas
       logInView.OnAlumnoIngresarAForo += VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo;
       logInView.OnAlumnoSalirDeForo += VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo;
       logInView.OnAlumnoIngresarMensajeForo += VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo;
+      logInView.OnAlumnoEliminarMensaje += VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje;
 
       if (!LoadData())
       {
@@ -147,7 +148,7 @@ namespace Vistas
       {
         foreach (Mensaje m in forum.GetMensajes())
         {
-          logInView.ActualizarListaMensajesForo(m);
+          logInView.ActualizarListaMensajesForo(m, false);
         }
       }
       else logInView.NoExistenMensajesForo();
@@ -162,7 +163,14 @@ namespace Vistas
       Foro forum = e.foro;
       EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
       Mensaje mensaje = forum.GetMensajes().Last();
-      logInView.ActualizarListaMensajesForo(mensaje);
+      logInView.ActualizarListaMensajesForo(mensaje, false);
+    }
+    private void VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      Mensaje m = e.objetoMensaje;
+      EliminarMensaje(forum, m);
+      logInView.ActualizarListaMensajesForo(m, true);
     }
 
 
@@ -226,6 +234,12 @@ namespace Vistas
     public bool EnviarMensaje(Foro foro, string texto, Usuario usuario)
     {
       foro.AgregarMensaje(usuario, texto);
+      return true;
+    }
+
+    public bool EliminarMensaje(Foro foro, Mensaje mensaje)
+    {
+      foro.DeleteMessage(mensaje);
       return true;
     }
 

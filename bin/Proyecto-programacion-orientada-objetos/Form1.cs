@@ -24,6 +24,7 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAlumnoIngresarAForo;
     public event EventHandler<LogInEventArgs> OnAlumnoSalirDeForo;
     public event EventHandler<LogInEventArgs> OnAlumnoIngresarMensajeForo;
+    public event EventHandler<LogInEventArgs> OnAlumnoEliminarMensaje;
 
     LogInEventArgs logInArgs = new LogInEventArgs();
 
@@ -118,7 +119,7 @@ namespace Vistas
     {
       if (OnAlumnoIngresarAForo != null)
       {
-        if (listForosForoMenu.SelectedIndex > -1)
+        if (listForosForoMenu.SelectedIndex > -1 && !listForosForoMenu.SelectedItem.Equals("No se han creado foros"))
         {
           logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
           OnAlumnoIngresarAForo(this, logInArgs);
@@ -140,8 +141,25 @@ namespace Vistas
     {
       if (OnAlumnoIngresarMensajeForo != null)
       {
-        logInArgs.mensaje = alumnoIngresarMensajeTexto.Text;
-        OnAlumnoIngresarMensajeForo(this, logInArgs);
+        if (!alumnoIngresarMensajeTexto.Text.Equals(""))
+        {
+          logInArgs.mensaje = alumnoIngresarMensajeTexto.Text;
+          OnAlumnoIngresarMensajeForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void alumnoEliminarMensaje_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoEliminarMensaje != null)
+      {
+        if (listMensajesForo.SelectedIndex > -1 && !listMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
+        {
+          logInArgs.objetoMensaje = listMensajesForo.SelectedItem as Mensaje;
+          OnAlumnoEliminarMensaje(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -260,13 +278,19 @@ namespace Vistas
       temaForo.Clear();
     }
 
-    public void ActualizarListaMensajesForo(Mensaje m)
+    public void ActualizarListaMensajesForo(Mensaje m, bool borrar)
     {
-      if (listMensajesForo.Items.Count > 0 && listMensajesForo.Items[0].Equals("El foro no contiene mensajes"))
-      {
-        listMensajesForo.Items.Add(m);
-        listMensajesForo.Items.RemoveAt(0);
-      }
+      if (borrar)
+        if (listMensajesForo.Items.Count == 1)
+          listMensajesForo.Items[0] = "El foro no contiene mensajes";
+        else
+          listMensajesForo.Items.Remove(m);
+      else
+        if (listMensajesForo.Items.Count > 0 && listMensajesForo.Items[0].Equals("El foro no contiene mensajes"))
+        {
+          listMensajesForo.Items.Add(m);
+          listMensajesForo.Items.RemoveAt(0);
+        }
       else
         listMensajesForo.Items.Add(m);
       alumnoIngresarMensajeTexto.Clear();
@@ -282,7 +306,7 @@ namespace Vistas
       listMensajesForo.Items.Clear();
     }
 
-
+    
 
 
 
@@ -303,6 +327,8 @@ namespace Vistas
       if (MessageBox.Show("Are you sure you want to close?", "Close", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
         e.Cancel = true;
     }
+
+    
 
 
 

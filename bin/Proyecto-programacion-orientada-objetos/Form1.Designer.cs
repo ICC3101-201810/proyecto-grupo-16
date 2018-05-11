@@ -527,6 +527,7 @@
       this.alumnoEliminarMensaje.TabIndex = 15;
       this.alumnoEliminarMensaje.Text = "Eliminar Mensaje";
       this.alumnoEliminarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoEliminarMensaje.Click += new System.EventHandler(this.alumnoEliminarMensaje_Click);
       // 
       // listMensajesForo
       // 
