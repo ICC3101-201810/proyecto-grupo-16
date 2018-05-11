@@ -15,6 +15,10 @@ namespace Vistas
   {
     //Se define el handler del evento
     public event EventHandler<LogInEventArgs> OnLogIn;
+
+    public event EventHandler<LogInEventArgs> OnAlumnoInscribirTaller;
+
+
     Dictionary<String,Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
 
     //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
@@ -33,8 +37,9 @@ namespace Vistas
       if (OnLogIn != null)
       {
         LogInEventArgs logInArgs = new LogInEventArgs();
-        logInArgs.user = this.nametxtbox.Text; 
-        logInArgs.password = this.pwdtxtbox.Text;
+        logInArgs.credenciales = new List<string>();
+        logInArgs.credenciales.Add(this.nametxtbox.Text); 
+        logInArgs.credenciales.Add(this.pwdtxtbox.Text);
         logInArgs.panels = this.panels;
         OnLogIn(this, logInArgs);
       }
@@ -52,6 +57,22 @@ namespace Vistas
           panels[s].Visible = false;
 
     }
+
+    public void ActualizarTalleresDisponibles(Taller taller)
+    {
+      listTalleresDisponibles.Items.Add(taller);
+    }
+
+    private void incribirT_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoInscribirTaller != null)
+      {
+        LogInEventArgs inscribirTallerEventArgs = new LogInEventArgs();
+        inscribirTallerEventArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
+        OnAlumnoInscribirTaller(this, inscribirTallerEventArgs);
+      }
+    }
+
     //--> ir a LoginEventArgs
   }
 }

@@ -35,6 +35,7 @@ namespace Vistas
       talleres = new List<Taller>();
       categorias = new List<Categoria>();
       salas = new List<Sala>();
+      bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
       this.vistas = vistas;
       logInView = (TalleresVU)vistas["Login"];
       logInView.OnLogIn += VistaLogIn_OnLogIn; //Se suscribe el metodo al evento OnLogIn
@@ -48,9 +49,8 @@ namespace Vistas
     //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
     private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
     {
-      List<String> credenciales = new List<String> { "", "" };
-      credenciales[0]=e.user;
-      credenciales[1] = e.password;
+      List<String> credenciales = e.credenciales;
+
       if (!VerifyUser(credenciales))
       {
         MessageBox.Show("ERROR: Credenciales Invalidas", "Error: Validacion de Credenciales", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -60,6 +60,8 @@ namespace Vistas
         MessageBox.Show("Bienvenido! " + GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
         if (GetUser(credenciales).GetType() == typeof(Alumno))
         {
+          foreach (Taller ws in GetTalleresDisponibles((Alumno)GetUser(credenciales)).Keys)
+            logInView.ActualizarTalleresDisponibles(ws);
           e.panels["Login"].Visible = false;
           e.panels["StudentMenu"].Visible = true;
         }
@@ -67,9 +69,58 @@ namespace Vistas
       }
     }
 
+    private void VistaInscribirTaller_OnAlumnoInscribirTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      Alumno student = (Alumno)GetUser(e.credenciales);
+      InscribirAlumno(student, ws);
+      logInView.ActualizarTalleresDisponibles(ws);
+    }
 
-    //Metodos de incializacion y serialize!
-    public void InicializaUsuariosIniciales()
+    //Metodos
+
+    private bool InscribirAlumno(Alumno alumno, Taller taller)
+    {
+      if (taller.Inscribible())
+      {
+        taller.Inscribir();
+        alumno.InscribirTaller(taller);
+        foreach (String day in taller.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+          for (int i = 0; i < taller.GetHorario()[day].Count; i++)
+            if (taller.GetHorario()[day][i]) alumno.GetHorario()[day][i] = false;
+        return true;
+      }
+      return false;
+    }
+
+    public Dictionary<Taller, List<String>> GetTalleresDisponibles(Alumno alumno)
+    {
+      Dictionary<Taller, List<String>> disponibles = new Dictionary<Taller, List<String>>();
+      Dictionary<String, List<Boolean>> studentSchedule = alumno.GetHorario();
+      Dictionary<String, List<Boolean>> wsSchedule = new Dictionary<string, List<bool>>();
+
+      foreach (Taller ws in talleres)
+      {
+        wsSchedule = ws.GetHorario();
+        bool fullavaliable = true;
+        List<String> avaliableBlocks = new List<String>();
+        foreach (String day in wsSchedule.Keys)
+        {
+          for (int i = 0; i < studentSchedule[day].Count; i++)
+          {
+            if (studentSchedule[day][i] && wsSchedule[day][i]) avaliableBlocks.Add(String.Concat(day, ": ", bloques[i]));
+            if (!studentSchedule[day][i] && wsSchedule[day][i]) fullavaliable = false;
+          }
+        }
+        if (avaliableBlocks.Count > 0 && fullavaliable) disponibles.Add(ws, avaliableBlocks);
+      }
+
+      return disponibles;
+    }
+
+
+      //Metodos de incializacion y serialize!
+      public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, true, false, false, false } },

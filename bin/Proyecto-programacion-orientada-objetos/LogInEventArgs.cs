@@ -11,8 +11,8 @@ namespace Vistas
   //Clase que tiene los argumentos con sus get y set.
   public class LogInEventArgs : EventArgs
   {
-    public string user { get; set; }
-    public string password { get; set; }
+    public List<String> credenciales { get; set; }
     public Dictionary<String,Panel> panels {get; set;}
+    public Taller taller { get; set; }
   }
 }

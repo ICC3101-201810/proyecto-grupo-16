@@ -79,5 +79,17 @@ namespace Modelos
     {
       return encuestas;
     }
+
+    public override string ToString()
+    {
+      string schedule = "";
+      List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
+      foreach (String day in horario.Keys)
+        for (int i = 0; i < horario[day].Count; i++)
+          if (horario[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
+
+      return nombre + " - " + schedule;
+    }
+
   }
 }
