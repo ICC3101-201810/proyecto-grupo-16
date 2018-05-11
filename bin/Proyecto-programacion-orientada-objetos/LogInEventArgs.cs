@@ -18,5 +18,13 @@ namespace Vistas
     public Foro foro { get; set; }
     public String mensaje { get; set; }
     public Mensaje objetoMensaje { get; set; }
+
+    //Argumentos para crear taller
+    public String nombreTaller { get; set; }
+    public int cuposTaller { get; set; }
+    public int precioTaller { get; set; }
+    public Sala salaTaller { get; set; }
+    public Dictionary<String, List<Boolean>> horarioTaller { get; set; }
+
   }
 }

@@ -31,5 +31,11 @@ namespace Modelos
     {
       return nombre;
     }
+
+    public override string ToString()
+    {
+      return nombre;
+    }
+
   }
 }

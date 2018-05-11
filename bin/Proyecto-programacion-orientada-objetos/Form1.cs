@@ -26,6 +26,11 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAlumnoIngresarMensajeForo;
     public event EventHandler<LogInEventArgs> OnAlumnoEliminarMensaje;
 
+    //Event Handler admin
+    public event EventHandler<LogInEventArgs> OnAdminEliminarTaller;
+    public event EventHandler<LogInEventArgs> OnAdminCrearTaller;
+
+
     LogInEventArgs logInArgs = new LogInEventArgs();
 
     Dictionary<String, Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
@@ -163,6 +168,53 @@ namespace Vistas
       }
     }
 
+    //Eventos del admin
+    private void adminEliminarTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarTaller != null)
+      {
+        if (adminListTalleres.SelectedIndex > -1 && !adminListTalleres.SelectedItem.Equals("No existen talleres creados"))
+        { 
+          logInArgs.taller = adminListTalleres.SelectedItem as Taller;
+          OnAdminEliminarTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    private void adminCrearTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminCrearTaller != null)
+      {
+        if (!(adminNombreTaller.Text.Equals("") && (Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0)) <= 0) && (Convert.ToInt32(Math.Round(adminPrecioTaller.Value, 0))<0) && adminListSalas.SelectedIndex < 0 &&
+          (adminListSalas.SelectedItem.Equals("No existen salas creadas") || adminListSalas.SelectedItem.Equals(""))) && (horarioLunes.CheckedItems.Count!=0 || horarioMartes.CheckedItems.Count != 0 ||
+          horarioMiercoles.CheckedItems.Count != 0 || horarioJueves.CheckedItems.Count != 0 || horarioViernes.CheckedItems.Count != 0))
+        {
+          logInArgs.nombreTaller = adminNombreTaller.Text;
+          logInArgs.cuposTaller = Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0));
+          logInArgs.precioTaller = Convert.ToInt32(Math.Round(adminPrecioTaller.Value,0));
+          logInArgs.salaTaller = adminListSalas.SelectedItem as Sala;
+          logInArgs.horarioTaller = HorarioLimpio();
+          for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
+          {
+            if (horarioLunes.GetItemChecked(i))
+              logInArgs.horarioTaller["Lunes"][i] = true;
+            if (horarioMartes.GetItemChecked(i))
+              logInArgs.horarioTaller["Martes"][i] = true;
+            if (horarioMiercoles.GetItemChecked(i))
+              logInArgs.horarioTaller["Miercoles"][i] = true;
+            if (horarioJueves.GetItemChecked(i))
+              logInArgs.horarioTaller["Jueves"][i] = true;
+            if (horarioViernes.GetItemChecked(i))
+              logInArgs.horarioTaller["Viernes"][i] = true;
+          }
+          OnAdminCrearTaller(this,logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
     //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
@@ -172,6 +224,7 @@ namespace Vistas
       panels.Add("Login",loginpanel);
       panels.Add("StudentMenu",StudentMenu);
       panels.Add("StudentWsMenu", studentWSMenu);
+      panels.Add("AdminMenu", MenuAdmin);
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
@@ -179,7 +232,7 @@ namespace Vistas
     }
     
 
-    // Metodos 
+    // Metodos del estudiante
 
     public void ActualizarTalleresDisponibles(Taller taller, bool borrar)
     {
@@ -306,8 +359,95 @@ namespace Vistas
       listMensajesForo.Items.Clear();
     }
 
-    
+    //Metodos del admin
 
+    public void ActualizarTalleresAdmin(Taller taller, bool borrar)
+    {
+      if (borrar)
+        if (adminListTalleres.Items.Count == 1)
+          adminListTalleres.Items[0] = "No existen talleres creados";
+        else
+          adminListTalleres.Items.Remove(taller);
+      else
+      {
+        if (adminListTalleres.Items.Count > 0 && adminListTalleres.Items[0].Equals("No existen talleres creados"))
+        {
+          adminListTalleres.Items.Add(taller);
+          adminListTalleres.Items.RemoveAt(0);
+        }
+        else
+          adminListTalleres.Items.Add(taller);
+      }
+    }
+
+    public void ActualizarAdminTallerSalas(Sala sala, bool borrar)
+    {
+      if (borrar)
+        if (adminListSalas.Items.Count == 1)
+          adminListSalas.Items[0] = "No existen salas creadas";
+        else
+          adminListSalas.Items.Remove(sala);
+      else
+      {
+        if (adminListSalas.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas creadas"))
+        {
+          adminListSalas.Items.Add(sala);
+          adminListSalas.Items.RemoveAt(0);
+        }
+        else
+          adminListSalas.Items.Add(sala);
+      }
+    }
+
+    public void AdminLimpiarCrearTaller ()
+    {
+      adminNombreTaller.Clear();
+      adminCuposTaller.ResetText();
+      adminPrecioTaller.ResetText();
+      adminListSalas.ResetText();
+      horarioLunes.ClearSelected();
+    }
+
+
+    //Metodo para simular horarios banner
+    public Dictionary<String, List<Boolean>> GenerarHorario(double probability)
+    {
+      Dictionary<String, List<Boolean>> ret = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", GenerarRandomBooleanList(probability) },
+      { "Martes", GenerarRandomBooleanList(probability) },
+      { "Miercoles", GenerarRandomBooleanList(probability) },
+      { "Jueves", GenerarRandomBooleanList(probability) },
+      { "Viernes", GenerarRandomBooleanList(probability)}};
+      return ret;
+    }
+
+    public List<Boolean> GenerarRandomBooleanList(double probability)
+    {
+      List<Boolean> ret = new List<Boolean>();
+      Random random = new Random();
+      int temp = 0;
+      for (int i = 0; i < 5; i++)
+      {
+        temp = random.Next(0, 100);
+        if (temp >= probability * 100)
+          ret.Add(true);
+        else
+          ret.Add(false);
+      }
+      return ret;
+    }
+
+    //Metodo para simular generacion de horario taller
+    public Dictionary<String, List<Boolean>> HorarioLimpio()
+    {
+      Dictionary<String, List<Boolean>> ret = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", GenerarRandomBooleanList(2) },
+      { "Martes", GenerarRandomBooleanList(2) },
+      { "Miercoles", GenerarRandomBooleanList(2) },
+      { "Jueves", GenerarRandomBooleanList(2) },
+      { "Viernes", GenerarRandomBooleanList(2)}};
+      return ret;
+    }
 
 
 
@@ -329,6 +469,10 @@ namespace Vistas
     }
 
     
+
+
+
+
 
 
 

@@ -49,11 +49,13 @@ namespace Vistas
       logInView.OnAlumnoSalirDeForo += VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo;
       logInView.OnAlumnoIngresarMensajeForo += VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo;
       logInView.OnAlumnoEliminarMensaje += VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje;
+      logInView.OnAdminEliminarTaller += VistaAdminEliminarTaller_OnAdminEliminarTaller;
+      logInView.OnAdminCrearTaller += VistaAdminCrearTaller_OnAdminCrearTaller;
 
-      if (!LoadData())
-      {
+      //if (!LoadData())
+      //{
         InicializaUsuariosIniciales();
-      }
+      //}
     }
 
     //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
@@ -86,7 +88,18 @@ namespace Vistas
           e.panels["Login"].Visible = false;
           e.panels["StudentMenu"].Visible = true;
         }
-        else MessageBox.Show("Under construction");
+        else if (GetUser(credenciales).GetType() == typeof(Administrador))
+        {
+          Administrador admin = (Administrador)GetUser(credenciales);
+          foreach (Taller ws in talleres)
+            logInView.ActualizarTalleresAdmin(ws, false);
+          foreach (Sala sala in salas)
+            logInView.ActualizarAdminTallerSalas(sala, false);
+          e.panels["Login"].Visible = false;
+          e.panels["AdminMenu"].Visible = true;
+        }
+          
+        else MessageBox.Show("Under development");
       }
     }
 
@@ -173,6 +186,21 @@ namespace Vistas
       logInView.ActualizarListaMensajesForo(m, true);
     }
 
+    //Vistas admin
+
+    private void VistaAdminEliminarTaller_OnAdminEliminarTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      AdminEliminarTaller(ws);
+      logInView.ActualizarTalleresAdmin(ws, true);
+    }
+    private void VistaAdminCrearTaller_OnAdminCrearTaller(object sender, LogInEventArgs e)
+    {
+      MessageBox.Show("Test");
+      Taller ws = new Taller(e.nombreTaller, e.cuposTaller, e.precioTaller, e.horarioTaller, e.salaTaller, new Categoria());
+      logInView.ActualizarTalleresAdmin(ws, false);
+      logInView.AdminLimpiarCrearTaller();
+    }
 
     //Grabar los datos antes de cerrar
     private void SaveDataBeforeClosing_OnClosingApp(object sender, LogInEventArgs e)
@@ -243,6 +271,14 @@ namespace Vistas
       return true;
     }
 
+    //Metodos admin
+    public void AdminEliminarTaller(Taller taller)
+    {
+      talleres.Remove(taller);
+    }
+
+
+
     //Metodos de incializacion y serialize!
     public void InicializaUsuariosIniciales()
     {
@@ -268,9 +304,13 @@ namespace Vistas
       administradores.Add(administrador1);
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
       Alumno alumno2 = new Alumno("18884427-8", "Israel", "Borrar", "i@m.cl", "+56999404286", "1234", scheduleb);
-      Taller futbol = new Taller("futbol", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
-      Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, new Sala("CanchaFutbol", schedulea), new Categoria());
-      Taller tenis = new Taller("tenis", 40, 15000, schedulec, new Sala("CanchaTenis", schedulec), new Categoria());
+      Sala sala1 = new Sala("CanchaFutbol", schedulea);
+      Sala sala2 = new Sala("CanchaTenis", schedulec);
+      Taller futbol = new Taller("futbol", 40, 15000, schedulea, sala1, new Categoria());
+      Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, sala1, new Categoria());
+      Taller tenis = new Taller("tenis", 40, 15000, schedulec, sala2, new Categoria());
+      salas.Add(sala1);
+      salas.Add(sala2);
       List<Taller> talleresD = new List<Taller>();
       tenis.CrearForo("Por qué Gohan es un papanatas?", false);
       tenis.GetForos()[0].AgregarMensaje(alumno1, "Gohan es un quesito miedoso, hasta el verde le gana");
