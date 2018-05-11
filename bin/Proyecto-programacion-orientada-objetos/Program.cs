@@ -18,7 +18,7 @@ namespace Vistas
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       Dictionary<String, Form> vistas = new Dictionary<String, Form>();
-      vistas.Add("Login", new Login());
+      vistas.Add("Login", new TalleresVU());
       Controller controlador = new Controller(vistas);
 
 

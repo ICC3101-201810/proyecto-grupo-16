@@ -22,7 +22,7 @@ namespace Vistas
     List<Categoria> categorias;
     List<Sala> salas;
     List<String> bloques;
-    Login logInView;
+    TalleresVU logInView;
 
 
     public Controller(Dictionary<String, Form> vistas)
@@ -35,7 +35,7 @@ namespace Vistas
       categorias = new List<Categoria>();
       salas = new List<Sala>();
       this.vistas = vistas;
-      logInView = (Login)vistas["Login"];
+      logInView = (TalleresVU)vistas["Login"];
       logInView.OnLogIn += VistaLogIn_OnLogIn;
       if (!LoadData())
       {
@@ -53,7 +53,10 @@ namespace Vistas
         MessageBox.Show("ERROR: Credenciales Invalidas", "Error: Validacion de Credenciales", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
       else
-        MessageBox.Show("Bienvenido! "+GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      {
+        MessageBox.Show("Bienvenido! " + GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        e.panels["Menu"].BringToFront();
+      }
     }
 
     public void InicializaUsuariosIniciales()

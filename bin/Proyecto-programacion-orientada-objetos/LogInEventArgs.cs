@@ -12,5 +12,6 @@ namespace Vistas
   {
     public string user { get; set; }
     public string password { get; set; }
+    public Dictionary<String,Panel> panels {get; set;}
   }
 }

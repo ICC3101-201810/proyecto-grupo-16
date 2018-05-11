@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Vistas
 {
-  public partial class Login : Form
+  public partial class TalleresVU : Form
   {
     public event EventHandler<LogInEventArgs> OnLogIn;
-
-    public Login()
+    Dictionary<String,Panel> panels = new Dictionary<String, Panel>();
+    public TalleresVU()
     {
       InitializeComponent();
     }
@@ -27,6 +27,7 @@ namespace Vistas
         LogInEventArgs logInArgs = new LogInEventArgs();
         logInArgs.user = this.nametxtbox.Text;
         logInArgs.password = this.pwdtxtbox.Text;
+        logInArgs.panels = this.panels;
         OnLogIn(this, logInArgs);
       }
     }
@@ -48,6 +49,9 @@ namespace Vistas
 
     private void Form1_Load(object sender, EventArgs e)
     {
+      panels.Add("Login",loginpanel);
+      panels.Add("Menu",panel1);
+      panels["Login"].BringToFront();
 
     }
 
@@ -62,6 +66,11 @@ namespace Vistas
     }
 
     private void NameTextBox_TextChanged_1(object sender, EventArgs e)
+    {
+
+    }
+
+    private void label8_Click(object sender, EventArgs e)
     {
 
     }
