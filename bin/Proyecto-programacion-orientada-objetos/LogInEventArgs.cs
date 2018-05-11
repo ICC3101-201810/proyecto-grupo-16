@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Vistas
 {
+  //Clase que tiene los argumentos con sus get y set.
   public class LogInEventArgs : EventArgs
   {
     public string user { get; set; }

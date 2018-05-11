@@ -13,66 +13,45 @@ namespace Vistas
 {
   public partial class TalleresVU : Form
   {
+    //Se define el handler del evento
     public event EventHandler<LogInEventArgs> OnLogIn;
-    Dictionary<String,Panel> panels = new Dictionary<String, Panel>();
+    Dictionary<String,Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
+
+    //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
+
     public TalleresVU()
     {
       InitializeComponent();
     }
 
+    //Evento de click en ingresar
     private void LogInButton_Click(object sender, EventArgs e)
     {
+      //Revisa si hay metodos suscritos. Si los hay crea una instancia de argumentos, donde se pasa el usuario, la password y la lista de los paneles.
+      //Estos se usan en el metodo que está en el controller para inciar sesion. El paso de argumentos permite que entre clases puedan conocer los valores.
+      //Entonces se pasan los valores de la forma y el controlador verifica si cumple los requisitos. Igual cuando interfaz pasaba lo que ingresaba el usuario a Sistema!
       if (OnLogIn != null)
       {
         LogInEventArgs logInArgs = new LogInEventArgs();
-        logInArgs.user = this.nametxtbox.Text;
+        logInArgs.user = this.nametxtbox.Text; 
         logInArgs.password = this.pwdtxtbox.Text;
         logInArgs.panels = this.panels;
         OnLogIn(this, logInArgs);
       }
     }
   
-    private void label3_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label2_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label1_Click(object sender, EventArgs e)
-    {
-
-    }
-
+    //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
+    //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
+    //El for each deja visible solo el login 
     private void Form1_Load(object sender, EventArgs e)
     {
       panels.Add("Login",loginpanel);
-      panels.Add("Menu",panel1);
-      panels["Login"].BringToFront();
+      panels.Add("StudentMenu",StudentMenu);
+      foreach (String s in panels.Keys)
+        if (!s.Equals("Login"))
+          panels[s].Visible = false;
 
     }
-
-    private void label1_Click_1(object sender, EventArgs e)
-    {
-
-    }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void NameTextBox_TextChanged_1(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label8_Click(object sender, EventArgs e)
-    {
-
-    }
+    //--> ir a LoginEventArgs
   }
 }

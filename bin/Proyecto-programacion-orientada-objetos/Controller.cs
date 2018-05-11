@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Vistas
 {
+  //Simil a la clase sistema. Se incializan todas las listas de las clases
   class Controller
   {
     Dictionary<String, Form> vistas;
@@ -24,7 +25,7 @@ namespace Vistas
     List<String> bloques;
     TalleresVU logInView;
 
-
+    
     public Controller(Dictionary<String, Form> vistas)
     {
       usuarios = new List<Usuario>();
@@ -36,13 +37,15 @@ namespace Vistas
       salas = new List<Sala>();
       this.vistas = vistas;
       logInView = (TalleresVU)vistas["Login"];
-      logInView.OnLogIn += VistaLogIn_OnLogIn;
+      logInView.OnLogIn += VistaLogIn_OnLogIn; //Se suscribe el metodo al evento OnLogIn
       if (!LoadData())
       {
         InicializaUsuariosIniciales();
       }
     }
 
+    //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
+    //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
     private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
     {
       List<String> credenciales = new List<String> { "", "" };
@@ -55,10 +58,17 @@ namespace Vistas
       else
       {
         MessageBox.Show("Bienvenido! " + GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        e.panels["Menu"].BringToFront();
+        if (GetUser(credenciales).GetType() == typeof(Alumno))
+        {
+          e.panels["Login"].Visible = false;
+          e.panels["StudentMenu"].Visible = true;
+        }
+        else MessageBox.Show("Under construction");
       }
     }
 
+
+    //Metodos de incializacion y serialize!
     public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
