@@ -45,6 +45,8 @@
       this.label9 = new System.Windows.Forms.Label();
       this.listTalleresDisponibles = new System.Windows.Forms.ListBox();
       this.incribirT = new System.Windows.Forms.Button();
+      this.ingresarATaller = new System.Windows.Forms.Button();
+      this.eliminarTaller = new System.Windows.Forms.Button();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -125,7 +127,7 @@
       this.loginpanel.Controls.Add(this.label2);
       this.loginpanel.Controls.Add(this.LogInButton);
       this.loginpanel.Controls.Add(this.label1);
-      this.loginpanel.Location = new System.Drawing.Point(386, 140);
+      this.loginpanel.Location = new System.Drawing.Point(206, 173);
       this.loginpanel.Name = "loginpanel";
       this.loginpanel.Size = new System.Drawing.Size(465, 251);
       this.loginpanel.TabIndex = 16;
@@ -133,7 +135,7 @@
       // StudentMenu
       // 
       this.StudentMenu.Controls.Add(this.InscribirTaller);
-      this.StudentMenu.Location = new System.Drawing.Point(2, 0);
+      this.StudentMenu.Location = new System.Drawing.Point(-1, 1);
       this.StudentMenu.Name = "StudentMenu";
       this.StudentMenu.Size = new System.Drawing.Size(886, 642);
       this.StudentMenu.TabIndex = 24;
@@ -150,6 +152,8 @@
       // 
       // tabPage1
       // 
+      this.tabPage1.Controls.Add(this.eliminarTaller);
+      this.tabPage1.Controls.Add(this.ingresarATaller);
       this.tabPage1.Controls.Add(this.label10);
       this.tabPage1.Controls.Add(this.listTalleresInscritos);
       this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -224,12 +228,33 @@
       this.incribirT.UseVisualStyleBackColor = true;
       this.incribirT.Click += new System.EventHandler(this.incribirT_Click);
       // 
+      // ingresarATaller
+      // 
+      this.ingresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarATaller.Location = new System.Drawing.Point(57, 184);
+      this.ingresarATaller.Name = "ingresarATaller";
+      this.ingresarATaller.Size = new System.Drawing.Size(206, 37);
+      this.ingresarATaller.TabIndex = 11;
+      this.ingresarATaller.Text = "Ingresar a Taller";
+      this.ingresarATaller.UseVisualStyleBackColor = true;
+      // 
+      // eliminarTaller
+      // 
+      this.eliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.eliminarTaller.Location = new System.Drawing.Point(359, 184);
+      this.eliminarTaller.Name = "eliminarTaller";
+      this.eliminarTaller.Size = new System.Drawing.Size(206, 37);
+      this.eliminarTaller.TabIndex = 12;
+      this.eliminarTaller.Text = "Eliminar Taller";
+      this.eliminarTaller.UseVisualStyleBackColor = true;
+      this.eliminarTaller.Click += new System.EventHandler(this.eliminarTaller_Click);
+      // 
       // TalleresVU
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(1432, 674);
+      this.ClientSize = new System.Drawing.Size(891, 674);
       this.Controls.Add(this.StudentMenu);
       this.Controls.Add(this.loginpanel);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -266,6 +291,8 @@
     private System.Windows.Forms.Label label9;
     private System.Windows.Forms.ListBox listTalleresDisponibles;
     private System.Windows.Forms.Button incribirT;
+    private System.Windows.Forms.Button eliminarTaller;
+    private System.Windows.Forms.Button ingresarATaller;
   }
 }
 

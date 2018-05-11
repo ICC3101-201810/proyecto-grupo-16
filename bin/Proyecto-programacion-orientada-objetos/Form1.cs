@@ -15,8 +15,8 @@ namespace Vistas
   {
     //Se define el handler del evento
     public event EventHandler<LogInEventArgs> OnLogIn;
-
     public event EventHandler<LogInEventArgs> OnAlumnoInscribirTaller;
+    public event EventHandler<LogInEventArgs> OnAlumnoEliminarTaller;
 
     LogInEventArgs logInArgs = new LogInEventArgs();
 
@@ -44,7 +44,35 @@ namespace Vistas
         OnLogIn(this, logInArgs);
       }
     }
-  
+
+    private void incribirT_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoInscribirTaller != null)
+      {
+        if (listTalleresDisponibles.SelectedIndex>-1 && !listTalleresDisponibles.SelectedItem.Equals("No existen talleres disponibles en el horario del alumno"))
+        {
+          logInArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
+          OnAlumnoInscribirTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+
+    private void eliminarTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoEliminarTaller != null)
+      {
+        if (listTalleresInscritos.SelectedIndex > -1 && !listTalleresInscritos.SelectedItem.Equals("No existen talleres inscritos por el alumno"))
+        {
+          logInArgs.taller = listTalleresInscritos.SelectedItem as Taller;
+          OnAlumnoEliminarTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
     //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
     //El for each deja visible solo el login 
@@ -61,21 +89,39 @@ namespace Vistas
     public void ActualizarTalleresDisponibles(Taller taller, bool borrar)
     {
       if (borrar)
-        listTalleresDisponibles.Items.Remove(taller);
+        if (listTalleresDisponibles.Items.Count == 1)
+          listTalleresDisponibles.Items[0] = "No existen talleres disponibles en el horario del alumno";
+        else
+          listTalleresDisponibles.Items.Remove(taller);
       else
-        listTalleresDisponibles.Items.Add(taller);
+        if (listTalleresDisponibles.Items.Count>0 && listTalleresDisponibles.Items[0].Equals("No existen talleres disponibles en el horario del alumno"))
+        {
+          listTalleresDisponibles.Items.Add(taller);
+          listTalleresDisponibles.Items.RemoveAt(0);
+        }
+        else
+            listTalleresDisponibles.Items.Add(taller);
     }
 
-    public void NoHayTalleresDisponbles()
+    public void NoHayTalleresDisponibles()
     {
       listTalleresDisponibles.Items.Add("No existen talleres disponibles en el horario del alumno");
     }
 
 
-    public void ActualizarTalleresInscritos(Taller taller)
+    public void ActualizarTalleresInscritos(Taller taller, bool borrar)
     {
+      if (borrar)
+        if (listTalleresInscritos.Items.Count == 1)
+          listTalleresInscritos.Items[0] = "No existen talleres inscritos por el alumno";
+        else
+          listTalleresInscritos.Items.Remove(taller);
+      else
       if (listTalleresInscritos.Items[0].Equals("No existen talleres inscritos por el alumno"))
-        listTalleresInscritos.Items[0] = taller.ToString();
+      {
+        listTalleresInscritos.Items.Add(taller);
+        listTalleresInscritos.Items.RemoveAt(0);
+      }
       else
         listTalleresInscritos.Items.Add(taller);
     }
@@ -85,14 +131,7 @@ namespace Vistas
       listTalleresInscritos.Items.Add("No existen talleres inscritos por el alumno");
     }
 
-    private void incribirT_Click(object sender, EventArgs e)
-    {
-      if (OnAlumnoInscribirTaller != null)
-      {
-        logInArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
-        OnAlumnoInscribirTaller(this, logInArgs);
-      }
-    }
+    
 
     //--> ir a LoginEventArgs
   }

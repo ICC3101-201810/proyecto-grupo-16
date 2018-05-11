@@ -40,6 +40,7 @@ namespace Vistas
       logInView = (TalleresVU)vistas["Login"];
       logInView.OnLogIn += VistaLogIn_OnLogIn; //Se suscribe el metodo al evento OnLogIn
       logInView.OnAlumnoInscribirTaller += VistaInscribirTaller_OnAlumnoInscribirTaller;
+      logInView.OnAlumnoEliminarTaller += VistaEliminarTaller_OnAlumnoEliminarTaller;
 
       if (!LoadData())
       {
@@ -67,10 +68,10 @@ namespace Vistas
             foreach (Taller ws in GetTalleresDisponibles(student).Keys)
               logInView.ActualizarTalleresDisponibles(ws, false);
           else
-            logInView.NoHayTalleresDisponbles();
+            logInView.NoHayTalleresDisponibles();
           if (student.GetTalleres().Count > 0)
             foreach (Taller ws in student.GetTalleres())
-              logInView.ActualizarTalleresInscritos(ws);
+              logInView.ActualizarTalleresInscritos(ws, false);
           else
             logInView.NoHayTalleresInscritos();
 
@@ -87,7 +88,25 @@ namespace Vistas
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
       logInView.ActualizarTalleresDisponibles(ws, true);
-      logInView.ActualizarTalleresInscritos(ws);
+      logInView.ActualizarTalleresInscritos(ws,false);
+    }
+
+    private void VistaEliminarTaller_OnAlumnoEliminarTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      Alumno student = (Alumno)GetUser(e.credenciales);
+      student.DeleteWS(ws);
+      ws.SetCuposDisponibles();
+      foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+      {
+        for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+        {
+          if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = true;
+
+        }
+      }
+      logInView.ActualizarTalleresInscritos(ws, true);
+      logInView.ActualizarTalleresDisponibles(ws, false);
     }
 
     //Metodos
