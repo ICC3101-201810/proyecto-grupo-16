@@ -55,10 +55,10 @@ namespace Vistas
 
 
 
-      //if (!LoadData())
-      //{
+      if (!LoadData())
+      {
         InicializaUsuariosIniciales();
-      //}
+      }
     }
 
     //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
@@ -350,12 +350,14 @@ namespace Vistas
     private static void SaveData(List<Usuario> usuarios, List<Taller> talleres)
     {
       // Creamos el Stream donde guardaremos nuestros usuarios
-      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
+      //String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
+      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Users.txt");
       FileStream fs = new FileStream(fileName, FileMode.Create);
       IFormatter formatter = new BinaryFormatter();
       formatter.Serialize(fs, usuarios);
       fs.Close();
-      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WorkShops.txt");
+      //fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WorkShops.txt");
+      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Users.txt");
       fs = new FileStream(fileName, FileMode.Create);
       formatter.Serialize(fs, talleres);
       fs.Close();
@@ -366,7 +368,8 @@ namespace Vistas
     private Boolean LoadData()
     {
       //string fileName = Path.Combine(Directory.GetCurrentDirectory(), "Users.txt");
-      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
+      //String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Users.txt");
+      String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Users.txt");
       if (!File.Exists(fileName))
       {
         return false;
@@ -384,7 +387,8 @@ namespace Vistas
       }
       fs.Close();
       File.Delete(fileName);
-      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Workshops.txt");
+      //fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Workshops.txt");
+      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Workshops.txt");
       fs = new FileStream(fileName, FileMode.Open);
       List<Taller> workshops = formatter.Deserialize(fs) as List<Taller>;
       foreach (Taller t in workshops) talleres.Add(t);
