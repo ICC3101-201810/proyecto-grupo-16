@@ -41,6 +41,9 @@ namespace Vistas
       logInView.OnLogIn += VistaLogIn_OnLogIn; //Se suscribe el metodo al evento OnLogIn
       logInView.OnAlumnoInscribirTaller += VistaInscribirTaller_OnAlumnoInscribirTaller;
       logInView.OnAlumnoEliminarTaller += VistaEliminarTaller_OnAlumnoEliminarTaller;
+      logInView.OnAlumnoIngresarTaller += VistaIngresarTaller_OnAlumnoIngresarTaller;
+      logInView.OnVolverMenuAlumno += VistaVolverMenuAlumno_OnVolverMenuAlumno;
+      logInView.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
 
       if (!LoadData())
       {
@@ -107,6 +110,28 @@ namespace Vistas
       }
       logInView.ActualizarTalleresInscritos(ws, true);
       logInView.ActualizarTalleresDisponibles(ws, false);
+    }
+
+    private void VistaIngresarTaller_OnAlumnoIngresarTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      logInView.ActualizarPerfilTaller(ws);
+      e.panels["StudentWsMenu"].Visible = true;
+      e.panels["StudentMenu"].Visible = false;
+    }
+
+    private void VistaVolverMenuAlumno_OnVolverMenuAlumno(object sender, LogInEventArgs e)
+    {
+      e.panels["StudentMenu"].Visible = true;
+      e.panels["StudentWsMenu"].Visible = false;
+    }
+
+
+
+    //Grabar los datos antes de cerrar
+    private void SaveDataBeforeClosing_OnClosingApp(object sender, LogInEventArgs e)
+    {
+      SaveData(usuarios, talleres);
     }
 
     //Metodos

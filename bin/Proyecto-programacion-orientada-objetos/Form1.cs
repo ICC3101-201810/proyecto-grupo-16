@@ -17,12 +17,16 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnLogIn;
     public event EventHandler<LogInEventArgs> OnAlumnoInscribirTaller;
     public event EventHandler<LogInEventArgs> OnAlumnoEliminarTaller;
+    public event EventHandler<LogInEventArgs> OnAlumnoIngresarTaller;
+    public event EventHandler<LogInEventArgs> OnVolverMenuAlumno;
+    public event EventHandler<LogInEventArgs> OnClosingApp;
 
     LogInEventArgs logInArgs = new LogInEventArgs();
 
     Dictionary<String,Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
+    List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
 
-    //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
+  //Paneles: Con los paneles podemos generar distintas vistas. Piensen que es como un contenedor o una pagina que podemos hacer visible o no dependiendo de donde estemos.
 
     public TalleresVU()
     {
@@ -72,6 +76,26 @@ namespace Vistas
       }
     }
 
+    private void ingresarATaller_Click(object sender, EventArgs e)
+    {
+      if (OnAlumnoIngresarTaller != null)
+      {
+        if (listTalleresInscritos.SelectedIndex > -1 && !listTalleresInscritos.SelectedItem.Equals("No existen talleres inscritos por el alumno"))
+        {
+          logInArgs.taller = listTalleresInscritos.SelectedItem as Taller;
+          OnAlumnoIngresarTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void volverPanel1_Click(object sender, EventArgs e)
+    {
+      if (OnVolverMenuAlumno != null)
+      {
+        OnVolverMenuAlumno(this, logInArgs);
+      }
+    }
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
     //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
@@ -80,12 +104,13 @@ namespace Vistas
     {
       panels.Add("Login",loginpanel);
       panels.Add("StudentMenu",StudentMenu);
+      panels.Add("StudentWsMenu", studentWSMenu);
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
 
     }
-
+    
     public void ActualizarTalleresDisponibles(Taller taller, bool borrar)
     {
       if (borrar)
@@ -117,7 +142,7 @@ namespace Vistas
         else
           listTalleresInscritos.Items.Remove(taller);
       else
-      if (listTalleresInscritos.Items[0].Equals("No existen talleres inscritos por el alumno"))
+      if (listTalleresInscritos.Items.Count > 0 && listTalleresInscritos.Items[0].Equals("No existen talleres inscritos por el alumno"))
       {
         listTalleresInscritos.Items.Add(taller);
         listTalleresInscritos.Items.RemoveAt(0);
@@ -131,7 +156,51 @@ namespace Vistas
       listTalleresInscritos.Items.Add("No existen talleres inscritos por el alumno");
     }
 
-    
+    public void ActualizarPerfilTaller(Taller ws)
+    {
+      string schedule = "";
+      nombreTaller.Text = ws.nombre;
+      foreach (String day in ws.GetHorario().Keys)
+        for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+          if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
+      horarioTaller.Text = schedule;
+      cuposTaller.Text = ws.GetCuposDisponibles().ToString();
+      numeroForos.Text = ws.GetForos().Count.ToString();
+      listForosTaller.Items.Clear();
+      listForosForoMenu.Items.Clear();
+      foreach (Foro foro in ws.GetForos())
+      {
+        listForosTaller.Items.Add(foro.tema);
+        listForosForoMenu.Items.Add(foro.tema);
+      }
+    }
+
+
+
+
+
+    //Metodos para confirmar cierre
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+      close_Click();
+      CloseCancel(e);
+    }
+    private void close_Click()
+    {
+      OnClosingApp(this, logInArgs);
+    }
+
+    private void CloseCancel(FormClosingEventArgs e)
+    {
+      if (MessageBox.Show("Are you sure you want to close?", "Close", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
+        e.Cancel = true;
+    }
+
+
+
+
+
+
 
     //--> ir a LoginEventArgs
   }
