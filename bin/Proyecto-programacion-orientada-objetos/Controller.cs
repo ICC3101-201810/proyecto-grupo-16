@@ -39,6 +39,8 @@ namespace Vistas
       this.vistas = vistas;
       logInView = (TalleresVU)vistas["Login"];
       logInView.OnLogIn += VistaLogIn_OnLogIn; //Se suscribe el metodo al evento OnLogIn
+      logInView.OnAlumnoInscribirTaller += VistaInscribirTaller_OnAlumnoInscribirTaller;
+
       if (!LoadData())
       {
         InicializaUsuariosIniciales();
@@ -60,8 +62,18 @@ namespace Vistas
         MessageBox.Show("Bienvenido! " + GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
         if (GetUser(credenciales).GetType() == typeof(Alumno))
         {
-          foreach (Taller ws in GetTalleresDisponibles((Alumno)GetUser(credenciales)).Keys)
-            logInView.ActualizarTalleresDisponibles(ws);
+          Alumno student = (Alumno)GetUser(credenciales);
+          if (GetTalleresDisponibles(student).Count > 0)
+            foreach (Taller ws in GetTalleresDisponibles(student).Keys)
+              logInView.ActualizarTalleresDisponibles(ws, false);
+          else
+            logInView.NoHayTalleresDisponbles();
+          if (student.GetTalleres().Count > 0)
+            foreach (Taller ws in student.GetTalleres())
+              logInView.ActualizarTalleresInscritos(ws);
+          else
+            logInView.NoHayTalleresInscritos();
+
           e.panels["Login"].Visible = false;
           e.panels["StudentMenu"].Visible = true;
         }
@@ -74,11 +86,14 @@ namespace Vistas
       Taller ws = e.taller;
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
-      logInView.ActualizarTalleresDisponibles(ws);
+      logInView.ActualizarTalleresDisponibles(ws, true);
+      logInView.ActualizarTalleresInscritos(ws);
     }
 
     //Metodos
 
+
+    //Inscribir al alumno en taller
     private bool InscribirAlumno(Alumno alumno, Taller taller)
     {
       if (taller.Inscribible())
@@ -93,6 +108,8 @@ namespace Vistas
       return false;
     }
 
+
+    //Revisar los talleres disponibles para el alumno segun su horario
     public Dictionary<Taller, List<String>> GetTalleresDisponibles(Alumno alumno)
     {
       Dictionary<Taller, List<String>> disponibles = new Dictionary<Taller, List<String>>();

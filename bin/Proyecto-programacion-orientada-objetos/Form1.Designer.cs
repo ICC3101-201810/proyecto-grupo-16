@@ -172,10 +172,12 @@
       // 
       // listTalleresInscritos
       // 
+      this.listTalleresInscritos.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.listTalleresInscritos.FormattingEnabled = true;
+      this.listTalleresInscritos.ItemHeight = 15;
       this.listTalleresInscritos.Location = new System.Drawing.Point(11, 44);
       this.listTalleresInscritos.Name = "listTalleresInscritos";
-      this.listTalleresInscritos.Size = new System.Drawing.Size(342, 134);
+      this.listTalleresInscritos.Size = new System.Drawing.Size(606, 124);
       this.listTalleresInscritos.TabIndex = 4;
       // 
       // tabPage2

@@ -18,6 +18,7 @@ namespace Vistas
 
     public event EventHandler<LogInEventArgs> OnAlumnoInscribirTaller;
 
+    LogInEventArgs logInArgs = new LogInEventArgs();
 
     Dictionary<String,Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
 
@@ -36,7 +37,6 @@ namespace Vistas
       //Entonces se pasan los valores de la forma y el controlador verifica si cumple los requisitos. Igual cuando interfaz pasaba lo que ingresaba el usuario a Sistema!
       if (OnLogIn != null)
       {
-        LogInEventArgs logInArgs = new LogInEventArgs();
         logInArgs.credenciales = new List<string>();
         logInArgs.credenciales.Add(this.nametxtbox.Text); 
         logInArgs.credenciales.Add(this.pwdtxtbox.Text);
@@ -58,18 +58,39 @@ namespace Vistas
 
     }
 
-    public void ActualizarTalleresDisponibles(Taller taller)
+    public void ActualizarTalleresDisponibles(Taller taller, bool borrar)
     {
-      listTalleresDisponibles.Items.Add(taller);
+      if (borrar)
+        listTalleresDisponibles.Items.Remove(taller);
+      else
+        listTalleresDisponibles.Items.Add(taller);
+    }
+
+    public void NoHayTalleresDisponbles()
+    {
+      listTalleresDisponibles.Items.Add("No existen talleres disponibles en el horario del alumno");
+    }
+
+
+    public void ActualizarTalleresInscritos(Taller taller)
+    {
+      if (listTalleresInscritos.Items[0].Equals("No existen talleres inscritos por el alumno"))
+        listTalleresInscritos.Items[0] = taller.ToString();
+      else
+        listTalleresInscritos.Items.Add(taller);
+    }
+
+    public void NoHayTalleresInscritos()
+    {
+      listTalleresInscritos.Items.Add("No existen talleres inscritos por el alumno");
     }
 
     private void incribirT_Click(object sender, EventArgs e)
     {
       if (OnAlumnoInscribirTaller != null)
       {
-        LogInEventArgs inscribirTallerEventArgs = new LogInEventArgs();
-        inscribirTallerEventArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
-        OnAlumnoInscribirTaller(this, inscribirTallerEventArgs);
+        logInArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
+        OnAlumnoInscribirTaller(this, logInArgs);
       }
     }
 
