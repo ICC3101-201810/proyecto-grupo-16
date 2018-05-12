@@ -26,5 +26,20 @@ namespace Vistas
     public Sala salaTaller { get; set; }
     public Dictionary<String, List<Boolean>> horarioTaller { get; set; }
 
+    //Argumentos para crear alumno
+    public String rutAlumno { get; set; }
+    public String nombreAlumno { get; set; }
+    public String apellidoAlumno { get; set; }
+    public String mailAlumno { get; set; }
+    public String telefonoAlumno { get; set; }
+    public String passwordAlumno { get; set; }
+    public Dictionary<String, List<Boolean>> horarioAlumno { get; set; }
+
+    //Argumentos para tab alumno admin
+    public Alumno student { get; set; }
+
+
+    //
+
   }
 }

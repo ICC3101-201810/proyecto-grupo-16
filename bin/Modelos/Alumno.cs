@@ -57,7 +57,9 @@ namespace Modelos
       talleresInscritos.RemoveAll(x => x.nombre == taller.nombre);
       return true;
     }
-    //public override string GetNombre()
-    //    { return nombre; }
+    public override string ToString()
+    { 
+      return rut+": "+nombre+ " " + apellido;
+    }
   }
 }

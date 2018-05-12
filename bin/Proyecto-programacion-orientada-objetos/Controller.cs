@@ -51,8 +51,8 @@ namespace Vistas
       logInView.OnAlumnoEliminarMensaje += VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje;
       logInView.OnAdminEliminarTaller += VistaAdminEliminarTaller_OnAdminEliminarTaller;
       logInView.OnAdminCrearTaller += VistaAdminCrearTaller_OnAdminCrearTaller;
-
-
+      logInView.OnAdminEliminarAlumno += VistaAdminEliminarAlumno_OnAdminEliminarAlumno;
+      logInView.OnAdminCrearAlumno += VistaAdminCrearAlumno_OnAdminCrearAlumno;
 
 
       if (!LoadData())
@@ -98,6 +98,8 @@ namespace Vistas
             logInView.ActualizarTalleresAdmin(ws, false);
           foreach (Sala sala in salas)
             logInView.ActualizarAdminTallerSalas(sala, false);
+          foreach (Alumno alumno in alumnos)
+            logInView.ActualizarAlumnosAdmin(alumno, false);
           e.panels["Login"].Visible = false;
           e.panels["AdminMenu"].Visible = true;
         }
@@ -199,11 +201,24 @@ namespace Vistas
     }
     private void VistaAdminCrearTaller_OnAdminCrearTaller(object sender, LogInEventArgs e)
     {
-      MessageBox.Show("Test");
       Taller ws = new Taller(e.nombreTaller, e.cuposTaller, e.precioTaller, e.horarioTaller, e.salaTaller, new Categoria());
       logInView.ActualizarTalleresAdmin(ws, false);
       logInView.AdminLimpiarCrearTaller();
     }
+    private void VistaAdminEliminarAlumno_OnAdminEliminarAlumno(object sender, LogInEventArgs e)
+    {
+      Alumno alumno = e.student;
+      AdminEliminarAlumno(alumno);
+      logInView.ActualizarAlumnosAdmin(alumno, true);
+    }
+    private void VistaAdminCrearAlumno_OnAdminCrearAlumno(object sender, LogInEventArgs e)
+    {
+      Alumno alumno = new Alumno(e.rutAlumno, e.nombreAlumno, e.apellidoAlumno, e.mailAlumno, e.telefonoAlumno, e.passwordAlumno, e.horarioAlumno);
+      logInView.ActualizarAlumnosAdmin(alumno, false);
+      logInView.AdminLimpiarCrearAlumno();
+    }
+
+
 
     //Grabar los datos antes de cerrar
     private void SaveDataBeforeClosing_OnClosingApp(object sender, LogInEventArgs e)
@@ -278,6 +293,11 @@ namespace Vistas
     public void AdminEliminarTaller(Taller taller)
     {
       talleres.Remove(taller);
+    }
+    //Metodos admin
+    public void AdminEliminarAlumno(Alumno alumno)
+    {
+      alumnos.Remove(alumno);
     }
 
 

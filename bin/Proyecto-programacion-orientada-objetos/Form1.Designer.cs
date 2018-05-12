@@ -85,6 +85,8 @@
       this.label20 = new System.Windows.Forms.Label();
       this.adminEliminarTaller = new System.Windows.Forms.Button();
       this.groupBox4 = new System.Windows.Forms.GroupBox();
+      this.adminPrecioTaller = new System.Windows.Forms.NumericUpDown();
+      this.adminCuposTaller = new System.Windows.Forms.NumericUpDown();
       this.groupBox7 = new System.Windows.Forms.GroupBox();
       this.label28 = new System.Windows.Forms.Label();
       this.horarioViernes = new System.Windows.Forms.CheckedListBox();
@@ -107,21 +109,27 @@
       this.adminListTalleres = new System.Windows.Forms.ListBox();
       this.tabPage6 = new System.Windows.Forms.TabPage();
       this.groupBox5 = new System.Windows.Forms.GroupBox();
-      this.label24 = new System.Windows.Forms.Label();
-      this.button3 = new System.Windows.Forms.Button();
-      this.groupBox6 = new System.Windows.Forms.GroupBox();
-      this.textBox2 = new System.Windows.Forms.TextBox();
-      this.button4 = new System.Windows.Forms.Button();
-      this.button5 = new System.Windows.Forms.Button();
-      this.listBox2 = new System.Windows.Forms.ListBox();
+      this.label34 = new System.Windows.Forms.Label();
+      this.adminTelefonoAlumno = new System.Windows.Forms.TextBox();
+      this.label33 = new System.Windows.Forms.Label();
+      this.adminPasswordAlumno = new System.Windows.Forms.TextBox();
+      this.label32 = new System.Windows.Forms.Label();
+      this.adminMailAlumno = new System.Windows.Forms.TextBox();
       this.label25 = new System.Windows.Forms.Label();
-      this.button6 = new System.Windows.Forms.Button();
+      this.adminApellidoAlumno = new System.Windows.Forms.TextBox();
+      this.label24 = new System.Windows.Forms.Label();
+      this.adminNombreAlumno = new System.Windows.Forms.TextBox();
+      this.adminCrearAlumno = new System.Windows.Forms.Button();
+      this.label38 = new System.Windows.Forms.Label();
+      this.adminRutAlumno = new System.Windows.Forms.TextBox();
+      this.groupBox9 = new System.Windows.Forms.GroupBox();
+      this.label30 = new System.Windows.Forms.Label();
+      this.label31 = new System.Windows.Forms.Label();
+      this.adminEliminarAlumno = new System.Windows.Forms.Button();
       this.label26 = new System.Windows.Forms.Label();
-      this.listBox3 = new System.Windows.Forms.ListBox();
+      this.adminListAlumnos = new System.Windows.Forms.ListBox();
       this.tabPage7 = new System.Windows.Forms.TabPage();
       this.tabPage8 = new System.Windows.Forms.TabPage();
-      this.adminCuposTaller = new System.Windows.Forms.NumericUpDown();
-      this.adminPrecioTaller = new System.Windows.Forms.NumericUpDown();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -139,12 +147,12 @@
       this.tabPage5.SuspendLayout();
       this.groupBox8.SuspendLayout();
       this.groupBox4.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.adminPrecioTaller)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.adminCuposTaller)).BeginInit();
       this.groupBox7.SuspendLayout();
       this.tabPage6.SuspendLayout();
       this.groupBox5.SuspendLayout();
-      this.groupBox6.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.adminCuposTaller)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.adminPrecioTaller)).BeginInit();
+      this.groupBox9.SuspendLayout();
       this.SuspendLayout();
       // 
       // nametxtbox
@@ -768,6 +776,22 @@
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Crear Taller";
       // 
+      // adminPrecioTaller
+      // 
+      this.adminPrecioTaller.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminPrecioTaller.Location = new System.Drawing.Point(19, 170);
+      this.adminPrecioTaller.Name = "adminPrecioTaller";
+      this.adminPrecioTaller.Size = new System.Drawing.Size(271, 23);
+      this.adminPrecioTaller.TabIndex = 45;
+      // 
+      // adminCuposTaller
+      // 
+      this.adminCuposTaller.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCuposTaller.Location = new System.Drawing.Point(19, 114);
+      this.adminCuposTaller.Name = "adminCuposTaller";
+      this.adminCuposTaller.Size = new System.Drawing.Size(271, 23);
+      this.adminCuposTaller.TabIndex = 44;
+      // 
       // groupBox7
       // 
       this.groupBox7.Controls.Add(this.label28);
@@ -1003,13 +1027,9 @@
       // tabPage6
       // 
       this.tabPage6.Controls.Add(this.groupBox5);
-      this.tabPage6.Controls.Add(this.groupBox6);
-      this.tabPage6.Controls.Add(this.button5);
-      this.tabPage6.Controls.Add(this.listBox2);
-      this.tabPage6.Controls.Add(this.label25);
-      this.tabPage6.Controls.Add(this.button6);
+      this.tabPage6.Controls.Add(this.groupBox9);
       this.tabPage6.Controls.Add(this.label26);
-      this.tabPage6.Controls.Add(this.listBox3);
+      this.tabPage6.Controls.Add(this.adminListAlumnos);
       this.tabPage6.Location = new System.Drawing.Point(4, 22);
       this.tabPage6.Name = "tabPage6";
       this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -1020,105 +1040,189 @@
       // 
       // groupBox5
       // 
+      this.groupBox5.Controls.Add(this.label34);
+      this.groupBox5.Controls.Add(this.adminTelefonoAlumno);
+      this.groupBox5.Controls.Add(this.label33);
+      this.groupBox5.Controls.Add(this.adminPasswordAlumno);
+      this.groupBox5.Controls.Add(this.label32);
+      this.groupBox5.Controls.Add(this.adminMailAlumno);
+      this.groupBox5.Controls.Add(this.label25);
+      this.groupBox5.Controls.Add(this.adminApellidoAlumno);
       this.groupBox5.Controls.Add(this.label24);
-      this.groupBox5.Controls.Add(this.button3);
-      this.groupBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox5.Location = new System.Drawing.Point(11, 516);
+      this.groupBox5.Controls.Add(this.adminNombreAlumno);
+      this.groupBox5.Controls.Add(this.adminCrearAlumno);
+      this.groupBox5.Controls.Add(this.label38);
+      this.groupBox5.Controls.Add(this.adminRutAlumno);
+      this.groupBox5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox5.Location = new System.Drawing.Point(11, 289);
       this.groupBox5.Name = "groupBox5";
-      this.groupBox5.Size = new System.Drawing.Size(829, 89);
-      this.groupBox5.TabIndex = 25;
+      this.groupBox5.Size = new System.Drawing.Size(805, 303);
+      this.groupBox5.TabIndex = 45;
       this.groupBox5.TabStop = false;
-      this.groupBox5.Text = "Eliminar Mensaje";
+      this.groupBox5.Text = "Crear Alumno";
       // 
-      // label24
+      // label34
       // 
-      this.label24.AutoSize = true;
-      this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label24.Location = new System.Drawing.Point(8, 19);
-      this.label24.Name = "label24";
-      this.label24.Size = new System.Drawing.Size(419, 15);
-      this.label24.TabIndex = 16;
-      this.label24.Text = "Primero seleccionar el mensaje de la lista y luego pulsar Eliminar Mensaje";
+      this.label34.AutoSize = true;
+      this.label34.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label34.Location = new System.Drawing.Point(15, 194);
+      this.label34.Name = "label34";
+      this.label34.Size = new System.Drawing.Size(65, 19);
+      this.label34.TabIndex = 55;
+      this.label34.Text = "Telefono";
       // 
-      // button3
+      // adminTelefonoAlumno
       // 
-      this.button3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button3.Location = new System.Drawing.Point(6, 46);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(206, 37);
-      this.button3.TabIndex = 15;
-      this.button3.Text = "Eliminar Mensaje";
-      this.button3.UseVisualStyleBackColor = true;
+      this.adminTelefonoAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminTelefonoAlumno.Location = new System.Drawing.Point(19, 216);
+      this.adminTelefonoAlumno.Name = "adminTelefonoAlumno";
+      this.adminTelefonoAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminTelefonoAlumno.TabIndex = 54;
       // 
-      // groupBox6
+      // label33
       // 
-      this.groupBox6.Controls.Add(this.textBox2);
-      this.groupBox6.Controls.Add(this.button4);
-      this.groupBox6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox6.Location = new System.Drawing.Point(11, 398);
-      this.groupBox6.Name = "groupBox6";
-      this.groupBox6.Size = new System.Drawing.Size(829, 111);
-      this.groupBox6.TabIndex = 24;
-      this.groupBox6.TabStop = false;
-      this.groupBox6.Text = "Agregar Mensaje";
+      this.label33.AutoSize = true;
+      this.label33.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label33.Location = new System.Drawing.Point(316, 133);
+      this.label33.Name = "label33";
+      this.label33.Size = new System.Drawing.Size(83, 19);
+      this.label33.TabIndex = 53;
+      this.label33.Text = "Contraseña";
       // 
-      // textBox2
+      // adminPasswordAlumno
       // 
-      this.textBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox2.Location = new System.Drawing.Point(6, 29);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(812, 23);
-      this.textBox2.TabIndex = 23;
+      this.adminPasswordAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminPasswordAlumno.Location = new System.Drawing.Point(320, 155);
+      this.adminPasswordAlumno.Name = "adminPasswordAlumno";
+      this.adminPasswordAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminPasswordAlumno.TabIndex = 52;
       // 
-      // button4
+      // label32
       // 
-      this.button4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button4.Location = new System.Drawing.Point(6, 58);
-      this.button4.Name = "button4";
-      this.button4.Size = new System.Drawing.Size(206, 37);
-      this.button4.TabIndex = 13;
-      this.button4.Text = "Agregar Mensaje";
-      this.button4.UseVisualStyleBackColor = true;
+      this.label32.AutoSize = true;
+      this.label32.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label32.Location = new System.Drawing.Point(15, 133);
+      this.label32.Name = "label32";
+      this.label32.Size = new System.Drawing.Size(38, 19);
+      this.label32.TabIndex = 51;
+      this.label32.Text = "Mail";
       // 
-      // button5
+      // adminMailAlumno
       // 
-      this.button5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button5.Location = new System.Drawing.Point(623, 91);
-      this.button5.Name = "button5";
-      this.button5.Size = new System.Drawing.Size(206, 37);
-      this.button5.TabIndex = 16;
-      this.button5.Text = "Salir de Foro";
-      this.button5.UseVisualStyleBackColor = true;
-      // 
-      // listBox2
-      // 
-      this.listBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.listBox2.FormattingEnabled = true;
-      this.listBox2.ItemHeight = 15;
-      this.listBox2.Location = new System.Drawing.Point(11, 177);
-      this.listBox2.Name = "listBox2";
-      this.listBox2.Size = new System.Drawing.Size(829, 214);
-      this.listBox2.TabIndex = 14;
+      this.adminMailAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminMailAlumno.Location = new System.Drawing.Point(19, 155);
+      this.adminMailAlumno.Name = "adminMailAlumno";
+      this.adminMailAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminMailAlumno.TabIndex = 50;
       // 
       // label25
       // 
       this.label25.AutoSize = true;
-      this.label25.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label25.Location = new System.Drawing.Point(6, 142);
+      this.label25.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label25.Location = new System.Drawing.Point(316, 74);
       this.label25.Name = "label25";
-      this.label25.Size = new System.Drawing.Size(107, 29);
-      this.label25.TabIndex = 12;
-      this.label25.Text = "Mensajes";
+      this.label25.Size = new System.Drawing.Size(62, 19);
+      this.label25.TabIndex = 49;
+      this.label25.Text = "Apellido";
       // 
-      // button6
+      // adminApellidoAlumno
       // 
-      this.button6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.button6.Location = new System.Drawing.Point(623, 48);
-      this.button6.Name = "button6";
-      this.button6.Size = new System.Drawing.Size(206, 37);
-      this.button6.TabIndex = 10;
-      this.button6.Text = "Ingresar a Foro";
-      this.button6.UseVisualStyleBackColor = true;
+      this.adminApellidoAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminApellidoAlumno.Location = new System.Drawing.Point(320, 96);
+      this.adminApellidoAlumno.Name = "adminApellidoAlumno";
+      this.adminApellidoAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminApellidoAlumno.TabIndex = 48;
+      // 
+      // label24
+      // 
+      this.label24.AutoSize = true;
+      this.label24.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label24.Location = new System.Drawing.Point(15, 74);
+      this.label24.Name = "label24";
+      this.label24.Size = new System.Drawing.Size(60, 19);
+      this.label24.TabIndex = 47;
+      this.label24.Text = "Nombre";
+      // 
+      // adminNombreAlumno
+      // 
+      this.adminNombreAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminNombreAlumno.Location = new System.Drawing.Point(19, 96);
+      this.adminNombreAlumno.Name = "adminNombreAlumno";
+      this.adminNombreAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminNombreAlumno.TabIndex = 46;
+      // 
+      // adminCrearAlumno
+      // 
+      this.adminCrearAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearAlumno.Location = new System.Drawing.Point(19, 250);
+      this.adminCrearAlumno.Name = "adminCrearAlumno";
+      this.adminCrearAlumno.Size = new System.Drawing.Size(183, 37);
+      this.adminCrearAlumno.TabIndex = 20;
+      this.adminCrearAlumno.Text = "Crear Alumno";
+      this.adminCrearAlumno.UseVisualStyleBackColor = true;
+      this.adminCrearAlumno.Click += new System.EventHandler(this.adminCrearAlumno_Click);
+      // 
+      // label38
+      // 
+      this.label38.AutoSize = true;
+      this.label38.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label38.Location = new System.Drawing.Point(15, 26);
+      this.label38.Name = "label38";
+      this.label38.Size = new System.Drawing.Size(31, 19);
+      this.label38.TabIndex = 23;
+      this.label38.Text = "Rut";
+      // 
+      // adminRutAlumno
+      // 
+      this.adminRutAlumno.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminRutAlumno.Location = new System.Drawing.Point(19, 48);
+      this.adminRutAlumno.Name = "adminRutAlumno";
+      this.adminRutAlumno.Size = new System.Drawing.Size(272, 23);
+      this.adminRutAlumno.TabIndex = 22;
+      // 
+      // groupBox9
+      // 
+      this.groupBox9.Controls.Add(this.label30);
+      this.groupBox9.Controls.Add(this.label31);
+      this.groupBox9.Controls.Add(this.adminEliminarAlumno);
+      this.groupBox9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox9.Location = new System.Drawing.Point(616, 47);
+      this.groupBox9.Name = "groupBox9";
+      this.groupBox9.Size = new System.Drawing.Size(200, 154);
+      this.groupBox9.TabIndex = 44;
+      this.groupBox9.TabStop = false;
+      this.groupBox9.Text = "Eliminar Alumno";
+      // 
+      // label30
+      // 
+      this.label30.AutoSize = true;
+      this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label30.Location = new System.Drawing.Point(6, 48);
+      this.label30.Name = "label30";
+      this.label30.Size = new System.Drawing.Size(147, 15);
+      this.label30.TabIndex = 44;
+      this.label30.Text = "presionar Eliminar Taller.";
+      // 
+      // label31
+      // 
+      this.label31.AutoSize = true;
+      this.label31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label31.Location = new System.Drawing.Point(6, 26);
+      this.label31.Name = "label31";
+      this.label31.Size = new System.Drawing.Size(175, 15);
+      this.label31.TabIndex = 43;
+      this.label31.Text = "Seleccionar un alumno y luego";
+      // 
+      // adminEliminarAlumno
+      // 
+      this.adminEliminarAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarAlumno.Location = new System.Drawing.Point(9, 81);
+      this.adminEliminarAlumno.Name = "adminEliminarAlumno";
+      this.adminEliminarAlumno.Size = new System.Drawing.Size(183, 37);
+      this.adminEliminarAlumno.TabIndex = 42;
+      this.adminEliminarAlumno.Text = "Eliminar Alumno";
+      this.adminEliminarAlumno.UseVisualStyleBackColor = true;
+      this.adminEliminarAlumno.Click += new System.EventHandler(this.adminEliminarAlumno_Click);
       // 
       // label26
       // 
@@ -1126,19 +1230,19 @@
       this.label26.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label26.Location = new System.Drawing.Point(6, 16);
       this.label26.Name = "label26";
-      this.label26.Size = new System.Drawing.Size(67, 29);
+      this.label26.Size = new System.Drawing.Size(100, 29);
       this.label26.TabIndex = 3;
-      this.label26.Text = "Foros";
+      this.label26.Text = "Alumnos";
       // 
-      // listBox3
+      // adminListAlumnos
       // 
-      this.listBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.listBox3.FormattingEnabled = true;
-      this.listBox3.ItemHeight = 15;
-      this.listBox3.Location = new System.Drawing.Point(11, 48);
-      this.listBox3.Name = "listBox3";
-      this.listBox3.Size = new System.Drawing.Size(585, 79);
-      this.listBox3.TabIndex = 2;
+      this.adminListAlumnos.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminListAlumnos.FormattingEnabled = true;
+      this.adminListAlumnos.ItemHeight = 15;
+      this.adminListAlumnos.Location = new System.Drawing.Point(11, 48);
+      this.adminListAlumnos.Name = "adminListAlumnos";
+      this.adminListAlumnos.Size = new System.Drawing.Size(585, 229);
+      this.adminListAlumnos.TabIndex = 2;
       // 
       // tabPage7
       // 
@@ -1159,28 +1263,12 @@
       this.tabPage8.Text = "Salas";
       this.tabPage8.UseVisualStyleBackColor = true;
       // 
-      // adminCuposTaller
-      // 
-      this.adminCuposTaller.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.adminCuposTaller.Location = new System.Drawing.Point(19, 114);
-      this.adminCuposTaller.Name = "adminCuposTaller";
-      this.adminCuposTaller.Size = new System.Drawing.Size(271, 23);
-      this.adminCuposTaller.TabIndex = 44;
-      // 
-      // adminPrecioTaller
-      // 
-      this.adminPrecioTaller.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.adminPrecioTaller.Location = new System.Drawing.Point(19, 170);
-      this.adminPrecioTaller.Name = "adminPrecioTaller";
-      this.adminPrecioTaller.Size = new System.Drawing.Size(271, 23);
-      this.adminPrecioTaller.TabIndex = 45;
-      // 
       // TalleresVU
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(1942, 674);
+      this.ClientSize = new System.Drawing.Size(1924, 674);
       this.Controls.Add(this.MenuAdmin);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
@@ -1217,16 +1305,16 @@
       this.groupBox8.PerformLayout();
       this.groupBox4.ResumeLayout(false);
       this.groupBox4.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.adminPrecioTaller)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.adminCuposTaller)).EndInit();
       this.groupBox7.ResumeLayout(false);
       this.groupBox7.PerformLayout();
       this.tabPage6.ResumeLayout(false);
       this.tabPage6.PerformLayout();
       this.groupBox5.ResumeLayout(false);
       this.groupBox5.PerformLayout();
-      this.groupBox6.ResumeLayout(false);
-      this.groupBox6.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.adminCuposTaller)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.adminPrecioTaller)).EndInit();
+      this.groupBox9.ResumeLayout(false);
+      this.groupBox9.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -1291,18 +1379,8 @@
     private System.Windows.Forms.Button adminCrearTaller;
     private System.Windows.Forms.ListBox adminListTalleres;
     private System.Windows.Forms.TabPage tabPage6;
-    private System.Windows.Forms.GroupBox groupBox5;
-    private System.Windows.Forms.Label label24;
-    private System.Windows.Forms.Button button3;
-    private System.Windows.Forms.GroupBox groupBox6;
-    private System.Windows.Forms.TextBox textBox2;
-    private System.Windows.Forms.Button button4;
-    private System.Windows.Forms.Button button5;
-    private System.Windows.Forms.ListBox listBox2;
-    private System.Windows.Forms.Label label25;
-    private System.Windows.Forms.Button button6;
     private System.Windows.Forms.Label label26;
-    private System.Windows.Forms.ListBox listBox3;
+    private System.Windows.Forms.ListBox adminListAlumnos;
     private System.Windows.Forms.TabPage tabPage7;
     private System.Windows.Forms.TabPage tabPage8;
     private System.Windows.Forms.Label label19;
@@ -1326,6 +1404,24 @@
     private System.Windows.Forms.CheckedListBox horarioLunes;
     private System.Windows.Forms.NumericUpDown adminPrecioTaller;
     private System.Windows.Forms.NumericUpDown adminCuposTaller;
+    private System.Windows.Forms.GroupBox groupBox5;
+    private System.Windows.Forms.Button adminCrearAlumno;
+    private System.Windows.Forms.Label label38;
+    private System.Windows.Forms.TextBox adminRutAlumno;
+    private System.Windows.Forms.GroupBox groupBox9;
+    private System.Windows.Forms.Label label30;
+    private System.Windows.Forms.Label label31;
+    private System.Windows.Forms.Button adminEliminarAlumno;
+    private System.Windows.Forms.Label label24;
+    private System.Windows.Forms.TextBox adminNombreAlumno;
+    private System.Windows.Forms.Label label25;
+    private System.Windows.Forms.TextBox adminApellidoAlumno;
+    private System.Windows.Forms.Label label32;
+    private System.Windows.Forms.TextBox adminMailAlumno;
+    private System.Windows.Forms.Label label33;
+    private System.Windows.Forms.TextBox adminPasswordAlumno;
+    private System.Windows.Forms.Label label34;
+    private System.Windows.Forms.TextBox adminTelefonoAlumno;
   }
 }
 
