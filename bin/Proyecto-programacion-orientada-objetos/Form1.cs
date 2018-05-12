@@ -325,6 +325,7 @@ namespace Vistas
       panels.Add("StudentMenu",StudentMenu);
       panels.Add("StudentWsMenu", studentWSMenu);
       panels.Add("AdminMenu", MenuAdmin);
+      panels.Add("ProfesorMenu", MenuProfesor);
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
@@ -595,6 +596,29 @@ namespace Vistas
       adminNombreSala.Clear();
     }
 
+
+    //Vista Profesor
+    public void ActualizarTalleresProfesor(Taller taller, bool borrar)
+    {
+      if (borrar)
+        if (profesorTalleresDict.Items.Count == 1)
+          profesorTalleresDict.Items[0] = "No existen talleres inscritos por el profesor";
+        else
+          profesorTalleresDict.Items.Remove(taller);
+      else
+      if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals("No existen talleres inscritos por el profesor"))
+      {
+        profesorTalleresDict.Items.Add(taller);
+        profesorTalleresDict.Items.RemoveAt(0);
+      }
+      else
+        profesorTalleresDict.Items.Add(taller);
+    }
+
+    public void NoHayTalleresProfesor()
+    {
+      profesorTalleresDict.Items.Add("No existen talleres inscritos por el profesor");
+    }
 
 
     //Metodo para simular horarios banner

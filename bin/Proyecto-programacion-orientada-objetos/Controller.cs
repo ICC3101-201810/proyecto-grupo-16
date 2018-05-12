@@ -121,8 +121,19 @@ namespace Vistas
           e.panels["Login"].Visible = false;
           e.panels["AdminMenu"].Visible = true;
         }
-          
-        else MessageBox.Show("Under development");
+
+        else
+        {
+          Profesor profesor = (Profesor)GetUser(credenciales);
+          if (profesor.GetTalleres().Count > 0)
+            foreach (Taller ws in profesor.GetTalleres())
+              logInView.ActualizarTalleresProfesor(ws, false);
+          else
+            logInView.NoHayTalleresProfesor();
+
+          e.panels["Login"].Visible = false;
+          e.panels["ProfesorMenu"].Visible = true;
+        }
       }
     }
 

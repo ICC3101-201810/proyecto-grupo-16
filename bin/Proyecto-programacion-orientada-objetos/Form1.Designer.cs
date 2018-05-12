@@ -160,6 +160,50 @@
       this.adminEliminarSala = new System.Windows.Forms.Button();
       this.label53 = new System.Windows.Forms.Label();
       this.adminListSalasTab = new System.Windows.Forms.ListBox();
+      this.MenuProfesor = new System.Windows.Forms.Panel();
+      this.tabControl3 = new System.Windows.Forms.TabControl();
+      this.tabPage9 = new System.Windows.Forms.TabPage();
+      this.groupBox13 = new System.Windows.Forms.GroupBox();
+      this.label45 = new System.Windows.Forms.Label();
+      this.label46 = new System.Windows.Forms.Label();
+      this.profesorEliminarTaller = new System.Windows.Forms.Button();
+      this.label60 = new System.Windows.Forms.Label();
+      this.profesorTalleresDict = new System.Windows.Forms.ListBox();
+      this.label83 = new System.Windows.Forms.Label();
+      this.button4 = new System.Windows.Forms.Button();
+      this.label68 = new System.Windows.Forms.Label();
+      this.label67 = new System.Windows.Forms.Label();
+      this.button6 = new System.Windows.Forms.Button();
+      this.label77 = new System.Windows.Forms.Label();
+      this.label76 = new System.Windows.Forms.Label();
+      this.textBox13 = new System.Windows.Forms.TextBox();
+      this.label75 = new System.Windows.Forms.Label();
+      this.button5 = new System.Windows.Forms.Button();
+      this.textBox12 = new System.Windows.Forms.TextBox();
+      this.label74 = new System.Windows.Forms.Label();
+      this.textBox11 = new System.Windows.Forms.TextBox();
+      this.label73 = new System.Windows.Forms.Label();
+      this.textBox10 = new System.Windows.Forms.TextBox();
+      this.label72 = new System.Windows.Forms.Label();
+      this.textBox9 = new System.Windows.Forms.TextBox();
+      this.label71 = new System.Windows.Forms.Label();
+      this.textBox8 = new System.Windows.Forms.TextBox();
+      this.label70 = new System.Windows.Forms.Label();
+      this.button8 = new System.Windows.Forms.Button();
+      this.label81 = new System.Windows.Forms.Label();
+      this.label80 = new System.Windows.Forms.Label();
+      this.textBox14 = new System.Windows.Forms.TextBox();
+      this.label79 = new System.Windows.Forms.Label();
+      this.button7 = new System.Windows.Forms.Button();
+      this.groupBox14 = new System.Windows.Forms.GroupBox();
+      this.label47 = new System.Windows.Forms.Label();
+      this.profesorEliminarMensaje = new System.Windows.Forms.Button();
+      this.groupBox15 = new System.Windows.Forms.GroupBox();
+      this.profesorAgregarMensajeText = new System.Windows.Forms.TextBox();
+      this.profesorAgregarMensaje = new System.Windows.Forms.Button();
+      this.profesorListMensajes = new System.Windows.Forms.ListBox();
+      this.label48 = new System.Windows.Forms.Label();
+      this.profesorIngresarForo = new System.Windows.Forms.Button();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -189,6 +233,12 @@
       this.groupBox10.SuspendLayout();
       this.groupBox11.SuspendLayout();
       this.groupBox12.SuspendLayout();
+      this.MenuProfesor.SuspendLayout();
+      this.tabControl3.SuspendLayout();
+      this.tabPage9.SuspendLayout();
+      this.groupBox13.SuspendLayout();
+      this.groupBox14.SuspendLayout();
+      this.groupBox15.SuspendLayout();
       this.SuspendLayout();
       // 
       // nametxtbox
@@ -1619,12 +1669,437 @@
       this.adminListSalasTab.Size = new System.Drawing.Size(585, 349);
       this.adminListSalasTab.TabIndex = 50;
       // 
+      // MenuProfesor
+      // 
+      this.MenuProfesor.Controls.Add(this.tabControl3);
+      this.MenuProfesor.Location = new System.Drawing.Point(3, 1);
+      this.MenuProfesor.Name = "MenuProfesor";
+      this.MenuProfesor.Size = new System.Drawing.Size(895, 653);
+      this.MenuProfesor.TabIndex = 29;
+      // 
+      // tabControl3
+      // 
+      this.tabControl3.Controls.Add(this.tabPage9);
+      this.tabControl3.Location = new System.Drawing.Point(3, 2);
+      this.tabControl3.Name = "tabControl3";
+      this.tabControl3.SelectedIndex = 0;
+      this.tabControl3.Size = new System.Drawing.Size(869, 637);
+      this.tabControl3.TabIndex = 25;
+      // 
+      // tabPage9
+      // 
+      this.tabPage9.Controls.Add(this.profesorIngresarForo);
+      this.tabPage9.Controls.Add(this.groupBox14);
+      this.tabPage9.Controls.Add(this.groupBox15);
+      this.tabPage9.Controls.Add(this.profesorListMensajes);
+      this.tabPage9.Controls.Add(this.label48);
+      this.tabPage9.Controls.Add(this.label83);
+      this.tabPage9.Controls.Add(this.groupBox13);
+      this.tabPage9.Controls.Add(this.label60);
+      this.tabPage9.Controls.Add(this.profesorTalleresDict);
+      this.tabPage9.Location = new System.Drawing.Point(4, 22);
+      this.tabPage9.Name = "tabPage9";
+      this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPage9.Size = new System.Drawing.Size(861, 611);
+      this.tabPage9.TabIndex = 0;
+      this.tabPage9.Text = "Talleres";
+      this.tabPage9.UseVisualStyleBackColor = true;
+      // 
+      // groupBox13
+      // 
+      this.groupBox13.Controls.Add(this.label45);
+      this.groupBox13.Controls.Add(this.label46);
+      this.groupBox13.Controls.Add(this.profesorEliminarTaller);
+      this.groupBox13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox13.Location = new System.Drawing.Point(603, 15);
+      this.groupBox13.Name = "groupBox13";
+      this.groupBox13.Size = new System.Drawing.Size(200, 137);
+      this.groupBox13.TabIndex = 43;
+      this.groupBox13.TabStop = false;
+      this.groupBox13.Text = "Eliminar Taller";
+      // 
+      // label45
+      // 
+      this.label45.AutoSize = true;
+      this.label45.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label45.Location = new System.Drawing.Point(6, 48);
+      this.label45.Name = "label45";
+      this.label45.Size = new System.Drawing.Size(147, 15);
+      this.label45.TabIndex = 44;
+      this.label45.Text = "presionar Eliminar Taller.";
+      // 
+      // label46
+      // 
+      this.label46.AutoSize = true;
+      this.label46.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label46.Location = new System.Drawing.Point(6, 26);
+      this.label46.Name = "label46";
+      this.label46.Size = new System.Drawing.Size(163, 15);
+      this.label46.TabIndex = 43;
+      this.label46.Text = "Seleccionar un taller y luego";
+      // 
+      // profesorEliminarTaller
+      // 
+      this.profesorEliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorEliminarTaller.Location = new System.Drawing.Point(9, 81);
+      this.profesorEliminarTaller.Name = "profesorEliminarTaller";
+      this.profesorEliminarTaller.Size = new System.Drawing.Size(183, 37);
+      this.profesorEliminarTaller.TabIndex = 42;
+      this.profesorEliminarTaller.Text = "Eliminar Taller";
+      this.profesorEliminarTaller.UseVisualStyleBackColor = true;
+      // 
+      // label60
+      // 
+      this.label60.AutoSize = true;
+      this.label60.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label60.Location = new System.Drawing.Point(6, 12);
+      this.label60.Name = "label60";
+      this.label60.Size = new System.Drawing.Size(178, 29);
+      this.label60.TabIndex = 19;
+      this.label60.Text = "Módulo Profesor";
+      // 
+      // profesorTalleresDict
+      // 
+      this.profesorTalleresDict.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorTalleresDict.FormattingEnabled = true;
+      this.profesorTalleresDict.ItemHeight = 15;
+      this.profesorTalleresDict.Location = new System.Drawing.Point(38, 87);
+      this.profesorTalleresDict.Name = "profesorTalleresDict";
+      this.profesorTalleresDict.Size = new System.Drawing.Size(523, 34);
+      this.profesorTalleresDict.TabIndex = 4;
+      // 
+      // label83
+      // 
+      this.label83.AutoSize = true;
+      this.label83.Font = new System.Drawing.Font("Calibri", 14F);
+      this.label83.Location = new System.Drawing.Point(34, 61);
+      this.label83.Name = "label83";
+      this.label83.Size = new System.Drawing.Size(139, 23);
+      this.label83.TabIndex = 44;
+      this.label83.Text = "Talleres Dictados";
+      // 
+      // button4
+      // 
+      this.button4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button4.Location = new System.Drawing.Point(9, 81);
+      this.button4.Name = "button4";
+      this.button4.Size = new System.Drawing.Size(183, 37);
+      this.button4.TabIndex = 42;
+      this.button4.Text = "Eliminar Alumno";
+      this.button4.UseVisualStyleBackColor = true;
+      // 
+      // label68
+      // 
+      this.label68.AutoSize = true;
+      this.label68.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label68.Location = new System.Drawing.Point(6, 26);
+      this.label68.Name = "label68";
+      this.label68.Size = new System.Drawing.Size(175, 15);
+      this.label68.TabIndex = 43;
+      // 
+      // label67
+      // 
+      this.label67.AutoSize = true;
+      this.label67.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label67.Location = new System.Drawing.Point(6, 48);
+      this.label67.Name = "label67";
+      this.label67.Size = new System.Drawing.Size(147, 15);
+      this.label67.TabIndex = 44;
+      // 
+      // button6
+      // 
+      this.button6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button6.Location = new System.Drawing.Point(9, 81);
+      this.button6.Name = "button6";
+      this.button6.Size = new System.Drawing.Size(183, 37);
+      this.button6.TabIndex = 42;
+      this.button6.Text = "Eliminar Profesor";
+      this.button6.UseVisualStyleBackColor = true;
+      // 
+      // label77
+      // 
+      this.label77.AutoSize = true;
+      this.label77.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label77.Location = new System.Drawing.Point(6, 26);
+      this.label77.Name = "label77";
+      this.label77.Size = new System.Drawing.Size(180, 15);
+      this.label77.TabIndex = 43;
+      // 
+      // label76
+      // 
+      this.label76.AutoSize = true;
+      this.label76.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label76.Location = new System.Drawing.Point(6, 48);
+      this.label76.Name = "label76";
+      this.label76.Size = new System.Drawing.Size(163, 15);
+      this.label76.TabIndex = 44;
+      // 
+      // textBox13
+      // 
+      this.textBox13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox13.Location = new System.Drawing.Point(19, 48);
+      this.textBox13.Name = "textBox13";
+      this.textBox13.Size = new System.Drawing.Size(272, 23);
+      this.textBox13.TabIndex = 22;
+      // 
+      // label75
+      // 
+      this.label75.AutoSize = true;
+      this.label75.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label75.Location = new System.Drawing.Point(15, 26);
+      this.label75.Name = "label75";
+      this.label75.Size = new System.Drawing.Size(31, 19);
+      this.label75.TabIndex = 23;
+      // 
+      // button5
+      // 
+      this.button5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button5.Location = new System.Drawing.Point(19, 250);
+      this.button5.Name = "button5";
+      this.button5.Size = new System.Drawing.Size(183, 37);
+      this.button5.TabIndex = 20;
+      this.button5.Text = "Crear Profesor";
+      this.button5.UseVisualStyleBackColor = true;
+      // 
+      // textBox12
+      // 
+      this.textBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox12.Location = new System.Drawing.Point(19, 96);
+      this.textBox12.Name = "textBox12";
+      this.textBox12.Size = new System.Drawing.Size(272, 23);
+      this.textBox12.TabIndex = 46;
+      // 
+      // label74
+      // 
+      this.label74.AutoSize = true;
+      this.label74.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label74.Location = new System.Drawing.Point(15, 74);
+      this.label74.Name = "label74";
+      this.label74.Size = new System.Drawing.Size(60, 19);
+      this.label74.TabIndex = 47;
+      // 
+      // textBox11
+      // 
+      this.textBox11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox11.Location = new System.Drawing.Point(320, 96);
+      this.textBox11.Name = "textBox11";
+      this.textBox11.Size = new System.Drawing.Size(272, 23);
+      this.textBox11.TabIndex = 48;
+      // 
+      // label73
+      // 
+      this.label73.AutoSize = true;
+      this.label73.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label73.Location = new System.Drawing.Point(316, 74);
+      this.label73.Name = "label73";
+      this.label73.Size = new System.Drawing.Size(62, 19);
+      this.label73.TabIndex = 49;
+      // 
+      // textBox10
+      // 
+      this.textBox10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox10.Location = new System.Drawing.Point(19, 155);
+      this.textBox10.Name = "textBox10";
+      this.textBox10.Size = new System.Drawing.Size(272, 23);
+      this.textBox10.TabIndex = 50;
+      // 
+      // label72
+      // 
+      this.label72.AutoSize = true;
+      this.label72.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label72.Location = new System.Drawing.Point(15, 133);
+      this.label72.Name = "label72";
+      this.label72.Size = new System.Drawing.Size(38, 19);
+      this.label72.TabIndex = 51;
+      // 
+      // textBox9
+      // 
+      this.textBox9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox9.Location = new System.Drawing.Point(320, 155);
+      this.textBox9.Name = "textBox9";
+      this.textBox9.Size = new System.Drawing.Size(272, 23);
+      this.textBox9.TabIndex = 52;
+      // 
+      // label71
+      // 
+      this.label71.AutoSize = true;
+      this.label71.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label71.Location = new System.Drawing.Point(316, 133);
+      this.label71.Name = "label71";
+      this.label71.Size = new System.Drawing.Size(83, 19);
+      this.label71.TabIndex = 53;
+      // 
+      // textBox8
+      // 
+      this.textBox8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox8.Location = new System.Drawing.Point(19, 216);
+      this.textBox8.Name = "textBox8";
+      this.textBox8.Size = new System.Drawing.Size(272, 23);
+      this.textBox8.TabIndex = 54;
+      // 
+      // label70
+      // 
+      this.label70.AutoSize = true;
+      this.label70.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label70.Location = new System.Drawing.Point(15, 194);
+      this.label70.Name = "label70";
+      this.label70.Size = new System.Drawing.Size(65, 19);
+      this.label70.TabIndex = 55;
+      // 
+      // button8
+      // 
+      this.button8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button8.Location = new System.Drawing.Point(9, 81);
+      this.button8.Name = "button8";
+      this.button8.Size = new System.Drawing.Size(183, 37);
+      this.button8.TabIndex = 42;
+      this.button8.Text = "Eliminar Sala";
+      this.button8.UseVisualStyleBackColor = true;
+      // 
+      // label81
+      // 
+      this.label81.AutoSize = true;
+      this.label81.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label81.Location = new System.Drawing.Point(6, 26);
+      this.label81.Name = "label81";
+      this.label81.Size = new System.Drawing.Size(157, 15);
+      this.label81.TabIndex = 43;
+      // 
+      // label80
+      // 
+      this.label80.AutoSize = true;
+      this.label80.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label80.Location = new System.Drawing.Point(6, 48);
+      this.label80.Name = "label80";
+      this.label80.Size = new System.Drawing.Size(141, 15);
+      this.label80.TabIndex = 44;
+      // 
+      // textBox14
+      // 
+      this.textBox14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBox14.Location = new System.Drawing.Point(10, 67);
+      this.textBox14.Name = "textBox14";
+      this.textBox14.Size = new System.Drawing.Size(272, 23);
+      this.textBox14.TabIndex = 22;
+      // 
+      // label79
+      // 
+      this.label79.AutoSize = true;
+      this.label79.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label79.Location = new System.Drawing.Point(6, 41);
+      this.label79.Name = "label79";
+      this.label79.Size = new System.Drawing.Size(60, 19);
+      this.label79.TabIndex = 23;
+      // 
+      // button7
+      // 
+      this.button7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button7.Location = new System.Drawing.Point(10, 104);
+      this.button7.Name = "button7";
+      this.button7.Size = new System.Drawing.Size(183, 37);
+      this.button7.TabIndex = 20;
+      this.button7.Text = "Crear Sala";
+      this.button7.UseVisualStyleBackColor = true;
+      // 
+      // groupBox14
+      // 
+      this.groupBox14.Controls.Add(this.label47);
+      this.groupBox14.Controls.Add(this.profesorEliminarMensaje);
+      this.groupBox14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox14.Location = new System.Drawing.Point(18, 513);
+      this.groupBox14.Name = "groupBox14";
+      this.groupBox14.Size = new System.Drawing.Size(829, 89);
+      this.groupBox14.TabIndex = 56;
+      this.groupBox14.TabStop = false;
+      this.groupBox14.Text = "Eliminar Mensaje";
+      // 
+      // label47
+      // 
+      this.label47.AutoSize = true;
+      this.label47.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label47.Location = new System.Drawing.Point(8, 19);
+      this.label47.Name = "label47";
+      this.label47.Size = new System.Drawing.Size(419, 15);
+      this.label47.TabIndex = 16;
+      this.label47.Text = "Primero seleccionar el mensaje de la lista y luego pulsar Eliminar Mensaje";
+      // 
+      // profesorEliminarMensaje
+      // 
+      this.profesorEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorEliminarMensaje.Location = new System.Drawing.Point(6, 46);
+      this.profesorEliminarMensaje.Name = "profesorEliminarMensaje";
+      this.profesorEliminarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.profesorEliminarMensaje.TabIndex = 15;
+      this.profesorEliminarMensaje.Text = "Eliminar Mensaje";
+      this.profesorEliminarMensaje.UseVisualStyleBackColor = true;
+      // 
+      // groupBox15
+      // 
+      this.groupBox15.Controls.Add(this.profesorAgregarMensajeText);
+      this.groupBox15.Controls.Add(this.profesorAgregarMensaje);
+      this.groupBox15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox15.Location = new System.Drawing.Point(18, 395);
+      this.groupBox15.Name = "groupBox15";
+      this.groupBox15.Size = new System.Drawing.Size(829, 111);
+      this.groupBox15.TabIndex = 55;
+      this.groupBox15.TabStop = false;
+      this.groupBox15.Text = "Agregar Mensaje";
+      // 
+      // profesorAgregarMensajeText
+      // 
+      this.profesorAgregarMensajeText.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorAgregarMensajeText.Location = new System.Drawing.Point(6, 29);
+      this.profesorAgregarMensajeText.Name = "profesorAgregarMensajeText";
+      this.profesorAgregarMensajeText.Size = new System.Drawing.Size(812, 23);
+      this.profesorAgregarMensajeText.TabIndex = 23;
+      // 
+      // profesorAgregarMensaje
+      // 
+      this.profesorAgregarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorAgregarMensaje.Location = new System.Drawing.Point(6, 58);
+      this.profesorAgregarMensaje.Name = "profesorAgregarMensaje";
+      this.profesorAgregarMensaje.Size = new System.Drawing.Size(206, 37);
+      this.profesorAgregarMensaje.TabIndex = 13;
+      this.profesorAgregarMensaje.Text = "Agregar Mensaje";
+      this.profesorAgregarMensaje.UseVisualStyleBackColor = true;
+      // 
+      // profesorListMensajes
+      // 
+      this.profesorListMensajes.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorListMensajes.FormattingEnabled = true;
+      this.profesorListMensajes.ItemHeight = 15;
+      this.profesorListMensajes.Location = new System.Drawing.Point(18, 174);
+      this.profesorListMensajes.Name = "profesorListMensajes";
+      this.profesorListMensajes.Size = new System.Drawing.Size(829, 214);
+      this.profesorListMensajes.TabIndex = 54;
+      // 
+      // label48
+      // 
+      this.label48.AutoSize = true;
+      this.label48.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label48.Location = new System.Drawing.Point(13, 139);
+      this.label48.Name = "label48";
+      this.label48.Size = new System.Drawing.Size(107, 29);
+      this.label48.TabIndex = 53;
+      this.label48.Text = "Mensajes";
+      // 
+      // profesorIngresarForo
+      // 
+      this.profesorIngresarForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorIngresarForo.Location = new System.Drawing.Point(378, 127);
+      this.profesorIngresarForo.Name = "profesorIngresarForo";
+      this.profesorIngresarForo.Size = new System.Drawing.Size(183, 37);
+      this.profesorIngresarForo.TabIndex = 45;
+      this.profesorIngresarForo.Text = "Ingresar a Foro";
+      this.profesorIngresarForo.UseVisualStyleBackColor = true;
+      // 
       // TalleresVU
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(912, 674);
+      this.ClientSize = new System.Drawing.Size(914, 674);
+      this.Controls.Add(this.MenuProfesor);
       this.Controls.Add(this.MenuAdmin);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
@@ -1683,6 +2158,16 @@
       this.groupBox11.PerformLayout();
       this.groupBox12.ResumeLayout(false);
       this.groupBox12.PerformLayout();
+      this.MenuProfesor.ResumeLayout(false);
+      this.tabControl3.ResumeLayout(false);
+      this.tabPage9.ResumeLayout(false);
+      this.tabPage9.PerformLayout();
+      this.groupBox13.ResumeLayout(false);
+      this.groupBox13.PerformLayout();
+      this.groupBox14.ResumeLayout(false);
+      this.groupBox14.PerformLayout();
+      this.groupBox15.ResumeLayout(false);
+      this.groupBox15.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -1820,6 +2305,50 @@
     private System.Windows.Forms.Button adminEliminarSala;
     private System.Windows.Forms.Label label53;
     private System.Windows.Forms.ListBox adminListSalasTab;
+    private System.Windows.Forms.Panel MenuProfesor;
+    private System.Windows.Forms.TabControl tabControl3;
+    private System.Windows.Forms.TabPage tabPage9;
+    private System.Windows.Forms.Button profesorIngresarForo;
+    private System.Windows.Forms.GroupBox groupBox14;
+    private System.Windows.Forms.Label label47;
+    private System.Windows.Forms.Button profesorEliminarMensaje;
+    private System.Windows.Forms.GroupBox groupBox15;
+    private System.Windows.Forms.TextBox profesorAgregarMensajeText;
+    private System.Windows.Forms.Button profesorAgregarMensaje;
+    private System.Windows.Forms.ListBox profesorListMensajes;
+    private System.Windows.Forms.Label label48;
+    private System.Windows.Forms.Label label83;
+    private System.Windows.Forms.GroupBox groupBox13;
+    private System.Windows.Forms.Label label45;
+    private System.Windows.Forms.Label label46;
+    private System.Windows.Forms.Button profesorEliminarTaller;
+    private System.Windows.Forms.Label label60;
+    private System.Windows.Forms.ListBox profesorTalleresDict;
+    private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Label label68;
+    private System.Windows.Forms.Label label67;
+    private System.Windows.Forms.Button button6;
+    private System.Windows.Forms.Label label77;
+    private System.Windows.Forms.Label label76;
+    private System.Windows.Forms.TextBox textBox13;
+    private System.Windows.Forms.Label label75;
+    private System.Windows.Forms.Button button5;
+    private System.Windows.Forms.TextBox textBox12;
+    private System.Windows.Forms.Label label74;
+    private System.Windows.Forms.TextBox textBox11;
+    private System.Windows.Forms.Label label73;
+    private System.Windows.Forms.TextBox textBox10;
+    private System.Windows.Forms.Label label72;
+    private System.Windows.Forms.TextBox textBox9;
+    private System.Windows.Forms.Label label71;
+    private System.Windows.Forms.TextBox textBox8;
+    private System.Windows.Forms.Label label70;
+    private System.Windows.Forms.Button button8;
+    private System.Windows.Forms.Label label81;
+    private System.Windows.Forms.Label label80;
+    private System.Windows.Forms.TextBox textBox14;
+    private System.Windows.Forms.Label label79;
+    private System.Windows.Forms.Button button7;
   }
 }
 
