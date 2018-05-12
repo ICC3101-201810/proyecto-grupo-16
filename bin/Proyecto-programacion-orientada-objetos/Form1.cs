@@ -29,7 +29,8 @@ namespace Vistas
     //Event Handler admin
     public event EventHandler<LogInEventArgs> OnAdminEliminarTaller;
     public event EventHandler<LogInEventArgs> OnAdminCrearTaller;
-
+    public event EventHandler<LogInEventArgs> OnAdminEliminarAlumno;
+    public event EventHandler<LogInEventArgs> OnAdminCrearAlumno;
 
 
 
@@ -217,6 +218,46 @@ namespace Vistas
         else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
+
+    private void adminEliminarAlumno_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarAlumno != null)
+      {
+        if (adminListAlumnos.SelectedIndex > -1 && !adminListAlumnos.SelectedItem.Equals("No existen alumnos creados"))
+        {
+          logInArgs.student = adminListAlumnos.SelectedItem as Alumno;
+          OnAdminEliminarAlumno(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un alumno", "Error: No existe alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    private void adminCrearAlumno_Click(object sender, EventArgs e)
+    {
+      if (OnAdminCrearAlumno != null)
+      {
+        if (!adminNombreAlumno.Text.Equals("") && !adminApellidoAlumno.Text.Equals("") && !adminRutAlumno.Text.Equals("") && !adminMailAlumno.Text.Equals("") &&
+          !adminPasswordAlumno.Text.Equals("") && !adminTelefonoAlumno.Text.Equals(""))
+        {
+          logInArgs.nombreAlumno = adminNombreAlumno.Text;
+          logInArgs.apellidoAlumno = adminApellidoAlumno.Text;
+          logInArgs.rutAlumno = adminRutAlumno.Text;
+          logInArgs.mailAlumno = adminMailAlumno.Text;
+          logInArgs.passwordAlumno = adminPasswordAlumno.Text;
+          logInArgs.telefonoAlumno = adminTelefonoAlumno.Text;
+          logInArgs.horarioTaller = HorarioLimpio();
+          logInArgs.horarioTaller = GenerarHorario(0.5);
+          OnAdminCrearAlumno(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+
+
+
+
 
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
@@ -417,6 +458,36 @@ namespace Vistas
         horarioViernes.SetItemChecked(i, false);
       }
     }
+
+    //Tab Alumno Admin
+    public void ActualizarAlumnosAdmin(Alumno alumno, bool borrar)
+    {
+      if (borrar)
+        if (adminListAlumnos.Items.Count == 1)
+          adminListAlumnos.Items[0] = "No existen alumnos creados";
+        else
+          adminListAlumnos.Items.Remove(alumno);
+      else
+      {
+        if (adminListAlumnos.Items.Count > 0 && adminListAlumnos.Items[0].Equals("No existen alumnos creados"))
+        {
+          adminListAlumnos.Items.Add(alumno);
+          adminListAlumnos.Items.RemoveAt(0);
+        }
+        else
+          adminListAlumnos.Items.Add(alumno);
+      }
+    }
+    public void AdminLimpiarCrearAlumno()
+    {
+      adminNombreAlumno.Clear();
+      adminRutAlumno.Clear();
+      adminApellidoAlumno.Clear();
+      adminMailAlumno.Clear();
+      adminPasswordAlumno.Clear();
+      adminTelefonoAlumno.Clear();
+    }
+
 
 
     //Metodo para simular horarios banner
