@@ -53,7 +53,8 @@ namespace Vistas
       logInView.OnAdminCrearTaller += VistaAdminCrearTaller_OnAdminCrearTaller;
       logInView.OnAdminEliminarAlumno += VistaAdminEliminarAlumno_OnAdminEliminarAlumno;
       logInView.OnAdminCrearAlumno += VistaAdminCrearAlumno_OnAdminCrearAlumno;
-
+      logInView.OnAdminEliminarProfesor += VistaAdminEliminarProfesor_OnAdminEliminarProfesor;
+      logInView.OnAdminCrearProfesor += VistaAdminCrearProfesor_OnAdminCrearProfesor;
 
       if (!LoadData())
       {
@@ -100,6 +101,8 @@ namespace Vistas
             logInView.ActualizarAdminTallerSalas(sala, false);
           foreach (Alumno alumno in alumnos)
             logInView.ActualizarAlumnosAdmin(alumno, false);
+          foreach (Profesor profesor in profesores)
+            logInView.ActualizarProfesoresAdmin(profesor, false);
           e.panels["Login"].Visible = false;
           e.panels["AdminMenu"].Visible = true;
         }
@@ -202,6 +205,7 @@ namespace Vistas
     private void VistaAdminCrearTaller_OnAdminCrearTaller(object sender, LogInEventArgs e)
     {
       Taller ws = new Taller(e.nombreTaller, e.cuposTaller, e.precioTaller, e.horarioTaller, e.salaTaller, new Categoria());
+      talleres.Add(ws);
       logInView.ActualizarTalleresAdmin(ws, false);
       logInView.AdminLimpiarCrearTaller();
     }
@@ -213,9 +217,25 @@ namespace Vistas
     }
     private void VistaAdminCrearAlumno_OnAdminCrearAlumno(object sender, LogInEventArgs e)
     {
-      Alumno alumno = new Alumno(e.rutAlumno, e.nombreAlumno, e.apellidoAlumno, e.mailAlumno, e.telefonoAlumno, e.passwordAlumno, e.horarioAlumno);
+      Alumno alumno = new Alumno(e.rutUser, e.nombreUser, e.apellidoUser, e.mailUser, e.telefonoUser, e.passwordUser, e.horarioAlumno);
+      alumnos.Add(alumno);
+      usuarios.Add(alumno);
       logInView.ActualizarAlumnosAdmin(alumno, false);
       logInView.AdminLimpiarCrearAlumno();
+    }
+    private void VistaAdminEliminarProfesor_OnAdminEliminarProfesor(object sender, LogInEventArgs e)
+    {
+      Profesor profesor = e.profesor;
+      AdminEliminarProfesor(profesor);
+      logInView.ActualizarProfesoresAdmin(profesor, true);
+    }
+    private void VistaAdminCrearProfesor_OnAdminCrearProfesor(object sender, LogInEventArgs e)
+    {
+      Profesor profesor = new Profesor(e.rutUser, e.nombreUser, e.apellidoUser, e.mailUser, e.telefonoUser, e.passwordUser);
+      profesores.Add(profesor);
+      usuarios.Add(profesor);
+      logInView.ActualizarProfesoresAdmin(profesor, false);
+      logInView.AdminLimpiarCrearProfesor();
     }
 
 
@@ -294,10 +314,15 @@ namespace Vistas
     {
       talleres.Remove(taller);
     }
-    //Metodos admin
     public void AdminEliminarAlumno(Alumno alumno)
     {
       alumnos.Remove(alumno);
+      usuarios.Remove(alumno);
+    }
+    public void AdminEliminarProfesor(Profesor profesor)
+    {
+      profesores.Remove(profesor);
+      usuarios.Remove(profesor);
     }
 
 
@@ -377,7 +402,7 @@ namespace Vistas
       formatter.Serialize(fs, usuarios);
       fs.Close();
       //fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WorkShops.txt");
-      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Users.txt");
+      fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Workshops.txt");
       fs = new FileStream(fileName, FileMode.Create);
       formatter.Serialize(fs, talleres);
       fs.Close();
@@ -417,9 +442,6 @@ namespace Vistas
       return true;
     }
 
-
-
-
-
+    
   }
 }

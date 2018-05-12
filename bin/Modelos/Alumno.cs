@@ -59,7 +59,7 @@ namespace Modelos
     }
     public override string ToString()
     { 
-      return rut+": "+nombre+ " " + apellido;
+      return rut + ": " + nombre + " " + apellido + ", |DATOS: Usuario: " + email + " Clave: " + clave + " Contacto: " + telefono+" |";
     }
   }
 }

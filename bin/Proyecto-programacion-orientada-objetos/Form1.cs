@@ -31,6 +31,8 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminCrearTaller;
     public event EventHandler<LogInEventArgs> OnAdminEliminarAlumno;
     public event EventHandler<LogInEventArgs> OnAdminCrearAlumno;
+    public event EventHandler<LogInEventArgs> OnAdminEliminarProfesor;
+    public event EventHandler<LogInEventArgs> OnAdminCrearProfesor;
 
 
 
@@ -240,24 +242,50 @@ namespace Vistas
         if (!adminNombreAlumno.Text.Equals("") && !adminApellidoAlumno.Text.Equals("") && !adminRutAlumno.Text.Equals("") && !adminMailAlumno.Text.Equals("") &&
           !adminPasswordAlumno.Text.Equals("") && !adminTelefonoAlumno.Text.Equals(""))
         {
-          logInArgs.nombreAlumno = adminNombreAlumno.Text;
-          logInArgs.apellidoAlumno = adminApellidoAlumno.Text;
-          logInArgs.rutAlumno = adminRutAlumno.Text;
-          logInArgs.mailAlumno = adminMailAlumno.Text;
-          logInArgs.passwordAlumno = adminPasswordAlumno.Text;
-          logInArgs.telefonoAlumno = adminTelefonoAlumno.Text;
-          logInArgs.horarioTaller = HorarioLimpio();
-          logInArgs.horarioTaller = GenerarHorario(0.5);
+          logInArgs.nombreUser = adminNombreAlumno.Text;
+          logInArgs.apellidoUser = adminApellidoAlumno.Text;
+          logInArgs.rutUser = adminRutAlumno.Text;
+          logInArgs.mailUser = adminMailAlumno.Text;
+          logInArgs.passwordUser = adminPasswordAlumno.Text;
+          logInArgs.telefonoUser = adminTelefonoAlumno.Text;
+          logInArgs.horarioAlumno = HorarioLimpio();
+          logInArgs.horarioAlumno = GenerarHorario(0.5);
           OnAdminCrearAlumno(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
+    private void adminEliminarProfesor_Click_1(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarProfesor != null)
+      {
+        if (adminListProfesores.SelectedIndex > -1 && !adminListProfesores.SelectedItem.Equals("No existen alumnos creados"))
+        {
+          logInArgs.profesor = adminListProfesores.SelectedItem as Profesor;
+          OnAdminEliminarProfesor(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un profesor", "Error: No existe profesor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
 
-
-
-
-
+    private void adminCrearProfesor_Click_1(object sender, EventArgs e)
+    {
+      if (OnAdminCrearProfesor != null)
+      {
+        if (!adminNombreProfesor.Text.Equals("") && !adminApellidoProfesor.Text.Equals("") && !adminRutProfesor.Text.Equals("") && !adminMailProfesor.Text.Equals("") &&
+          !adminPasswordProfesor.Text.Equals("") && !adminTelefonoProfesor.Text.Equals(""))
+        {
+          logInArgs.nombreUser = adminNombreProfesor.Text;
+          logInArgs.apellidoUser = adminApellidoProfesor.Text;
+          logInArgs.rutUser = adminRutProfesor.Text;
+          logInArgs.mailUser = adminMailProfesor.Text;
+          logInArgs.passwordUser = adminPasswordProfesor.Text;
+          logInArgs.telefonoUser = adminTelefonoProfesor.Text;
+          OnAdminCrearProfesor(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
 
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
@@ -487,6 +515,34 @@ namespace Vistas
       adminPasswordAlumno.Clear();
       adminTelefonoAlumno.Clear();
     }
+    //Tab Profesor Admin
+    public void ActualizarProfesoresAdmin(Profesor profesor, bool borrar)
+    {
+      if (borrar)
+        if (adminListProfesores.Items.Count == 1)
+          adminListProfesores.Items[0] = "No existen profesores creados";
+        else
+          adminListProfesores.Items.Remove(profesor);
+      else
+      {
+        if (adminListProfesores.Items.Count > 0 && adminListProfesores.Items[0].Equals("No existen profesores creados"))
+        {
+          adminListProfesores.Items.Add(profesor);
+          adminListProfesores.Items.RemoveAt(0);
+        }
+        else
+          adminListProfesores.Items.Add(profesor);
+      }
+    }
+    public void AdminLimpiarCrearProfesor()
+    {
+      adminNombreProfesor.Clear();
+      adminRutProfesor.Clear();
+      adminApellidoProfesor.Clear();
+      adminMailProfesor.Clear();
+      adminPasswordProfesor.Clear();
+      adminTelefonoProfesor.Clear();
+    }
 
 
 
@@ -535,7 +591,7 @@ namespace Vistas
     //Metodos para confirmar cierre
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
-      //close_Click();
+      close_Click();
       CloseCancel(e);
     }
     private void close_Click()
@@ -550,6 +606,8 @@ namespace Vistas
     }
 
     
+
+
 
 
 
