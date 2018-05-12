@@ -150,6 +150,16 @@
       this.adminEliminarProfesor = new System.Windows.Forms.Button();
       this.label44 = new System.Windows.Forms.Label();
       this.adminListProfesores = new System.Windows.Forms.ListBox();
+      this.groupBox11 = new System.Windows.Forms.GroupBox();
+      this.adminCrearSala = new System.Windows.Forms.Button();
+      this.label50 = new System.Windows.Forms.Label();
+      this.adminNombreSala = new System.Windows.Forms.TextBox();
+      this.groupBox12 = new System.Windows.Forms.GroupBox();
+      this.label51 = new System.Windows.Forms.Label();
+      this.label52 = new System.Windows.Forms.Label();
+      this.adminEliminarSala = new System.Windows.Forms.Button();
+      this.label53 = new System.Windows.Forms.Label();
+      this.adminListSalasTab = new System.Windows.Forms.ListBox();
       this.loginpanel.SuspendLayout();
       this.StudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
@@ -174,8 +184,11 @@
       this.groupBox5.SuspendLayout();
       this.groupBox9.SuspendLayout();
       this.tabPage7.SuspendLayout();
+      this.tabPage8.SuspendLayout();
       this.groupBox6.SuspendLayout();
       this.groupBox10.SuspendLayout();
+      this.groupBox11.SuspendLayout();
+      this.groupBox12.SuspendLayout();
       this.SuspendLayout();
       // 
       // nametxtbox
@@ -704,7 +717,7 @@
       // MenuAdmin
       // 
       this.MenuAdmin.Controls.Add(this.tabControl2);
-      this.MenuAdmin.Location = new System.Drawing.Point(932, 9);
+      this.MenuAdmin.Location = new System.Drawing.Point(3, 6);
       this.MenuAdmin.Name = "MenuAdmin";
       this.MenuAdmin.Size = new System.Drawing.Size(895, 653);
       this.MenuAdmin.TabIndex = 28;
@@ -1283,6 +1296,10 @@
       // 
       // tabPage8
       // 
+      this.tabPage8.Controls.Add(this.groupBox11);
+      this.tabPage8.Controls.Add(this.groupBox12);
+      this.tabPage8.Controls.Add(this.label53);
+      this.tabPage8.Controls.Add(this.adminListSalasTab);
       this.tabPage8.Location = new System.Drawing.Point(4, 22);
       this.tabPage8.Name = "tabPage8";
       this.tabPage8.Size = new System.Drawing.Size(861, 611);
@@ -1496,12 +1513,118 @@
       this.adminListProfesores.Size = new System.Drawing.Size(585, 229);
       this.adminListProfesores.TabIndex = 46;
       // 
+      // groupBox11
+      // 
+      this.groupBox11.Controls.Add(this.adminCrearSala);
+      this.groupBox11.Controls.Add(this.label50);
+      this.groupBox11.Controls.Add(this.adminNombreSala);
+      this.groupBox11.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox11.Location = new System.Drawing.Point(30, 421);
+      this.groupBox11.Name = "groupBox11";
+      this.groupBox11.Size = new System.Drawing.Size(805, 163);
+      this.groupBox11.TabIndex = 53;
+      this.groupBox11.TabStop = false;
+      this.groupBox11.Text = "Crear Sala";
+      // 
+      // adminCrearSala
+      // 
+      this.adminCrearSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearSala.Location = new System.Drawing.Point(10, 104);
+      this.adminCrearSala.Name = "adminCrearSala";
+      this.adminCrearSala.Size = new System.Drawing.Size(183, 37);
+      this.adminCrearSala.TabIndex = 20;
+      this.adminCrearSala.Text = "Crear Sala";
+      this.adminCrearSala.UseVisualStyleBackColor = true;
+      this.adminCrearSala.Click += new System.EventHandler(this.adminCrearSala_Click);
+      // 
+      // label50
+      // 
+      this.label50.AutoSize = true;
+      this.label50.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label50.Location = new System.Drawing.Point(6, 41);
+      this.label50.Name = "label50";
+      this.label50.Size = new System.Drawing.Size(60, 19);
+      this.label50.TabIndex = 23;
+      this.label50.Text = "Nombre";
+      // 
+      // adminNombreSala
+      // 
+      this.adminNombreSala.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminNombreSala.Location = new System.Drawing.Point(10, 67);
+      this.adminNombreSala.Name = "adminNombreSala";
+      this.adminNombreSala.Size = new System.Drawing.Size(272, 23);
+      this.adminNombreSala.TabIndex = 22;
+      // 
+      // groupBox12
+      // 
+      this.groupBox12.Controls.Add(this.label51);
+      this.groupBox12.Controls.Add(this.label52);
+      this.groupBox12.Controls.Add(this.adminEliminarSala);
+      this.groupBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.groupBox12.Location = new System.Drawing.Point(635, 48);
+      this.groupBox12.Name = "groupBox12";
+      this.groupBox12.Size = new System.Drawing.Size(200, 154);
+      this.groupBox12.TabIndex = 52;
+      this.groupBox12.TabStop = false;
+      this.groupBox12.Text = "Eliminar Salas";
+      // 
+      // label51
+      // 
+      this.label51.AutoSize = true;
+      this.label51.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label51.Location = new System.Drawing.Point(6, 48);
+      this.label51.Name = "label51";
+      this.label51.Size = new System.Drawing.Size(141, 15);
+      this.label51.TabIndex = 44;
+      this.label51.Text = "presionar Eliminar Sala.";
+      // 
+      // label52
+      // 
+      this.label52.AutoSize = true;
+      this.label52.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label52.Location = new System.Drawing.Point(6, 26);
+      this.label52.Name = "label52";
+      this.label52.Size = new System.Drawing.Size(157, 15);
+      this.label52.TabIndex = 43;
+      this.label52.Text = "Seleccionar un sala y luego";
+      // 
+      // adminEliminarSala
+      // 
+      this.adminEliminarSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarSala.Location = new System.Drawing.Point(9, 81);
+      this.adminEliminarSala.Name = "adminEliminarSala";
+      this.adminEliminarSala.Size = new System.Drawing.Size(183, 37);
+      this.adminEliminarSala.TabIndex = 42;
+      this.adminEliminarSala.Text = "Eliminar Sala";
+      this.adminEliminarSala.UseVisualStyleBackColor = true;
+      this.adminEliminarSala.Click += new System.EventHandler(this.adminEliminarSala_Click);
+      // 
+      // label53
+      // 
+      this.label53.AutoSize = true;
+      this.label53.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label53.Location = new System.Drawing.Point(25, 17);
+      this.label53.Name = "label53";
+      this.label53.Size = new System.Drawing.Size(63, 29);
+      this.label53.TabIndex = 51;
+      this.label53.Text = "Salas";
+      // 
+      // adminListSalasTab
+      // 
+      this.adminListSalasTab.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminListSalasTab.FormattingEnabled = true;
+      this.adminListSalasTab.ItemHeight = 15;
+      this.adminListSalasTab.Location = new System.Drawing.Point(30, 49);
+      this.adminListSalasTab.Name = "adminListSalasTab";
+      this.adminListSalasTab.Size = new System.Drawing.Size(585, 349);
+      this.adminListSalasTab.TabIndex = 50;
+      // 
       // TalleresVU
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(1924, 674);
+      this.ClientSize = new System.Drawing.Size(912, 674);
       this.Controls.Add(this.MenuAdmin);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
@@ -1550,10 +1673,16 @@
       this.groupBox9.PerformLayout();
       this.tabPage7.ResumeLayout(false);
       this.tabPage7.PerformLayout();
+      this.tabPage8.ResumeLayout(false);
+      this.tabPage8.PerformLayout();
       this.groupBox6.ResumeLayout(false);
       this.groupBox6.PerformLayout();
       this.groupBox10.ResumeLayout(false);
       this.groupBox10.PerformLayout();
+      this.groupBox11.ResumeLayout(false);
+      this.groupBox11.PerformLayout();
+      this.groupBox12.ResumeLayout(false);
+      this.groupBox12.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -1681,6 +1810,16 @@
     private System.Windows.Forms.Button adminEliminarProfesor;
     private System.Windows.Forms.Label label44;
     private System.Windows.Forms.ListBox adminListProfesores;
+    private System.Windows.Forms.GroupBox groupBox11;
+    private System.Windows.Forms.Button adminCrearSala;
+    private System.Windows.Forms.Label label50;
+    private System.Windows.Forms.TextBox adminNombreSala;
+    private System.Windows.Forms.GroupBox groupBox12;
+    private System.Windows.Forms.Label label51;
+    private System.Windows.Forms.Label label52;
+    private System.Windows.Forms.Button adminEliminarSala;
+    private System.Windows.Forms.Label label53;
+    private System.Windows.Forms.ListBox adminListSalasTab;
   }
 }
 

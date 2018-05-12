@@ -11,7 +11,7 @@ namespace Modelos
     Dictionary<String, List<Boolean>> horario;
     List<Foro> foros = new List<Foro>();
     List<Encuesta> encuestas = new List<Encuesta>();
-    Sala sala;
+    public Sala sala { get; set; }
     Categoria categoria;
 
 

@@ -33,7 +33,8 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminCrearAlumno;
     public event EventHandler<LogInEventArgs> OnAdminEliminarProfesor;
     public event EventHandler<LogInEventArgs> OnAdminCrearProfesor;
-
+    public event EventHandler<LogInEventArgs> OnAdminEliminarSala;
+    public event EventHandler<LogInEventArgs> OnAdminCrearSala;
 
 
 
@@ -259,7 +260,7 @@ namespace Vistas
     {
       if (OnAdminEliminarProfesor != null)
       {
-        if (adminListProfesores.SelectedIndex > -1 && !adminListProfesores.SelectedItem.Equals("No existen alumnos creados"))
+        if (adminListProfesores.SelectedIndex > -1 && !adminListProfesores.SelectedItem.Equals("No existen profesores creados"))
         {
           logInArgs.profesor = adminListProfesores.SelectedItem as Profesor;
           OnAdminEliminarProfesor(this, logInArgs);
@@ -286,6 +287,33 @@ namespace Vistas
         else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
+    private void adminEliminarSala_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarSala != null)
+      {
+        if (adminListSalasTab.SelectedIndex > -1 && !adminListSalasTab.SelectedItem.Equals("No existen salas creadas"))
+        {
+          logInArgs.sala = adminListSalas.SelectedItem as Sala;
+          OnAdminEliminarSala(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un sala", "Error: No existe sala", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminCrearSala_Click(object sender, EventArgs e)
+    {
+      if (OnAdminCrearSala != null)
+      {
+        if (!adminNombreSala.Text.Equals("") )
+        {
+          logInArgs.nombreSala = adminNombreSala.Text;
+          logInArgs.horarioSala = GenerarHorario(0.5);
+          OnAdminCrearSala(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
 
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
@@ -543,6 +571,29 @@ namespace Vistas
       adminPasswordProfesor.Clear();
       adminTelefonoProfesor.Clear();
     }
+    //Tab Sala Admin
+    public void ActualizarSalasAdmin(Sala sala, bool borrar)
+    {
+      if (borrar)
+        if (adminListSalasTab.Items.Count == 1)
+          adminListSalasTab.Items[0] = "No existen salas creadas";
+        else
+          adminListSalasTab.Items.Remove(sala);
+      else
+      {
+        if (adminListSalasTab.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas creadas"))
+        {
+          adminListSalasTab.Items.Add(sala);
+          adminListSalasTab.Items.RemoveAt(0);
+        }
+        else
+          adminListSalasTab.Items.Add(sala);
+      }
+    }
+    public void AdminLimpiarCrearSala()
+    {
+      adminNombreSala.Clear();
+    }
 
 
 
@@ -606,6 +657,8 @@ namespace Vistas
     }
 
     
+
+
 
 
 

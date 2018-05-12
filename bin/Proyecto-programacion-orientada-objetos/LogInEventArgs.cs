@@ -35,10 +35,15 @@ namespace Vistas
     public String passwordUser { get; set; }
     public Dictionary<String, List<Boolean>> horarioAlumno { get; set; }
 
-    //Argumentos para tab alumno/profesor admin
+    //Argumentos para crear sala
+    public String nombreSala { get; set; }
+    public Dictionary<String, List<Boolean>> horarioSala { get; set; }
+
+
+    //Argumentos para tab alumno/profesor/sala admin
     public Alumno student { get; set; }
     public Profesor profesor { get; set; }
-
+    public Sala sala { get; set; }
 
     //
 

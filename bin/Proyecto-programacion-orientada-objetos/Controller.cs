@@ -55,10 +55,16 @@ namespace Vistas
       logInView.OnAdminCrearAlumno += VistaAdminCrearAlumno_OnAdminCrearAlumno;
       logInView.OnAdminEliminarProfesor += VistaAdminEliminarProfesor_OnAdminEliminarProfesor;
       logInView.OnAdminCrearProfesor += VistaAdminCrearProfesor_OnAdminCrearProfesor;
+      logInView.OnAdminEliminarSala += VistaAdminEliminarSala_OnAdminEliminarSala;
+      logInView.OnAdminCrearSala += VistaAdminCrearSala_OnAdminCrearSala;
 
       if (!LoadData())
       {
         InicializaUsuariosIniciales();
+      }
+      else
+      {
+
       }
     }
 
@@ -96,13 +102,22 @@ namespace Vistas
         {
           Administrador admin = (Administrador)GetUser(credenciales);
           foreach (Taller ws in talleres)
+          {
             logInView.ActualizarTalleresAdmin(ws, false);
+            if (!salas.Contains(ws.sala))
+              salas.Add(ws.sala);
+          }
           foreach (Sala sala in salas)
+          {
             logInView.ActualizarAdminTallerSalas(sala, false);
+            logInView.ActualizarSalasAdmin(sala, false);
+          }
           foreach (Alumno alumno in alumnos)
             logInView.ActualizarAlumnosAdmin(alumno, false);
           foreach (Profesor profesor in profesores)
             logInView.ActualizarProfesoresAdmin(profesor, false);
+            
+
           e.panels["Login"].Visible = false;
           e.panels["AdminMenu"].Visible = true;
         }
@@ -237,6 +252,21 @@ namespace Vistas
       logInView.ActualizarProfesoresAdmin(profesor, false);
       logInView.AdminLimpiarCrearProfesor();
     }
+    private void VistaAdminEliminarSala_OnAdminEliminarSala(object sender, LogInEventArgs e)
+    {
+      Sala sala = e.sala;
+      AdminEliminarSala(sala);
+      logInView.ActualizarSalasAdmin(sala, true);
+      logInView.ActualizarAdminTallerSalas(sala, true);
+    }
+    private void VistaAdminCrearSala_OnAdminCrearSala(object sender, LogInEventArgs e)
+    {
+      Sala sala = new Sala(e.nombreSala, e.horarioSala);
+      salas.Add(sala);
+      logInView.ActualizarSalasAdmin(sala, false);
+      logInView.ActualizarAdminTallerSalas(sala, false);
+      logInView.AdminLimpiarCrearSala();
+    }
 
 
 
@@ -323,6 +353,10 @@ namespace Vistas
     {
       profesores.Remove(profesor);
       usuarios.Remove(profesor);
+    }
+    public void AdminEliminarSala(Sala sala)
+    {
+      salas.Remove(sala);
     }
 
 
