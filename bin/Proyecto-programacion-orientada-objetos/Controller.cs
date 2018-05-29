@@ -57,6 +57,15 @@ namespace Vistas
       logInView.OnAdminCrearProfesor += VistaAdminCrearProfesor_OnAdminCrearProfesor;
       logInView.OnAdminEliminarSala += VistaAdminEliminarSala_OnAdminEliminarSala;
       logInView.OnAdminCrearSala += VistaAdminCrearSala_OnAdminCrearSala;
+      //Profesor
+      logInView.OnProfesorMostrarTaller += LogInView_OnProfesorMostrarTaller;
+      logInView.OnProfesorLeerForo += LogInView_OnProfesorLeerForo;
+      logInView.OnProfesorAgregarMensaje += LogInView_OnProfesorAgregarMensaje;
+      logInView.OnProfesorEliminarMensaje += LogInView_OnProfesorEliminarMensaje;
+      logInView.OnProfesorCrearForo += LogInView_OnProfesorCrearForo;
+      logInView.OnProfesorEliminarForo += LogInView_OnProfesorEliminarForo;
+      logInView.OnProfesorMostrarParticipantes += LogInView_OnProfesorMostrarParticipantes;
+      logInView.OnProfesorCerrarSesion += LogInView_OnProfesorCerrarSesion;
 
       if (!LoadData())
       {
@@ -67,10 +76,85 @@ namespace Vistas
 
       }
     }
+        //Esta funcion cierra sesión desde cualquier panel
 
-    //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
-    //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
-    private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
+        private void LogInView_OnProfesorCerrarSesion(object sender, LogInEventArgs e)
+        {
+            
+            e.panels["Login"].Visible = true;
+            e.panels["ProfesorMenu"].Visible = false;
+            e.panels["AdminMenu"].Visible = false;
+            e.panels["StudentMenu"].Visible = false;
+            e.panels["StudentWsMenu"].Visible = false;
+            logInView.ClearLogIn();
+
+        }
+
+        
+
+        private void LogInView_OnProfesorMostrarParticipantes(object sender, LogInEventArgs e)
+        {
+            logInView.ClearParticipantes();
+            Taller ws = e.taller;
+            List<Alumno> participantes = GetParticipantes(ws);
+            logInView.ActualizarParticipantes(alumnos);
+            
+        }
+
+        private void LogInView_OnProfesorEliminarForo(object sender, LogInEventArgs e)
+        {
+            Taller ws = e.taller;
+            Foro f = e.foro;
+            ws.GetForos().Remove(f);
+            logInView.ClearListaForosProfe();
+            logInView.CargarForosTallerProfesor(ws);
+        }
+
+        private void LogInView_OnProfesorCrearForo(object sender, LogInEventArgs e)
+        {
+            Taller ws = e.taller;
+            String temaForo = e.temaForo;
+            CrearForo(ws, temaForo);
+            logInView.ActualizarListaForosProfe(ws.GetForos()[ws.GetForos().Count - 1]);
+            logInView.ClearIngresoTemaForoTallerProfe();
+
+        }
+
+        private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
+        {
+            Foro forum = e.foro;
+            Mensaje m = e.objetoMensaje;
+            EliminarMensaje(forum, m);
+            logInView.ActualizarListaMensajesForoProfe(m, true);
+            logInView.ClearListaMensajesForoProfe();
+            logInView.CargarMensajesForoProfesor(forum);
+           
+        }
+
+        private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
+        {
+            Foro forum = e.foro;
+            EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
+            Mensaje mensaje = forum.GetMensajes().Last();
+            logInView.ActualizarListaMensajesForoProfe(mensaje, false);
+        }
+
+        private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
+        {
+            Foro f = e.foro;
+            logInView.CargarMensajesForoProfesor(f);
+        }
+
+        private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
+        {
+            Taller ws = e.taller;
+            logInView.CargarForosTallerProfesor(ws);
+        }
+//*******************************************************************************************************************
+
+        //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
+        //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
+        private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
     {
       List<String> credenciales = e.credenciales;
 
@@ -370,10 +454,29 @@ namespace Vistas
       salas.Remove(sala);
     }
 
+    public List<Alumno> GetParticipantes(Taller ws)
+    {
+        List<Alumno> participantes = new List<Alumno>();
+        foreach (Alumno a in alumnos)
+            {
+                foreach(Taller t in a.GetTalleres())
+                {
+                    if(t.nombre==ws.nombre)
+                    {
+                        alumnos.Add(a);
+
+                    }
+                }
+            }
+            return participantes;
 
 
-    //Metodos de incializacion y serialize!
-    public void InicializaUsuariosIniciales()
+    }
+
+
+
+        //Metodos de incializacion y serialize!
+        public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, true, false, false, false } },
@@ -487,6 +590,7 @@ namespace Vistas
       return true;
     }
 
-    
-  }
+
+
+    }
 }

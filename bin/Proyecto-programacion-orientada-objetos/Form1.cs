@@ -35,10 +35,20 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminCrearProfesor;
     public event EventHandler<LogInEventArgs> OnAdminEliminarSala;
     public event EventHandler<LogInEventArgs> OnAdminCrearSala;
+    // Event Handler Profesor
+    public event EventHandler<LogInEventArgs> OnProfesorMostrarTaller;
+    public event EventHandler<LogInEventArgs> OnProfesorLeerForo;
+    public event EventHandler<LogInEventArgs> OnProfesorCrearForo;
+    public event EventHandler<LogInEventArgs> OnProfesorEliminarForo;
+    public event EventHandler<LogInEventArgs> OnProfesorAgregarMensaje;
+    public event EventHandler<LogInEventArgs> OnProfesorEliminarMensaje;
+    public event EventHandler<LogInEventArgs> OnProfesorMostrarParticipantes;
+        public event EventHandler<LogInEventArgs> OnProfesorCerrarSesion;
 
 
 
-    LogInEventArgs logInArgs = new LogInEventArgs();
+
+        LogInEventArgs logInArgs = new LogInEventArgs();
 
     Dictionary<String, Panel> panels = new Dictionary<String, Panel>(); //Diccionario que permite manejar los distintos paneles del form1. 
     List<String> bloques = new List<String>() { "8:30-10:30", "10:30-12:30", "12:30-14:30", "14:30-16:30", "16:30-18:30" };
@@ -597,28 +607,6 @@ namespace Vistas
     }
 
 
-    //Vista Profesor
-    public void ActualizarTalleresProfesor(Taller taller, bool borrar)
-    {
-      if (borrar)
-        if (profesorTalleresDict.Items.Count == 1)
-          profesorTalleresDict.Items[0] = "No existen talleres inscritos por el profesor";
-        else
-          profesorTalleresDict.Items.Remove(taller);
-      else
-      if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals("No existen talleres inscritos por el profesor"))
-      {
-        profesorTalleresDict.Items.Add(taller);
-        profesorTalleresDict.Items.RemoveAt(0);
-      }
-      else
-        profesorTalleresDict.Items.Add(taller);
-    }
-
-    public void NoHayTalleresProfesor()
-    {
-      profesorTalleresDict.Items.Add("No existen talleres inscritos por el profesor");
-    }
 
 
     //Metodo para simular horarios banner
@@ -680,34 +668,308 @@ namespace Vistas
         e.Cancel = true;
     }
 
-    
+        //Vista Profesor
+        public void ActualizarTalleresProfesor(Taller taller, bool borrar)
+        {
+            if (borrar)
+            {
+                if (profesorTalleresDict.Items.Count == 1)
+                {
+                    profesorTalleresDict.Items[0] = "No existen talleres inscritos por el profesor";
+                    TalleresParticipantes.Items[0] = "No existen talleres inscritos por el profesor";
+                }
+                else
+                {
+                    profesorTalleresDict.Items.Remove(taller);
+                    TalleresParticipantes.Items.Remove(taller);
+                }
+            }
+            else
+      if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals("No existen talleres inscritos por el profesor"))
+            {
+                profesorTalleresDict.Items.Add(taller);
+                TalleresParticipantes.Items.Add(taller);
+                profesorTalleresDict.Items.RemoveAt(0);
+                TalleresParticipantes.Items.RemoveAt(0);
+            }
+            else
+                profesorTalleresDict.Items.Add(taller);
+        TalleresParticipantes.Items.Add(taller);
+    }
+
+    public void NoHayTalleresProfesor()
+    {
+      profesorTalleresDict.Items.Add("No existen talleres inscritos por el profesor");
+    }
+
+        
+        //Metodos Profesor
+
+        //Metodos que actualizan los foros en el panel profesor
+        public void ActualizarListaForosProfe(Foro forum)
+        {
+            if (listBoxForosTallerProfe.Items.Count > 0 && listBoxForosTallerProfe.Items[0].Equals("No se han creado foros"))
+            {
+                listBoxForosTallerProfe.Items.Add(forum);
+                //aqui se elimina el primer elemento que indica que no existen foros
+                listBoxForosTallerProfe.Items.RemoveAt(0);
+            }
+
+            else
+            {
+                listBoxForosTallerProfe.Items.Add(forum);
+
+            }
+        }
 
 
 
+        public void NoHayForosTallerProfe()//indica dentro de los listbox que no hay foros creados
+        {
+            listBoxForosTallerProfe.Items.Add("No se han creado foros");
+
+        }
+
+        public void ClearIngresoTemaForoTallerProfe()//Limpia el textbox que agrega nuevo foro
+        {
+            TemaForoP.Clear();
+        }
+
+        public void ActualizarListaMensajesForoProfe(Mensaje m, bool borrar)
+        {
+            if (borrar)
+                if (listBoxProfeMensajesForo.Items.Count == 1)
+                    listBoxProfeMensajesForo.Items[0] = "El foro no contiene mensajes";
+                else
+                    listBoxProfeMensajesForo.Items.Remove(m);
+            else 
+            if (listBoxProfeMensajesForo.Items.Count > 0 && listBoxProfeMensajesForo.Items[0].Equals("El foro no contiene mensajes"))
+            {
+                listBoxProfeMensajesForo.Items.Add(m);
+                listBoxProfeMensajesForo.Items.RemoveAt(0);
+            }
+            else
+            {
+                listBoxProfeMensajesForo.Items.Add(m);
+                textMensajeP.Clear();
+            }
+            textMensajeP.Clear();
+
+        }
+        
+
+        public void NoExistenMensajesForoProfe()
+        {
+            listBoxProfeMensajesForo.Items.Add("El foro no contiene mensajes");
+        }
+
+        public void ClearListaMensajesForoProfe()
+        {
+            listBoxProfeMensajesForo.Items.Clear();
+        }
+
+        public void ClearListaForosProfe()
+        {
+            listBoxForosTallerProfe.Items.Clear();
+        }
+
+        public void CargarMensajesForoProfesor(Foro f)
+        {
+            if (f.GetMensajes().Count >= 1)
+            {
+                foreach (Mensaje m in f.GetMensajes())
+                {
+                    ActualizarListaMensajesForoProfe(m, false);
+                }
+            }
+            else
+            { NoExistenMensajesForoProfe(); }
+        }
+        public void CargarForosTallerProfesor(Taller ws)
+        {
+
+            if (ws.GetForos().Count > 0)
+            {
+                foreach (Foro f in ws.GetForos())
+                {
+                    ActualizarListaForosProfe(f);
+                }
+            }
+            else
+            { NoHayForosTallerProfe(); }
+            ClearListaMensajesForoProfe();
+            
+        }
+
+        public void ActualizarParticipantes(List<Alumno> alumnos)
+        {
+            foreach(Alumno alumno in alumnos)
+            {
+                //if (listParticipantes.Items.Count ==0  && listParticipantes.Items[0].Equals(""))
+                // NoHayParticipantes(); }
+
+                if (listParticipantes.Items.Count > 0 && listParticipantes.Items[0].Equals(""))
+                {
+                    listParticipantes.Items.Add(alumno);
+                    listParticipantes.Items.RemoveAt(0);
+                }
+                else
+                { listParticipantes.Items.Add(alumno); }
+                
+            }
+        }
+
+        public void NoHayParticipantes()
+        {
+            listParticipantes.Items.Add("No existen participantes en el ramo");
+        }
+        
+
+        public void ClearParticipantes()
+        {
+            listParticipantes.Items.Clear();
+        }
+
+        
+        //CLICKS Profesor
 
 
+        private void profesorIngresarTaller_Click(object sender, EventArgs e)
+        {
+            listBoxForosTallerProfe.Items.Clear();
+            if (OnProfesorMostrarTaller != null)
+            {
+              if (profesorTalleresDict.SelectedIndex > -1 && !profesorTalleresDict.SelectedItem.Equals("No existen talleres inscritos por el profesor"))
+              {
+                logInArgs.taller = profesorTalleresDict.SelectedItem as Taller;
+                OnProfesorMostrarTaller(this, logInArgs);
+
+              }
+              else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void profesorLeerForo_Click(object sender, EventArgs e)
+        {
+            
+            listBoxProfeMensajesForo.Items.Clear();
+            if (OnProfesorLeerForo!=null)
+            {
+                if (listBoxForosTallerProfe.SelectedIndex > -1 && !listBoxForosTallerProfe.SelectedItem.Equals("No se han creado foros"))
+                {
+                    logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
+                    OnProfesorLeerForo(this, logInArgs);
+                }
+                else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private void AgregarMensajeP_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorAgregarMensaje != null)
+            {
+                if (!textMensajeP.Text.Equals(""))
+                {
+                    logInArgs.mensaje = textMensajeP.Text;
+                    OnProfesorAgregarMensaje(this, logInArgs);
+                }
+                else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void EliminarMensajeP_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorEliminarMensaje != null)
+            {
+                if (listBoxProfeMensajesForo.SelectedIndex > -1 && !listBoxProfeMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
+                {
+                    logInArgs.objetoMensaje = listBoxProfeMensajesForo.SelectedItem as Mensaje;
+                    OnProfesorEliminarMensaje(this, logInArgs);
+                }
+                else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void CrearForoP_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorCrearForo != null)
+            {
+                if (!TemaForoP.Text.Equals(""))
+                {
+                    logInArgs.temaForo = TemaForoP.Text;
+                    OnProfesorCrearForo(this, logInArgs);
+                }
+                else MessageBox.Show("ERROR: Debe ingresar un tema", "Error: No se entrega Tema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProfesorEliminarForo_Click(object sender, EventArgs e)
+        {
+            if(OnProfesorEliminarForo!=null)
+            {
+                logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
+                OnProfesorEliminarForo(this, logInArgs);
+            }
+            else
+            MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: Foro no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void MostrarPart_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorMostrarParticipantes != null)
+            {
+                logInArgs.taller = TalleresParticipantes.SelectedItem as Taller;
+                OnProfesorMostrarParticipantes(this, logInArgs);
+            }
+        }
+
+        
+        //*********************Botones Cerrar Sesión**************************************
+        private void BotonCerrarSesion_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorCerrarSesion != null)
+            {
+                OnProfesorCerrarSesion(this, logInArgs);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorCerrarSesion != null)
+            {
+                OnProfesorCerrarSesion(this, logInArgs);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorCerrarSesion != null)
+            {
+                OnProfesorCerrarSesion(this, logInArgs);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (OnProfesorCerrarSesion != null)
+            {
+                OnProfesorCerrarSesion(this, logInArgs);
+            }
+
+        }
+        //**********************************************************************************
+        public void ClearLogIn()
+        {
+            nametxtbox.Clear();
+            pwdtxtbox.Clear();
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //--> ir a LoginEventArgs
-  }
+        //--> ir a LoginEventArgs
+    }
 }
