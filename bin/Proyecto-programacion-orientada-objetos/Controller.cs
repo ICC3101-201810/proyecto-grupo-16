@@ -25,7 +25,7 @@ namespace Vistas
     List<String> bloques;
     TalleresVU logInView;
 
-    
+
     public Controller(Dictionary<String, Form> vistas)
     {
       usuarios = new List<Usuario>();
@@ -76,85 +76,85 @@ namespace Vistas
 
       }
     }
-        //Esta funcion cierra sesión desde cualquier panel
+    //Esta funcion cierra sesión desde cualquier panel
 
-        private void LogInView_OnProfesorCerrarSesion(object sender, LogInEventArgs e)
-        {
-            
-            e.panels["Login"].Visible = true;
-            e.panels["ProfesorMenu"].Visible = false;
-            e.panels["AdminMenu"].Visible = false;
-            e.panels["StudentMenu"].Visible = false;
-            e.panels["StudentWsMenu"].Visible = false;
-            logInView.ClearLogIn();
+    private void LogInView_OnProfesorCerrarSesion(object sender, LogInEventArgs e)
+    {
 
-        }
+      e.panels["Login"].Visible = true;
+      e.panels["ProfesorMenu"].Visible = false;
+      e.panels["AdminMenu"].Visible = false;
+      e.panels["StudentMenu"].Visible = false;
+      e.panels["StudentWsMenu"].Visible = false;
+      logInView.ClearLogIn();
 
-        
+    }
 
-        private void LogInView_OnProfesorMostrarParticipantes(object sender, LogInEventArgs e)
-        {
-            logInView.ClearParticipantes();
-            Taller ws = e.taller;
-            List<Alumno> participantes = GetParticipantes(ws);
-            logInView.ActualizarParticipantes(alumnos);
-            
-        }
 
-        private void LogInView_OnProfesorEliminarForo(object sender, LogInEventArgs e)
-        {
-            Taller ws = e.taller;
-            Foro f = e.foro;
-            ws.GetForos().Remove(f);
-            logInView.ClearListaForosProfe();
-            logInView.CargarForosTallerProfesor(ws);
-        }
 
-        private void LogInView_OnProfesorCrearForo(object sender, LogInEventArgs e)
-        {
-            Taller ws = e.taller;
-            String temaForo = e.temaForo;
-            CrearForo(ws, temaForo);
-            logInView.ActualizarListaForosProfe(ws.GetForos()[ws.GetForos().Count - 1]);
-            logInView.ClearIngresoTemaForoTallerProfe();
+    private void LogInView_OnProfesorMostrarParticipantes(object sender, LogInEventArgs e)
+    {
+      logInView.ClearParticipantes();
+      Taller ws = e.taller;
+      List<Alumno> participantes = GetParticipantes(ws);
+      logInView.ActualizarParticipantes(alumnos);
 
-        }
+    }
 
-        private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
-        {
-            Foro forum = e.foro;
-            Mensaje m = e.objetoMensaje;
-            EliminarMensaje(forum, m);
-            logInView.ActualizarListaMensajesForoProfe(m, true);
-            logInView.ClearListaMensajesForoProfe();
-            logInView.CargarMensajesForoProfesor(forum);
-           
-        }
+    private void LogInView_OnProfesorEliminarForo(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      Foro f = e.foro;
+      ws.GetForos().Remove(f);
+      logInView.ClearListaForosProfe();
+      logInView.CargarForosTallerProfesor(ws);
+    }
 
-        private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
-        {
-            Foro forum = e.foro;
-            EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
-            Mensaje mensaje = forum.GetMensajes().Last();
-            logInView.ActualizarListaMensajesForoProfe(mensaje, false);
-        }
+    private void LogInView_OnProfesorCrearForo(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      String temaForo = e.temaForo;
+      CrearForo(ws, temaForo);
+      logInView.ActualizarListaForosProfe(ws.GetForos()[ws.GetForos().Count - 1]);
+      logInView.ClearIngresoTemaForoTallerProfe();
 
-        private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
-        {
-            Foro f = e.foro;
-            logInView.CargarMensajesForoProfesor(f);
-        }
+    }
 
-        private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
-        {
-            Taller ws = e.taller;
-            logInView.CargarForosTallerProfesor(ws);
-        }
-//*******************************************************************************************************************
+    private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      Mensaje m = e.objetoMensaje;
+      EliminarMensaje(forum, m);
+      logInView.ActualizarListaMensajesForoProfe(m, true);
+      logInView.ClearListaMensajesForoProfe();
+      logInView.CargarMensajesForoProfesor(forum);
 
-        //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
-        //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
-        private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
+    }
+
+    private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
+    {
+      Foro forum = e.foro;
+      EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
+      Mensaje mensaje = forum.GetMensajes().Last();
+      logInView.ActualizarListaMensajesForoProfe(mensaje, false);
+    }
+
+    private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
+    {
+      Foro f = e.foro;
+      logInView.CargarMensajesForoProfesor(f);
+    }
+
+    private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      logInView.CargarForosTallerProfesor(ws);
+    }
+    //*******************************************************************************************************************
+
+    //Metodo que esta suscrito al evento lanzado por el boton para ingresar en el Login.
+    //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
+    private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
     {
       List<String> credenciales = e.credenciales;
 
@@ -200,7 +200,7 @@ namespace Vistas
             logInView.ActualizarAlumnosAdmin(alumno, false);
           foreach (Profesor profesor in profesores)
             logInView.ActualizarProfesoresAdmin(profesor, false);
-            
+
 
           e.panels["Login"].Visible = false;
           e.panels["AdminMenu"].Visible = true;
@@ -227,7 +227,7 @@ namespace Vistas
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
       logInView.ActualizarTalleresDisponibles(ws, true);
-      logInView.ActualizarTalleresInscritos(ws,false);
+      logInView.ActualizarTalleresInscritos(ws, false);
     }
 
     private void VistaEliminarTaller_OnAlumnoEliminarTaller(object sender, LogInEventArgs e)
@@ -267,7 +267,7 @@ namespace Vistas
       Taller ws = e.taller;
       String tema = e.temaForo;
       CrearForo(ws, tema);
-      logInView.ActualizarListaForos(ws.GetForos()[ws.GetForos().Count-1]);
+      logInView.ActualizarListaForos(ws.GetForos()[ws.GetForos().Count - 1]);
       logInView.ActualizarCantidadForosTaller(ws);
       logInView.ClearIngresoTemaForoTaller();
     }
@@ -416,7 +416,7 @@ namespace Vistas
       return disponibles;
     }
 
-    private bool CrearForo(Taller taller, string nombreForo, bool privacidad=false)
+    private bool CrearForo(Taller taller, string nombreForo, bool privacidad = false)
     {
       taller.CrearForo(nombreForo, privacidad);
       return true;
@@ -456,27 +456,27 @@ namespace Vistas
 
     public List<Alumno> GetParticipantes(Taller ws)
     {
-        List<Alumno> participantes = new List<Alumno>();
-        foreach (Alumno a in alumnos)
-            {
-                foreach(Taller t in a.GetTalleres())
-                {
-                    if(t.nombre==ws.nombre)
-                    {
-                        alumnos.Add(a);
+      List<Alumno> participantes = new List<Alumno>();
+      foreach (Alumno a in alumnos)
+      {
+        foreach (Taller t in a.GetTalleres())
+        {
+          if (t.nombre.Equals(ws.nombre))
+          {
+            participantes.Add(a);
 
-                    }
-                }
-            }
-            return participantes;
+          }
+        }
+      }
+      return participantes;
 
 
     }
 
 
 
-        //Metodos de incializacion y serialize!
-        public void InicializaUsuariosIniciales()
+    //Metodos de incializacion y serialize!
+    public void InicializaUsuariosIniciales()
     {
       Dictionary<String, List<Boolean>> schedulea = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() {false, true, false, false, false } },
@@ -503,7 +503,6 @@ namespace Vistas
       Sala sala1 = new Sala("CanchaFutbol", schedulea);
       Sala sala2 = new Sala("CanchaTenis", schedulec);
       Taller futbol = new Taller("futbol", 40, 15000, schedulea, sala1, new Categoria());
-      Taller futbol2 = new Taller("futbol borrar", 40, 15000, schedulea, sala1, new Categoria());
       Taller tenis = new Taller("tenis", 40, 15000, schedulec, sala2, new Categoria());
       salas.Add(sala1);
       salas.Add(sala2);
@@ -514,18 +513,15 @@ namespace Vistas
       talleresD.Add(futbol);
       talleresD.Add(tenis);
       Profesor profesor1 = new Profesor("18234567-8", "Andres", "Howard", "a@m.cl", "+5699293949596", "1234", talleresD);
-      Profesor profesor2 = new Profesor("18234567-8", "Andres", "Borrar", "a@m.cl", "+5699293949596", "1234", talleresD);
       profesores.Add(profesor1);
-      profesores.Add(profesor2);
       talleres.Add(futbol);
       talleres.Add(tenis);
-      talleres.Add(futbol2);
       alumnos.Add(alumno1);
       alumnos.Add(alumno2);
       usuarios.Add(administrador1);
       usuarios.Add(profesor1);
-      usuarios.Add(profesor2);
       usuarios.Add(alumno1);
+      usuarios.Add(alumno2);
     }
 
 
@@ -592,5 +588,5 @@ namespace Vistas
 
 
 
-    }
+  }
 }
