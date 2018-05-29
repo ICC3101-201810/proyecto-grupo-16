@@ -805,6 +805,16 @@ if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals
 
     public void ActualizarParticipantes(List<Alumno> alumnos)
     {
+      foreach (Alumno alumno in alumnos) { 
+        if (adminListAlumnos.Items.Count > 0 && adminListAlumnos.Items[0].Equals("No existen participantes en el ramo") && alumno.GetTalleres().Contains)
+        {
+          adminListAlumnos.Items.Add(alumno);
+          adminListAlumnos.Items.RemoveAt(0);
+        }
+        else
+          adminListAlumnos.Items.Add(alumno);
+      }
+
       foreach (Alumno alumno in alumnos)
       {
         //if (listParticipantes.Items.Count ==0  && listParticipantes.Items[0].Equals(""))
