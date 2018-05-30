@@ -233,11 +233,18 @@ namespace Vistas
     private void VistaInscribirTaller_OnAlumnoInscribirTaller(object sender, LogInEventArgs e)
     {
       Taller ws = talleres[GetTaller(e.taller)];
-
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
-      logInView.ActualizarTalleresDisponibles(ws, true);
+      //logInView.ActualizarTalleresDisponibles(ws, true);
       logInView.ActualizarTalleresInscritos(ws, false);
+      logInView.ClearListTalleresDisponiblesAlumno();
+      if (GetTalleresDisponibles(student).Count > 0)
+        foreach (Taller taller in GetTalleresDisponibles(student).Keys)
+          logInView.ActualizarTalleresDisponibles(taller, false);
+      else
+        logInView.NoHayTalleresDisponibles();
+
+
     }
 
     private void VistaEliminarTaller_OnAlumnoEliminarTaller(object sender, LogInEventArgs e)
@@ -322,7 +329,7 @@ namespace Vistas
 
     private void VistaAdminEliminarTaller_OnAdminEliminarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       AdminEliminarTaller(ws);
       logInView.ActualizarTalleresAdmin(ws, true);
     }
@@ -335,7 +342,8 @@ namespace Vistas
     }
     private void VistaAdminEliminarAlumno_OnAdminEliminarAlumno(object sender, LogInEventArgs e)
     {
-      Alumno alumno = e.student;
+
+      Alumno alumno = (Alumno)usuarios[GetUsuario(e.student)];
       AdminEliminarAlumno(alumno);
       logInView.ActualizarAlumnosAdmin(alumno, true);
     }
@@ -349,7 +357,7 @@ namespace Vistas
     }
     private void VistaAdminEliminarProfesor_OnAdminEliminarProfesor(object sender, LogInEventArgs e)
     {
-      Profesor profesor = e.profesor;
+      Profesor profesor = (Profesor)usuarios[GetUsuario(e.profesor)];
       AdminEliminarProfesor(profesor);
       logInView.ActualizarProfesoresAdmin(profesor, true);
     }
@@ -363,7 +371,7 @@ namespace Vistas
     }
     private void VistaAdminEliminarSala_OnAdminEliminarSala(object sender, LogInEventArgs e)
     {
-      Sala sala = e.sala;
+      Sala sala = salas[GetSala(e.sala)];
       AdminEliminarSala(sala);
       logInView.ActualizarSalasAdmin(sala, true);
       logInView.ActualizarAdminTallerSalas(sala, true);
@@ -516,6 +524,27 @@ namespace Vistas
       }
       return -1;
     }
+
+    public int GetUsuario(Usuario img)
+    {
+
+      foreach (Usuario al in usuarios)
+      {
+        if (String.Concat(al.rut,al.nombre,al.apellido).Equals(String.Concat(img.rut, img.nombre, img.apellido))) return usuarios.IndexOf(al);
+      }
+      return -1;
+    }
+
+    public int GetSala(Sala img)
+    {
+
+      foreach (Sala sa in salas)
+      {
+        if (sa.GetNombre().Equals(img.GetNombre())) return salas.IndexOf(sa);
+      }
+      return -1;
+    }
+
 
 
 

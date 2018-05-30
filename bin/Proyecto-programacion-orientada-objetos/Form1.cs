@@ -368,6 +368,10 @@ namespace Vistas
       listTalleresDisponibles.Items.Add("No existen talleres disponibles en el horario del alumno");
     }
 
+    public void ClearListTalleresDisponiblesAlumno()
+    {
+      listTalleresDisponibles.Items.Clear();
+    }
 
     public void ActualizarTalleresInscritos(Taller taller, bool borrar)
     {
