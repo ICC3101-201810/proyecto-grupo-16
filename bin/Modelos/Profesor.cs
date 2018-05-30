@@ -25,7 +25,12 @@ namespace Modelos
 
     public Boolean InscribirTaller(Taller taller)
     {
-      if (!talleresDictados.Contains(taller))
+      bool existe = false;
+      foreach (Taller ta in talleresDictados)
+      {
+        if (ta.GetId() == taller.GetId()) existe = true;
+      }
+      if (!existe)
         talleresDictados.Add(taller);
       return true;
     }
