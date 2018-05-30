@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace Modelos
@@ -12,6 +13,8 @@ namespace Modelos
     List<Foro> foros = new List<Foro>();
     List<Encuesta> encuestas = new List<Encuesta>();
     public Sala sala { get; set; }
+    public static int count=0;
+    int id;
     Categoria categoria;
 
 
@@ -23,7 +26,7 @@ namespace Modelos
       this.horario = horario;
       this.sala = sala;
       this.categoria = categoria;
-
+      this.id= Interlocked.Increment(ref count); 
     }
 
     public Dictionary<String, List<Boolean>> GetHorario()
@@ -89,6 +92,11 @@ namespace Modelos
           if (horario[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
 
       return nombre + " - " + schedule;
+    }
+
+    public int GetId()
+    {
+      return id;
     }
 
   }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace Modelos
@@ -11,6 +12,8 @@ namespace Modelos
     public DateTime fecha { get; }
     public List<Media> media { get; }
     public String codigo { get; }
+    public static int count = 0;
+
     //Boolean tieneMedia;
     //String codigo_mensaje_string
 
@@ -20,7 +23,7 @@ namespace Modelos
       this.texto = texto;
       this.fecha = DateTime.Now;
       this.media = media;
-      codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre());
+      codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre(), Interlocked.Increment(ref count).ToString());
     }
 
     //Constructor sin media
@@ -29,7 +32,7 @@ namespace Modelos
       this.autor = autor;
       this.texto = texto;
       this.fecha = DateTime.Now;
-      codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre());
+      codigo = String.Concat(DateTime.Now.ToString(), autor.GetNombre(), Interlocked.Increment(ref count).ToString());
     }
 
     /*public Boolean TieneMedia()

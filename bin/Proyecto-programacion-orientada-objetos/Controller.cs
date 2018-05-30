@@ -73,7 +73,13 @@ namespace Vistas
       }
       else
       {
-
+        Taller.count = talleres.Count;
+        foreach (Taller ws in talleres)
+        {
+          Foro.count += ws.GetForos().Count;
+          foreach (Foro fr in ws.GetForos())
+            Mensaje.count += fr.GetMensajes().Count;
+        }
       }
     }
     //Esta funcion cierra sesión desde cualquier panel
@@ -223,7 +229,8 @@ namespace Vistas
 
     private void VistaInscribirTaller_OnAlumnoInscribirTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
+
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
       logInView.ActualizarTalleresDisponibles(ws, true);
@@ -232,7 +239,7 @@ namespace Vistas
 
     private void VistaEliminarTaller_OnAlumnoEliminarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       Alumno student = (Alumno)GetUser(e.credenciales);
       student.DeleteWS(ws);
       ws.SetCuposDisponibles();
@@ -250,7 +257,7 @@ namespace Vistas
 
     private void VistaIngresarTaller_OnAlumnoIngresarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       logInView.ActualizarPerfilTaller(ws);
       e.panels["StudentWsMenu"].Visible = true;
       e.panels["StudentMenu"].Visible = false;
@@ -264,7 +271,7 @@ namespace Vistas
     }
     private void VistaAlumnoCrearForo_OnAlumnoCrearForo(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       String tema = e.temaForo;
       CrearForo(ws, tema);
       logInView.ActualizarListaForos(ws.GetForos()[ws.GetForos().Count - 1]);
@@ -273,7 +280,8 @@ namespace Vistas
     }
     private void VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws,e.foro)];
       logInView.ClearListaMensajesForo();
       if (forum.GetMensajes().Count > 0)
       {
@@ -286,20 +294,23 @@ namespace Vistas
     }
     private void VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
       logInView.ClearListaMensajesForo();
     }
     private void VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
       EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
       Mensaje mensaje = forum.GetMensajes().Last();
       logInView.ActualizarListaMensajesForo(mensaje, false);
     }
     private void VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
-      Mensaje m = e.objetoMensaje;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      Mensaje m = forum.GetMensajes()[GetMensaje(forum,e.objetoMensaje)];
       EliminarMensaje(forum, m);
       logInView.ActualizarListaMensajesForo(m, true);
     }
@@ -473,6 +484,36 @@ namespace Vistas
 
     }
 
+    public int GetTaller (Taller img)
+    {
+
+      foreach (Taller ws in talleres)
+      {
+        if (ws.GetId() == img.GetId()) return talleres.IndexOf(ws);
+      }
+      return -1; 
+    }
+
+    public int GetForo(Taller ws, Foro img)
+    {
+
+      foreach (Foro fr in ws.GetForos())
+      {
+        if (fr.GetId() == img.GetId()) return ws.GetForos().IndexOf(fr);
+      }
+      return -1;
+    }
+
+    public int GetMensaje( Foro forum, Mensaje img)
+    {
+
+      foreach (Mensaje me in forum.GetMensajes())
+      {
+        if (me.codigo.Equals(img.codigo)) return forum.GetMensajes().IndexOf(me);
+      }
+      return -1;
+    }
+
 
 
     //Metodos de incializacion y serialize!
@@ -496,10 +537,16 @@ namespace Vistas
       { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
       { "Jueves", new List<Boolean>() {false, false, true, true, false } },
       { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
+      Dictionary<String, List<Boolean>> scheduleb2 = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, true, true, false } },
+      { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, true, true, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Administrador administrador1 = new Administrador("18123456-7", "Carlos", "Diaz", "c@m.cl", "+56991929394", "1234");
       administradores.Add(administrador1);
       Alumno alumno1 = new Alumno("18884427-8", "Israel", "Cea", "i@m.cl", "+56999404286", "1234", scheduleb);
-      Alumno alumno2 = new Alumno("18884427-8", "Israel", "Borrar", "i@m.cl", "+56999404286", "1234", scheduleb);
+      Alumno alumno2 = new Alumno("18884427-8", "Tom", "Boston", "tb@m.cl", "+56999404286", "1234", scheduleb2);
       Sala sala1 = new Sala("CanchaFutbol", schedulea);
       Sala sala2 = new Sala("CanchaTenis", schedulec);
       Taller futbol = new Taller("futbol", 40, 15000, schedulea, sala1, new Categoria());

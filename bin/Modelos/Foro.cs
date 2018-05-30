@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace Modelos
@@ -9,11 +10,14 @@ namespace Modelos
     public String tema { get; }
     List<Mensaje> mensajes = new List<Mensaje>();
     public Boolean privacidad { get; }
+    public static int count = 0;
+    int id;
 
     public Foro(String tema, Boolean privacidad)
     {
       this.tema = tema;
       this.privacidad = privacidad;
+      this.id = Interlocked.Increment(ref count);
     }
     //public Boolean AgregarMensaje(Usuario usuario, String texto, List<Media> media)
     public Boolean AgregarMensaje(Usuario usuario, String texto)
@@ -55,6 +59,10 @@ namespace Modelos
     public override string ToString()
     {
       return tema;
+    }
+    public int GetId()
+    {
+      return id;
     }
   }
 }
