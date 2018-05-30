@@ -463,9 +463,48 @@ namespace Vistas
     }
 
     //Metodos admin
-    public void AdminEliminarTaller(Taller taller)
+    public void AdminEliminarTaller(Taller ws)
     {
-      talleres.Remove(taller);
+      int index;
+      talleres.Remove(ws);
+      foreach (Alumno student in alumnos)
+      {
+        index = -1;
+        foreach (Taller ta in student.GetTalleres())
+        {
+          if (ta.GetId() == ws.GetId())
+          {
+            index = student.GetTalleres().IndexOf(ta);
+            break;
+          }
+        }
+        if (index >= 0) { 
+          student.DeleteWS(ws);
+          foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
+          {
+            for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+            {
+              if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = true;
+
+            }
+          }
+          logInView.ActualizarTalleresInscritos(ws, true);
+          logInView.ActualizarTalleresDisponibles(ws, false);
+        }
+      }
+      foreach (Profesor prof in profesores)
+      {
+        index = -1;
+        foreach (Taller ta in prof.GetTalleres())
+        {
+          if (ta.GetId() == ws.GetId())
+          {
+            index = prof.GetTalleres().IndexOf(ta);
+            break;
+          }
+        }
+        if (index >= 0) prof.talleresDictados.RemoveAt(index);
+      }
     }
     public void AdminEliminarAlumno(Alumno alumno)
     {
