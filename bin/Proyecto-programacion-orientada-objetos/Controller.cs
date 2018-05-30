@@ -135,6 +135,7 @@ namespace Vistas
       logInView.ActualizarListaMensajesForoProfe(m, true);
       logInView.ClearListaMensajesForoProfe();
       logInView.CargarMensajesForoProfesor(forum.GetMensajes());
+      
     }
 
     private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
@@ -321,8 +322,13 @@ namespace Vistas
       Taller ws = talleres[GetTaller(e.taller)];
       Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
       Mensaje m = forum.GetMensajes()[GetMensaje(forum,e.objetoMensaje)];
-      EliminarMensaje(forum, m);
-      logInView.ActualizarListaMensajesForo(m, true);
+      if (String.Concat(m.autor.rut, m.autor.nombre , m.autor.apellido ).Equals(String.Concat(GetUser(e.credenciales).rut, GetUser(e.credenciales).nombre, GetUser(e.credenciales).apellido)))
+      {
+        EliminarMensaje(forum, m);
+        logInView.ActualizarListaMensajesForo(m, true);
+      }
+      else
+        logInView.ErrorEliminarMensaje();
     }
 
     //Vistas admin

@@ -476,6 +476,11 @@ namespace Vistas
       listMensajesForo.Items.Clear();
     }
 
+    public void ErrorEliminarMensaje()
+    {
+      MessageBox.Show("ERROR: El usuario no es el autor del mensaje", "Error: Usuario no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
     //Metodos del admin
 
     public void ActualizarTalleresAdmin(Taller taller, bool borrar)
@@ -904,12 +909,13 @@ namespace Vistas
     {
       if (OnProfesorCrearForo != null)
       {
-        if (!TemaForoP.Text.Equals(""))
+        if (!TemaForoP.Text.Equals("") && profesorTalleresDict.SelectedIndex > -1 && !profesorTalleresDict.SelectedItem.Equals("No existen talleres inscritos por el profesor"))
         {
+          logInArgs.taller = profesorTalleresDict.SelectedItem as Taller;
           logInArgs.temaForo = TemaForoP.Text;
           OnProfesorCrearForo(this, logInArgs);
         }
-        else MessageBox.Show("ERROR: Debe ingresar un tema", "Error: No se entrega Tema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        else MessageBox.Show("ERROR: Debe seleccionar un foro e ingresar tema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -917,20 +923,27 @@ namespace Vistas
     {
       if (OnProfesorEliminarForo != null)
       {
-        logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
-        OnProfesorEliminarForo(this, logInArgs);
+        if (listBoxForosTallerProfe.SelectedIndex > -1 && !listBoxForosTallerProfe.SelectedItem.Equals("No se han creado foros"))
+        {
+          logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
+          OnProfesorEliminarForo(this, logInArgs);
+        }
+        else
+          MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: Foro no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
-      else
-        MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: Foro no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
     }
 
     private void MostrarPart_Click(object sender, EventArgs e)
     {
       if (OnProfesorMostrarParticipantes != null)
       {
-        logInArgs.taller = TalleresParticipantes.SelectedItem as Taller;
-        OnProfesorMostrarParticipantes(this, logInArgs);
+        if (TalleresParticipantes.SelectedIndex > -1 && !TalleresParticipantes.SelectedItem.Equals("No existen talleres inscritos por el profesor"))
+        {
+          logInArgs.taller = TalleresParticipantes.SelectedItem as Taller;
+          OnProfesorMostrarParticipantes(this, logInArgs);
+        }
+        else
+          MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: Taller no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
