@@ -82,7 +82,7 @@ namespace Vistas
       {
         if (listTalleresDisponibles.SelectedIndex > -1 && !listTalleresDisponibles.SelectedItem.Equals("No existen talleres disponibles en el horario del alumno"))
         {
-          logInArgs.taller = listTalleresDisponibles.SelectedItem as Taller;
+          logInArgs.taller = (Taller)listTalleresDisponibles.SelectedItem;
           OnAlumnoInscribirTaller(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,7 +96,7 @@ namespace Vistas
       {
         if (listTalleresInscritos.SelectedIndex > -1 && !listTalleresInscritos.SelectedItem.Equals("No existen talleres inscritos por el alumno"))
         {
-          logInArgs.taller = listTalleresInscritos.SelectedItem as Taller;
+          logInArgs.taller = (Taller)listTalleresInscritos.SelectedItem;
           OnAlumnoEliminarTaller(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,7 +109,7 @@ namespace Vistas
       {
         if (listTalleresInscritos.SelectedIndex > -1 && !listTalleresInscritos.SelectedItem.Equals("No existen talleres inscritos por el alumno"))
         {
-          logInArgs.taller = listTalleresInscritos.SelectedItem as Taller;
+          logInArgs.taller = (Taller)listTalleresInscritos.SelectedItem;
           OnAlumnoIngresarTaller(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,7 +143,7 @@ namespace Vistas
       {
         if (listForosForoMenu.SelectedIndex > -1 && !listForosForoMenu.SelectedItem.Equals("No se han creado foros"))
         {
-          logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
+          logInArgs.foro = (Foro)listForosForoMenu.SelectedItem;
           OnAlumnoIngresarAForo(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,7 +154,7 @@ namespace Vistas
     {
       if (OnAlumnoSalirDeForo != null)
       {
-        logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
+        logInArgs.foro = (Foro)listForosForoMenu.SelectedItem;
         OnAlumnoSalirDeForo(this, logInArgs);
       }
     }
@@ -178,7 +178,7 @@ namespace Vistas
       {
         if (listMensajesForo.SelectedIndex > -1 && !listMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
         {
-          logInArgs.objetoMensaje = listMensajesForo.SelectedItem as Mensaje;
+          logInArgs.objetoMensaje = (Mensaje)listMensajesForo.SelectedItem;
           OnAlumnoEliminarMensaje(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -192,7 +192,7 @@ namespace Vistas
       {
         if (adminListTalleres.SelectedIndex > -1 && !adminListTalleres.SelectedItem.Equals("No existen talleres creados"))
         {
-          logInArgs.taller = adminListTalleres.SelectedItem as Taller;
+          logInArgs.taller = (Taller)adminListTalleres.SelectedItem;
           OnAdminEliminarTaller(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,7 +211,7 @@ namespace Vistas
           logInArgs.nombreTaller = adminNombreTaller.Text;
           logInArgs.cuposTaller = Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0));
           logInArgs.precioTaller = Convert.ToInt32(Math.Round(adminPrecioTaller.Value, 0));
-          logInArgs.salaTaller = adminListSalas.SelectedItem as Sala;
+          logInArgs.salaTaller = (Sala)adminListSalas.SelectedItem;
           logInArgs.horarioTaller = HorarioLimpio();
           for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
           {
@@ -238,7 +238,7 @@ namespace Vistas
       {
         if (adminListAlumnos.SelectedIndex > -1 && !adminListAlumnos.SelectedItem.Equals("No existen alumnos creados"))
         {
-          logInArgs.student = adminListAlumnos.SelectedItem as Alumno;
+          logInArgs.student = (Alumno)adminListAlumnos.SelectedItem;
           OnAdminEliminarAlumno(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un alumno", "Error: No existe alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -272,7 +272,7 @@ namespace Vistas
       {
         if (adminListProfesores.SelectedIndex > -1 && !adminListProfesores.SelectedItem.Equals("No existen profesores creados"))
         {
-          logInArgs.profesor = adminListProfesores.SelectedItem as Profesor;
+          logInArgs.profesor = (Profesor)adminListProfesores.SelectedItem;
           OnAdminEliminarProfesor(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un profesor", "Error: No existe profesor", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -303,7 +303,7 @@ namespace Vistas
       {
         if (adminListSalasTab.SelectedIndex > -1 && !adminListSalasTab.SelectedItem.Equals("No existen salas creadas"))
         {
-          logInArgs.sala = adminListSalas.SelectedItem as Sala;
+          logInArgs.sala = (Sala)adminListSalas.SelectedItem;
           OnAdminEliminarSala(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un sala", "Error: No existe sala", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -339,7 +339,6 @@ namespace Vistas
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
-
     }
 
 
@@ -845,7 +844,7 @@ namespace Vistas
       {
         if (profesorTalleresDict.SelectedIndex > -1 && !profesorTalleresDict.SelectedItem.Equals("No existen talleres inscritos por el profesor"))
         {
-          logInArgs.taller = profesorTalleresDict.SelectedItem as Taller;
+          logInArgs.taller = (Taller)profesorTalleresDict.SelectedItem;
           OnProfesorMostrarTaller(this, logInArgs);
 
         }
@@ -861,7 +860,7 @@ namespace Vistas
       {
         if (listBoxForosTallerProfe.SelectedIndex > -1 && !listBoxForosTallerProfe.SelectedItem.Equals("No se han creado foros"))
         {
-          logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
+          logInArgs.foro = (Foro)listBoxForosTallerProfe.SelectedItem;
           OnProfesorLeerForo(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -888,7 +887,7 @@ namespace Vistas
       {
         if (listBoxProfeMensajesForo.SelectedIndex > -1 && !listBoxProfeMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
         {
-          logInArgs.objetoMensaje = listBoxProfeMensajesForo.SelectedItem as Mensaje;
+          logInArgs.objetoMensaje = (Mensaje)listBoxProfeMensajesForo.SelectedItem;
           OnProfesorEliminarMensaje(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -913,7 +912,7 @@ namespace Vistas
     {
       if (OnProfesorEliminarForo != null)
       {
-        logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
+        logInArgs.foro = (Foro)listBoxForosTallerProfe.SelectedItem;
         OnProfesorEliminarForo(this, logInArgs);
       }
       else
@@ -925,7 +924,7 @@ namespace Vistas
     {
       if (OnProfesorMostrarParticipantes != null)
       {
-        logInArgs.taller = TalleresParticipantes.SelectedItem as Taller;
+        logInArgs.taller = (Taller)TalleresParticipantes.SelectedItem;
         OnProfesorMostrarParticipantes(this, logInArgs);
       }
     }
@@ -972,8 +971,6 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
-
-
     //--> ir a LoginEventArgs
   }
 }
