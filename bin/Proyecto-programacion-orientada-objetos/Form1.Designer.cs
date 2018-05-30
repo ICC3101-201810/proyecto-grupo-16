@@ -52,6 +52,8 @@
       this.button3 = new System.Windows.Forms.Button();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage3 = new System.Windows.Forms.TabPage();
+      this.tallerTeachers = new System.Windows.Forms.Label();
+      this.label57 = new System.Windows.Forms.Label();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.label13 = new System.Windows.Forms.Label();
       this.temaForo = new System.Windows.Forms.TextBox();
@@ -476,6 +478,7 @@
       // studentWSMenu
       // 
       this.studentWSMenu.Controls.Add(this.button3);
+      this.studentWSMenu.Controls.Add(this.MenuAdmin);
       this.studentWSMenu.Controls.Add(this.tabControl1);
       this.studentWSMenu.Location = new System.Drawing.Point(3, 12);
       this.studentWSMenu.Name = "studentWSMenu";
@@ -506,6 +509,8 @@
       // 
       // tabPage3
       // 
+      this.tabPage3.Controls.Add(this.tallerTeachers);
+      this.tabPage3.Controls.Add(this.label57);
       this.tabPage3.Controls.Add(this.groupBox1);
       this.tabPage3.Controls.Add(this.label11);
       this.tabPage3.Controls.Add(this.numeroForos);
@@ -524,6 +529,26 @@
       this.tabPage3.TabIndex = 0;
       this.tabPage3.Text = "Informacion";
       this.tabPage3.UseVisualStyleBackColor = true;
+      // 
+      // tallerTeachers
+      // 
+      this.tallerTeachers.AutoSize = true;
+      this.tallerTeachers.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tallerTeachers.Location = new System.Drawing.Point(121, 149);
+      this.tallerTeachers.Name = "tallerTeachers";
+      this.tallerTeachers.Size = new System.Drawing.Size(82, 26);
+      this.tallerTeachers.TabIndex = 24;
+      this.tallerTeachers.Text = "Horario:";
+      // 
+      // label57
+      // 
+      this.label57.AutoSize = true;
+      this.label57.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label57.Location = new System.Drawing.Point(33, 149);
+      this.label57.Name = "label57";
+      this.label57.Size = new System.Drawing.Size(82, 26);
+      this.label57.TabIndex = 23;
+      this.label57.Text = "Profesor";
       // 
       // groupBox1
       // 
@@ -581,7 +606,7 @@
       // 
       this.numeroForos.AutoSize = true;
       this.numeroForos.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numeroForos.Location = new System.Drawing.Point(121, 142);
+      this.numeroForos.Location = new System.Drawing.Point(121, 115);
       this.numeroForos.Name = "numeroForos";
       this.numeroForos.Size = new System.Drawing.Size(82, 26);
       this.numeroForos.TabIndex = 18;
@@ -591,7 +616,7 @@
       // 
       this.cuposTaller.AutoSize = true;
       this.cuposTaller.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cuposTaller.Location = new System.Drawing.Point(121, 101);
+      this.cuposTaller.Location = new System.Drawing.Point(121, 83);
       this.cuposTaller.Name = "cuposTaller";
       this.cuposTaller.Size = new System.Drawing.Size(82, 26);
       this.cuposTaller.TabIndex = 17;
@@ -601,7 +626,7 @@
       // 
       this.horarioTaller.AutoSize = true;
       this.horarioTaller.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.horarioTaller.Location = new System.Drawing.Point(121, 61);
+      this.horarioTaller.Location = new System.Drawing.Point(121, 48);
       this.horarioTaller.Name = "horarioTaller";
       this.horarioTaller.Size = new System.Drawing.Size(82, 26);
       this.horarioTaller.TabIndex = 16;
@@ -611,7 +636,7 @@
       // 
       this.label8.AutoSize = true;
       this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label8.Location = new System.Drawing.Point(33, 142);
+      this.label8.Location = new System.Drawing.Point(33, 115);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(65, 26);
       this.label8.TabIndex = 15;
@@ -621,7 +646,7 @@
       // 
       this.label7.AutoSize = true;
       this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.Location = new System.Drawing.Point(33, 101);
+      this.label7.Location = new System.Drawing.Point(33, 83);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(70, 26);
       this.label7.TabIndex = 14;
@@ -631,7 +656,7 @@
       // 
       this.label5.AutoSize = true;
       this.label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.Location = new System.Drawing.Point(33, 61);
+      this.label5.Location = new System.Drawing.Point(33, 48);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(82, 26);
       this.label5.TabIndex = 13;
@@ -816,7 +841,7 @@
       // 
       this.MenuAdmin.Controls.Add(this.button1);
       this.MenuAdmin.Controls.Add(this.tabControl2);
-      this.MenuAdmin.Location = new System.Drawing.Point(3, 14);
+      this.MenuAdmin.Location = new System.Drawing.Point(0, 1);
       this.MenuAdmin.Name = "MenuAdmin";
       this.MenuAdmin.Size = new System.Drawing.Size(882, 653);
       this.MenuAdmin.TabIndex = 28;
@@ -1762,7 +1787,7 @@
       // 
       this.MenuProfesor.Controls.Add(this.BotonCerrarSesion);
       this.MenuProfesor.Controls.Add(this.Participantes);
-      this.MenuProfesor.Location = new System.Drawing.Point(0, 11);
+      this.MenuProfesor.Location = new System.Drawing.Point(3, 10);
       this.MenuProfesor.Name = "MenuProfesor";
       this.MenuProfesor.Size = new System.Drawing.Size(895, 653);
       this.MenuProfesor.TabIndex = 29;
@@ -2348,9 +2373,8 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(922, 674);
+      this.ClientSize = new System.Drawing.Size(921, 674);
       this.Controls.Add(this.MenuProfesor);
-      this.Controls.Add(this.MenuAdmin);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
       this.Controls.Add(this.loginpanel);
@@ -2623,6 +2647,8 @@
         private System.Windows.Forms.Button button1;
     private System.Windows.Forms.ListBox adminListProfesorCrearTaller;
     private System.Windows.Forms.Button asignarProfesorTallerAdminTaller;
+    private System.Windows.Forms.Label tallerTeachers;
+    private System.Windows.Forms.Label label57;
   }
 }
 

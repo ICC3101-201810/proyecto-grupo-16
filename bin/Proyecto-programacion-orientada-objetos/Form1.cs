@@ -425,7 +425,7 @@ namespace Vistas
       listTalleresInscritos.Items.Add("No existen talleres inscritos por el alumno");
     }
 
-    public void ActualizarPerfilTaller(Taller ws)
+    public void ActualizarPerfilTaller(Taller ws, String teachers)
     {
       string schedule = "";
       nombreTaller.Text = ws.nombre;
@@ -434,6 +434,7 @@ namespace Vistas
           if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
       horarioTaller.Text = schedule;
       cuposTaller.Text = ws.GetCuposDisponibles().ToString();
+      tallerTeachers.Text = teachers;
       listForosTaller.Items.Clear();
       listForosForoMenu.Items.Clear();
       if (ws.GetForos().Count > 0)
@@ -1037,7 +1038,8 @@ namespace Vistas
       pwdtxtbox.Clear();
     }
 
-    
+
+
 
 
     //--> ir a LoginEventArgs

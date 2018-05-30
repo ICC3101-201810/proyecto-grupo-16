@@ -271,7 +271,17 @@ namespace Vistas
     private void VistaIngresarTaller_OnAlumnoIngresarTaller(object sender, LogInEventArgs e)
     {
       Taller ws = talleres[GetTaller(e.taller)];
-      logInView.ActualizarPerfilTaller(ws);
+      String teachers="";
+      foreach (Profesor prof in profesores){
+        foreach(Taller ta in prof.talleresDictados)
+          if(ta.GetId() == ws.GetId()){
+            if (teachers.Equals(""))
+              teachers = prof.GetNombre() + " " + prof.GetApellido();
+            else
+              teachers=teachers+"/"+ prof.GetNombre() + " " + prof.GetApellido();
+          }
+      }
+      logInView.ActualizarPerfilTaller(ws,teachers);
       e.panels["StudentWsMenu"].Visible = true;
       e.panels["StudentMenu"].Visible = false;
       logInView.ClearListaMensajesForo();
