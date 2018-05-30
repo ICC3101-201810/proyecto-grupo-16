@@ -687,16 +687,18 @@ namespace Vistas
         }
       }
       else
-if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals("No existen talleres inscritos por el profesor"))
+        if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals("No existen talleres inscritos por el profesor"))
+        {
+          profesorTalleresDict.Items.Add(taller);
+          TalleresParticipantes.Items.Add(taller);
+          profesorTalleresDict.Items.RemoveAt(0);
+          TalleresParticipantes.Items.RemoveAt(0);
+        }
+      else
       {
         profesorTalleresDict.Items.Add(taller);
         TalleresParticipantes.Items.Add(taller);
-        profesorTalleresDict.Items.RemoveAt(0);
-        TalleresParticipantes.Items.RemoveAt(0);
       }
-      else
-        profesorTalleresDict.Items.Add(taller);
-      TalleresParticipantes.Items.Add(taller);
     }
 
     public void NoHayTalleresProfesor()
@@ -720,7 +722,6 @@ if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals
       else
       {
         listBoxForosTallerProfe.Items.Add(forum);
-
       }
     }
 
@@ -775,11 +776,11 @@ if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals
       listBoxForosTallerProfe.Items.Clear();
     }
 
-    public void CargarMensajesForoProfesor(Foro f)
+    public void CargarMensajesForoProfesor(List<Mensaje> mensajes)
     {
-      if (f.GetMensajes().Count >= 1)
+      if (mensajes.Count >= 1)
       {
-        foreach (Mensaje m in f.GetMensajes())
+        foreach (Mensaje m in mensajes)
         {
           ActualizarListaMensajesForoProfe(m, false);
         }
@@ -787,12 +788,12 @@ if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals
       else
       { NoExistenMensajesForoProfe(); }
     }
-    public void CargarForosTallerProfesor(Taller ws)
+    public void CargarForosTallerProfesor(List<Foro> foros)
     {
 
-      if (ws.GetForos().Count > 0)
+      if (foros.Count > 0)
       {
-        foreach (Foro f in ws.GetForos())
+        foreach (Foro f in foros)
         {
           ActualizarListaForosProfe(f);
         }
@@ -803,33 +804,24 @@ if (profesorTalleresDict.Items.Count > 0 && profesorTalleresDict.Items[0].Equals
 
     }
 
-    public void ActualizarParticipantes(List<Alumno> alumnos)
+    public void ActualizarParticipantes(List<Alumno> participantes)
     {
-      foreach (Alumno alumno in alumnos) { 
-        if (adminListAlumnos.Items.Count > 0 && adminListAlumnos.Items[0].Equals("No existen participantes en el ramo") && alumno.GetTalleres().Contains)
-        {
-          adminListAlumnos.Items.Add(alumno);
-          adminListAlumnos.Items.RemoveAt(0);
-        }
-        else
-          adminListAlumnos.Items.Add(alumno);
-      }
-
-      foreach (Alumno alumno in alumnos)
+      if (participantes.Count > 0)
       {
-        //if (listParticipantes.Items.Count ==0  && listParticipantes.Items[0].Equals(""))
-        // NoHayParticipantes(); }
-
-        if (listParticipantes.Items.Count > 0 && listParticipantes.Items[0].Equals(""))
+        foreach (Alumno alumno in participantes)
         {
-          listParticipantes.Items.Add(alumno);
-          listParticipantes.Items.RemoveAt(0);
+          if (listParticipantes.Items.Count > 0 && listParticipantes.Items[0].Equals("No existen participantes en el ramo"))
+          {
+            listParticipantes.Items.Add(alumno);
+            listParticipantes.Items.RemoveAt(0);
+          }
+          else
+            listParticipantes.Items.Add(alumno);
         }
-        else
-        { listParticipantes.Items.Add(alumno); }
-
       }
+      else NoHayParticipantes();
     }
+    
 
     public void NoHayParticipantes()
     {

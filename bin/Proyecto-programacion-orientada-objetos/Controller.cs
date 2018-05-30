@@ -97,7 +97,7 @@ namespace Vistas
       logInView.ClearParticipantes();
       Taller ws = e.taller;
       List<Alumno> participantes = GetParticipantes(ws);
-      logInView.ActualizarParticipantes(alumnos);
+      logInView.ActualizarParticipantes(participantes);
 
     }
 
@@ -107,7 +107,8 @@ namespace Vistas
       Foro f = e.foro;
       ws.GetForos().Remove(f);
       logInView.ClearListaForosProfe();
-      logInView.CargarForosTallerProfesor(ws);
+      List<Foro> foros = ws.GetForos();
+      logInView.CargarForosTallerProfesor(foros);
     }
 
     private void LogInView_OnProfesorCrearForo(object sender, LogInEventArgs e)
@@ -117,7 +118,6 @@ namespace Vistas
       CrearForo(ws, temaForo);
       logInView.ActualizarListaForosProfe(ws.GetForos()[ws.GetForos().Count - 1]);
       logInView.ClearIngresoTemaForoTallerProfe();
-
     }
 
     private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
@@ -127,8 +127,7 @@ namespace Vistas
       EliminarMensaje(forum, m);
       logInView.ActualizarListaMensajesForoProfe(m, true);
       logInView.ClearListaMensajesForoProfe();
-      logInView.CargarMensajesForoProfesor(forum);
-
+      logInView.CargarMensajesForoProfesor(forum.GetMensajes());
     }
 
     private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
@@ -142,13 +141,13 @@ namespace Vistas
     private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
     {
       Foro f = e.foro;
-      logInView.CargarMensajesForoProfesor(f);
+      logInView.CargarMensajesForoProfesor(f.GetMensajes());
     }
 
     private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
     {
       Taller ws = e.taller;
-      logInView.CargarForosTallerProfesor(ws);
+      logInView.CargarForosTallerProfesor(ws.GetForos());
     }
     //*******************************************************************************************************************
 
@@ -156,6 +155,7 @@ namespace Vistas
     //Simplemente verifica el usuario y carga su menu. Solo esta implementado el student. --> Ir a form1.cs
     private void VistaLogIn_OnLogIn(object sender, LogInEventArgs e)
     {
+
       List<String> credenciales = e.credenciales;
 
       if (!VerifyUser(credenciales))
