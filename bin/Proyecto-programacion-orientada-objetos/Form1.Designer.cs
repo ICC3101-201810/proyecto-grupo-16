@@ -478,7 +478,6 @@
       // studentWSMenu
       // 
       this.studentWSMenu.Controls.Add(this.button3);
-      this.studentWSMenu.Controls.Add(this.MenuAdmin);
       this.studentWSMenu.Controls.Add(this.tabControl1);
       this.studentWSMenu.Location = new System.Drawing.Point(3, 12);
       this.studentWSMenu.Name = "studentWSMenu";
@@ -839,9 +838,10 @@
       // 
       // MenuAdmin
       // 
+      this.MenuAdmin.Controls.Add(this.MenuProfesor);
       this.MenuAdmin.Controls.Add(this.button1);
       this.MenuAdmin.Controls.Add(this.tabControl2);
-      this.MenuAdmin.Location = new System.Drawing.Point(0, 1);
+      this.MenuAdmin.Location = new System.Drawing.Point(3, 9);
       this.MenuAdmin.Name = "MenuAdmin";
       this.MenuAdmin.Size = new System.Drawing.Size(882, 653);
       this.MenuAdmin.TabIndex = 28;
@@ -1787,7 +1787,7 @@
       // 
       this.MenuProfesor.Controls.Add(this.BotonCerrarSesion);
       this.MenuProfesor.Controls.Add(this.Participantes);
-      this.MenuProfesor.Location = new System.Drawing.Point(3, 10);
+      this.MenuProfesor.Location = new System.Drawing.Point(0, 1);
       this.MenuProfesor.Name = "MenuProfesor";
       this.MenuProfesor.Size = new System.Drawing.Size(895, 653);
       this.MenuProfesor.TabIndex = 29;
@@ -2373,8 +2373,8 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(921, 674);
-      this.Controls.Add(this.MenuProfesor);
+      this.ClientSize = new System.Drawing.Size(931, 674);
+      this.Controls.Add(this.MenuAdmin);
       this.Controls.Add(this.studentWSMenu);
       this.Controls.Add(this.StudentMenu);
       this.Controls.Add(this.loginpanel);

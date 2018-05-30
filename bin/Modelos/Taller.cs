@@ -43,6 +43,10 @@ namespace Modelos
     {
       actualInscritos += 1;
     }
+    public void AddCuposDisponibles()
+    {
+      actualInscritos -= 1;
+    }
     public int GetCuposIniciales()
     {
       return cupos;

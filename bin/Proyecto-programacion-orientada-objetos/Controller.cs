@@ -255,7 +255,7 @@ namespace Vistas
       Taller ws = talleres[GetTaller(e.taller)];
       Alumno student = (Alumno)GetUser(e.credenciales);
       student.DeleteWS(ws);
-      ws.SetCuposDisponibles();
+      ws.AddCuposDisponibles();
       foreach (String day in ws.GetHorario().Keys) //Se obtiene el horario del taller elegido por el alumno
       {
         for (int i = 0; i < ws.GetHorario()[day].Count; i++)
@@ -265,7 +265,12 @@ namespace Vistas
         }
       }
       logInView.ActualizarTalleresInscritos(ws, true);
-      logInView.ActualizarTalleresDisponibles(ws, false);
+      logInView.ClearListTalleresDisponiblesAlumno();
+      if (GetTalleresDisponibles(student).Count > 0)
+        foreach (Taller taller in GetTalleresDisponibles(student).Keys)
+          logInView.ActualizarTalleresDisponibles(taller, false);
+      else
+        logInView.NoHayTalleresDisponibles();
     }
 
     private void VistaIngresarTaller_OnAlumnoIngresarTaller(object sender, LogInEventArgs e)

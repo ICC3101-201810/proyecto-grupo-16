@@ -434,7 +434,10 @@ namespace Vistas
           if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
       horarioTaller.Text = schedule;
       cuposTaller.Text = ws.GetCuposDisponibles().ToString();
-      tallerTeachers.Text = teachers;
+      if (teachers.Equals(""))
+        tallerTeachers.Text = "No asignado";
+      else
+        tallerTeachers.Text = teachers;
       listForosTaller.Items.Clear();
       listForosForoMenu.Items.Clear();
       if (ws.GetForos().Count > 0)
