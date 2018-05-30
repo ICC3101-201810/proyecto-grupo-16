@@ -110,8 +110,13 @@ namespace Vistas
     private void LogInView_OnProfesorEliminarForo(object sender, LogInEventArgs e)
     {
       Taller ws = e.taller;
+<<<<<<< Updated upstream
       Foro f = e.foro;
       ws.GetForos().Remove(f);
+=======
+      Foro forum = e.foro;
+      ws.GetForos().Remove(forum);
+>>>>>>> Stashed changes
       logInView.ClearListaForosProfe();
       List<Foro> foros = ws.GetForos();
       logInView.CargarForosTallerProfesor(foros);
@@ -128,6 +133,10 @@ namespace Vistas
 
     private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
     {
+<<<<<<< Updated upstream
+=======
+      Taller ws = e.taller;
+>>>>>>> Stashed changes
       Foro forum = e.foro;
       Mensaje m = e.objetoMensaje;
       EliminarMensaje(forum, m);
@@ -138,6 +147,10 @@ namespace Vistas
 
     private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
     {
+<<<<<<< Updated upstream
+=======
+      Taller ws = e.taller;
+>>>>>>> Stashed changes
       Foro forum = e.foro;
       EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
       Mensaje mensaje = forum.GetMensajes().Last();
@@ -146,8 +159,14 @@ namespace Vistas
 
     private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
     {
+<<<<<<< Updated upstream
       Foro f = e.foro;
       logInView.CargarMensajesForoProfesor(f.GetMensajes());
+=======
+      Taller ws = e.taller;
+      Foro forum = e.foro;
+      logInView.CargarMensajesForoProfesor(forum.GetMensajes());
+>>>>>>> Stashed changes
     }
 
     private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
@@ -229,8 +248,12 @@ namespace Vistas
 
     private void VistaInscribirTaller_OnAlumnoInscribirTaller(object sender, LogInEventArgs e)
     {
+<<<<<<< Updated upstream
       Taller ws = talleres[GetTaller(e.taller)];
 
+=======
+      Taller ws = e.taller;
+>>>>>>> Stashed changes
       Alumno student = (Alumno)GetUser(e.credenciales);
       InscribirAlumno(student, ws);
       logInView.ActualizarTalleresDisponibles(ws, true);
@@ -239,7 +262,7 @@ namespace Vistas
 
     private void VistaEliminarTaller_OnAlumnoEliminarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
+      Taller ws = e.taller;
       Alumno student = (Alumno)GetUser(e.credenciales);
       student.DeleteWS(ws);
       ws.SetCuposDisponibles();
@@ -257,7 +280,7 @@ namespace Vistas
 
     private void VistaIngresarTaller_OnAlumnoIngresarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
+      Taller ws = e.taller;
       logInView.ActualizarPerfilTaller(ws);
       e.panels["StudentWsMenu"].Visible = true;
       e.panels["StudentMenu"].Visible = false;
@@ -271,7 +294,7 @@ namespace Vistas
     }
     private void VistaAlumnoCrearForo_OnAlumnoCrearForo(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
+      Taller ws = e.taller;
       String tema = e.temaForo;
       CrearForo(ws, tema);
       logInView.ActualizarListaForos(ws.GetForos()[ws.GetForos().Count - 1]);
@@ -280,8 +303,8 @@ namespace Vistas
     }
     private void VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
-      Foro forum = ws.GetForos()[GetForo(ws,e.foro)];
+      Taller ws = e.taller;
+      Foro forum = e.foro;
       logInView.ClearListaMensajesForo();
       if (forum.GetMensajes().Count > 0)
       {
@@ -294,25 +317,38 @@ namespace Vistas
     }
     private void VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
-      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      Taller ws = e.taller;
+      Foro forum = e.foro;
       logInView.ClearListaMensajesForo();
     }
     private void VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo(object sender, LogInEventArgs e)
     {
-      Taller ws = talleres[GetTaller(e.taller)];
-      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      Taller ws = e.taller;
+      Foro forum = e.foro;
       EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
       Mensaje mensaje = forum.GetMensajes().Last();
       logInView.ActualizarListaMensajesForo(mensaje, false);
     }
     private void VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje(object sender, LogInEventArgs e)
     {
+<<<<<<< Updated upstream
       Taller ws = talleres[GetTaller(e.taller)];
       Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
       Mensaje m = forum.GetMensajes()[GetMensaje(forum,e.objetoMensaje)];
       EliminarMensaje(forum, m);
       logInView.ActualizarListaMensajesForo(m, true);
+=======
+      Taller ws = e.taller;
+      Foro forum = e.foro;
+      Mensaje m = e.objetoMensaje;
+      if (String.Concat(m.autor.rut, m.autor.nombre , m.autor.apellido ).Equals(String.Concat(GetUser(e.credenciales).rut, GetUser(e.credenciales).nombre, GetUser(e.credenciales).apellido)))
+      {
+        EliminarMensaje(forum, m);
+        logInView.ActualizarListaMensajesForo(m, true);
+      }
+      else
+        logInView.ErrorEliminarMensaje();
+>>>>>>> Stashed changes
     }
 
     //Vistas admin
@@ -484,6 +520,7 @@ namespace Vistas
 
     }
 
+<<<<<<< Updated upstream
     public int GetTaller (Taller img)
     {
 
@@ -513,6 +550,9 @@ namespace Vistas
       }
       return -1;
     }
+=======
+
+>>>>>>> Stashed changes
 
 
 
