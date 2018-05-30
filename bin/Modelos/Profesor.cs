@@ -25,7 +25,8 @@ namespace Modelos
 
     public Boolean InscribirTaller(Taller taller)
     {
-      talleresDictados.Add(taller);
+      if (!talleresDictados.Contains(taller))
+        talleresDictados.Add(taller);
       return true;
     }
 

@@ -48,6 +48,7 @@ namespace Vistas
       logInView.OnAlumnoIngresarAForo += VistaAlumnoIngresarAForo_OnAlumnoIngresarAForo;
       logInView.OnAlumnoSalirDeForo += VistaAlumnoSalirDeForo_OnAlumnoSalirDeForo;
       logInView.OnAlumnoIngresarMensajeForo += VistaAlumnoIngresarMensajeForo_OnAlumnoIngresarMensajeForo;
+      //Admin
       logInView.OnAlumnoEliminarMensaje += VistaAlumnoEliminarMensaje_OnAlumnoEliminarMensaje;
       logInView.OnAdminEliminarTaller += VistaAdminEliminarTaller_OnAdminEliminarTaller;
       logInView.OnAdminCrearTaller += VistaAdminCrearTaller_OnAdminCrearTaller;
@@ -57,6 +58,7 @@ namespace Vistas
       logInView.OnAdminCrearProfesor += VistaAdminCrearProfesor_OnAdminCrearProfesor;
       logInView.OnAdminEliminarSala += VistaAdminEliminarSala_OnAdminEliminarSala;
       logInView.OnAdminCrearSala += VistaAdminCrearSala_OnAdminCrearSala;
+      logInView.OnAdminAsignarProfesorTaller += VistaAdminAsignarProfesorTaller_OnAdminAsignarProfesorTaller;
       //Profesor
       logInView.OnProfesorMostrarTaller += LogInView_OnProfesorMostrarTaller;
       logInView.OnProfesorLeerForo += LogInView_OnProfesorLeerForo;
@@ -342,7 +344,13 @@ namespace Vistas
     private void VistaAdminCrearTaller_OnAdminCrearTaller(object sender, LogInEventArgs e)
     {
       Taller ws = new Taller(e.nombreTaller, e.cuposTaller, e.precioTaller, e.horarioTaller, e.salaTaller, new Categoria());
+      Profesor prof;
       talleres.Add(ws);
+      if (e.profesor != null)
+      {
+        prof = (Profesor)usuarios[GetUsuario(e.profesor)];
+        prof.InscribirTaller(ws);
+      }
       logInView.ActualizarTalleresAdmin(ws, false);
       logInView.AdminLimpiarCrearTaller();
     }
@@ -390,6 +398,17 @@ namespace Vistas
       logInView.ActualizarAdminTallerSalas(sala, false);
       logInView.AdminLimpiarCrearSala();
     }
+
+    private void VistaAdminAsignarProfesorTaller_OnAdminAsignarProfesorTaller(object sender, LogInEventArgs e)
+    {
+      Taller ws = e.taller;
+      Profesor prof;
+      prof = (Profesor)usuarios[GetUsuario(e.profesor)];
+      prof.InscribirTaller(ws);
+      logInView.ProfesorAsignadoCorrectamenteATaller();
+      
+    }
+
 
 
 

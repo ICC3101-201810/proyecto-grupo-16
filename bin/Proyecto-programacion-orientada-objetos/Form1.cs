@@ -35,6 +35,8 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminCrearProfesor;
     public event EventHandler<LogInEventArgs> OnAdminEliminarSala;
     public event EventHandler<LogInEventArgs> OnAdminCrearSala;
+    public event EventHandler<LogInEventArgs> OnAdminAsignarProfesorTaller;
+
     // Event Handler Profesor
     public event EventHandler<LogInEventArgs> OnProfesorMostrarTaller;
     public event EventHandler<LogInEventArgs> OnProfesorLeerForo;
@@ -212,6 +214,12 @@ namespace Vistas
           logInArgs.cuposTaller = Convert.ToInt32(Math.Round(adminCuposTaller.Value, 0));
           logInArgs.precioTaller = Convert.ToInt32(Math.Round(adminPrecioTaller.Value, 0));
           logInArgs.salaTaller = adminListSalas.SelectedItem as Sala;
+          if (adminListProfesorCrearTaller.SelectedIndex>-1)
+          {
+            logInArgs.profesor = adminListProfesorCrearTaller.SelectedItem as Profesor;
+          }
+          else logInArgs.profesor = null;
+
           logInArgs.horarioTaller = HorarioLimpio();
           for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
           {
@@ -324,6 +332,27 @@ namespace Vistas
       }
     }
 
+    private void asignarProfesorTallerAdminTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminAsignarProfesorTaller != null)
+      {
+        if (adminListProfesorCrearTaller.SelectedIndex > -1 && adminListTalleres.SelectedIndex > -1)
+        {
+          logInArgs.taller = adminListTalleres.SelectedItem as Taller;
+          logInArgs.profesor = adminListProfesorCrearTaller.SelectedItem as Profesor;
+          OnAdminAsignarProfesorTaller(this, logInArgs);
+        }
+        else
+        {
+          if (adminListProfesorCrearTaller.SelectedIndex > -1)
+            MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          else if (adminListTalleres.SelectedIndex > -1)
+            MessageBox.Show("ERROR: Debe seleccionar un profesor", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          else
+            MessageBox.Show("ERROR: Debe seleccionar un taller y profesor", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+      }
+    }
 
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
@@ -537,6 +566,13 @@ namespace Vistas
       }
     }
 
+    public void ProfesorAsignadoCorrectamenteATaller()
+    {
+      adminListProfesorCrearTaller.SelectedItems.Clear();
+      adminListTalleres.SelectedItems.Clear();
+      MessageBox.Show("Profesor asignado correctamente", "Success: Profesor Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
     //Tab Alumno Admin
     public void ActualizarAlumnosAdmin(Alumno alumno, bool borrar)
     {
@@ -570,18 +606,29 @@ namespace Vistas
     {
       if (borrar)
         if (adminListProfesores.Items.Count == 1)
+        {
           adminListProfesores.Items[0] = "No existen profesores creados";
+          adminListProfesorCrearTaller.Items[0] = "No existen profesores creados";
+        }
         else
+        {
           adminListProfesores.Items.Remove(profesor);
+          adminListProfesorCrearTaller.Items.Remove(profesor);
+        }
       else
       {
         if (adminListProfesores.Items.Count > 0 && adminListProfesores.Items[0].Equals("No existen profesores creados"))
         {
           adminListProfesores.Items.Add(profesor);
           adminListProfesores.Items.RemoveAt(0);
+          adminListProfesorCrearTaller.Items.Add(profesor);
+          adminListProfesorCrearTaller.Items.RemoveAt(0);
         }
         else
+        {
           adminListProfesores.Items.Add(profesor);
+          adminListProfesorCrearTaller.Items.Add(profesor);
+        }
       }
     }
     public void AdminLimpiarCrearProfesor()
@@ -989,6 +1036,8 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
+
+    
 
 
     //--> ir a LoginEventArgs
