@@ -101,7 +101,7 @@ namespace Vistas
     private void LogInView_OnProfesorMostrarParticipantes(object sender, LogInEventArgs e)
     {
       logInView.ClearParticipantes();
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       List<Alumno> participantes = GetParticipantes(ws);
       logInView.ActualizarParticipantes(participantes);
 
@@ -109,9 +109,9 @@ namespace Vistas
 
     private void LogInView_OnProfesorEliminarForo(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
-      Foro f = e.foro;
-      ws.GetForos().Remove(f);
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      ws.GetForos().Remove(forum);
       logInView.ClearListaForosProfe();
       List<Foro> foros = ws.GetForos();
       logInView.CargarForosTallerProfesor(foros);
@@ -119,7 +119,7 @@ namespace Vistas
 
     private void LogInView_OnProfesorCrearForo(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       String temaForo = e.temaForo;
       CrearForo(ws, temaForo);
       logInView.ActualizarListaForosProfe(ws.GetForos()[ws.GetForos().Count - 1]);
@@ -128,8 +128,9 @@ namespace Vistas
 
     private void LogInView_OnProfesorEliminarMensaje(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
-      Mensaje m = e.objetoMensaje;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      Mensaje m = forum.GetMensajes()[GetMensaje(forum, e.objetoMensaje)];
       EliminarMensaje(forum, m);
       logInView.ActualizarListaMensajesForoProfe(m, true);
       logInView.ClearListaMensajesForoProfe();
@@ -138,7 +139,8 @@ namespace Vistas
 
     private void LogInView_OnProfesorAgregarMensaje(object sender, LogInEventArgs e)
     {
-      Foro forum = e.foro;
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
       EnviarMensaje(forum, e.mensaje, GetUser(e.credenciales));
       Mensaje mensaje = forum.GetMensajes().Last();
       logInView.ActualizarListaMensajesForoProfe(mensaje, false);
@@ -146,13 +148,14 @@ namespace Vistas
 
     private void LogInView_OnProfesorLeerForo(object sender, LogInEventArgs e)
     {
-      Foro f = e.foro;
-      logInView.CargarMensajesForoProfesor(f.GetMensajes());
+      Taller ws = talleres[GetTaller(e.taller)];
+      Foro forum = ws.GetForos()[GetForo(ws, e.foro)];
+      logInView.CargarMensajesForoProfesor(forum.GetMensajes());
     }
 
     private void LogInView_OnProfesorMostrarTaller(object sender, LogInEventArgs e)
     {
-      Taller ws = e.taller;
+      Taller ws = talleres[GetTaller(e.taller)];
       logInView.CargarForosTallerProfesor(ws.GetForos());
     }
     //*******************************************************************************************************************
