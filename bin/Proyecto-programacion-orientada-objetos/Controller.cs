@@ -59,6 +59,7 @@ namespace Vistas
       logInView.OnAdminEliminarSala += VistaAdminEliminarSala_OnAdminEliminarSala;
       logInView.OnAdminCrearSala += VistaAdminCrearSala_OnAdminCrearSala;
       logInView.OnAdminAsignarProfesorTaller += VistaAdminAsignarProfesorTaller_OnAdminAsignarProfesorTaller;
+      logInView.OnAdminSeleccionarHorarioTaller += VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller;
       //Profesor
       logInView.OnProfesorMostrarTaller += LogInView_OnProfesorMostrarTaller;
       logInView.OnProfesorLeerForo += LogInView_OnProfesorLeerForo;
@@ -422,6 +423,32 @@ namespace Vistas
       prof.InscribirTaller(ws);
       logInView.ProfesorAsignadoCorrectamenteATaller();
       
+    }
+
+    private void VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller(object sender, LogInEventArgs e)
+    {
+      foreach (Sala sala in salas)
+      {
+        int elimina = 0;
+        foreach (String day in e.horarioTaller.Keys)
+        {
+          for (int i = 0; i < e.horarioTaller[day].Count; i++)
+          {
+            if (e.horarioTaller[day][i] && sala.GetHorario()[day][i])
+            {
+              logInView.ActualizarAdminTallerSalas(sala, true);
+              elimina = 1;
+              break;
+            }
+            //else
+            //  logInView.ActualizarAdminTallerSalas(sala, false);
+          }
+          if (elimina == 1)
+            break;
+        }
+        if(elimina == 0)
+          logInView.ActualizarAdminTallerSalas(sala, false);
+      }
     }
 
 
