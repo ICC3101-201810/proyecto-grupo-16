@@ -44,6 +44,13 @@ namespace Modelos
     {
 
     }
+
+    public bool DeleteWS(Taller taller)
+    {
+      talleresDictados.RemoveAll(x => x.nombre == taller.nombre);
+      return true;
+    }
+
     public override string ToString()
     {
       return rut + ": " + nombre + " " + apellido+", |DATOS: Usuario: "+ email+ " Clave: " + clave + " Contacto: "+telefono + " |";

@@ -36,6 +36,19 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminEliminarSala;
     public event EventHandler<LogInEventArgs> OnAdminCrearSala;
     public event EventHandler<LogInEventArgs> OnAdminAsignarProfesorTaller;
+    public event EventHandler<LogInEventArgs> OnAdminIngresarTaller;
+    public event EventHandler<LogInEventArgs> OnVolverMenuAdmin;
+    public event EventHandler<LogInEventArgs> OnAdminCrearForo;
+    public event EventHandler<LogInEventArgs> OnAdminIngresarAForo;
+    public event EventHandler<LogInEventArgs> OnAdminSalirDeForo;
+    public event EventHandler<LogInEventArgs> OnAdminEliminarForo;
+    public event EventHandler<LogInEventArgs> OnAdminIngresarMensajeForo;
+    public event EventHandler<LogInEventArgs> OnAdminEliminarMensaje;
+    public event EventHandler<LogInEventArgs> OnAdminEliminarProfesorTaller;
+    public event EventHandler<LogInEventArgs> OnAdminAgregarProfesorTaller;
+    public event EventHandler<LogInEventArgs> OnAdminEliminarAlumnoTaller;
+    public event EventHandler<LogInEventArgs> OnAdminAgregarAlumnoTaller;
+
 
     // Event Handler Profesor
     public event EventHandler<LogInEventArgs> OnProfesorMostrarTaller;
@@ -354,6 +367,156 @@ namespace Vistas
       }
     }
 
+    //Admin revisar taller
+    private void adminIngresarATaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminIngresarTaller != null)
+      {
+        if (adminListTalleres.SelectedIndex > -1 && !adminListTalleres.SelectedItem.Equals("No existen talleres creados"))
+        {
+          logInArgs.taller = adminListTalleres.SelectedItem as Taller;
+          OnAdminIngresarTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: No existe taller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminVolverMenu_Click(object sender, EventArgs e)
+    {
+      if (OnVolverMenuAdmin != null)
+      {
+        OnVolverMenuAdmin(this, logInArgs);
+      }
+    }
+
+    private void adminCrearForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminCrearForo != null)
+      {
+        if (!temaForoAdmin.Text.Equals(""))
+        {
+          logInArgs.temaForo = temaForoAdmin.Text;
+          OnAdminCrearForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe ingresar un tema", "Error: No se entrega Tema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminIngresarForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminIngresarAForo != null)
+      {
+        if (listForosForoMenuAdmin.SelectedIndex > -1 && !listForosForoMenuAdmin.SelectedItem.Equals("No se han creado foros"))
+        {
+          logInArgs.foro = listForosForoMenuAdmin.SelectedItem as Foro;
+          OnAdminIngresarAForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminSalirDeForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminSalirDeForo != null)
+      {
+        logInArgs.foro = listForosForoMenuAdmin.SelectedItem as Foro;
+        OnAdminSalirDeForo(this, logInArgs);
+      }
+    }
+
+    private void adminEliminarForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarForo != null)
+      {
+        if (listForosForoMenuAdmin.SelectedIndex > -1 && !listForosForoMenuAdmin.SelectedItem.Equals("No se han creado foros"))
+        {
+          logInArgs.foro = listForosForoMenuAdmin.SelectedItem as Foro;
+          OnAdminEliminarForo(this, logInArgs);
+        }
+        else
+          MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: Foro no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminAgregarMensajeForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminIngresarMensajeForo != null)
+      {
+        if (!adminIngresarMensajeTexto.Text.Equals(""))
+        {
+          logInArgs.mensaje = adminIngresarMensajeTexto.Text;
+          OnAdminIngresarMensajeForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminEliminarMensajeForoTaller_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarMensaje != null)
+      {
+        if (listMensajesForoAdmin.SelectedIndex > -1 && !listMensajesForoAdmin.SelectedItem.Equals("El foro no contiene mensajes"))
+        {
+          logInArgs.objetoMensaje = listMensajesForoAdmin.SelectedItem as Mensaje;
+          OnAdminEliminarMensaje(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void AdminTallerEliminarProf_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarProfesorTaller != null)
+      {
+        if (adminListProfesoresInscritosTaller.SelectedIndex > -1 && !adminListProfesoresInscritosTaller.SelectedItem.Equals("No existe profesor asignado"))
+        {
+          logInArgs.profesor = adminListProfesoresInscritosTaller.SelectedItem as Profesor;
+          OnAdminEliminarProfesorTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un profesor", "Error: No se selecciona profesor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    private void adminTallerAgregarProfesor_Click(object sender, EventArgs e)
+    {
+      if (OnAdminAgregarProfesorTaller != null)
+      {
+        if (adminListProfesoresDisponibles.SelectedIndex > -1 && !adminListProfesoresDisponibles.SelectedItem.Equals("No existe profesor en sistema"))
+        {
+          logInArgs.profesor = adminListProfesoresDisponibles.SelectedItem as Profesor;
+          OnAdminAgregarProfesorTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un profesor", "Error: No se selecciona profesor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminTallerEliminarAlumno_Click(object sender, EventArgs e)
+    {
+      if (OnAdminEliminarAlumnoTaller != null)
+      {
+        if (adminListAlumnosInscritosTaller.SelectedIndex > -1 && !adminListAlumnosInscritosTaller.SelectedItem.Equals("No existen participantes en el ramo"))
+        {
+          logInArgs.student = adminListAlumnosInscritosTaller.SelectedItem as Alumno;
+          OnAdminEliminarAlumnoTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un alumno", "Error: No se selecciona alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void adminTallerAgregarAlumno_Click(object sender, EventArgs e)
+    {
+      if (OnAdminAgregarAlumnoTaller != null)
+      {
+        if (adminListAlumnosSistema.SelectedIndex > -1 && !adminListAlumnosSistema.SelectedItem.Equals("No existen alumnos en sistema"))
+        {
+          logInArgs.student = adminListAlumnosSistema.SelectedItem as Alumno;
+          OnAdminAgregarAlumnoTaller(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un alumno", "Error: No se selecciona alumno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
 
     //Este metodo dice que cuando se carge la forma 1, agregue los paneles a la lista panel. 
     //Si crean un panel nuevo tienen que agregarlo aca para despues manejarlo en el controlador!
@@ -364,6 +527,7 @@ namespace Vistas
       panels.Add("StudentMenu", StudentMenu);
       panels.Add("StudentWsMenu", studentWSMenu);
       panels.Add("AdminMenu", MenuAdmin);
+      panels.Add("panelTallerAdmin", panelTallerAdmin);
       panels.Add("ProfesorMenu", MenuProfesor);
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
@@ -577,6 +741,244 @@ namespace Vistas
       MessageBox.Show("Profesor asignado correctamente", "Success: Profesor Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
+    //Metodos para manejo de taller admin
+    public void ActualizarPerfilTallerAdmin(Taller ws, String teachers)
+    {
+      string schedule = "";
+      nombreTallerAdmin.Text = ws.nombre;
+      foreach (String day in ws.GetHorario().Keys)
+        for (int i = 0; i < ws.GetHorario()[day].Count; i++)
+          if (ws.GetHorario()[day][i]) schedule = String.Concat(schedule, "| ", day + ": " + bloques[i]);
+      horarioTallerAdmin.Text = schedule;
+      cuposTallerAdmin.Text = ws.GetCuposDisponibles().ToString();
+      if (teachers.Equals(""))
+        tallerTeachersAdmin.Text = "No asignado";
+      else
+        tallerTeachersAdmin.Text = teachers;
+      listForosTallerAdmin.Items.Clear();
+      listForosForoMenuAdmin.Items.Clear();
+      if (ws.GetForos().Count > 0)
+        foreach (Foro foro in ws.GetForos())
+        {
+          ActualizarListaForosAdmin(foro);
+        }
+      else
+        NoHayForosTallerAdmin();
+      numeroForosAdmin.Text = ws.GetForos().Count.ToString();
+    }
+
+    public void ActualizarListaForosAdmin(Foro forum)
+    {
+      if (listForosTaller.Items.Count > 0 && listForosTaller.Items[0].Equals("No se han creado foros"))
+      {
+        listForosTallerAdmin.Items.Add(forum);
+        listForosForoMenuAdmin.Items.Add(forum);
+        listForosTallerAdmin.Items.RemoveAt(0);
+        listForosForoMenuAdmin.Items.RemoveAt(0);
+      }
+      else
+      {
+        listForosTallerAdmin.Items.Add(forum);
+        listForosForoMenuAdmin.Items.Add(forum);
+      }
+    }
+    public void NoHayForosTallerAdmin()
+    {
+      listForosTallerAdmin.Items.Add("No se han creado foros");
+      listForosForoMenuAdmin.Items.Add("No se han creado foros");
+    }
+
+    public void ActualizarCantidadForosTallerAdmin(Taller ws)
+    {
+      numeroForosAdmin.Text = ws.GetForos().Count.ToString();
+    }
+
+    public void ClearIngresoTemaForoTallerAdmin()
+    {
+      temaForoAdmin.Clear();
+    }
+
+    public void ActualizarListaMensajesForoAdmin(Mensaje m, bool borrar)
+    {
+      if (borrar)
+        if (listMensajesForoAdmin.Items.Count == 1)
+          listMensajesForoAdmin.Items[0] = "El foro no contiene mensajes";
+        else
+          listMensajesForoAdmin.Items.Remove(m);
+      else
+        if (listMensajesForoAdmin.Items.Count > 0 && listMensajesForoAdmin.Items[0].Equals("El foro no contiene mensajes"))
+      {
+        listMensajesForoAdmin.Items.Add(m);
+        listMensajesForoAdmin.Items.RemoveAt(0);
+      }
+      else
+        listMensajesForoAdmin.Items.Add(m);
+      adminIngresarMensajeTexto.Clear();
+    }
+
+    public void NoExistenMensajesForoAdmin()
+    {
+      listMensajesForoAdmin.Items.Add("El foro no contiene mensajes");
+    }
+
+    public void ClearListaMensajesForoAdmin()
+    {
+      listMensajesForoAdmin.Items.Clear();
+    }
+
+    public void ClearListaForosAdmin()
+    {
+      listForosForoMenuAdmin.Items.Clear();
+      listForosTallerAdmin.Items.Clear();
+    }
+
+    public void CargarForosTallerAdmin(List<Foro> foros)
+    {
+      if (foros.Count > 0)
+      {
+        foreach (Foro f in foros)
+        {
+          ActualizarListaForosAdmin(f);
+        }
+      }
+      else
+        NoHayForosTallerAdmin();
+      ClearListaMensajesForoAdmin();
+    }
+
+    public void CargarMensajesForoAdmin(List<Mensaje> mensajes)
+    {
+      if (mensajes.Count >= 1)
+      {
+        foreach (Mensaje m in mensajes)
+        {
+          ActualizarListaMensajesForoAdmin(m, false);
+        }
+      }
+      else
+      { NoExistenMensajesForoAdmin(); }
+    }
+
+    public void ActualizarParticipantesAdmin(List<Alumno> participantes, List<Profesor> tutores, List<Alumno> alumnos, List<Profesor> profesores)
+    {
+      bool existe = false;
+      if (participantes.Count > 0)
+      {
+        foreach (Alumno alumno in participantes)
+        {
+          if (adminListAlumnosInscritosTaller.Items.Count > 0 && adminListAlumnosInscritosTaller.Items[0].Equals("No existen participantes en el ramo"))
+          {
+            adminListAlumnosInscritosTaller.Items.Add(alumno);
+            adminListAlumnosInscritosTaller.Items.RemoveAt(0);
+          }
+          else
+            adminListAlumnosInscritosTaller.Items.Add(alumno);
+        }
+      }
+      else NoHayParticipantesAdmin();
+
+      if (tutores.Count > 0)
+      {
+        foreach (Profesor profesor in tutores)
+        {
+          if (adminListProfesoresInscritosTaller.Items.Count > 0 && adminListProfesoresInscritosTaller.Items[0].Equals("No existe profesor asignado"))
+          {
+            adminListProfesoresInscritosTaller.Items.Add(profesor);
+            adminListProfesoresInscritosTaller.Items.RemoveAt(0);
+          }
+          else
+            adminListProfesoresInscritosTaller.Items.Add(profesor);
+        }
+      }
+      else NoHayTutoresAdmin();
+
+      if (alumnos.Count > 0 && alumnos.Count>participantes.Count)
+      {
+        foreach (Alumno alumno in alumnos)
+        {
+          existe = false;
+          foreach (Alumno inscrito in participantes)
+          {
+            if (alumno.rut.Equals(inscrito.rut))
+            {
+              existe = true;
+              break;
+            }
+          }
+          if (!existe)
+          {
+            if (adminListAlumnosSistema.Items.Count > 0 && adminListAlumnosSistema.Items[0].Equals("No existen alumnos en sistema"))
+            {
+              adminListAlumnosSistema.Items.Add(alumno);
+              adminListAlumnosSistema.Items.RemoveAt(0);
+            }
+            else
+              adminListAlumnosSistema.Items.Add(alumno);
+          }
+        }
+      }
+      else NoHayAlumnosTallerAdmin();
+
+      if (profesores.Count > 0 && profesores.Count>tutores.Count)
+      {
+        foreach (Profesor profesor in profesores)
+        {
+          existe = false;
+          foreach (Profesor inscrito in tutores)
+          {
+            if (profesor.rut.Equals(inscrito.rut))
+            {
+              existe = true;
+              break;
+            }
+          }
+          if (!existe)
+          {
+            if (adminListProfesoresDisponibles.Items.Count > 0 && adminListProfesoresDisponibles.Items[0].Equals("No existe profesor en sistema"))
+            {
+              adminListProfesoresDisponibles.Items.Add(profesor);
+              adminListProfesoresDisponibles.Items.RemoveAt(0);
+            }
+            else
+              adminListProfesoresDisponibles.Items.Add(profesor);
+          }
+        }
+      }
+      else NoHayProfesoresTallerAdmin();
+
+    }
+
+    public void NoHayParticipantesAdmin()
+    {
+      adminListAlumnosInscritosTaller.Items.Add("No existen participantes en el ramo");
+    }
+    public void NoHayTutoresAdmin()
+    {
+      adminListProfesoresInscritosTaller.Items.Add("No existe profesor asignado");
+    }
+    public void NoHayAlumnosTallerAdmin()
+    {
+      adminListAlumnosSistema.Items.Add("No existen alumnos en sistema");
+    }
+    public void NoHayProfesoresTallerAdmin()
+    {
+      adminListProfesoresDisponibles.Items.Add("No existe profesor en sistema");
+    }
+
+    public void ClearParticipantesAdmin()
+    {
+      adminListAlumnosInscritosTaller.Items.Clear();
+      adminListProfesoresInscritosTaller.Items.Clear();
+      adminListAlumnosSistema.Items.Clear();
+      adminListProfesoresDisponibles.Items.Clear();
+    }
+
+    public void TopeDeHorario()
+    {
+      MessageBox.Show("ERROR: Alumno con tope de horario", "ERROR: Tope de horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+
     //Tab Alumno Admin
     public void ActualizarAlumnosAdmin(Alumno alumno, bool borrar)
     {
@@ -667,6 +1069,8 @@ namespace Vistas
     {
       adminNombreSala.Clear();
     }
+
+    
 
 
 
@@ -898,7 +1302,9 @@ namespace Vistas
     //CLICKS Profesor
 
 
-    private void profesorIngresarTaller_Click(object sender, EventArgs e)
+
+
+    private void profesorIngresarTaller_Click_1(object sender, EventArgs e)
     {
       listBoxForosTallerProfe.Items.Clear();
       if (OnProfesorMostrarTaller != null)
@@ -913,9 +1319,8 @@ namespace Vistas
       }
     }
 
-    private void profesorLeerForo_Click(object sender, EventArgs e)
+    private void profesorLeerForo_Click_1(object sender, EventArgs e)
     {
-
       listBoxProfeMensajesForo.Items.Clear();
       if (OnProfesorLeerForo != null)
       {
@@ -928,35 +1333,7 @@ namespace Vistas
       }
     }
 
-    private void AgregarMensajeP_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorAgregarMensaje != null)
-      {
-        if (!textMensajeP.Text.Equals(""))
-        {
-          logInArgs.mensaje = textMensajeP.Text;
-          OnProfesorAgregarMensaje(this, logInArgs);
-        }
-        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-
-    }
-
-    private void EliminarMensajeP_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorEliminarMensaje != null)
-      {
-        if (listBoxProfeMensajesForo.SelectedIndex > -1 && !listBoxProfeMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
-        {
-          logInArgs.objetoMensaje = listBoxProfeMensajesForo.SelectedItem as Mensaje;
-          OnProfesorEliminarMensaje(this, logInArgs);
-        }
-        else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-
-    }
-
-    private void CrearForoP_Click(object sender, EventArgs e)
+    private void CrearForoP_Click_1(object sender, EventArgs e)
     {
       if (OnProfesorCrearForo != null)
       {
@@ -970,7 +1347,7 @@ namespace Vistas
       }
     }
 
-    private void ProfesorEliminarForo_Click(object sender, EventArgs e)
+    private void ProfesorEliminarForo_Click_1(object sender, EventArgs e)
     {
       if (OnProfesorEliminarForo != null)
       {
@@ -984,7 +1361,35 @@ namespace Vistas
       }
     }
 
-    private void MostrarPart_Click(object sender, EventArgs e)
+    private void AgregarMensajeP_Click_1(object sender, EventArgs e)
+    {
+      if (OnProfesorAgregarMensaje != null)
+      {
+        if (!textMensajeP.Text.Equals(""))
+        {
+          logInArgs.mensaje = textMensajeP.Text;
+          OnProfesorAgregarMensaje(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    private void EliminarMensajeP_Click_1(object sender, EventArgs e)
+    {
+      if (OnProfesorEliminarMensaje != null)
+      {
+        if (listBoxProfeMensajesForo.SelectedIndex > -1 && !listBoxProfeMensajesForo.SelectedItem.Equals("El foro no contiene mensajes"))
+        {
+          logInArgs.objetoMensaje = listBoxProfeMensajesForo.SelectedItem as Mensaje;
+          OnProfesorEliminarMensaje(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un mensaje", "Error: No se selecciona mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+    }
+
+    private void MostrarPart_Click_1(object sender, EventArgs e)
     {
       if (OnProfesorMostrarParticipantes != null)
       {
@@ -996,6 +1401,7 @@ namespace Vistas
         else
           MessageBox.Show("ERROR: Debe seleccionar un taller", "Error: Taller no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
+
     }
 
 
@@ -1040,6 +1446,14 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
+
+    
+
+
+
+
+
+
 
 
 
