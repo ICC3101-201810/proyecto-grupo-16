@@ -45,7 +45,7 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnProfesorAgregarMensaje;
     public event EventHandler<LogInEventArgs> OnProfesorEliminarMensaje;
     public event EventHandler<LogInEventArgs> OnProfesorMostrarParticipantes;
-    public event EventHandler<LogInEventArgs> OnProfesorCerrarSesion;
+    public event EventHandler<LogInEventArgs> OnCerrarSesion;
 
 
 
@@ -893,6 +893,11 @@ namespace Vistas
     {
       listParticipantes.Items.Clear();
     }
+    
+    public void ClearTalleresProfesor()
+    {
+      profesorTalleresDict.Items.Clear();
+    }
 
 
     //CLICKS Profesor
@@ -999,41 +1004,54 @@ namespace Vistas
     }
 
 
-    //*********************Botones Cerrar Sesión**************************************
+
+        //*********************Botones Cerrar Sesión**************************************
+        //Cerrar sesion desde profesor
     private void BotonCerrarSesion_Click(object sender, EventArgs e)
     {
-      if (OnProfesorCerrarSesion != null)
+      if (OnCerrarSesion != null)
       {
-        OnProfesorCerrarSesion(this, logInArgs);
+        ClearTalleresProfesor();
+        OnCerrarSesion(this, logInArgs);
       }
     }
-
+    //Cerrar sesion desde Administrador
     private void button1_Click(object sender, EventArgs e)
     {
-      if (OnProfesorCerrarSesion != null)
+      if (OnCerrarSesion != null)
       {
-        OnProfesorCerrarSesion(this, logInArgs);
+        adminListAlumnos.Items.Clear();
+        adminListProfesores.Items.Clear();
+        adminListSalasTab.Items.Clear();
+        adminListProfesorCrearTaller.Items.Clear();
+        adminListTalleres.Items.Clear();
+        OnCerrarSesion(this, logInArgs);
       }
 
     }
-
+    //Cerrar sesion desde Taller en Alumno
     private void button3_Click(object sender, EventArgs e)
     {
-      if (OnProfesorCerrarSesion != null)
+      if (OnCerrarSesion != null)
       {
-        OnProfesorCerrarSesion(this, logInArgs);
+        listForosTaller.Items.Clear();
+        OnCerrarSesion(this, logInArgs);
       }
 
     }
+    //Cerrar sesion desde Alumno
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (OnCerrarSesion != null)
+            {
+                listTalleresInscritos.Items.Clear();
+                listTalleresDisponibles.Items.Clear();
+                OnCerrarSesion(this, logInArgs);
+            }
 
-    private void button2_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorCerrarSesion != null)
-      {
-        OnProfesorCerrarSesion(this, logInArgs);
-      }
+        }
 
-    }
+    
     //**********************************************************************************
     public void ClearLogIn()
     {
@@ -1045,6 +1063,9 @@ namespace Vistas
 
 
 
-    //--> ir a LoginEventArgs
-  }
+
+
+
+        //--> ir a LoginEventArgs
+    }
 }
