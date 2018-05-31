@@ -1059,6 +1059,12 @@ namespace Vistas
       pwdtxtbox.Clear();
     }
 
+    public void ActualizarCuposDisponiblesProfe(Taller t)
+        {
+            listCupos.Items.Clear();
+            listCupos.Items.Add(t.GetCuposDisponibles());
+        }
+
 
 
 

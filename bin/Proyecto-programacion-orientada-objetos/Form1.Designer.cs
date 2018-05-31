@@ -37,6 +37,17 @@
             this.pwdtxtbox = new System.Windows.Forms.TextBox();
             this.loginpanel = new System.Windows.Forms.Panel();
             this.StudentMenu = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.InscribirTaller = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.eliminarTaller = new System.Windows.Forms.Button();
+            this.ingresarATaller = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.listTalleresInscritos = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.incribirT = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.listTalleresDisponibles = new System.Windows.Forms.ListBox();
             this.studentWSMenu = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -156,16 +167,6 @@
             this.adminEliminarSala = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
             this.adminListSalasTab = new System.Windows.Forms.ListBox();
-            this.InscribirTaller = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.eliminarTaller = new System.Windows.Forms.Button();
-            this.ingresarATaller = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.listTalleresInscritos = new System.Windows.Forms.ListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.incribirT = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.listTalleresDisponibles = new System.Windows.Forms.ListBox();
             this.MenuProfesor = new System.Windows.Forms.Panel();
             this.BotonCerrarSesion = new System.Windows.Forms.Button();
             this.Participantes = new System.Windows.Forms.TabControl();
@@ -195,6 +196,7 @@
             this.label60 = new System.Windows.Forms.Label();
             this.profesorTalleresDict = new System.Windows.Forms.ListBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label56 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.MostrarPart = new System.Windows.Forms.Button();
             this.label45 = new System.Windows.Forms.Label();
@@ -225,9 +227,12 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.listCupos = new System.Windows.Forms.ListBox();
             this.loginpanel.SuspendLayout();
             this.StudentMenu.SuspendLayout();
+            this.InscribirTaller.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.studentWSMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -252,9 +257,6 @@
             this.tabPage8.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.InscribirTaller.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.MenuProfesor.SuspendLayout();
             this.Participantes.SuspendLayout();
             this.tabPage9.SuspendLayout();
@@ -339,7 +341,7 @@
             this.loginpanel.Controls.Add(this.label2);
             this.loginpanel.Controls.Add(this.LogInButton);
             this.loginpanel.Controls.Add(this.label1);
-            this.loginpanel.Location = new System.Drawing.Point(227, 120);
+            this.loginpanel.Location = new System.Drawing.Point(207, 120);
             this.loginpanel.Name = "loginpanel";
             this.loginpanel.Size = new System.Drawing.Size(465, 430);
             this.loginpanel.TabIndex = 16;
@@ -352,6 +354,128 @@
             this.StudentMenu.Name = "StudentMenu";
             this.StudentMenu.Size = new System.Drawing.Size(915, 642);
             this.StudentMenu.TabIndex = 24;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button9.ForeColor = System.Drawing.Color.Snow;
+            this.button9.Location = new System.Drawing.Point(776, 9);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(95, 23);
+            this.button9.TabIndex = 76;
+            this.button9.Text = "Cerrar Sesión";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // InscribirTaller
+            // 
+            this.InscribirTaller.Controls.Add(this.tabPage1);
+            this.InscribirTaller.Controls.Add(this.tabPage2);
+            this.InscribirTaller.Location = new System.Drawing.Point(3, 15);
+            this.InscribirTaller.Name = "InscribirTaller";
+            this.InscribirTaller.SelectedIndex = 0;
+            this.InscribirTaller.Size = new System.Drawing.Size(869, 623);
+            this.InscribirTaller.TabIndex = 25;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.eliminarTaller);
+            this.tabPage1.Controls.Add(this.ingresarATaller);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.listTalleresInscritos);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(861, 597);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Talleres Inscritos";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // eliminarTaller
+            // 
+            this.eliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eliminarTaller.Location = new System.Drawing.Point(359, 184);
+            this.eliminarTaller.Name = "eliminarTaller";
+            this.eliminarTaller.Size = new System.Drawing.Size(206, 37);
+            this.eliminarTaller.TabIndex = 12;
+            this.eliminarTaller.Text = "Eliminar Taller";
+            this.eliminarTaller.UseVisualStyleBackColor = true;
+            this.eliminarTaller.Click += new System.EventHandler(this.eliminarTaller_Click);
+            // 
+            // ingresarATaller
+            // 
+            this.ingresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ingresarATaller.Location = new System.Drawing.Point(57, 184);
+            this.ingresarATaller.Name = "ingresarATaller";
+            this.ingresarATaller.Size = new System.Drawing.Size(206, 37);
+            this.ingresarATaller.TabIndex = 11;
+            this.ingresarATaller.Text = "Ingresar a Taller";
+            this.ingresarATaller.UseVisualStyleBackColor = true;
+            this.ingresarATaller.Click += new System.EventHandler(this.ingresarATaller_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(175, 29);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Talleres Inscritos";
+            // 
+            // listTalleresInscritos
+            // 
+            this.listTalleresInscritos.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listTalleresInscritos.FormattingEnabled = true;
+            this.listTalleresInscritos.ItemHeight = 15;
+            this.listTalleresInscritos.Location = new System.Drawing.Point(11, 44);
+            this.listTalleresInscritos.Name = "listTalleresInscritos";
+            this.listTalleresInscritos.Size = new System.Drawing.Size(606, 124);
+            this.listTalleresInscritos.TabIndex = 4;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.incribirT);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.listTalleresDisponibles);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(861, 597);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Inscribir Taller";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // incribirT
+            // 
+            this.incribirT.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.incribirT.Location = new System.Drawing.Point(177, 184);
+            this.incribirT.Name = "incribirT";
+            this.incribirT.Size = new System.Drawing.Size(206, 37);
+            this.incribirT.TabIndex = 10;
+            this.incribirT.Text = "Inscribir Taller";
+            this.incribirT.UseVisualStyleBackColor = true;
+            this.incribirT.Click += new System.EventHandler(this.incribirT_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(208, 29);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Talleres Disponibles";
+            // 
+            // listTalleresDisponibles
+            // 
+            this.listTalleresDisponibles.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listTalleresDisponibles.FormattingEnabled = true;
+            this.listTalleresDisponibles.ItemHeight = 15;
+            this.listTalleresDisponibles.Location = new System.Drawing.Point(11, 48);
+            this.listTalleresDisponibles.Name = "listTalleresDisponibles";
+            this.listTalleresDisponibles.Size = new System.Drawing.Size(585, 124);
+            this.listTalleresDisponibles.TabIndex = 2;
             // 
             // studentWSMenu
             // 
@@ -1660,116 +1784,6 @@
             this.adminListSalasTab.Size = new System.Drawing.Size(585, 349);
             this.adminListSalasTab.TabIndex = 50;
             // 
-            // InscribirTaller
-            // 
-            this.InscribirTaller.Controls.Add(this.tabPage1);
-            this.InscribirTaller.Controls.Add(this.tabPage2);
-            this.InscribirTaller.Location = new System.Drawing.Point(3, 15);
-            this.InscribirTaller.Name = "InscribirTaller";
-            this.InscribirTaller.SelectedIndex = 0;
-            this.InscribirTaller.Size = new System.Drawing.Size(869, 623);
-            this.InscribirTaller.TabIndex = 25;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.eliminarTaller);
-            this.tabPage1.Controls.Add(this.ingresarATaller);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.listTalleresInscritos);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(861, 597);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Talleres Inscritos";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // eliminarTaller
-            // 
-            this.eliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminarTaller.Location = new System.Drawing.Point(359, 184);
-            this.eliminarTaller.Name = "eliminarTaller";
-            this.eliminarTaller.Size = new System.Drawing.Size(206, 37);
-            this.eliminarTaller.TabIndex = 12;
-            this.eliminarTaller.Text = "Eliminar Taller";
-            this.eliminarTaller.UseVisualStyleBackColor = true;
-            this.eliminarTaller.Click += new System.EventHandler(this.eliminarTaller_Click);
-            // 
-            // ingresarATaller
-            // 
-            this.ingresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ingresarATaller.Location = new System.Drawing.Point(57, 184);
-            this.ingresarATaller.Name = "ingresarATaller";
-            this.ingresarATaller.Size = new System.Drawing.Size(206, 37);
-            this.ingresarATaller.TabIndex = 11;
-            this.ingresarATaller.Text = "Ingresar a Taller";
-            this.ingresarATaller.UseVisualStyleBackColor = true;
-            this.ingresarATaller.Click += new System.EventHandler(this.ingresarATaller_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 29);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Talleres Inscritos";
-            // 
-            // listTalleresInscritos
-            // 
-            this.listTalleresInscritos.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listTalleresInscritos.FormattingEnabled = true;
-            this.listTalleresInscritos.ItemHeight = 15;
-            this.listTalleresInscritos.Location = new System.Drawing.Point(11, 44);
-            this.listTalleresInscritos.Name = "listTalleresInscritos";
-            this.listTalleresInscritos.Size = new System.Drawing.Size(606, 124);
-            this.listTalleresInscritos.TabIndex = 4;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.incribirT);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.listTalleresDisponibles);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(861, 597);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Inscribir Taller";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // incribirT
-            // 
-            this.incribirT.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.incribirT.Location = new System.Drawing.Point(177, 184);
-            this.incribirT.Name = "incribirT";
-            this.incribirT.Size = new System.Drawing.Size(206, 37);
-            this.incribirT.TabIndex = 10;
-            this.incribirT.Text = "Inscribir Taller";
-            this.incribirT.UseVisualStyleBackColor = true;
-            this.incribirT.Click += new System.EventHandler(this.incribirT_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(208, 29);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Talleres Disponibles";
-            // 
-            // listTalleresDisponibles
-            // 
-            this.listTalleresDisponibles.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listTalleresDisponibles.FormattingEnabled = true;
-            this.listTalleresDisponibles.ItemHeight = 15;
-            this.listTalleresDisponibles.Location = new System.Drawing.Point(11, 48);
-            this.listTalleresDisponibles.Name = "listTalleresDisponibles";
-            this.listTalleresDisponibles.Size = new System.Drawing.Size(585, 124);
-            this.listTalleresDisponibles.TabIndex = 2;
-            // 
             // MenuProfesor
             // 
             this.MenuProfesor.Controls.Add(this.BotonCerrarSesion);
@@ -2071,6 +2085,8 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.listCupos);
+            this.tabPage10.Controls.Add(this.label56);
             this.tabPage10.Controls.Add(this.label46);
             this.tabPage10.Controls.Add(this.MostrarPart);
             this.tabPage10.Controls.Add(this.label45);
@@ -2079,10 +2095,20 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(861, 611);
+            this.tabPage10.Size = new System.Drawing.Size(819, 611);
             this.tabPage10.TabIndex = 1;
             this.tabPage10.Text = "Participantes";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Calibri", 14F);
+            this.label56.Location = new System.Drawing.Point(9, 450);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(156, 23);
+            this.label56.TabIndex = 50;
+            this.label56.Text = "Cupos Disponibles:";
             // 
             // label46
             // 
@@ -2355,17 +2381,13 @@
             this.button7.Text = "Crear Sala";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // listCupos
             // 
-            this.button9.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button9.ForeColor = System.Drawing.Color.Snow;
-            this.button9.Location = new System.Drawing.Point(776, 9);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(95, 23);
-            this.button9.TabIndex = 76;
-            this.button9.Text = "Cerrar Sesión";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.listCupos.FormattingEnabled = true;
+            this.listCupos.Location = new System.Drawing.Point(162, 454);
+            this.listCupos.Name = "listCupos";
+            this.listCupos.Size = new System.Drawing.Size(30, 17);
+            this.listCupos.TabIndex = 51;
             // 
             // TalleresVU
             // 
@@ -2385,6 +2407,11 @@
             this.loginpanel.ResumeLayout(false);
             this.loginpanel.PerformLayout();
             this.StudentMenu.ResumeLayout(false);
+            this.InscribirTaller.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.studentWSMenu.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -2427,11 +2454,6 @@
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            this.InscribirTaller.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.MenuProfesor.ResumeLayout(false);
             this.Participantes.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
@@ -2649,6 +2671,8 @@
     private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.ListBox listCupos;
     }
 }
 

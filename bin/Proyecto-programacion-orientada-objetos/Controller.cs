@@ -105,6 +105,7 @@ namespace Vistas
       logInView.ClearParticipantes();
       Taller ws = talleres[GetTaller(e.taller)];
       List<Alumno> participantes = GetParticipantes(ws);
+      logInView.ActualizarCuposDisponiblesProfe(ws);
       logInView.ActualizarParticipantes(participantes);
 
     }
