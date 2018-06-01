@@ -179,12 +179,13 @@ namespace Vistas
     {
       if (OnAlumnoIngresarMensajeForo != null)
       {
-        if (!alumnoIngresarMensajeTexto.Text.Equals(""))
+        if (!alumnoIngresarMensajeTexto.Text.Equals("") && listForosForoMenu.SelectedIndex>-1 && !listForosForoMenu.SelectedItem.Equals("No se han creado foros"))
         {
+          logInArgs.foro = listForosForoMenu.SelectedItem as Foro ;
           logInArgs.mensaje = alumnoIngresarMensajeTexto.Text;
           OnAlumnoIngresarMensajeForo(this, logInArgs);
         }
-        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        else MessageBox.Show("ERROR: Debe seleccionar foro e ingresar un mensaje", "Error: Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -443,12 +444,13 @@ namespace Vistas
     {
       if (OnAdminIngresarMensajeForo != null)
       {
-        if (!adminIngresarMensajeTexto.Text.Equals(""))
+        if (!adminIngresarMensajeTexto.Text.Equals("") && listForosForoMenuAdmin.SelectedIndex>-1 && !listForosForoMenuAdmin.SelectedItem.Equals("No se han creado foros"))
         {
+          logInArgs.foro = listForosForoMenuAdmin.SelectedItem as Foro;
           logInArgs.mensaje = adminIngresarMensajeTexto.Text;
           OnAdminIngresarMensajeForo(this, logInArgs);
         }
-        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        else MessageBox.Show("ERROR: Debe seleccionar foro e ingresar un mensaje", "Error: Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -1368,12 +1370,13 @@ namespace Vistas
     {
       if (OnProfesorAgregarMensaje != null)
       {
-        if (!textMensajeP.Text.Equals(""))
+        if (!textMensajeP.Text.Equals("") && listBoxForosTallerProfe.SelectedIndex>-1 && !listBoxForosTallerProfe.SelectedItem.Equals("No se han creado foros"))
         {
           logInArgs.mensaje = textMensajeP.Text;
+          logInArgs.foro = listBoxForosTallerProfe.SelectedItem as Foro;
           OnProfesorAgregarMensaje(this, logInArgs);
         }
-        else MessageBox.Show("ERROR: Debe ingresar un mensaje", "Error: No se ingresa mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        else MessageBox.Show("ERROR: Debe seleccionar un foro e ingresar mensaje", "Error: Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
 
     }
@@ -1473,6 +1476,8 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
+
+
 
     //--> ir a LoginEventArgs
   }
