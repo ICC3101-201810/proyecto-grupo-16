@@ -48,6 +48,7 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnAdminAgregarProfesorTaller;
     public event EventHandler<LogInEventArgs> OnAdminEliminarAlumnoTaller;
     public event EventHandler<LogInEventArgs> OnAdminAgregarAlumnoTaller;
+    public event EventHandler<LogInEventArgs> OnAdminSeleccionarHorarioTaller;
 
 
     // Event Handler Profesor
@@ -703,12 +704,14 @@ namespace Vistas
     {
       if (borrar)
         if (adminListSalas.Items.Count == 1)
-          adminListSalas.Items[0] = "No existen salas creadas";
+          adminListSalas.Items[0] = "No existen salas disponibles";
         else
           adminListSalas.Items.Remove(sala);
       else
       {
-        if (adminListSalas.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas creadas"))
+        if (adminListSalas.Items.Contains(sala))
+          return;
+        if (adminListSalas.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas disponibles"))
         {
           adminListSalas.Items.Add(sala);
           adminListSalas.Items.RemoveAt(0);
@@ -1404,6 +1407,30 @@ namespace Vistas
 
     }
 
+    private void horario_ItemCheck(object sender, EventArgs e)
+    {
+      BeginInvoke((MethodInvoker)delegate { 
+        if (OnAdminSeleccionarHorarioTaller != null)
+        {
+          logInArgs.horarioTaller = HorarioLimpio();
+          for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
+          {
+            if (horarioLunes.GetItemChecked(i))
+              logInArgs.horarioTaller["Lunes"][i] = true;
+            if (horarioMartes.GetItemChecked(i))
+              logInArgs.horarioTaller["Martes"][i] = true;
+            if (horarioMiercoles.GetItemChecked(i))
+              logInArgs.horarioTaller["Miercoles"][i] = true;
+            if (horarioJueves.GetItemChecked(i))
+              logInArgs.horarioTaller["Jueves"][i] = true;
+            if (horarioViernes.GetItemChecked(i))
+              logInArgs.horarioTaller["Viernes"][i] = true;
+          }
+          OnAdminSeleccionarHorarioTaller(this, logInArgs);
+        }
+      });
+    }
+
 
     //*********************Botones Cerrar Sesión**************************************
     private void BotonCerrarSesion_Click(object sender, EventArgs e)
@@ -1446,15 +1473,6 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
-
-
-
-
-
-
-
-
-
 
     //--> ir a LoginEventArgs
   }

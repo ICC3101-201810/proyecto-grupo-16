@@ -71,6 +71,7 @@ namespace Vistas
       logInView.OnAdminAgregarProfesorTaller += LogInView_OnAdminAgregarProfesorTaller;
       logInView.OnAdminEliminarAlumnoTaller += LogInView_OnAdminEliminarAlumnoTaller;
       logInView.OnAdminAgregarAlumnoTaller += LogInView_OnAdminAgregarAlumnoTaller;
+      logInView.OnAdminSeleccionarHorarioTaller += VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller;
 
       //Profesor
       logInView.OnProfesorMostrarTaller += LogInView_OnProfesorMostrarTaller;
@@ -580,6 +581,32 @@ namespace Vistas
       else logInView.TopeDeHorario();
     }
 
+    private void VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller(object sender, LogInEventArgs e)
+    {
+      foreach (Sala sala in salas)
+      {
+        int elimina = 0;
+        foreach (String day in e.horarioTaller.Keys)
+        {
+          for (int i = 0; i < e.horarioTaller[day].Count; i++)
+          {
+            if (e.horarioTaller[day][i] && sala.GetHorario()[day][i])
+            {
+              logInView.ActualizarAdminTallerSalas(sala, true);
+              elimina = 1;
+              break;
+            }
+            //else
+            //  logInView.ActualizarAdminTallerSalas(sala, false);
+          }
+          if (elimina == 1)
+            break;
+        }
+        if (elimina == 0)
+          logInView.ActualizarAdminTallerSalas(sala, false);
+      }
+    }
+
 
 
     //Grabar los datos antes de cerrar4447
@@ -673,7 +700,11 @@ namespace Vistas
           {
             for (int i = 0; i < ws.GetHorario()[day].Count; i++)
             {
-              if (ws.GetHorario()[day][i]) student.GetHorario()[day][i] = true;
+              if (ws.GetHorario()[day][i])
+              {
+                student.GetHorario()[day][i] = true;
+                ws.sala.horario[day][i] = true;
+              }
 
             }
           }

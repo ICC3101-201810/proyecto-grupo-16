@@ -8,7 +8,7 @@ namespace Modelos
   {
 
     String nombre;
-    Dictionary<String, List<Boolean>> horario;
+    public  Dictionary<String, List<Boolean>> horario;
 
     public Sala(String nombre, Dictionary<String, List<Boolean>> horario)
     {
