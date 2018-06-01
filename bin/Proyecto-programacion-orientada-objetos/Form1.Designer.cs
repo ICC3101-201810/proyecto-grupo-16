@@ -28,16 +28,17 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.nametxtbox = new System.Windows.Forms.TextBox();
-      this.label3 = new System.Windows.Forms.Label();
-      this.label2 = new System.Windows.Forms.Label();
-      this.LogInButton = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TalleresVU));
+      this.Panellogin = new System.Windows.Forms.Panel();
+      this.panel2 = new System.Windows.Forms.Panel();
+      this.pictureBox2 = new System.Windows.Forms.PictureBox();
+      this.pictureBox4 = new System.Windows.Forms.PictureBox();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.label4 = new System.Windows.Forms.Label();
       this.pwdtxtbox = new System.Windows.Forms.TextBox();
-      this.loginpanel = new System.Windows.Forms.Panel();
-      this.StudentMenu = new System.Windows.Forms.Panel();
-      this.button2 = new System.Windows.Forms.Button();
+      this.LogInButton = new System.Windows.Forms.Button();
+      this.nametxtbox = new System.Windows.Forms.TextBox();
+      this.PanelStudentMenu = new System.Windows.Forms.Panel();
       this.InscribirTaller = new System.Windows.Forms.TabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.eliminarTaller = new System.Windows.Forms.Button();
@@ -48,8 +49,7 @@
       this.incribirT = new System.Windows.Forms.Button();
       this.label9 = new System.Windows.Forms.Label();
       this.listTalleresDisponibles = new System.Windows.Forms.ListBox();
-      this.studentWSMenu = new System.Windows.Forms.Panel();
-      this.button3 = new System.Windows.Forms.Button();
+      this.PanelstudentWSMenu = new System.Windows.Forms.Panel();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage3 = new System.Windows.Forms.TabPage();
       this.tallerTeachers = new System.Windows.Forms.Label();
@@ -81,8 +81,7 @@
       this.ingresarAForo = new System.Windows.Forms.Button();
       this.label6 = new System.Windows.Forms.Label();
       this.listForosForoMenu = new System.Windows.Forms.ListBox();
-      this.MenuAdmin = new System.Windows.Forms.Panel();
-      this.button1 = new System.Windows.Forms.Button();
+      this.PanelMenuAdmin = new System.Windows.Forms.Panel();
       this.tabControl2 = new System.Windows.Forms.TabControl();
       this.tabPage5 = new System.Windows.Forms.TabPage();
       this.adminIngresarATaller = new System.Windows.Forms.Button();
@@ -193,8 +192,7 @@
       this.textBox14 = new System.Windows.Forms.TextBox();
       this.label79 = new System.Windows.Forms.Label();
       this.button7 = new System.Windows.Forms.Button();
-      this.panelTallerAdmin = new System.Windows.Forms.Panel();
-      this.button9 = new System.Windows.Forms.Button();
+      this.PanelTallerAdmin = new System.Windows.Forms.Panel();
       this.tabControl3 = new System.Windows.Forms.TabControl();
       this.tabPage11 = new System.Windows.Forms.TabPage();
       this.tallerTeachersAdmin = new System.Windows.Forms.Label();
@@ -214,6 +212,7 @@
       this.nombreTallerAdmin = new System.Windows.Forms.Label();
       this.listForosTallerAdmin = new System.Windows.Forms.ListBox();
       this.tabPage12 = new System.Windows.Forms.TabPage();
+      this.adminEliminarForoTaller = new System.Windows.Forms.Button();
       this.groupBox17 = new System.Windows.Forms.GroupBox();
       this.label85 = new System.Windows.Forms.Label();
       this.adminEliminarMensajeForoTaller = new System.Windows.Forms.Button();
@@ -241,8 +240,12 @@
       this.AdminTallerEliminarProf = new System.Windows.Forms.Button();
       this.label89 = new System.Windows.Forms.Label();
       this.adminListProfesoresInscritosTaller = new System.Windows.Forms.ListBox();
-      this.MenuProfesor = new System.Windows.Forms.Panel();
-      this.BotonCerrarSesion = new System.Windows.Forms.Button();
+      this.panel5 = new System.Windows.Forms.Panel();
+      this.pictureBox8 = new System.Windows.Forms.PictureBox();
+      this.button10 = new System.Windows.Forms.Button();
+      this.label2 = new System.Windows.Forms.Label();
+      this.panel6 = new System.Windows.Forms.Panel();
+      this.PanelMenuProfesor = new System.Windows.Forms.Panel();
       this.Participantes = new System.Windows.Forms.TabControl();
       this.tabPage9 = new System.Windows.Forms.TabPage();
       this.groupBox16 = new System.Windows.Forms.GroupBox();
@@ -275,20 +278,24 @@
       this.label45 = new System.Windows.Forms.Label();
       this.TalleresParticipantes = new System.Windows.Forms.ListBox();
       this.listParticipantes = new System.Windows.Forms.ListBox();
-      this.adminEliminarForoTaller = new System.Windows.Forms.Button();
-      this.loginpanel.SuspendLayout();
-      this.StudentMenu.SuspendLayout();
+      this.panel7 = new System.Windows.Forms.Panel();
+      this.Panellogin.SuspendLayout();
+      this.panel2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      this.PanelStudentMenu.SuspendLayout();
       this.InscribirTaller.SuspendLayout();
       this.tabPage1.SuspendLayout();
       this.tabPage2.SuspendLayout();
-      this.studentWSMenu.SuspendLayout();
+      this.PanelstudentWSMenu.SuspendLayout();
       this.tabControl1.SuspendLayout();
       this.tabPage3.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.tabPage4.SuspendLayout();
       this.groupBox3.SuspendLayout();
       this.groupBox2.SuspendLayout();
-      this.MenuAdmin.SuspendLayout();
+      this.PanelMenuAdmin.SuspendLayout();
       this.tabControl2.SuspendLayout();
       this.tabPage5.SuspendLayout();
       this.groupBox8.SuspendLayout();
@@ -305,7 +312,7 @@
       this.tabPage8.SuspendLayout();
       this.groupBox11.SuspendLayout();
       this.groupBox12.SuspendLayout();
-      this.panelTallerAdmin.SuspendLayout();
+      this.PanelTallerAdmin.SuspendLayout();
       this.tabControl3.SuspendLayout();
       this.tabPage11.SuspendLayout();
       this.groupBox13.SuspendLayout();
@@ -315,7 +322,10 @@
       this.tabPage13.SuspendLayout();
       this.groupBox20.SuspendLayout();
       this.groupBox19.SuspendLayout();
-      this.MenuProfesor.SuspendLayout();
+      this.panel5.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+      this.panel6.SuspendLayout();
+      this.PanelMenuProfesor.SuspendLayout();
       this.Participantes.SuspendLayout();
       this.tabPage9.SuspendLayout();
       this.groupBox16.SuspendLayout();
@@ -325,114 +335,143 @@
       this.tabPage10.SuspendLayout();
       this.SuspendLayout();
       // 
-      // nametxtbox
+      // Panellogin
       // 
-      this.nametxtbox.Location = new System.Drawing.Point(148, 100);
-      this.nametxtbox.Name = "nametxtbox";
-      this.nametxtbox.Size = new System.Drawing.Size(178, 20);
-      this.nametxtbox.TabIndex = 13;
+      this.Panellogin.BackColor = System.Drawing.Color.Transparent;
+      this.Panellogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panellogin.BackgroundImage")));
+      this.Panellogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.Panellogin.Controls.Add(this.panel2);
+      this.Panellogin.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.Panellogin.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Panellogin.Location = new System.Drawing.Point(0, 0);
+      this.Panellogin.Name = "Panellogin";
+      this.Panellogin.Size = new System.Drawing.Size(851, 658);
+      this.Panellogin.TabIndex = 16;
       // 
-      // label3
+      // panel2
       // 
-      this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(81, 132);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(61, 13);
-      this.label3.TabIndex = 12;
-      this.label3.Text = "Contraseña";
+      this.panel2.BackColor = System.Drawing.Color.Transparent;
+      this.panel2.Controls.Add(this.pictureBox2);
+      this.panel2.Controls.Add(this.pictureBox4);
+      this.panel2.Controls.Add(this.pictureBox1);
+      this.panel2.Controls.Add(this.label4);
+      this.panel2.Controls.Add(this.pwdtxtbox);
+      this.panel2.Controls.Add(this.LogInButton);
+      this.panel2.Controls.Add(this.nametxtbox);
+      this.panel2.Location = new System.Drawing.Point(300, 85);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(253, 186);
+      this.panel2.TabIndex = 21;
       // 
-      // label2
+      // pictureBox2
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(81, 103);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(43, 13);
-      this.label2.TabIndex = 11;
-      this.label2.Text = "Usuario";
+      this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureBox2.BackColor = System.Drawing.Color.White;
+      this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+      this.pictureBox2.Location = new System.Drawing.Point(25, 89);
+      this.pictureBox2.Name = "pictureBox2";
+      this.pictureBox2.Size = new System.Drawing.Size(26, 23);
+      this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox2.TabIndex = 47;
+      this.pictureBox2.TabStop = false;
       // 
-      // LogInButton
+      // pictureBox4
       // 
-      this.LogInButton.Location = new System.Drawing.Point(168, 167);
-      this.LogInButton.Name = "LogInButton";
-      this.LogInButton.Size = new System.Drawing.Size(124, 23);
-      this.LogInButton.TabIndex = 9;
-      this.LogInButton.Text = "Ingresar";
-      this.LogInButton.UseVisualStyleBackColor = true;
-      this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
+      this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+      this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+      this.pictureBox4.Location = new System.Drawing.Point(65, 37);
+      this.pictureBox4.Name = "pictureBox4";
+      this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+      this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox4.TabIndex = 48;
+      this.pictureBox4.TabStop = false;
       // 
-      // label1
+      // pictureBox1
       // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(164, 39);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(140, 29);
-      this.label1.TabIndex = 8;
-      this.label1.Text = "Talleres VU";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureBox1.BackColor = System.Drawing.Color.White;
+      this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+      this.pictureBox1.Location = new System.Drawing.Point(25, 60);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(25, 23);
+      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox1.TabIndex = 46;
+      this.pictureBox1.TabStop = false;
       // 
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-      this.label4.Location = new System.Drawing.Point(179, 68);
+      this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label4.Location = new System.Drawing.Point(86, 34);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(104, 20);
-      this.label4.TabIndex = 10;
-      this.label4.Text = "Iniciar Sesion";
+      this.label4.Size = new System.Drawing.Size(73, 26);
+      this.label4.TabIndex = 43;
+      this.label4.Text = "Acceso";
       this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
       // pwdtxtbox
       // 
-      this.pwdtxtbox.Location = new System.Drawing.Point(148, 129);
+      this.pwdtxtbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.pwdtxtbox.Location = new System.Drawing.Point(51, 89);
       this.pwdtxtbox.Name = "pwdtxtbox";
-      this.pwdtxtbox.Size = new System.Drawing.Size(178, 20);
-      this.pwdtxtbox.TabIndex = 15;
+      this.pwdtxtbox.Size = new System.Drawing.Size(177, 23);
+      this.pwdtxtbox.TabIndex = 45;
       this.pwdtxtbox.UseSystemPasswordChar = true;
       // 
-      // loginpanel
+      // LogInButton
       // 
-      this.loginpanel.Controls.Add(this.pwdtxtbox);
-      this.loginpanel.Controls.Add(this.label4);
-      this.loginpanel.Controls.Add(this.nametxtbox);
-      this.loginpanel.Controls.Add(this.label3);
-      this.loginpanel.Controls.Add(this.label2);
-      this.loginpanel.Controls.Add(this.LogInButton);
-      this.loginpanel.Controls.Add(this.label1);
-      this.loginpanel.Location = new System.Drawing.Point(206, 173);
-      this.loginpanel.Name = "loginpanel";
-      this.loginpanel.Size = new System.Drawing.Size(465, 251);
-      this.loginpanel.TabIndex = 16;
+      this.LogInButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.LogInButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+      this.LogInButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(50)))), ((int)(((byte)(45)))));
+      this.LogInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.LogInButton.ForeColor = System.Drawing.Color.White;
+      this.LogInButton.Location = new System.Drawing.Point(65, 123);
+      this.LogInButton.Name = "LogInButton";
+      this.LogInButton.Size = new System.Drawing.Size(124, 33);
+      this.LogInButton.TabIndex = 42;
+      this.LogInButton.Text = "Ingresar";
+      this.LogInButton.UseVisualStyleBackColor = false;
+      this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
       // 
-      // StudentMenu
+      // nametxtbox
       // 
-      this.StudentMenu.Controls.Add(this.button2);
-      this.StudentMenu.Controls.Add(this.InscribirTaller);
-      this.StudentMenu.Location = new System.Drawing.Point(3, 12);
-      this.StudentMenu.Name = "StudentMenu";
-      this.StudentMenu.Size = new System.Drawing.Size(879, 642);
-      this.StudentMenu.TabIndex = 24;
+      this.nametxtbox.BackColor = System.Drawing.Color.White;
+      this.nametxtbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.nametxtbox.Location = new System.Drawing.Point(50, 60);
+      this.nametxtbox.Name = "nametxtbox";
+      this.nametxtbox.Size = new System.Drawing.Size(178, 23);
+      this.nametxtbox.TabIndex = 44;
       // 
-      // button2
+      // PanelStudentMenu
       // 
-      this.button2.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.button2.ForeColor = System.Drawing.Color.Snow;
-      this.button2.Location = new System.Drawing.Point(774, 1);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(95, 23);
-      this.button2.TabIndex = 76;
-      this.button2.Text = "Cerrar Sesión";
-      this.button2.UseVisualStyleBackColor = false;
-      this.button2.Click += new System.EventHandler(this.button2_Click);
+      this.PanelStudentMenu.BackColor = System.Drawing.Color.Transparent;
+      this.PanelStudentMenu.Controls.Add(this.InscribirTaller);
+      this.PanelStudentMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.PanelStudentMenu.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.PanelStudentMenu.Location = new System.Drawing.Point(0, 0);
+      this.PanelStudentMenu.Name = "PanelStudentMenu";
+      this.PanelStudentMenu.Size = new System.Drawing.Size(851, 658);
+      this.PanelStudentMenu.TabIndex = 24;
       // 
       // InscribirTaller
       // 
       this.InscribirTaller.Controls.Add(this.tabPage1);
       this.InscribirTaller.Controls.Add(this.tabPage2);
-      this.InscribirTaller.Location = new System.Drawing.Point(3, 2);
+      this.InscribirTaller.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.InscribirTaller.Location = new System.Drawing.Point(0, 0);
       this.InscribirTaller.Name = "InscribirTaller";
       this.InscribirTaller.SelectedIndex = 0;
-      this.InscribirTaller.Size = new System.Drawing.Size(869, 637);
+      this.InscribirTaller.Size = new System.Drawing.Size(851, 658);
+      this.InscribirTaller.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
       this.InscribirTaller.TabIndex = 25;
       // 
       // tabPage1
@@ -444,31 +483,39 @@
       this.tabPage1.Location = new System.Drawing.Point(4, 22);
       this.tabPage1.Name = "tabPage1";
       this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(861, 611);
+      this.tabPage1.Size = new System.Drawing.Size(843, 632);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Talleres Inscritos";
       this.tabPage1.UseVisualStyleBackColor = true;
       // 
       // eliminarTaller
       // 
-      this.eliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.eliminarTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.eliminarTaller.FlatAppearance.BorderSize = 0;
+      this.eliminarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.eliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.eliminarTaller.ForeColor = System.Drawing.Color.White;
       this.eliminarTaller.Location = new System.Drawing.Point(359, 184);
       this.eliminarTaller.Name = "eliminarTaller";
       this.eliminarTaller.Size = new System.Drawing.Size(206, 37);
       this.eliminarTaller.TabIndex = 12;
       this.eliminarTaller.Text = "Eliminar Taller";
-      this.eliminarTaller.UseVisualStyleBackColor = true;
+      this.eliminarTaller.UseVisualStyleBackColor = false;
       this.eliminarTaller.Click += new System.EventHandler(this.eliminarTaller_Click);
       // 
       // ingresarATaller
       // 
-      this.ingresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarATaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.ingresarATaller.FlatAppearance.BorderSize = 0;
+      this.ingresarATaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ingresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarATaller.ForeColor = System.Drawing.Color.White;
       this.ingresarATaller.Location = new System.Drawing.Point(57, 184);
       this.ingresarATaller.Name = "ingresarATaller";
       this.ingresarATaller.Size = new System.Drawing.Size(206, 37);
       this.ingresarATaller.TabIndex = 11;
       this.ingresarATaller.Text = "Ingresar a Taller";
-      this.ingresarATaller.UseVisualStyleBackColor = true;
+      this.ingresarATaller.UseVisualStyleBackColor = false;
       this.ingresarATaller.Click += new System.EventHandler(this.ingresarATaller_Click);
       // 
       // label10
@@ -499,20 +546,24 @@
       this.tabPage2.Location = new System.Drawing.Point(4, 22);
       this.tabPage2.Name = "tabPage2";
       this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(861, 611);
+      this.tabPage2.Size = new System.Drawing.Size(843, 632);
       this.tabPage2.TabIndex = 1;
       this.tabPage2.Text = "Inscribir Taller";
       this.tabPage2.UseVisualStyleBackColor = true;
       // 
       // incribirT
       // 
-      this.incribirT.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.incribirT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.incribirT.FlatAppearance.BorderSize = 0;
+      this.incribirT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.incribirT.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.incribirT.ForeColor = System.Drawing.Color.White;
       this.incribirT.Location = new System.Drawing.Point(177, 184);
       this.incribirT.Name = "incribirT";
       this.incribirT.Size = new System.Drawing.Size(206, 37);
       this.incribirT.TabIndex = 10;
       this.incribirT.Text = "Inscribir Taller";
-      this.incribirT.UseVisualStyleBackColor = true;
+      this.incribirT.UseVisualStyleBackColor = false;
       this.incribirT.Click += new System.EventHandler(this.incribirT_Click);
       // 
       // label9
@@ -535,35 +586,27 @@
       this.listTalleresDisponibles.Size = new System.Drawing.Size(585, 124);
       this.listTalleresDisponibles.TabIndex = 2;
       // 
-      // studentWSMenu
+      // PanelstudentWSMenu
       // 
-      this.studentWSMenu.Controls.Add(this.button3);
-      this.studentWSMenu.Controls.Add(this.tabControl1);
-      this.studentWSMenu.Location = new System.Drawing.Point(3, 12);
-      this.studentWSMenu.Name = "studentWSMenu";
-      this.studentWSMenu.Size = new System.Drawing.Size(895, 653);
-      this.studentWSMenu.TabIndex = 27;
-      // 
-      // button3
-      // 
-      this.button3.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.button3.ForeColor = System.Drawing.Color.Snow;
-      this.button3.Location = new System.Drawing.Point(775, 3);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(95, 23);
-      this.button3.TabIndex = 76;
-      this.button3.Text = "Cerrar Sesión";
-      this.button3.UseVisualStyleBackColor = false;
-      this.button3.Click += new System.EventHandler(this.button3_Click);
+      this.PanelstudentWSMenu.BackColor = System.Drawing.Color.Transparent;
+      this.PanelstudentWSMenu.Controls.Add(this.tabControl1);
+      this.PanelstudentWSMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.PanelstudentWSMenu.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.PanelstudentWSMenu.Location = new System.Drawing.Point(0, 0);
+      this.PanelstudentWSMenu.Name = "PanelstudentWSMenu";
+      this.PanelstudentWSMenu.Size = new System.Drawing.Size(851, 658);
+      this.PanelstudentWSMenu.TabIndex = 27;
       // 
       // tabControl1
       // 
       this.tabControl1.Controls.Add(this.tabPage3);
       this.tabControl1.Controls.Add(this.tabPage4);
-      this.tabControl1.Location = new System.Drawing.Point(3, 2);
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(869, 637);
+      this.tabControl1.Size = new System.Drawing.Size(851, 658);
+      this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
       this.tabControl1.TabIndex = 25;
       // 
       // tabPage3
@@ -584,7 +627,7 @@
       this.tabPage3.Location = new System.Drawing.Point(4, 22);
       this.tabPage3.Name = "tabPage3";
       this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage3.Size = new System.Drawing.Size(861, 611);
+      this.tabPage3.Size = new System.Drawing.Size(843, 632);
       this.tabPage3.TabIndex = 0;
       this.tabPage3.Text = "Informacion";
       this.tabPage3.UseVisualStyleBackColor = true;
@@ -615,7 +658,7 @@
       this.groupBox1.Controls.Add(this.temaForo);
       this.groupBox1.Controls.Add(this.alumnoCrearForo);
       this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox1.Location = new System.Drawing.Point(38, 437);
+      this.groupBox1.Location = new System.Drawing.Point(38, 448);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Size = new System.Drawing.Size(606, 100);
       this.groupBox1.TabIndex = 22;
@@ -642,13 +685,17 @@
       // 
       // alumnoCrearForo
       // 
-      this.alumnoCrearForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoCrearForo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.alumnoCrearForo.FlatAppearance.BorderSize = 0;
+      this.alumnoCrearForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.alumnoCrearForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoCrearForo.ForeColor = System.Drawing.Color.White;
       this.alumnoCrearForo.Location = new System.Drawing.Point(408, 38);
       this.alumnoCrearForo.Name = "alumnoCrearForo";
       this.alumnoCrearForo.Size = new System.Drawing.Size(183, 37);
       this.alumnoCrearForo.TabIndex = 20;
       this.alumnoCrearForo.Text = "Crear Foro";
-      this.alumnoCrearForo.UseVisualStyleBackColor = true;
+      this.alumnoCrearForo.UseVisualStyleBackColor = false;
       this.alumnoCrearForo.Click += new System.EventHandler(this.alumnoCrearForo_Click);
       // 
       // label11
@@ -723,13 +770,17 @@
       // 
       // volverPanel1
       // 
-      this.volverPanel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.volverPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.volverPanel1.FlatAppearance.BorderSize = 0;
+      this.volverPanel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.volverPanel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.volverPanel1.ForeColor = System.Drawing.Color.White;
       this.volverPanel1.Location = new System.Drawing.Point(316, 557);
       this.volverPanel1.Name = "volverPanel1";
       this.volverPanel1.Size = new System.Drawing.Size(206, 37);
       this.volverPanel1.TabIndex = 11;
       this.volverPanel1.Text = "Volver";
-      this.volverPanel1.UseVisualStyleBackColor = true;
+      this.volverPanel1.UseVisualStyleBackColor = false;
       this.volverPanel1.Click += new System.EventHandler(this.volverPanel1_Click);
       // 
       // nombreTaller
@@ -765,7 +816,7 @@
       this.tabPage4.Location = new System.Drawing.Point(4, 22);
       this.tabPage4.Name = "tabPage4";
       this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage4.Size = new System.Drawing.Size(861, 611);
+      this.tabPage4.Size = new System.Drawing.Size(843, 632);
       this.tabPage4.TabIndex = 1;
       this.tabPage4.Text = "Foros";
       this.tabPage4.UseVisualStyleBackColor = true;
@@ -794,13 +845,17 @@
       // 
       // alumnoEliminarMensaje
       // 
-      this.alumnoEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoEliminarMensaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.alumnoEliminarMensaje.FlatAppearance.BorderSize = 0;
+      this.alumnoEliminarMensaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.alumnoEliminarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoEliminarMensaje.ForeColor = System.Drawing.Color.White;
       this.alumnoEliminarMensaje.Location = new System.Drawing.Point(6, 46);
       this.alumnoEliminarMensaje.Name = "alumnoEliminarMensaje";
       this.alumnoEliminarMensaje.Size = new System.Drawing.Size(206, 37);
       this.alumnoEliminarMensaje.TabIndex = 15;
       this.alumnoEliminarMensaje.Text = "Eliminar Mensaje";
-      this.alumnoEliminarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoEliminarMensaje.UseVisualStyleBackColor = false;
       this.alumnoEliminarMensaje.Click += new System.EventHandler(this.alumnoEliminarMensaje_Click);
       // 
       // groupBox2
@@ -825,24 +880,32 @@
       // 
       // alumnoIngresarMensaje
       // 
-      this.alumnoIngresarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoIngresarMensaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.alumnoIngresarMensaje.FlatAppearance.BorderSize = 0;
+      this.alumnoIngresarMensaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.alumnoIngresarMensaje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoIngresarMensaje.ForeColor = System.Drawing.Color.White;
       this.alumnoIngresarMensaje.Location = new System.Drawing.Point(6, 58);
       this.alumnoIngresarMensaje.Name = "alumnoIngresarMensaje";
       this.alumnoIngresarMensaje.Size = new System.Drawing.Size(206, 37);
       this.alumnoIngresarMensaje.TabIndex = 13;
       this.alumnoIngresarMensaje.Text = "Agregar Mensaje";
-      this.alumnoIngresarMensaje.UseVisualStyleBackColor = true;
+      this.alumnoIngresarMensaje.UseVisualStyleBackColor = false;
       this.alumnoIngresarMensaje.Click += new System.EventHandler(this.alumnoIngresarMensaje_Click);
       // 
       // alumnoSalirDeForo
       // 
-      this.alumnoSalirDeForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoSalirDeForo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.alumnoSalirDeForo.FlatAppearance.BorderSize = 0;
+      this.alumnoSalirDeForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.alumnoSalirDeForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.alumnoSalirDeForo.ForeColor = System.Drawing.Color.White;
       this.alumnoSalirDeForo.Location = new System.Drawing.Point(623, 91);
       this.alumnoSalirDeForo.Name = "alumnoSalirDeForo";
       this.alumnoSalirDeForo.Size = new System.Drawing.Size(206, 37);
       this.alumnoSalirDeForo.TabIndex = 16;
       this.alumnoSalirDeForo.Text = "Salir de Foro";
-      this.alumnoSalirDeForo.UseVisualStyleBackColor = true;
+      this.alumnoSalirDeForo.UseVisualStyleBackColor = false;
       this.alumnoSalirDeForo.Click += new System.EventHandler(this.alumnoSalirDeForo_Click);
       // 
       // listMensajesForo
@@ -867,13 +930,17 @@
       // 
       // ingresarAForo
       // 
-      this.ingresarAForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarAForo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.ingresarAForo.FlatAppearance.BorderSize = 0;
+      this.ingresarAForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ingresarAForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ingresarAForo.ForeColor = System.Drawing.Color.White;
       this.ingresarAForo.Location = new System.Drawing.Point(623, 48);
       this.ingresarAForo.Name = "ingresarAForo";
       this.ingresarAForo.Size = new System.Drawing.Size(206, 37);
       this.ingresarAForo.TabIndex = 10;
       this.ingresarAForo.Text = "Ingresar a Foro";
-      this.ingresarAForo.UseVisualStyleBackColor = true;
+      this.ingresarAForo.UseVisualStyleBackColor = false;
       this.ingresarAForo.Click += new System.EventHandler(this.ingresarAForo_Click);
       // 
       // label6
@@ -896,26 +963,15 @@
       this.listForosForoMenu.Size = new System.Drawing.Size(585, 79);
       this.listForosForoMenu.TabIndex = 2;
       // 
-      // MenuAdmin
+      // PanelMenuAdmin
       // 
-      this.MenuAdmin.Controls.Add(this.button1);
-      this.MenuAdmin.Controls.Add(this.tabControl2);
-      this.MenuAdmin.Location = new System.Drawing.Point(3, 9);
-      this.MenuAdmin.Name = "MenuAdmin";
-      this.MenuAdmin.Size = new System.Drawing.Size(882, 653);
-      this.MenuAdmin.TabIndex = 28;
-      // 
-      // button1
-      // 
-      this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.button1.ForeColor = System.Drawing.Color.Snow;
-      this.button1.Location = new System.Drawing.Point(775, 1);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(95, 23);
-      this.button1.TabIndex = 76;
-      this.button1.Text = "Cerrar Sesión";
-      this.button1.UseVisualStyleBackColor = false;
-      this.button1.Click += new System.EventHandler(this.button1_Click);
+      this.PanelMenuAdmin.BackColor = System.Drawing.Color.Transparent;
+      this.PanelMenuAdmin.Controls.Add(this.tabControl2);
+      this.PanelMenuAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.PanelMenuAdmin.Location = new System.Drawing.Point(0, 0);
+      this.PanelMenuAdmin.Name = "PanelMenuAdmin";
+      this.PanelMenuAdmin.Size = new System.Drawing.Size(851, 658);
+      this.PanelMenuAdmin.TabIndex = 28;
       // 
       // tabControl2
       // 
@@ -923,10 +979,13 @@
       this.tabControl2.Controls.Add(this.tabPage6);
       this.tabControl2.Controls.Add(this.tabPage7);
       this.tabControl2.Controls.Add(this.tabPage8);
-      this.tabControl2.Location = new System.Drawing.Point(3, 3);
+      this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabControl2.Location = new System.Drawing.Point(0, 0);
       this.tabControl2.Name = "tabControl2";
       this.tabControl2.SelectedIndex = 0;
-      this.tabControl2.Size = new System.Drawing.Size(869, 637);
+      this.tabControl2.Size = new System.Drawing.Size(851, 658);
+      this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
       this.tabControl2.TabIndex = 25;
       // 
       // tabPage5
@@ -939,20 +998,24 @@
       this.tabPage5.Location = new System.Drawing.Point(4, 22);
       this.tabPage5.Name = "tabPage5";
       this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage5.Size = new System.Drawing.Size(861, 611);
+      this.tabPage5.Size = new System.Drawing.Size(843, 632);
       this.tabPage5.TabIndex = 0;
       this.tabPage5.Text = "Talleres";
       this.tabPage5.UseVisualStyleBackColor = true;
       // 
       // adminIngresarATaller
       // 
-      this.adminIngresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.adminIngresarATaller.Location = new System.Drawing.Point(608, 180);
+      this.adminIngresarATaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminIngresarATaller.FlatAppearance.BorderSize = 0;
+      this.adminIngresarATaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminIngresarATaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminIngresarATaller.ForeColor = System.Drawing.Color.White;
+      this.adminIngresarATaller.Location = new System.Drawing.Point(579, 182);
       this.adminIngresarATaller.Name = "adminIngresarATaller";
       this.adminIngresarATaller.Size = new System.Drawing.Size(183, 37);
       this.adminIngresarATaller.TabIndex = 45;
       this.adminIngresarATaller.Text = "Ingresar Taller";
-      this.adminIngresarATaller.UseVisualStyleBackColor = true;
+      this.adminIngresarATaller.UseVisualStyleBackColor = false;
       this.adminIngresarATaller.Click += new System.EventHandler(this.adminIngresarATaller_Click);
       // 
       // groupBox8
@@ -961,9 +1024,9 @@
       this.groupBox8.Controls.Add(this.label20);
       this.groupBox8.Controls.Add(this.adminEliminarTaller);
       this.groupBox8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox8.Location = new System.Drawing.Point(602, 61);
+      this.groupBox8.Location = new System.Drawing.Point(573, 63);
       this.groupBox8.Name = "groupBox8";
-      this.groupBox8.Size = new System.Drawing.Size(200, 113);
+      this.groupBox8.Size = new System.Drawing.Size(193, 113);
       this.groupBox8.TabIndex = 43;
       this.groupBox8.TabStop = false;
       this.groupBox8.Text = "Eliminar Taller";
@@ -990,13 +1053,17 @@
       // 
       // adminEliminarTaller
       // 
-      this.adminEliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarTaller.FlatAppearance.BorderSize = 0;
+      this.adminEliminarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarTaller.ForeColor = System.Drawing.Color.White;
       this.adminEliminarTaller.Location = new System.Drawing.Point(6, 66);
       this.adminEliminarTaller.Name = "adminEliminarTaller";
       this.adminEliminarTaller.Size = new System.Drawing.Size(183, 37);
       this.adminEliminarTaller.TabIndex = 42;
       this.adminEliminarTaller.Text = "Eliminar Taller";
-      this.adminEliminarTaller.UseVisualStyleBackColor = true;
+      this.adminEliminarTaller.UseVisualStyleBackColor = false;
       this.adminEliminarTaller.Click += new System.EventHandler(this.adminEliminarTaller_Click);
       // 
       // groupBox4
@@ -1014,7 +1081,7 @@
       this.groupBox4.Controls.Add(this.label15);
       this.groupBox4.Controls.Add(this.adminNombreTaller);
       this.groupBox4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox4.Location = new System.Drawing.Point(38, 243);
+      this.groupBox4.Location = new System.Drawing.Point(23, 250);
       this.groupBox4.Name = "groupBox4";
       this.groupBox4.Size = new System.Drawing.Size(805, 323);
       this.groupBox4.TabIndex = 22;
@@ -1023,13 +1090,16 @@
       // 
       // asignarProfesorTallerAdminTaller
       // 
-      this.asignarProfesorTallerAdminTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.asignarProfesorTallerAdminTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.asignarProfesorTallerAdminTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.asignarProfesorTallerAdminTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.asignarProfesorTallerAdminTaller.ForeColor = System.Drawing.Color.White;
       this.asignarProfesorTallerAdminTaller.Location = new System.Drawing.Point(219, 271);
       this.asignarProfesorTallerAdminTaller.Name = "asignarProfesorTallerAdminTaller";
       this.asignarProfesorTallerAdminTaller.Size = new System.Drawing.Size(183, 37);
       this.asignarProfesorTallerAdminTaller.TabIndex = 48;
       this.asignarProfesorTallerAdminTaller.Text = "Asignar Profesor";
-      this.asignarProfesorTallerAdminTaller.UseVisualStyleBackColor = true;
+      this.asignarProfesorTallerAdminTaller.UseVisualStyleBackColor = false;
       this.asignarProfesorTallerAdminTaller.Click += new System.EventHandler(this.asignarProfesorTallerAdminTaller_Click);
       // 
       // adminListProfesorCrearTaller
@@ -1209,13 +1279,16 @@
       // 
       // adminCrearTaller
       // 
-      this.adminCrearTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.adminCrearTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminCrearTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearTaller.ForeColor = System.Drawing.Color.White;
       this.adminCrearTaller.Location = new System.Drawing.Point(19, 271);
       this.adminCrearTaller.Name = "adminCrearTaller";
       this.adminCrearTaller.Size = new System.Drawing.Size(183, 37);
       this.adminCrearTaller.TabIndex = 20;
       this.adminCrearTaller.Text = "Crear Taller";
-      this.adminCrearTaller.UseVisualStyleBackColor = true;
+      this.adminCrearTaller.UseVisualStyleBackColor = false;
       this.adminCrearTaller.Click += new System.EventHandler(this.adminCrearTaller_Click);
       // 
       // label19
@@ -1290,7 +1363,7 @@
       this.adminListTalleres.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.adminListTalleres.FormattingEnabled = true;
       this.adminListTalleres.ItemHeight = 15;
-      this.adminListTalleres.Location = new System.Drawing.Point(38, 61);
+      this.adminListTalleres.Location = new System.Drawing.Point(23, 61);
       this.adminListTalleres.Name = "adminListTalleres";
       this.adminListTalleres.Size = new System.Drawing.Size(523, 154);
       this.adminListTalleres.TabIndex = 4;
@@ -1304,7 +1377,7 @@
       this.tabPage6.Location = new System.Drawing.Point(4, 22);
       this.tabPage6.Name = "tabPage6";
       this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage6.Size = new System.Drawing.Size(861, 611);
+      this.tabPage6.Size = new System.Drawing.Size(843, 632);
       this.tabPage6.TabIndex = 1;
       this.tabPage6.Text = "Alumno";
       this.tabPage6.UseVisualStyleBackColor = true;
@@ -1424,13 +1497,17 @@
       // 
       // adminCrearAlumno
       // 
-      this.adminCrearAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearAlumno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminCrearAlumno.FlatAppearance.BorderSize = 0;
+      this.adminCrearAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminCrearAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearAlumno.ForeColor = System.Drawing.Color.White;
       this.adminCrearAlumno.Location = new System.Drawing.Point(19, 250);
       this.adminCrearAlumno.Name = "adminCrearAlumno";
       this.adminCrearAlumno.Size = new System.Drawing.Size(183, 37);
       this.adminCrearAlumno.TabIndex = 20;
       this.adminCrearAlumno.Text = "Crear Alumno";
-      this.adminCrearAlumno.UseVisualStyleBackColor = true;
+      this.adminCrearAlumno.UseVisualStyleBackColor = false;
       this.adminCrearAlumno.Click += new System.EventHandler(this.adminCrearAlumno_Click);
       // 
       // label38
@@ -1486,20 +1563,24 @@
       // 
       // adminEliminarAlumno
       // 
-      this.adminEliminarAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarAlumno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarAlumno.FlatAppearance.BorderSize = 0;
+      this.adminEliminarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarAlumno.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarAlumno.ForeColor = System.Drawing.Color.White;
       this.adminEliminarAlumno.Location = new System.Drawing.Point(9, 81);
       this.adminEliminarAlumno.Name = "adminEliminarAlumno";
       this.adminEliminarAlumno.Size = new System.Drawing.Size(183, 37);
       this.adminEliminarAlumno.TabIndex = 42;
       this.adminEliminarAlumno.Text = "Eliminar Alumno";
-      this.adminEliminarAlumno.UseVisualStyleBackColor = true;
+      this.adminEliminarAlumno.UseVisualStyleBackColor = false;
       this.adminEliminarAlumno.Click += new System.EventHandler(this.adminEliminarAlumno_Click);
       // 
       // label26
       // 
       this.label26.AutoSize = true;
       this.label26.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label26.Location = new System.Drawing.Point(6, 16);
+      this.label26.Location = new System.Drawing.Point(7, 9);
       this.label26.Name = "label26";
       this.label26.Size = new System.Drawing.Size(100, 29);
       this.label26.TabIndex = 3;
@@ -1524,7 +1605,7 @@
       this.tabPage7.Location = new System.Drawing.Point(4, 22);
       this.tabPage7.Name = "tabPage7";
       this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage7.Size = new System.Drawing.Size(861, 611);
+      this.tabPage7.Size = new System.Drawing.Size(843, 632);
       this.tabPage7.TabIndex = 2;
       this.tabPage7.Text = "Profesores";
       this.tabPage7.UseVisualStyleBackColor = true;
@@ -1545,7 +1626,7 @@
       this.groupBox6.Controls.Add(this.label41);
       this.groupBox6.Controls.Add(this.adminRutProfesor);
       this.groupBox6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox6.Location = new System.Drawing.Point(30, 290);
+      this.groupBox6.Location = new System.Drawing.Point(12, 295);
       this.groupBox6.Name = "groupBox6";
       this.groupBox6.Size = new System.Drawing.Size(805, 303);
       this.groupBox6.TabIndex = 49;
@@ -1644,13 +1725,17 @@
       // 
       // adminCrearProfesor
       // 
-      this.adminCrearProfesor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearProfesor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminCrearProfesor.FlatAppearance.BorderSize = 0;
+      this.adminCrearProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminCrearProfesor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearProfesor.ForeColor = System.Drawing.Color.White;
       this.adminCrearProfesor.Location = new System.Drawing.Point(19, 250);
       this.adminCrearProfesor.Name = "adminCrearProfesor";
       this.adminCrearProfesor.Size = new System.Drawing.Size(183, 37);
       this.adminCrearProfesor.TabIndex = 20;
       this.adminCrearProfesor.Text = "Crear Profesor";
-      this.adminCrearProfesor.UseVisualStyleBackColor = true;
+      this.adminCrearProfesor.UseVisualStyleBackColor = false;
       this.adminCrearProfesor.Click += new System.EventHandler(this.adminCrearProfesor_Click_1);
       // 
       // label41
@@ -1677,7 +1762,7 @@
       this.groupBox10.Controls.Add(this.label43);
       this.groupBox10.Controls.Add(this.adminEliminarProfesor);
       this.groupBox10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox10.Location = new System.Drawing.Point(635, 48);
+      this.groupBox10.Location = new System.Drawing.Point(623, 50);
       this.groupBox10.Name = "groupBox10";
       this.groupBox10.Size = new System.Drawing.Size(200, 154);
       this.groupBox10.TabIndex = 48;
@@ -1706,20 +1791,24 @@
       // 
       // adminEliminarProfesor
       // 
-      this.adminEliminarProfesor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarProfesor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarProfesor.FlatAppearance.BorderSize = 0;
+      this.adminEliminarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarProfesor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarProfesor.ForeColor = System.Drawing.Color.White;
       this.adminEliminarProfesor.Location = new System.Drawing.Point(9, 81);
       this.adminEliminarProfesor.Name = "adminEliminarProfesor";
       this.adminEliminarProfesor.Size = new System.Drawing.Size(183, 37);
       this.adminEliminarProfesor.TabIndex = 42;
       this.adminEliminarProfesor.Text = "Eliminar Profesor";
-      this.adminEliminarProfesor.UseVisualStyleBackColor = true;
+      this.adminEliminarProfesor.UseVisualStyleBackColor = false;
       this.adminEliminarProfesor.Click += new System.EventHandler(this.adminEliminarProfesor_Click_1);
       // 
       // label44
       // 
       this.label44.AutoSize = true;
       this.label44.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label44.Location = new System.Drawing.Point(25, 17);
+      this.label44.Location = new System.Drawing.Point(12, 9);
       this.label44.Name = "label44";
       this.label44.Size = new System.Drawing.Size(115, 29);
       this.label44.TabIndex = 47;
@@ -1730,7 +1819,7 @@
       this.adminListProfesores.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.adminListProfesores.FormattingEnabled = true;
       this.adminListProfesores.ItemHeight = 15;
-      this.adminListProfesores.Location = new System.Drawing.Point(30, 49);
+      this.adminListProfesores.Location = new System.Drawing.Point(11, 50);
       this.adminListProfesores.Name = "adminListProfesores";
       this.adminListProfesores.Size = new System.Drawing.Size(585, 229);
       this.adminListProfesores.TabIndex = 46;
@@ -1743,7 +1832,7 @@
       this.tabPage8.Controls.Add(this.adminListSalasTab);
       this.tabPage8.Location = new System.Drawing.Point(4, 22);
       this.tabPage8.Name = "tabPage8";
-      this.tabPage8.Size = new System.Drawing.Size(861, 611);
+      this.tabPage8.Size = new System.Drawing.Size(843, 632);
       this.tabPage8.TabIndex = 3;
       this.tabPage8.Text = "Salas";
       this.tabPage8.UseVisualStyleBackColor = true;
@@ -1754,7 +1843,7 @@
       this.groupBox11.Controls.Add(this.label50);
       this.groupBox11.Controls.Add(this.adminNombreSala);
       this.groupBox11.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox11.Location = new System.Drawing.Point(30, 421);
+      this.groupBox11.Location = new System.Drawing.Point(17, 418);
       this.groupBox11.Name = "groupBox11";
       this.groupBox11.Size = new System.Drawing.Size(805, 163);
       this.groupBox11.TabIndex = 53;
@@ -1763,13 +1852,17 @@
       // 
       // adminCrearSala
       // 
-      this.adminCrearSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearSala.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminCrearSala.FlatAppearance.BorderSize = 0;
+      this.adminCrearSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminCrearSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearSala.ForeColor = System.Drawing.Color.White;
       this.adminCrearSala.Location = new System.Drawing.Point(10, 104);
       this.adminCrearSala.Name = "adminCrearSala";
       this.adminCrearSala.Size = new System.Drawing.Size(183, 37);
       this.adminCrearSala.TabIndex = 20;
       this.adminCrearSala.Text = "Crear Sala";
-      this.adminCrearSala.UseVisualStyleBackColor = true;
+      this.adminCrearSala.UseVisualStyleBackColor = false;
       this.adminCrearSala.Click += new System.EventHandler(this.adminCrearSala_Click);
       // 
       // label50
@@ -1796,7 +1889,7 @@
       this.groupBox12.Controls.Add(this.label52);
       this.groupBox12.Controls.Add(this.adminEliminarSala);
       this.groupBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBox12.Location = new System.Drawing.Point(635, 48);
+      this.groupBox12.Location = new System.Drawing.Point(623, 48);
       this.groupBox12.Name = "groupBox12";
       this.groupBox12.Size = new System.Drawing.Size(200, 154);
       this.groupBox12.TabIndex = 52;
@@ -1825,20 +1918,24 @@
       // 
       // adminEliminarSala
       // 
-      this.adminEliminarSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarSala.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarSala.FlatAppearance.BorderSize = 0;
+      this.adminEliminarSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarSala.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarSala.ForeColor = System.Drawing.Color.White;
       this.adminEliminarSala.Location = new System.Drawing.Point(9, 81);
       this.adminEliminarSala.Name = "adminEliminarSala";
       this.adminEliminarSala.Size = new System.Drawing.Size(183, 37);
       this.adminEliminarSala.TabIndex = 42;
       this.adminEliminarSala.Text = "Eliminar Sala";
-      this.adminEliminarSala.UseVisualStyleBackColor = true;
+      this.adminEliminarSala.UseVisualStyleBackColor = false;
       this.adminEliminarSala.Click += new System.EventHandler(this.adminEliminarSala_Click);
       // 
       // label53
       // 
       this.label53.AutoSize = true;
       this.label53.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label53.Location = new System.Drawing.Point(25, 17);
+      this.label53.Location = new System.Drawing.Point(12, 9);
       this.label53.Name = "label53";
       this.label53.Size = new System.Drawing.Size(63, 29);
       this.label53.TabIndex = 51;
@@ -1849,7 +1946,7 @@
       this.adminListSalasTab.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.adminListSalasTab.FormattingEnabled = true;
       this.adminListSalasTab.ItemHeight = 15;
-      this.adminListSalasTab.Location = new System.Drawing.Point(30, 49);
+      this.adminListSalasTab.Location = new System.Drawing.Point(17, 48);
       this.adminListSalasTab.Name = "adminListSalasTab";
       this.adminListSalasTab.Size = new System.Drawing.Size(585, 349);
       this.adminListSalasTab.TabIndex = 50;
@@ -2077,35 +2174,28 @@
       this.button7.Text = "Crear Sala";
       this.button7.UseVisualStyleBackColor = true;
       // 
-      // panelTallerAdmin
+      // PanelTallerAdmin
       // 
-      this.panelTallerAdmin.Controls.Add(this.button9);
-      this.panelTallerAdmin.Controls.Add(this.tabControl3);
-      this.panelTallerAdmin.Location = new System.Drawing.Point(0, 6);
-      this.panelTallerAdmin.Name = "panelTallerAdmin";
-      this.panelTallerAdmin.Size = new System.Drawing.Size(895, 653);
-      this.panelTallerAdmin.TabIndex = 29;
-      // 
-      // button9
-      // 
-      this.button9.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.button9.ForeColor = System.Drawing.Color.Snow;
-      this.button9.Location = new System.Drawing.Point(775, 3);
-      this.button9.Name = "button9";
-      this.button9.Size = new System.Drawing.Size(95, 23);
-      this.button9.TabIndex = 76;
-      this.button9.Text = "Cerrar Sesión";
-      this.button9.UseVisualStyleBackColor = false;
+      this.PanelTallerAdmin.BackColor = System.Drawing.Color.Transparent;
+      this.PanelTallerAdmin.Controls.Add(this.tabControl3);
+      this.PanelTallerAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.PanelTallerAdmin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.PanelTallerAdmin.Location = new System.Drawing.Point(0, 0);
+      this.PanelTallerAdmin.Name = "PanelTallerAdmin";
+      this.PanelTallerAdmin.Size = new System.Drawing.Size(851, 658);
+      this.PanelTallerAdmin.TabIndex = 29;
       // 
       // tabControl3
       // 
       this.tabControl3.Controls.Add(this.tabPage11);
       this.tabControl3.Controls.Add(this.tabPage12);
       this.tabControl3.Controls.Add(this.tabPage13);
-      this.tabControl3.Location = new System.Drawing.Point(3, 2);
+      this.tabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl3.Location = new System.Drawing.Point(0, 0);
       this.tabControl3.Name = "tabControl3";
       this.tabControl3.SelectedIndex = 0;
-      this.tabControl3.Size = new System.Drawing.Size(869, 637);
+      this.tabControl3.Size = new System.Drawing.Size(851, 658);
+      this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
       this.tabControl3.TabIndex = 25;
       // 
       // tabPage11
@@ -2126,7 +2216,7 @@
       this.tabPage11.Location = new System.Drawing.Point(4, 22);
       this.tabPage11.Name = "tabPage11";
       this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage11.Size = new System.Drawing.Size(861, 611);
+      this.tabPage11.Size = new System.Drawing.Size(843, 632);
       this.tabPage11.TabIndex = 0;
       this.tabPage11.Text = "Informacion";
       this.tabPage11.UseVisualStyleBackColor = true;
@@ -2184,13 +2274,17 @@
       // 
       // adminCrearForoTaller
       // 
-      this.adminCrearForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminCrearForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminCrearForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminCrearForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminCrearForoTaller.ForeColor = System.Drawing.Color.White;
       this.adminCrearForoTaller.Location = new System.Drawing.Point(408, 38);
       this.adminCrearForoTaller.Name = "adminCrearForoTaller";
       this.adminCrearForoTaller.Size = new System.Drawing.Size(183, 37);
       this.adminCrearForoTaller.TabIndex = 20;
       this.adminCrearForoTaller.Text = "Crear Foro";
-      this.adminCrearForoTaller.UseVisualStyleBackColor = true;
+      this.adminCrearForoTaller.UseVisualStyleBackColor = false;
       this.adminCrearForoTaller.Click += new System.EventHandler(this.adminCrearForoTaller_Click);
       // 
       // label63
@@ -2265,13 +2359,17 @@
       // 
       // adminVolverMenu
       // 
-      this.adminVolverMenu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminVolverMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.adminVolverMenu.FlatAppearance.BorderSize = 0;
+      this.adminVolverMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminVolverMenu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminVolverMenu.ForeColor = System.Drawing.Color.White;
       this.adminVolverMenu.Location = new System.Drawing.Point(316, 557);
       this.adminVolverMenu.Name = "adminVolverMenu";
       this.adminVolverMenu.Size = new System.Drawing.Size(206, 37);
       this.adminVolverMenu.TabIndex = 11;
       this.adminVolverMenu.Text = "Volver";
-      this.adminVolverMenu.UseVisualStyleBackColor = true;
+      this.adminVolverMenu.UseVisualStyleBackColor = false;
       this.adminVolverMenu.Click += new System.EventHandler(this.adminVolverMenu_Click);
       // 
       // nombreTallerAdmin
@@ -2308,10 +2406,25 @@
       this.tabPage12.Location = new System.Drawing.Point(4, 22);
       this.tabPage12.Name = "tabPage12";
       this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage12.Size = new System.Drawing.Size(861, 611);
+      this.tabPage12.Size = new System.Drawing.Size(843, 632);
       this.tabPage12.TabIndex = 1;
       this.tabPage12.Text = "Foros";
       this.tabPage12.UseVisualStyleBackColor = true;
+      // 
+      // adminEliminarForoTaller
+      // 
+      this.adminEliminarForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminEliminarForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarForoTaller.ForeColor = System.Drawing.Color.White;
+      this.adminEliminarForoTaller.Location = new System.Drawing.Point(623, 118);
+      this.adminEliminarForoTaller.Name = "adminEliminarForoTaller";
+      this.adminEliminarForoTaller.Size = new System.Drawing.Size(206, 37);
+      this.adminEliminarForoTaller.TabIndex = 26;
+      this.adminEliminarForoTaller.Text = "Eliminar Foro";
+      this.adminEliminarForoTaller.UseVisualStyleBackColor = false;
+      this.adminEliminarForoTaller.Click += new System.EventHandler(this.adminEliminarForoTaller_Click);
       // 
       // groupBox17
       // 
@@ -2337,13 +2450,17 @@
       // 
       // adminEliminarMensajeForoTaller
       // 
-      this.adminEliminarMensajeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarMensajeForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminEliminarMensajeForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminEliminarMensajeForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminEliminarMensajeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminEliminarMensajeForoTaller.ForeColor = System.Drawing.Color.White;
       this.adminEliminarMensajeForoTaller.Location = new System.Drawing.Point(6, 46);
       this.adminEliminarMensajeForoTaller.Name = "adminEliminarMensajeForoTaller";
       this.adminEliminarMensajeForoTaller.Size = new System.Drawing.Size(206, 37);
       this.adminEliminarMensajeForoTaller.TabIndex = 15;
       this.adminEliminarMensajeForoTaller.Text = "Eliminar Mensaje";
-      this.adminEliminarMensajeForoTaller.UseVisualStyleBackColor = true;
+      this.adminEliminarMensajeForoTaller.UseVisualStyleBackColor = false;
       this.adminEliminarMensajeForoTaller.Click += new System.EventHandler(this.adminEliminarMensajeForoTaller_Click);
       // 
       // groupBox18
@@ -2368,24 +2485,32 @@
       // 
       // adminAgregarMensajeForoTaller
       // 
-      this.adminAgregarMensajeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminAgregarMensajeForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminAgregarMensajeForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminAgregarMensajeForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminAgregarMensajeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminAgregarMensajeForoTaller.ForeColor = System.Drawing.Color.White;
       this.adminAgregarMensajeForoTaller.Location = new System.Drawing.Point(6, 58);
       this.adminAgregarMensajeForoTaller.Name = "adminAgregarMensajeForoTaller";
       this.adminAgregarMensajeForoTaller.Size = new System.Drawing.Size(206, 37);
       this.adminAgregarMensajeForoTaller.TabIndex = 13;
       this.adminAgregarMensajeForoTaller.Text = "Agregar Mensaje";
-      this.adminAgregarMensajeForoTaller.UseVisualStyleBackColor = true;
+      this.adminAgregarMensajeForoTaller.UseVisualStyleBackColor = false;
       this.adminAgregarMensajeForoTaller.Click += new System.EventHandler(this.adminAgregarMensajeForoTaller_Click);
       // 
       // adminSalirDeForoTaller
       // 
-      this.adminSalirDeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminSalirDeForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.adminSalirDeForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminSalirDeForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminSalirDeForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminSalirDeForoTaller.ForeColor = System.Drawing.Color.White;
       this.adminSalirDeForoTaller.Location = new System.Drawing.Point(623, 75);
       this.adminSalirDeForoTaller.Name = "adminSalirDeForoTaller";
       this.adminSalirDeForoTaller.Size = new System.Drawing.Size(206, 37);
       this.adminSalirDeForoTaller.TabIndex = 16;
       this.adminSalirDeForoTaller.Text = "Salir de Foro";
-      this.adminSalirDeForoTaller.UseVisualStyleBackColor = true;
+      this.adminSalirDeForoTaller.UseVisualStyleBackColor = false;
       this.adminSalirDeForoTaller.Click += new System.EventHandler(this.adminSalirDeForoTaller_Click);
       // 
       // listMensajesForoAdmin
@@ -2410,13 +2535,17 @@
       // 
       // adminIngresarForoTaller
       // 
-      this.adminIngresarForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminIngresarForoTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.adminIngresarForoTaller.FlatAppearance.BorderSize = 0;
+      this.adminIngresarForoTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminIngresarForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminIngresarForoTaller.ForeColor = System.Drawing.Color.White;
       this.adminIngresarForoTaller.Location = new System.Drawing.Point(623, 32);
       this.adminIngresarForoTaller.Name = "adminIngresarForoTaller";
       this.adminIngresarForoTaller.Size = new System.Drawing.Size(206, 37);
       this.adminIngresarForoTaller.TabIndex = 10;
       this.adminIngresarForoTaller.Text = "Ingresar a Foro";
-      this.adminIngresarForoTaller.UseVisualStyleBackColor = true;
+      this.adminIngresarForoTaller.UseVisualStyleBackColor = false;
       this.adminIngresarForoTaller.Click += new System.EventHandler(this.adminIngresarForoTaller_Click);
       // 
       // label87
@@ -2445,7 +2574,7 @@
       this.tabPage13.Controls.Add(this.groupBox19);
       this.tabPage13.Location = new System.Drawing.Point(4, 22);
       this.tabPage13.Name = "tabPage13";
-      this.tabPage13.Size = new System.Drawing.Size(861, 611);
+      this.tabPage13.Size = new System.Drawing.Size(843, 632);
       this.tabPage13.TabIndex = 2;
       this.tabPage13.Text = "Participantes";
       this.tabPage13.UseVisualStyleBackColor = true;
@@ -2477,12 +2606,17 @@
       // 
       // adminTallerAgregarAlumno
       // 
+      this.adminTallerAgregarAlumno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminTallerAgregarAlumno.FlatAppearance.BorderSize = 0;
+      this.adminTallerAgregarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminTallerAgregarAlumno.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminTallerAgregarAlumno.ForeColor = System.Drawing.Color.White;
       this.adminTallerAgregarAlumno.Location = new System.Drawing.Point(616, 263);
       this.adminTallerAgregarAlumno.Name = "adminTallerAgregarAlumno";
       this.adminTallerAgregarAlumno.Size = new System.Drawing.Size(148, 39);
       this.adminTallerAgregarAlumno.TabIndex = 61;
       this.adminTallerAgregarAlumno.Text = "Agregar Alumno";
-      this.adminTallerAgregarAlumno.UseVisualStyleBackColor = true;
+      this.adminTallerAgregarAlumno.UseVisualStyleBackColor = false;
       this.adminTallerAgregarAlumno.Click += new System.EventHandler(this.adminTallerAgregarAlumno_Click);
       // 
       // adminListAlumnosSistema
@@ -2497,12 +2631,17 @@
       // 
       // adminTallerEliminarAlumno
       // 
+      this.adminTallerEliminarAlumno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.adminTallerEliminarAlumno.FlatAppearance.BorderSize = 0;
+      this.adminTallerEliminarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminTallerEliminarAlumno.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminTallerEliminarAlumno.ForeColor = System.Drawing.Color.White;
       this.adminTallerEliminarAlumno.Location = new System.Drawing.Point(616, 113);
       this.adminTallerEliminarAlumno.Name = "adminTallerEliminarAlumno";
       this.adminTallerEliminarAlumno.Size = new System.Drawing.Size(148, 39);
       this.adminTallerEliminarAlumno.TabIndex = 58;
       this.adminTallerEliminarAlumno.Text = "Elminar Alumno";
-      this.adminTallerEliminarAlumno.UseVisualStyleBackColor = true;
+      this.adminTallerEliminarAlumno.UseVisualStyleBackColor = false;
       this.adminTallerEliminarAlumno.Click += new System.EventHandler(this.adminTallerEliminarAlumno_Click);
       // 
       // label91
@@ -2552,12 +2691,17 @@
       // 
       // adminTallerAgregarProfesor
       // 
+      this.adminTallerAgregarProfesor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.adminTallerAgregarProfesor.FlatAppearance.BorderSize = 0;
+      this.adminTallerAgregarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.adminTallerAgregarProfesor.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.adminTallerAgregarProfesor.ForeColor = System.Drawing.Color.White;
       this.adminTallerAgregarProfesor.Location = new System.Drawing.Point(616, 206);
       this.adminTallerAgregarProfesor.Name = "adminTallerAgregarProfesor";
       this.adminTallerAgregarProfesor.Size = new System.Drawing.Size(148, 39);
       this.adminTallerAgregarProfesor.TabIndex = 55;
       this.adminTallerAgregarProfesor.Text = "Agregar Profesor";
-      this.adminTallerAgregarProfesor.UseVisualStyleBackColor = true;
+      this.adminTallerAgregarProfesor.UseVisualStyleBackColor = false;
       this.adminTallerAgregarProfesor.Click += new System.EventHandler(this.adminTallerAgregarProfesor_Click);
       // 
       // adminListProfesoresDisponibles
@@ -2572,12 +2716,17 @@
       // 
       // AdminTallerEliminarProf
       // 
+      this.AdminTallerEliminarProf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.AdminTallerEliminarProf.FlatAppearance.BorderSize = 0;
+      this.AdminTallerEliminarProf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.AdminTallerEliminarProf.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.AdminTallerEliminarProf.ForeColor = System.Drawing.Color.White;
       this.AdminTallerEliminarProf.Location = new System.Drawing.Point(616, 65);
       this.AdminTallerEliminarProf.Name = "AdminTallerEliminarProf";
       this.AdminTallerEliminarProf.Size = new System.Drawing.Size(148, 39);
       this.AdminTallerEliminarProf.TabIndex = 52;
       this.AdminTallerEliminarProf.Text = "Elminar Profesor";
-      this.AdminTallerEliminarProf.UseVisualStyleBackColor = true;
+      this.AdminTallerEliminarProf.UseVisualStyleBackColor = false;
       this.AdminTallerEliminarProf.Click += new System.EventHandler(this.AdminTallerEliminarProf_Click);
       // 
       // label89
@@ -2600,34 +2749,95 @@
       this.adminListProfesoresInscritosTaller.Size = new System.Drawing.Size(576, 49);
       this.adminListProfesoresInscritosTaller.TabIndex = 53;
       // 
-      // MenuProfesor
+      // panel5
       // 
-      this.MenuProfesor.Controls.Add(this.BotonCerrarSesion);
-      this.MenuProfesor.Controls.Add(this.Participantes);
-      this.MenuProfesor.Location = new System.Drawing.Point(0, 3);
-      this.MenuProfesor.Name = "MenuProfesor";
-      this.MenuProfesor.Size = new System.Drawing.Size(895, 653);
-      this.MenuProfesor.TabIndex = 30;
+      this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.panel5.Controls.Add(this.pictureBox8);
+      this.panel5.Controls.Add(this.button10);
+      this.panel5.Controls.Add(this.label2);
+      this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel5.Location = new System.Drawing.Point(0, 0);
+      this.panel5.Name = "panel5";
+      this.panel5.Size = new System.Drawing.Size(851, 73);
+      this.panel5.TabIndex = 31;
       // 
-      // BotonCerrarSesion
+      // pictureBox8
       // 
-      this.BotonCerrarSesion.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.BotonCerrarSesion.ForeColor = System.Drawing.Color.Snow;
-      this.BotonCerrarSesion.Location = new System.Drawing.Point(783, 4);
-      this.BotonCerrarSesion.Name = "BotonCerrarSesion";
-      this.BotonCerrarSesion.Size = new System.Drawing.Size(95, 23);
-      this.BotonCerrarSesion.TabIndex = 75;
-      this.BotonCerrarSesion.Text = "Cerrar Sesión";
-      this.BotonCerrarSesion.UseVisualStyleBackColor = false;
+      this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+      this.pictureBox8.Location = new System.Drawing.Point(4, 3);
+      this.pictureBox8.Name = "pictureBox8";
+      this.pictureBox8.Size = new System.Drawing.Size(250, 65);
+      this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+      this.pictureBox8.TabIndex = 78;
+      this.pictureBox8.TabStop = false;
+      // 
+      // button10
+      // 
+      this.button10.BackColor = System.Drawing.Color.Transparent;
+      this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+      this.button10.FlatAppearance.BorderSize = 0;
+      this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.button10.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.button10.ForeColor = System.Drawing.Color.Snow;
+      this.button10.Location = new System.Drawing.Point(755, 38);
+      this.button10.Name = "button10";
+      this.button10.Size = new System.Drawing.Size(95, 23);
+      this.button10.TabIndex = 77;
+      this.button10.Text = "Cerrar Sesión";
+      this.button10.UseVisualStyleBackColor = false;
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Font = new System.Drawing.Font("Calibri", 16F, System.Drawing.FontStyle.Bold);
+      this.label2.ForeColor = System.Drawing.Color.White;
+      this.label2.Location = new System.Drawing.Point(346, 21);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(113, 27);
+      this.label2.TabIndex = 20;
+      this.label2.Text = "Talleres VU";
+      this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+      // 
+      // panel6
+      // 
+      this.panel6.Controls.Add(this.Panellogin);
+      this.panel6.Controls.Add(this.PanelMenuAdmin);
+      this.panel6.Controls.Add(this.PanelTallerAdmin);
+      this.panel6.Controls.Add(this.PanelMenuProfesor);
+      this.panel6.Controls.Add(this.PanelStudentMenu);
+      this.panel6.Controls.Add(this.PanelstudentWSMenu);
+      this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.panel6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.panel6.Location = new System.Drawing.Point(0, 79);
+      this.panel6.Name = "panel6";
+      this.panel6.Size = new System.Drawing.Size(851, 658);
+      this.panel6.TabIndex = 32;
+      // 
+      // PanelMenuProfesor
+      // 
+      this.PanelMenuProfesor.BackColor = System.Drawing.Color.Transparent;
+      this.PanelMenuProfesor.Controls.Add(this.Participantes);
+      this.PanelMenuProfesor.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.PanelMenuProfesor.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.PanelMenuProfesor.Location = new System.Drawing.Point(0, 0);
+      this.PanelMenuProfesor.Name = "PanelMenuProfesor";
+      this.PanelMenuProfesor.Size = new System.Drawing.Size(851, 658);
+      this.PanelMenuProfesor.TabIndex = 31;
       // 
       // Participantes
       // 
       this.Participantes.Controls.Add(this.tabPage9);
       this.Participantes.Controls.Add(this.tabPage10);
-      this.Participantes.Location = new System.Drawing.Point(12, 8);
+      this.Participantes.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.Participantes.Location = new System.Drawing.Point(0, 0);
+      this.Participantes.Multiline = true;
       this.Participantes.Name = "Participantes";
       this.Participantes.SelectedIndex = 0;
-      this.Participantes.Size = new System.Drawing.Size(869, 637);
+      this.Participantes.Size = new System.Drawing.Size(851, 658);
+      this.Participantes.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
       this.Participantes.TabIndex = 26;
       // 
       // tabPage9
@@ -2648,7 +2858,7 @@
       this.tabPage9.Location = new System.Drawing.Point(4, 22);
       this.tabPage9.Name = "tabPage9";
       this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage9.Size = new System.Drawing.Size(861, 611);
+      this.tabPage9.Size = new System.Drawing.Size(843, 632);
       this.tabPage9.TabIndex = 0;
       this.tabPage9.Text = "Talleres";
       this.tabPage9.UseVisualStyleBackColor = true;
@@ -2659,7 +2869,7 @@
       this.groupBox16.Controls.Add(this.EliminarMensajeP);
       this.groupBox16.Location = new System.Drawing.Point(17, 542);
       this.groupBox16.Name = "groupBox16";
-      this.groupBox16.Size = new System.Drawing.Size(473, 62);
+      this.groupBox16.Size = new System.Drawing.Size(473, 69);
       this.groupBox16.TabIndex = 74;
       this.groupBox16.TabStop = false;
       this.groupBox16.Text = "Eliminar Mensaje";
@@ -2676,13 +2886,17 @@
       // 
       // EliminarMensajeP
       // 
-      this.EliminarMensajeP.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.EliminarMensajeP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.EliminarMensajeP.FlatAppearance.BorderSize = 0;
+      this.EliminarMensajeP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.EliminarMensajeP.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.EliminarMensajeP.ForeColor = System.Drawing.Color.White;
       this.EliminarMensajeP.Location = new System.Drawing.Point(279, 31);
       this.EliminarMensajeP.Name = "EliminarMensajeP";
       this.EliminarMensajeP.Size = new System.Drawing.Size(178, 28);
       this.EliminarMensajeP.TabIndex = 69;
       this.EliminarMensajeP.Text = "Eliminar Mensaje";
-      this.EliminarMensajeP.UseVisualStyleBackColor = true;
+      this.EliminarMensajeP.UseVisualStyleBackColor = false;
       this.EliminarMensajeP.Click += new System.EventHandler(this.EliminarMensajeP_Click_1);
       // 
       // groupAgregarMensaje
@@ -2692,7 +2906,7 @@
       this.groupAgregarMensaje.Controls.Add(this.textMensajeP);
       this.groupAgregarMensaje.Location = new System.Drawing.Point(17, 436);
       this.groupAgregarMensaje.Name = "groupAgregarMensaje";
-      this.groupAgregarMensaje.Size = new System.Drawing.Size(473, 94);
+      this.groupAgregarMensaje.Size = new System.Drawing.Size(473, 100);
       this.groupAgregarMensaje.TabIndex = 73;
       this.groupAgregarMensaje.TabStop = false;
       this.groupAgregarMensaje.Text = "Agregar Mensaje";
@@ -2702,26 +2916,30 @@
       this.label55.AutoSize = true;
       this.label55.Location = new System.Drawing.Point(7, 20);
       this.label55.Name = "label55";
-      this.label55.Size = new System.Drawing.Size(120, 13);
+      this.label55.Size = new System.Drawing.Size(117, 13);
       this.label55.TabIndex = 70;
       this.label55.Text = "Ingrese Nuevo Mensaje";
       // 
       // AgregarMensajeP
       // 
-      this.AgregarMensajeP.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.AgregarMensajeP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.AgregarMensajeP.FlatAppearance.BorderSize = 0;
+      this.AgregarMensajeP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.AgregarMensajeP.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.AgregarMensajeP.ForeColor = System.Drawing.Color.White;
       this.AgregarMensajeP.Location = new System.Drawing.Point(279, 60);
       this.AgregarMensajeP.Name = "AgregarMensajeP";
       this.AgregarMensajeP.Size = new System.Drawing.Size(178, 28);
       this.AgregarMensajeP.TabIndex = 69;
       this.AgregarMensajeP.Text = "Agregar Mensaje";
-      this.AgregarMensajeP.UseVisualStyleBackColor = true;
+      this.AgregarMensajeP.UseVisualStyleBackColor = false;
       this.AgregarMensajeP.Click += new System.EventHandler(this.AgregarMensajeP_Click_1);
       // 
       // textMensajeP
       // 
       this.textMensajeP.Location = new System.Drawing.Point(9, 35);
       this.textMensajeP.Name = "textMensajeP";
-      this.textMensajeP.Size = new System.Drawing.Size(448, 20);
+      this.textMensajeP.Size = new System.Drawing.Size(448, 21);
       this.textMensajeP.TabIndex = 0;
       // 
       // groupBox15
@@ -2741,7 +2959,7 @@
       this.label49.AutoSize = true;
       this.label49.Location = new System.Drawing.Point(38, 21);
       this.label49.Name = "label49";
-      this.label49.Size = new System.Drawing.Size(75, 13);
+      this.label49.Size = new System.Drawing.Size(72, 13);
       this.label49.TabIndex = 2;
       this.label49.Text = "Tema del Foro";
       // 
@@ -2749,17 +2967,22 @@
       // 
       this.TemaForoP.Location = new System.Drawing.Point(9, 38);
       this.TemaForoP.Name = "TemaForoP";
-      this.TemaForoP.Size = new System.Drawing.Size(154, 20);
+      this.TemaForoP.Size = new System.Drawing.Size(154, 21);
       this.TemaForoP.TabIndex = 1;
       // 
       // CrearForoP
       // 
-      this.CrearForoP.Location = new System.Drawing.Point(41, 71);
+      this.CrearForoP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.CrearForoP.FlatAppearance.BorderSize = 0;
+      this.CrearForoP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.CrearForoP.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.CrearForoP.ForeColor = System.Drawing.Color.White;
+      this.CrearForoP.Location = new System.Drawing.Point(41, 64);
       this.CrearForoP.Name = "CrearForoP";
       this.CrearForoP.Size = new System.Drawing.Size(97, 23);
       this.CrearForoP.TabIndex = 0;
       this.CrearForoP.Text = "Crear Foro";
-      this.CrearForoP.UseVisualStyleBackColor = true;
+      this.CrearForoP.UseVisualStyleBackColor = false;
       this.CrearForoP.Click += new System.EventHandler(this.CrearForoP_Click_1);
       // 
       // groupBox14
@@ -2797,24 +3020,32 @@
       // 
       // ProfesorEliminarForo
       // 
-      this.ProfesorEliminarForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ProfesorEliminarForo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.ProfesorEliminarForo.FlatAppearance.BorderSize = 0;
+      this.ProfesorEliminarForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.ProfesorEliminarForo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ProfesorEliminarForo.ForeColor = System.Drawing.Color.White;
       this.ProfesorEliminarForo.Location = new System.Drawing.Point(31, 83);
       this.ProfesorEliminarForo.Name = "ProfesorEliminarForo";
       this.ProfesorEliminarForo.Size = new System.Drawing.Size(117, 26);
       this.ProfesorEliminarForo.TabIndex = 42;
       this.ProfesorEliminarForo.Text = "Eliminar Foro";
-      this.ProfesorEliminarForo.UseVisualStyleBackColor = true;
+      this.ProfesorEliminarForo.UseVisualStyleBackColor = false;
       this.ProfesorEliminarForo.Click += new System.EventHandler(this.ProfesorEliminarForo_Click_1);
       // 
       // profesorLeerForo
       // 
-      this.profesorLeerForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorLeerForo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.profesorLeerForo.FlatAppearance.BorderSize = 0;
+      this.profesorLeerForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.profesorLeerForo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorLeerForo.ForeColor = System.Drawing.Color.White;
       this.profesorLeerForo.Location = new System.Drawing.Point(405, 238);
       this.profesorLeerForo.Name = "profesorLeerForo";
       this.profesorLeerForo.Size = new System.Drawing.Size(183, 37);
       this.profesorLeerForo.TabIndex = 67;
       this.profesorLeerForo.Text = "Leer Foro";
-      this.profesorLeerForo.UseVisualStyleBackColor = true;
+      this.profesorLeerForo.UseVisualStyleBackColor = false;
       this.profesorLeerForo.Click += new System.EventHandler(this.profesorLeerForo_Click_1);
       // 
       // label58
@@ -2859,13 +3090,17 @@
       // 
       // profesorIngresarTaller
       // 
-      this.profesorIngresarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorIngresarTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(31)))));
+      this.profesorIngresarTaller.FlatAppearance.BorderSize = 0;
+      this.profesorIngresarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.profesorIngresarTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.profesorIngresarTaller.ForeColor = System.Drawing.Color.White;
       this.profesorIngresarTaller.Location = new System.Drawing.Point(405, 124);
       this.profesorIngresarTaller.Name = "profesorIngresarTaller";
       this.profesorIngresarTaller.Size = new System.Drawing.Size(183, 37);
       this.profesorIngresarTaller.TabIndex = 45;
       this.profesorIngresarTaller.Text = "Ingresar a Taller";
-      this.profesorIngresarTaller.UseVisualStyleBackColor = true;
+      this.profesorIngresarTaller.UseVisualStyleBackColor = false;
       this.profesorIngresarTaller.Click += new System.EventHandler(this.profesorIngresarTaller_Click_1);
       // 
       // label83
@@ -2908,7 +3143,7 @@
       this.tabPage10.Location = new System.Drawing.Point(4, 22);
       this.tabPage10.Name = "tabPage10";
       this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage10.Size = new System.Drawing.Size(861, 611);
+      this.tabPage10.Size = new System.Drawing.Size(843, 632);
       this.tabPage10.TabIndex = 1;
       this.tabPage10.Text = "Participantes";
       this.tabPage10.UseVisualStyleBackColor = true;
@@ -2925,12 +3160,17 @@
       // 
       // MostrarPart
       // 
+      this.MostrarPart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(65)))), ((int)(((byte)(74)))));
+      this.MostrarPart.FlatAppearance.BorderSize = 0;
+      this.MostrarPart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.MostrarPart.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.MostrarPart.ForeColor = System.Drawing.Color.White;
       this.MostrarPart.Location = new System.Drawing.Point(436, 129);
       this.MostrarPart.Name = "MostrarPart";
       this.MostrarPart.Size = new System.Drawing.Size(148, 39);
       this.MostrarPart.TabIndex = 48;
       this.MostrarPart.Text = "Mostrar Participantes";
-      this.MostrarPart.UseVisualStyleBackColor = true;
+      this.MostrarPart.UseVisualStyleBackColor = false;
       this.MostrarPart.Click += new System.EventHandler(this.MostrarPart_Click_1);
       // 
       // label45
@@ -2961,42 +3201,43 @@
       this.listParticipantes.Size = new System.Drawing.Size(576, 264);
       this.listParticipantes.TabIndex = 0;
       // 
-      // adminEliminarForoTaller
+      // panel7
       // 
-      this.adminEliminarForoTaller.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.adminEliminarForoTaller.Location = new System.Drawing.Point(623, 118);
-      this.adminEliminarForoTaller.Name = "adminEliminarForoTaller";
-      this.adminEliminarForoTaller.Size = new System.Drawing.Size(206, 37);
-      this.adminEliminarForoTaller.TabIndex = 26;
-      this.adminEliminarForoTaller.Text = "Eliminar Foro";
-      this.adminEliminarForoTaller.UseVisualStyleBackColor = true;
-      this.adminEliminarForoTaller.Click += new System.EventHandler(this.adminEliminarForoTaller_Click);
+      this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(6)))), ((int)(((byte)(21)))));
+      this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel7.Location = new System.Drawing.Point(0, 0);
+      this.panel7.Name = "panel7";
+      this.panel7.Size = new System.Drawing.Size(851, 737);
+      this.panel7.TabIndex = 33;
       // 
       // TalleresVU
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(878, 659);
-      this.Controls.Add(this.StudentMenu);
-      this.Controls.Add(this.MenuProfesor);
-      this.Controls.Add(this.panelTallerAdmin);
-      this.Controls.Add(this.MenuAdmin);
-      this.Controls.Add(this.studentWSMenu);
-      this.Controls.Add(this.loginpanel);
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+      this.BackColor = System.Drawing.Color.White;
+      this.ClientSize = new System.Drawing.Size(851, 737);
+      this.Controls.Add(this.panel6);
+      this.Controls.Add(this.panel5);
+      this.Controls.Add(this.panel7);
+      this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "TalleresVU";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "TalleresVU";
       this.Load += new System.EventHandler(this.Form1_Load);
-      this.loginpanel.ResumeLayout(false);
-      this.loginpanel.PerformLayout();
-      this.StudentMenu.ResumeLayout(false);
+      this.Panellogin.ResumeLayout(false);
+      this.panel2.ResumeLayout(false);
+      this.panel2.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+      this.PanelStudentMenu.ResumeLayout(false);
       this.InscribirTaller.ResumeLayout(false);
       this.tabPage1.ResumeLayout(false);
       this.tabPage1.PerformLayout();
       this.tabPage2.ResumeLayout(false);
       this.tabPage2.PerformLayout();
-      this.studentWSMenu.ResumeLayout(false);
+      this.PanelstudentWSMenu.ResumeLayout(false);
       this.tabControl1.ResumeLayout(false);
       this.tabPage3.ResumeLayout(false);
       this.tabPage3.PerformLayout();
@@ -3008,7 +3249,7 @@
       this.groupBox3.PerformLayout();
       this.groupBox2.ResumeLayout(false);
       this.groupBox2.PerformLayout();
-      this.MenuAdmin.ResumeLayout(false);
+      this.PanelMenuAdmin.ResumeLayout(false);
       this.tabControl2.ResumeLayout(false);
       this.tabPage5.ResumeLayout(false);
       this.tabPage5.PerformLayout();
@@ -3038,7 +3279,7 @@
       this.groupBox11.PerformLayout();
       this.groupBox12.ResumeLayout(false);
       this.groupBox12.PerformLayout();
-      this.panelTallerAdmin.ResumeLayout(false);
+      this.PanelTallerAdmin.ResumeLayout(false);
       this.tabControl3.ResumeLayout(false);
       this.tabPage11.ResumeLayout(false);
       this.tabPage11.PerformLayout();
@@ -3055,7 +3296,11 @@
       this.groupBox20.PerformLayout();
       this.groupBox19.ResumeLayout(false);
       this.groupBox19.PerformLayout();
-      this.MenuProfesor.ResumeLayout(false);
+      this.panel5.ResumeLayout(false);
+      this.panel5.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+      this.panel6.ResumeLayout(false);
+      this.PanelMenuProfesor.ResumeLayout(false);
       this.Participantes.ResumeLayout(false);
       this.tabPage9.ResumeLayout(false);
       this.tabPage9.PerformLayout();
@@ -3074,15 +3319,8 @@
     }
 
     #endregion
-    private System.Windows.Forms.TextBox nametxtbox;
-    private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Button LogInButton;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.TextBox pwdtxtbox;
-    private System.Windows.Forms.Panel loginpanel;
-    private System.Windows.Forms.Panel StudentMenu;
+    private System.Windows.Forms.Panel Panellogin;
+    private System.Windows.Forms.Panel PanelStudentMenu;
     private System.Windows.Forms.TabControl InscribirTaller;
     private System.Windows.Forms.TabPage tabPage2;
     private System.Windows.Forms.TabPage tabPage1;
@@ -3093,7 +3331,7 @@
     private System.Windows.Forms.Button incribirT;
     private System.Windows.Forms.Button eliminarTaller;
     private System.Windows.Forms.Button ingresarATaller;
-    private System.Windows.Forms.Panel studentWSMenu;
+    private System.Windows.Forms.Panel PanelstudentWSMenu;
     private System.Windows.Forms.TabControl tabControl1;
     private System.Windows.Forms.TabPage tabPage3;
     private System.Windows.Forms.Label label11;
@@ -3123,89 +3361,7 @@
     private System.Windows.Forms.GroupBox groupBox2;
     private System.Windows.Forms.GroupBox groupBox3;
     private System.Windows.Forms.Label label14;
-    private System.Windows.Forms.Panel MenuAdmin;
-    private System.Windows.Forms.TabControl tabControl2;
-    private System.Windows.Forms.TabPage tabPage5;
-    private System.Windows.Forms.GroupBox groupBox4;
-    private System.Windows.Forms.Label label15;
-    private System.Windows.Forms.TextBox adminNombreTaller;
-    private System.Windows.Forms.Label label16;
-    private System.Windows.Forms.Button adminCrearTaller;
-    private System.Windows.Forms.ListBox adminListTalleres;
-    private System.Windows.Forms.TabPage tabPage6;
-    private System.Windows.Forms.Label label26;
-    private System.Windows.Forms.ListBox adminListAlumnos;
-    private System.Windows.Forms.TabPage tabPage7;
-    private System.Windows.Forms.TabPage tabPage8;
-    private System.Windows.Forms.Label label19;
-    private System.Windows.Forms.ComboBox adminListSalas;
-    private System.Windows.Forms.Label label18;
-    private System.Windows.Forms.Label label17;
-    private System.Windows.Forms.GroupBox groupBox8;
-    private System.Windows.Forms.Label label29;
-    private System.Windows.Forms.Label label20;
-    private System.Windows.Forms.Button adminEliminarTaller;
-    private System.Windows.Forms.GroupBox groupBox7;
-    private System.Windows.Forms.Label label28;
-    private System.Windows.Forms.CheckedListBox horarioViernes;
-    private System.Windows.Forms.Label label27;
-    private System.Windows.Forms.CheckedListBox horarioJueves;
-    private System.Windows.Forms.Label label23;
-    private System.Windows.Forms.CheckedListBox horarioMiercoles;
-    private System.Windows.Forms.Label label22;
-    private System.Windows.Forms.CheckedListBox horarioMartes;
-    private System.Windows.Forms.Label label21;
-    private System.Windows.Forms.CheckedListBox horarioLunes;
-    private System.Windows.Forms.NumericUpDown adminPrecioTaller;
-    private System.Windows.Forms.NumericUpDown adminCuposTaller;
-    private System.Windows.Forms.GroupBox groupBox5;
-    private System.Windows.Forms.Button adminCrearAlumno;
-    private System.Windows.Forms.Label label38;
-    private System.Windows.Forms.TextBox adminRutAlumno;
-    private System.Windows.Forms.GroupBox groupBox9;
-    private System.Windows.Forms.Label label30;
-    private System.Windows.Forms.Label label31;
-    private System.Windows.Forms.Button adminEliminarAlumno;
-    private System.Windows.Forms.Label label24;
-    private System.Windows.Forms.TextBox adminNombreAlumno;
-    private System.Windows.Forms.Label label25;
-    private System.Windows.Forms.TextBox adminApellidoAlumno;
-    private System.Windows.Forms.Label label32;
-    private System.Windows.Forms.TextBox adminMailAlumno;
-    private System.Windows.Forms.Label label33;
-    private System.Windows.Forms.TextBox adminPasswordAlumno;
-    private System.Windows.Forms.Label label34;
-    private System.Windows.Forms.TextBox adminTelefonoAlumno;
-    private System.Windows.Forms.GroupBox groupBox6;
-    private System.Windows.Forms.Label label35;
-    private System.Windows.Forms.TextBox adminTelefonoProfesor;
-    private System.Windows.Forms.Label label36;
-    private System.Windows.Forms.TextBox adminPasswordProfesor;
-    private System.Windows.Forms.Label label37;
-    private System.Windows.Forms.TextBox adminMailProfesor;
-    private System.Windows.Forms.Label label39;
-    private System.Windows.Forms.TextBox adminApellidoProfesor;
-    private System.Windows.Forms.Label label40;
-    private System.Windows.Forms.TextBox adminNombreProfesor;
-    private System.Windows.Forms.Button adminCrearProfesor;
-    private System.Windows.Forms.Label label41;
-    private System.Windows.Forms.TextBox adminRutProfesor;
-    private System.Windows.Forms.GroupBox groupBox10;
-    private System.Windows.Forms.Label label42;
-    private System.Windows.Forms.Label label43;
-    private System.Windows.Forms.Button adminEliminarProfesor;
-    private System.Windows.Forms.Label label44;
-    private System.Windows.Forms.ListBox adminListProfesores;
-    private System.Windows.Forms.GroupBox groupBox11;
-    private System.Windows.Forms.Button adminCrearSala;
-    private System.Windows.Forms.Label label50;
-    private System.Windows.Forms.TextBox adminNombreSala;
-    private System.Windows.Forms.GroupBox groupBox12;
-    private System.Windows.Forms.Label label51;
-    private System.Windows.Forms.Label label52;
-    private System.Windows.Forms.Button adminEliminarSala;
-    private System.Windows.Forms.Label label53;
-    private System.Windows.Forms.ListBox adminListSalasTab;
+    private System.Windows.Forms.Panel PanelMenuAdmin;
     private System.Windows.Forms.Button button4;
     private System.Windows.Forms.Label label68;
     private System.Windows.Forms.Label label67;
@@ -3231,15 +3387,9 @@
     private System.Windows.Forms.TextBox textBox14;
     private System.Windows.Forms.Label label79;
     private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.ListBox adminListProfesorCrearTaller;
-    private System.Windows.Forms.Button asignarProfesorTallerAdminTaller;
     private System.Windows.Forms.Label tallerTeachers;
     private System.Windows.Forms.Label label57;
-    private System.Windows.Forms.Panel panelTallerAdmin;
-    private System.Windows.Forms.Button button9;
+    private System.Windows.Forms.Panel PanelTallerAdmin;
     private System.Windows.Forms.TabControl tabControl3;
     private System.Windows.Forms.TabPage tabPage11;
     private System.Windows.Forms.Label tallerTeachersAdmin;
@@ -3286,8 +3436,97 @@
     private System.Windows.Forms.Button AdminTallerEliminarProf;
     private System.Windows.Forms.Label label89;
     private System.Windows.Forms.ListBox adminListProfesoresInscritosTaller;
-    private System.Windows.Forms.Panel MenuProfesor;
-    private System.Windows.Forms.Button BotonCerrarSesion;
+    private System.Windows.Forms.Button adminEliminarForoTaller;
+    private System.Windows.Forms.TabControl tabControl2;
+    private System.Windows.Forms.TabPage tabPage5;
+    private System.Windows.Forms.Button adminIngresarATaller;
+    private System.Windows.Forms.GroupBox groupBox8;
+    private System.Windows.Forms.Label label29;
+    private System.Windows.Forms.Label label20;
+    private System.Windows.Forms.Button adminEliminarTaller;
+    private System.Windows.Forms.GroupBox groupBox4;
+    private System.Windows.Forms.Button asignarProfesorTallerAdminTaller;
+    private System.Windows.Forms.ListBox adminListProfesorCrearTaller;
+    private System.Windows.Forms.NumericUpDown adminPrecioTaller;
+    private System.Windows.Forms.NumericUpDown adminCuposTaller;
+    private System.Windows.Forms.GroupBox groupBox7;
+    private System.Windows.Forms.Label label28;
+    private System.Windows.Forms.CheckedListBox horarioViernes;
+    private System.Windows.Forms.Label label27;
+    private System.Windows.Forms.CheckedListBox horarioJueves;
+    private System.Windows.Forms.Label label23;
+    private System.Windows.Forms.CheckedListBox horarioMiercoles;
+    private System.Windows.Forms.Label label22;
+    private System.Windows.Forms.CheckedListBox horarioMartes;
+    private System.Windows.Forms.Label label21;
+    private System.Windows.Forms.CheckedListBox horarioLunes;
+    private System.Windows.Forms.Button adminCrearTaller;
+    private System.Windows.Forms.Label label19;
+    private System.Windows.Forms.ComboBox adminListSalas;
+    private System.Windows.Forms.Label label18;
+    private System.Windows.Forms.Label label17;
+    private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.TextBox adminNombreTaller;
+    private System.Windows.Forms.Label label16;
+    private System.Windows.Forms.ListBox adminListTalleres;
+    private System.Windows.Forms.TabPage tabPage6;
+    private System.Windows.Forms.GroupBox groupBox5;
+    private System.Windows.Forms.Label label34;
+    private System.Windows.Forms.TextBox adminTelefonoAlumno;
+    private System.Windows.Forms.Label label33;
+    private System.Windows.Forms.TextBox adminPasswordAlumno;
+    private System.Windows.Forms.Label label32;
+    private System.Windows.Forms.TextBox adminMailAlumno;
+    private System.Windows.Forms.Label label25;
+    private System.Windows.Forms.TextBox adminApellidoAlumno;
+    private System.Windows.Forms.Label label24;
+    private System.Windows.Forms.TextBox adminNombreAlumno;
+    private System.Windows.Forms.Button adminCrearAlumno;
+    private System.Windows.Forms.Label label38;
+    private System.Windows.Forms.TextBox adminRutAlumno;
+    private System.Windows.Forms.GroupBox groupBox9;
+    private System.Windows.Forms.Label label30;
+    private System.Windows.Forms.Label label31;
+    private System.Windows.Forms.Button adminEliminarAlumno;
+    private System.Windows.Forms.Label label26;
+    private System.Windows.Forms.ListBox adminListAlumnos;
+    private System.Windows.Forms.TabPage tabPage7;
+    private System.Windows.Forms.GroupBox groupBox6;
+    private System.Windows.Forms.Label label35;
+    private System.Windows.Forms.TextBox adminTelefonoProfesor;
+    private System.Windows.Forms.Label label36;
+    private System.Windows.Forms.TextBox adminPasswordProfesor;
+    private System.Windows.Forms.Label label37;
+    private System.Windows.Forms.TextBox adminMailProfesor;
+    private System.Windows.Forms.Label label39;
+    private System.Windows.Forms.TextBox adminApellidoProfesor;
+    private System.Windows.Forms.Label label40;
+    private System.Windows.Forms.TextBox adminNombreProfesor;
+    private System.Windows.Forms.Button adminCrearProfesor;
+    private System.Windows.Forms.Label label41;
+    private System.Windows.Forms.TextBox adminRutProfesor;
+    private System.Windows.Forms.GroupBox groupBox10;
+    private System.Windows.Forms.Label label42;
+    private System.Windows.Forms.Label label43;
+    private System.Windows.Forms.Button adminEliminarProfesor;
+    private System.Windows.Forms.Label label44;
+    private System.Windows.Forms.ListBox adminListProfesores;
+    private System.Windows.Forms.TabPage tabPage8;
+    private System.Windows.Forms.GroupBox groupBox11;
+    private System.Windows.Forms.Button adminCrearSala;
+    private System.Windows.Forms.Label label50;
+    private System.Windows.Forms.TextBox adminNombreSala;
+    private System.Windows.Forms.GroupBox groupBox12;
+    private System.Windows.Forms.Label label51;
+    private System.Windows.Forms.Label label52;
+    private System.Windows.Forms.Button adminEliminarSala;
+    private System.Windows.Forms.Label label53;
+    private System.Windows.Forms.ListBox adminListSalasTab;
+    private System.Windows.Forms.Panel panel5;
+    private System.Windows.Forms.Button button10;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Panel panel6;
+    private System.Windows.Forms.Panel PanelMenuProfesor;
     private System.Windows.Forms.TabControl Participantes;
     private System.Windows.Forms.TabPage tabPage9;
     private System.Windows.Forms.GroupBox groupBox16;
@@ -3320,8 +3559,16 @@
     private System.Windows.Forms.Label label45;
     private System.Windows.Forms.ListBox TalleresParticipantes;
     private System.Windows.Forms.ListBox listParticipantes;
-    private System.Windows.Forms.Button adminIngresarATaller;
-    private System.Windows.Forms.Button adminEliminarForoTaller;
+    private System.Windows.Forms.Panel panel7;
+    private System.Windows.Forms.PictureBox pictureBox8;
+    private System.Windows.Forms.Panel panel2;
+    private System.Windows.Forms.PictureBox pictureBox2;
+    private System.Windows.Forms.PictureBox pictureBox4;
+    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.TextBox pwdtxtbox;
+    private System.Windows.Forms.Button LogInButton;
+    private System.Windows.Forms.TextBox nametxtbox;
   }
 }
 

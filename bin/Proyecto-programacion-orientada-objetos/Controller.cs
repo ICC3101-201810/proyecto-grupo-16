@@ -784,7 +784,6 @@ namespace Vistas
 
     public int GetSala(Sala img)
     {
-
       foreach (Sala sa in salas)
       {
         if (sa.GetNombre().Equals(img.GetNombre())) return salas.IndexOf(sa);

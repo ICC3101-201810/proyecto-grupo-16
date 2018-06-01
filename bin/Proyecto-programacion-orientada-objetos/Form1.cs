@@ -324,7 +324,7 @@ namespace Vistas
       {
         if (adminListSalasTab.SelectedIndex > -1 && !adminListSalasTab.SelectedItem.Equals("No existen salas creadas"))
         {
-          logInArgs.sala = adminListSalas.SelectedItem as Sala;
+          logInArgs.sala = adminListSalasTab.SelectedItem as Sala;
           OnAdminEliminarSala(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe seleccionar un sala", "Error: No existe sala", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -523,12 +523,12 @@ namespace Vistas
     //El for each deja visible solo el login 
     private void Form1_Load(object sender, EventArgs e)
     {
-      panels.Add("Login", loginpanel);
-      panels.Add("StudentMenu", StudentMenu);
-      panels.Add("StudentWsMenu", studentWSMenu);
-      panels.Add("AdminMenu", MenuAdmin);
-      panels.Add("panelTallerAdmin", panelTallerAdmin);
-      panels.Add("ProfesorMenu", MenuProfesor);
+      panels.Add("Login", Panellogin);
+      panels.Add("StudentMenu", PanelStudentMenu);
+      panels.Add("StudentWsMenu", PanelstudentWSMenu);
+      panels.Add("AdminMenu", PanelMenuAdmin);
+      panels.Add("panelTallerAdmin", PanelTallerAdmin);
+      panels.Add("ProfesorMenu", PanelMenuProfesor);
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
@@ -769,7 +769,7 @@ namespace Vistas
 
     public void ActualizarListaForosAdmin(Foro forum)
     {
-      if (listForosTaller.Items.Count > 0 && listForosTaller.Items[0].Equals("No se han creado foros"))
+      if (listForosTallerAdmin.Items.Count > 0 && listForosTallerAdmin.Items[0].Equals("No se han creado foros"))
       {
         listForosTallerAdmin.Items.Add(forum);
         listForosForoMenuAdmin.Items.Add(forum);
@@ -1446,9 +1446,6 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
-
-    
-
 
 
 
