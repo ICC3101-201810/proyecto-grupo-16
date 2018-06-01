@@ -590,14 +590,14 @@ namespace Vistas
         {
           for (int i = 0; i < e.horarioTaller[day].Count; i++)
           {
-            if (e.horarioTaller[day][i] && sala.GetHorario()[day][i])
+            if (e.horarioTaller[day][i] && !sala.GetHorario()[day][i])
             {
               logInView.ActualizarAdminTallerSalas(sala, true);
               elimina = 1;
               break;
             }
             //else
-            //  logInView.ActualizarAdminTallerSalas(sala, false);
+              //logInView.ActualizarAdminTallerSalas(sala, false);
           }
           if (elimina == 1)
             break;
@@ -785,7 +785,6 @@ namespace Vistas
 
     public int GetForo(Taller ws, Foro img)
     {
-
       foreach (Foro fr in ws.GetForos())
       {
         if (fr.GetId() == img.GetId()) return ws.GetForos().IndexOf(fr);

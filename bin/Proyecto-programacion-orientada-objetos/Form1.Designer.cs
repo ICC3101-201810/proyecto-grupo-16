@@ -2951,9 +2951,9 @@
       // panel6
       // 
       this.panel6.Controls.Add(this.PanelMenuAdmin);
+      this.panel6.Controls.Add(this.PanelMenuProfesor);
       this.panel6.Controls.Add(this.PanelstudentWSMenu);
       this.panel6.Controls.Add(this.PanelTallerAdmin);
-      this.panel6.Controls.Add(this.PanelMenuProfesor);
       this.panel6.Controls.Add(this.PanelStudentMenu);
       this.panel6.Controls.Add(this.Panellogin);
       this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -3015,10 +3015,10 @@
       // 
       this.groupBox16.Controls.Add(this.label54);
       this.groupBox16.Controls.Add(this.EliminarMensajeP);
-      this.groupBox16.Location = new System.Drawing.Point(12, 425);
+      this.groupBox16.Location = new System.Drawing.Point(12, 422);
       this.groupBox16.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox16.Name = "groupBox16";
-      this.groupBox16.Size = new System.Drawing.Size(755, 48);
+      this.groupBox16.Size = new System.Drawing.Size(755, 52);
       this.groupBox16.TabIndex = 74;
       this.groupBox16.TabStop = false;
       this.groupBox16.Text = "Eliminar Mensaje";

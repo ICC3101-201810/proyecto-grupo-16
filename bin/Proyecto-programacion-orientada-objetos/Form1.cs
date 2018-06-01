@@ -170,8 +170,12 @@ namespace Vistas
     {
       if (OnAlumnoSalirDeForo != null)
       {
-        logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
-        OnAlumnoSalirDeForo(this, logInArgs);
+        if (listForosForoMenu.SelectedIndex > -1 && !listForosForoMenu.SelectedItem.Equals("No se han creado foros"))
+        {
+          logInArgs.foro = listForosForoMenu.SelectedItem as Foro;
+          OnAlumnoSalirDeForo(this, logInArgs);
+        }
+        else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -419,11 +423,12 @@ namespace Vistas
 
     private void adminSalirDeForoTaller_Click(object sender, EventArgs e)
     {
-      if (OnAdminSalirDeForo != null)
+      if (OnAdminSalirDeForo != null && listForosForoMenuAdmin.SelectedIndex > -1 && !listForosForoMenuAdmin.SelectedItem.Equals("No se han creado foros"))
       {
         logInArgs.foro = listForosForoMenuAdmin.SelectedItem as Foro;
         OnAdminSalirDeForo(this, logInArgs);
       }
+      else MessageBox.Show("ERROR: Debe seleccionar un foro", "Error: No existe foro", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
     private void adminEliminarForoTaller_Click(object sender, EventArgs e)
