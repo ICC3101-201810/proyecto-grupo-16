@@ -191,7 +191,6 @@ namespace Vistas
       }
       else
       {
-        MessageBox.Show("Bienvenido! " + GetUser(credenciales).nombre, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
         if (GetUser(credenciales).GetType() == typeof(Alumno))
         {
           Alumno student = (Alumno)GetUser(credenciales);
@@ -583,8 +582,11 @@ namespace Vistas
 
     private void VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller(object sender, LogInEventArgs e)
     {
+      int stop = 1;
       foreach (Sala sala in salas)
       {
+        if (stop==0)
+          return;
         int elimina = 0;
         foreach (String day in e.horarioTaller.Keys)
         {
@@ -592,7 +594,7 @@ namespace Vistas
           {
             if (e.horarioTaller[day][i] && !sala.GetHorario()[day][i])
             {
-              logInView.ActualizarAdminTallerSalas(sala, true);
+              stop=logInView.ActualizarAdminTallerSalas(sala, true);
               elimina = 1;
               break;
             }
@@ -603,8 +605,8 @@ namespace Vistas
             break;
         }
         if (elimina == 0)
-          logInView.ActualizarAdminTallerSalas(sala, false);
-      }
+          stop =logInView.ActualizarAdminTallerSalas(sala, false);
+        }
     }
 
 

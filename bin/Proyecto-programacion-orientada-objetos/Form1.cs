@@ -707,25 +707,36 @@ namespace Vistas
       }
     }
 
-    public void ActualizarAdminTallerSalas(Sala sala, bool borrar)
+    public int CountListAdminTallerSalas()
+    {
+      return adminListSalas.Items.Count;
+    }
+
+    public int ActualizarAdminTallerSalas(Sala sala, bool borrar)
     {
       if (borrar)
         if (adminListSalas.Items.Count == 1)
+        {
           adminListSalas.Items[0] = "No existen salas disponibles";
+          //adminListSalas.Items.Remove(sala);
+          //adminListSalas.Items.Add(new Sala("No existen salas disponibles", GenerarHorario(0)));
+        }
         else
           adminListSalas.Items.Remove(sala);
       else
       {
         if (adminListSalas.Items.Contains(sala))
-          return;
+          return 1;
         if (adminListSalas.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas disponibles"))
         {
           adminListSalas.Items.Add(sala);
           adminListSalas.Items.RemoveAt(0);
+          return 1;
         }
         else
           adminListSalas.Items.Add(sala);
       }
+      return 0;
     }
 
     public void AdminLimpiarCrearTaller()
@@ -1439,6 +1450,28 @@ namespace Vistas
       });
     }
 
+    /*private void horario_ItemCheck(object sender, EventArgs e)
+    { 
+      if (OnAdminSeleccionarHorarioTaller != null)
+      {
+        logInArgs.horarioTaller = HorarioLimpio();
+        for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
+        {
+          if (horarioLunes.GetItemChecked(i))
+            logInArgs.horarioTaller["Lunes"][i] = true;
+          if (horarioMartes.GetItemChecked(i))
+            logInArgs.horarioTaller["Martes"][i] = true;
+          if (horarioMiercoles.GetItemChecked(i))
+            logInArgs.horarioTaller["Miercoles"][i] = true;
+          if (horarioJueves.GetItemChecked(i))
+            logInArgs.horarioTaller["Jueves"][i] = true;
+          if (horarioViernes.GetItemChecked(i))
+            logInArgs.horarioTaller["Viernes"][i] = true;
+        }
+        OnAdminSeleccionarHorarioTaller(this, logInArgs);
+      }
+    }*/
+
 
     //*********************Botones Cerrar Sesión**************************************
     private void BotonCerrarSesion_Click(object sender, EventArgs e)
@@ -1481,6 +1514,31 @@ namespace Vistas
       nametxtbox.Clear();
       pwdtxtbox.Clear();
     }
+
+   /* private void horarioLunes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      horario_ItemCheck(sender, e);
+    }
+
+    private void horarioMartes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      horario_ItemCheck(sender,e);
+    }
+
+    private void horarioMiercoles_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      horario_ItemCheck(sender, e);
+    }
+
+    private void horarioJueves_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      horario_ItemCheck(sender, e);
+    }
+
+    private void horarioViernes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      horario_ItemCheck(sender, e);
+    }*/
 
 
 

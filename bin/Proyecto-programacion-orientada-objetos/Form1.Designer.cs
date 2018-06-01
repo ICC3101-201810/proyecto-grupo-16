@@ -1188,7 +1188,7 @@
       this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox7.Name = "groupBox7";
       this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox7.Size = new System.Drawing.Size(413, 248);
+      this.groupBox7.Size = new System.Drawing.Size(413, 246);
       this.groupBox7.TabIndex = 41;
       this.groupBox7.TabStop = false;
       this.groupBox7.Text = "Horario";
@@ -1220,6 +1220,7 @@
       this.horarioViernes.Size = new System.Drawing.Size(118, 89);
       this.horarioViernes.TabIndex = 49;
       this.horarioViernes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
+      //this.horarioViernes.SelectedIndexChanged += new System.EventHandler(this.horarioViernes_SelectedIndexChanged);
       // 
       // label27
       // 
@@ -1248,6 +1249,7 @@
       this.horarioJueves.Size = new System.Drawing.Size(115, 89);
       this.horarioJueves.TabIndex = 47;
       this.horarioJueves.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
+      //this.horarioJueves.SelectedIndexChanged += new System.EventHandler(this.horarioJueves_SelectedIndexChanged);
       // 
       // label23
       // 
@@ -1276,6 +1278,7 @@
       this.horarioMiercoles.Size = new System.Drawing.Size(115, 89);
       this.horarioMiercoles.TabIndex = 45;
       this.horarioMiercoles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
+      //this.horarioMiercoles.SelectedIndexChanged += new System.EventHandler(this.horarioMiercoles_SelectedIndexChanged);
       // 
       // label22
       // 
@@ -1304,6 +1307,7 @@
       this.horarioMartes.Size = new System.Drawing.Size(118, 89);
       this.horarioMartes.TabIndex = 43;
       this.horarioMartes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
+      //this.horarioMartes.SelectedIndexChanged += new System.EventHandler(this.horarioMartes_SelectedIndexChanged);
       // 
       // label21
       // 
@@ -1332,6 +1336,7 @@
       this.horarioLunes.Size = new System.Drawing.Size(115, 89);
       this.horarioLunes.TabIndex = 41;
       this.horarioLunes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
+      //this.horarioLunes.SelectedIndexChanged += new System.EventHandler(this.horarioLunes_SelectedIndexChanged);
       // 
       // adminCrearTaller
       // 
