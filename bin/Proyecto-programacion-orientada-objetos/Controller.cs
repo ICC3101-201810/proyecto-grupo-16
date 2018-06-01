@@ -834,12 +834,24 @@ namespace Vistas
       { "Miercoles", new List<Boolean>() { true, false, true, true, true } },
       { "Jueves", new List<Boolean>() { true, true, true, true, true } },
       { "Viernes", new List<Boolean>() { true, true, true, true, true }}};
+      Dictionary<String, List<Boolean>> scheduleat = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", new List<Boolean>() {false, true, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, false, false, false } },
+      { "Miercoles", new List<Boolean>() {false, true, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, false, false, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> schedulec = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() { true, true, true, true, true } },
       { "Martes", new List<Boolean>() {true, true, true, false, true }},
       { "Miercoles", new List<Boolean>() { true, true, true, true, true } },
       { "Jueves", new List<Boolean>() {true, true, true, false, true } },
       { "Viernes", new List<Boolean>() { true, true, true, true, true }}};
+      Dictionary<String, List<Boolean>> schedulect = new Dictionary<String, List<Boolean>>(){
+      {"Lunes", new List<Boolean>() {false, false, false, false, false } },
+      { "Martes", new List<Boolean>() { false, false, false, true, false } },
+      { "Miercoles", new List<Boolean>() {false, false, false, false, false } },
+      { "Jueves", new List<Boolean>() {false, false, false, true, false } },
+      { "Viernes", new List<Boolean>() {false, false, false, false, false }}};
       Dictionary<String, List<Boolean>> scheduled = new Dictionary<String, List<Boolean>>(){
       {"Lunes", new List<Boolean>() { true, true, true, true, true } },
       { "Martes", new List<Boolean>() { true, true, true, true, true } },
@@ -864,11 +876,12 @@ namespace Vistas
       Alumno alumno2 = new Alumno("18018924-6", "Tom", "Boston", "tb@m.cl", "+56999404286", "1234", scheduleb2);
       Sala sala1 = new Sala("CanchaFutbol", schedulea);
       Sala sala2 = new Sala("CanchaTenis", schedulec);
-      Sala sala3 = new Sala("CanchaTenis", scheduled);
-      Taller futbol = new Taller("futbol", 40, 15000, schedulea, sala1, new Categoria());
-      Taller tenis = new Taller("tenis", 40, 15000, schedulec, sala2, new Categoria());
+      Sala sala3 = new Sala("B26", scheduled);
+      Taller futbol = new Taller("futbol", 40, 15000, scheduleat, sala1, new Categoria());
+      Taller tenis = new Taller("tenis", 40, 15000, schedulect, sala2, new Categoria());
       salas.Add(sala1);
       salas.Add(sala2);
+      salas.Add(sala3);
       List<Taller> talleresD = new List<Taller>();
       tenis.CrearForo("Por qué Gohan es un papanatas?", false);
       tenis.GetForos()[0].AgregarMensaje(alumno1, "Gohan es un quesito miedoso, hasta el verde le gana");
