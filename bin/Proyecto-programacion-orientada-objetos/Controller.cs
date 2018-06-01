@@ -582,11 +582,8 @@ namespace Vistas
 
     private void VistaAdminActualizarSalasTaller_OnAdminSeleccionarHorarioTaller(object sender, LogInEventArgs e)
     {
-      int stop = 1;
       foreach (Sala sala in salas)
       {
-        if (stop==0)
-          return;
         int elimina = 0;
         foreach (String day in e.horarioTaller.Keys)
         {
@@ -594,7 +591,7 @@ namespace Vistas
           {
             if (e.horarioTaller[day][i] && !sala.GetHorario()[day][i])
             {
-              stop=logInView.ActualizarAdminTallerSalas(sala, true);
+              logInView.ActualizarAdminTallerSalas(sala, true);
               elimina = 1;
               break;
             }
@@ -605,7 +602,7 @@ namespace Vistas
             break;
         }
         if (elimina == 0)
-          stop =logInView.ActualizarAdminTallerSalas(sala, false);
+          logInView.ActualizarAdminTallerSalas(sala, false);
         }
     }
 

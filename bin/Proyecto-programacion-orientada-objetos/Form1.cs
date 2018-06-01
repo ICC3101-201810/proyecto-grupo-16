@@ -712,10 +712,10 @@ namespace Vistas
       return adminListSalas.Items.Count;
     }
 
-    public int ActualizarAdminTallerSalas(Sala sala, bool borrar)
+    public void ActualizarAdminTallerSalas(Sala sala, bool borrar)
     {
       if (borrar)
-        if (adminListSalas.Items.Count == 1)
+        if (adminListSalas.Items.Count == 1 && adminListSalas.Items.Contains(sala))
         {
           adminListSalas.Items[0] = "No existen salas disponibles";
           //adminListSalas.Items.Remove(sala);
@@ -726,17 +726,15 @@ namespace Vistas
       else
       {
         if (adminListSalas.Items.Contains(sala))
-          return 1;
+          return;
         if (adminListSalas.Items.Count > 0 && adminListSalas.Items[0].Equals("No existen salas disponibles"))
         {
           adminListSalas.Items.Add(sala);
           adminListSalas.Items.RemoveAt(0);
-          return 1;
         }
         else
           adminListSalas.Items.Add(sala);
       }
-      return 0;
     }
 
     public void AdminLimpiarCrearTaller()
