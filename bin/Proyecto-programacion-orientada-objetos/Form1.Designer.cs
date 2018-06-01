@@ -1119,7 +1119,7 @@
       this.groupBox4.Location = new System.Drawing.Point(17, 205);
       this.groupBox4.Name = "groupBox4";
       this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-      this.groupBox4.Size = new System.Drawing.Size(752, 311);
+      this.groupBox4.Size = new System.Drawing.Size(752, 269);
       this.groupBox4.TabIndex = 22;
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Crear Taller";
@@ -2950,10 +2950,10 @@
       // 
       // panel6
       // 
+      this.panel6.Controls.Add(this.PanelMenuAdmin);
       this.panel6.Controls.Add(this.PanelstudentWSMenu);
       this.panel6.Controls.Add(this.PanelTallerAdmin);
       this.panel6.Controls.Add(this.PanelMenuProfesor);
-      this.panel6.Controls.Add(this.PanelMenuAdmin);
       this.panel6.Controls.Add(this.PanelStudentMenu);
       this.panel6.Controls.Add(this.Panellogin);
       this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -3388,6 +3388,7 @@
       // 
       // TalleresVU
       // 
+      this.AcceptButton = this.LogInButton;
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.AutoScroll = true;
       this.BackColor = System.Drawing.Color.White;
