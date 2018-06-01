@@ -283,7 +283,7 @@ namespace Vistas
           logInArgs.passwordUser = adminPasswordAlumno.Text;
           logInArgs.telefonoUser = adminTelefonoAlumno.Text;
           logInArgs.horarioAlumno = HorarioLimpio();
-          logInArgs.horarioAlumno = GenerarHorario(0.5);
+          logInArgs.horarioAlumno = GenerarHorario(0.2);
           OnAdminCrearAlumno(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -340,7 +340,7 @@ namespace Vistas
         if (!adminNombreSala.Text.Equals(""))
         {
           logInArgs.nombreSala = adminNombreSala.Text;
-          logInArgs.horarioSala = GenerarHorario(0.5);
+          logInArgs.horarioSala = GenerarHorario(0);
           OnAdminCrearSala(this, logInArgs);
         }
         else MessageBox.Show("ERROR: Debe completar los campos", "Error: Campos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
