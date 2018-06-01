@@ -897,6 +897,7 @@ namespace Vistas
     public void ClearTalleresProfesor()
     {
       profesorTalleresDict.Items.Clear();
+      TalleresParticipantes.Items.Clear();
     }
 
 
@@ -1035,6 +1036,8 @@ namespace Vistas
       if (OnCerrarSesion != null)
       {
         listForosTaller.Items.Clear();
+        listTalleresInscritos.Items.Clear();
+        listTalleresDisponibles.Items.Clear();
         OnCerrarSesion(this, logInArgs);
       }
 
@@ -1044,6 +1047,7 @@ namespace Vistas
         {
             if (OnCerrarSesion != null)
             {
+                listForosTaller.Items.Clear();
                 listTalleresInscritos.Items.Clear();
                 listTalleresDisponibles.Items.Clear();
                 OnCerrarSesion(this, logInArgs);
