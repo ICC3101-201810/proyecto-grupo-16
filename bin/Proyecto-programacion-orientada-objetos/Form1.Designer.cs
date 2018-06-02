@@ -339,7 +339,6 @@
       // 
       this.Panellogin.BackColor = System.Drawing.Color.Transparent;
       this.Panellogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panellogin.BackgroundImage")));
-      this.Panellogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.Panellogin.Controls.Add(this.panel2);
       this.Panellogin.Dock = System.Windows.Forms.DockStyle.Fill;
       this.Panellogin.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1220,7 +1219,6 @@
       this.horarioViernes.Size = new System.Drawing.Size(118, 89);
       this.horarioViernes.TabIndex = 49;
       this.horarioViernes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
-      //this.horarioViernes.SelectedIndexChanged += new System.EventHandler(this.horarioViernes_SelectedIndexChanged);
       // 
       // label27
       // 
@@ -1249,7 +1247,6 @@
       this.horarioJueves.Size = new System.Drawing.Size(115, 89);
       this.horarioJueves.TabIndex = 47;
       this.horarioJueves.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
-      //this.horarioJueves.SelectedIndexChanged += new System.EventHandler(this.horarioJueves_SelectedIndexChanged);
       // 
       // label23
       // 
@@ -1278,7 +1275,6 @@
       this.horarioMiercoles.Size = new System.Drawing.Size(115, 89);
       this.horarioMiercoles.TabIndex = 45;
       this.horarioMiercoles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
-      //this.horarioMiercoles.SelectedIndexChanged += new System.EventHandler(this.horarioMiercoles_SelectedIndexChanged);
       // 
       // label22
       // 
@@ -1307,7 +1303,6 @@
       this.horarioMartes.Size = new System.Drawing.Size(118, 89);
       this.horarioMartes.TabIndex = 43;
       this.horarioMartes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
-      //this.horarioMartes.SelectedIndexChanged += new System.EventHandler(this.horarioMartes_SelectedIndexChanged);
       // 
       // label21
       // 
@@ -1336,7 +1331,6 @@
       this.horarioLunes.Size = new System.Drawing.Size(115, 89);
       this.horarioLunes.TabIndex = 41;
       this.horarioLunes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.horario_ItemCheck);
-      //this.horarioLunes.SelectedIndexChanged += new System.EventHandler(this.horarioLunes_SelectedIndexChanged);
       // 
       // adminCrearTaller
       // 
@@ -2940,6 +2934,7 @@
       this.button10.TabIndex = 77;
       this.button10.Text = "Cerrar Sesión";
       this.button10.UseVisualStyleBackColor = false;
+      this.button10.Click += new System.EventHandler(this.button10_Click);
       // 
       // label2
       // 
@@ -2955,12 +2950,12 @@
       // 
       // panel6
       // 
+      this.panel6.Controls.Add(this.Panellogin);
       this.panel6.Controls.Add(this.PanelMenuAdmin);
       this.panel6.Controls.Add(this.PanelMenuProfesor);
       this.panel6.Controls.Add(this.PanelstudentWSMenu);
       this.panel6.Controls.Add(this.PanelTallerAdmin);
       this.panel6.Controls.Add(this.PanelStudentMenu);
-      this.panel6.Controls.Add(this.Panellogin);
       this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.panel6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.panel6.Location = new System.Drawing.Point(0, 58);

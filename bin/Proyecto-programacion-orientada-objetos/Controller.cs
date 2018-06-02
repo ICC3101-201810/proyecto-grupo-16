@@ -81,7 +81,9 @@ namespace Vistas
       logInView.OnProfesorCrearForo += LogInView_OnProfesorCrearForo;
       logInView.OnProfesorEliminarForo += LogInView_OnProfesorEliminarForo;
       logInView.OnProfesorMostrarParticipantes += LogInView_OnProfesorMostrarParticipantes;
-      logInView.OnProfesorCerrarSesion += LogInView_OnProfesorCerrarSesion;
+
+
+      logInView.OnCerrarSesion += LogInView_OnCerrarSesion;
 
       if (!LoadData())
       {
@@ -100,7 +102,7 @@ namespace Vistas
     }
     //Esta funcion cierra sesión desde cualquier panel
 
-    private void LogInView_OnProfesorCerrarSesion(object sender, LogInEventArgs e)
+    private void LogInView_OnCerrarSesion(object sender, LogInEventArgs e)
     {
 
       e.panels["Login"].Visible = true;

@@ -59,7 +59,8 @@ namespace Vistas
     public event EventHandler<LogInEventArgs> OnProfesorAgregarMensaje;
     public event EventHandler<LogInEventArgs> OnProfesorEliminarMensaje;
     public event EventHandler<LogInEventArgs> OnProfesorMostrarParticipantes;
-    public event EventHandler<LogInEventArgs> OnProfesorCerrarSesion;
+
+    public event EventHandler<LogInEventArgs> OnCerrarSesion;
 
 
 
@@ -743,6 +744,7 @@ namespace Vistas
       adminCuposTaller.ResetText();
       adminPrecioTaller.ResetText();
       adminListSalas.ResetText();
+      adminListProfesorCrearTaller.Items.Clear();
       for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
       {
         horarioLunes.SetItemChecked(i, false);
@@ -1317,13 +1319,23 @@ namespace Vistas
       listParticipantes.Items.Clear();
     }
 
+    public void ClearTalleresProfesor()
+    {
+      profesorTalleresDict.Items.Clear();
+      listBoxForosTallerProfe.Items.Clear();
+      listBoxProfeMensajesForo.Items.Clear();
+      textMensajeP.Clear();
+      TemaForoP.Clear();
+      TalleresParticipantes.Items.Clear();
+      listParticipantes.Items.Clear();
+    }
 
-    //CLICKS Profesor
+  //CLICKS Profesor
 
 
 
 
-    private void profesorIngresarTaller_Click_1(object sender, EventArgs e)
+  private void profesorIngresarTaller_Click_1(object sender, EventArgs e)
     {
       listBoxForosTallerProfe.Items.Clear();
       if (OnProfesorMostrarTaller != null)
@@ -1470,43 +1482,51 @@ namespace Vistas
       }
     }*/
 
-
     //*********************Botones Cerrar Sesión**************************************
-    private void BotonCerrarSesion_Click(object sender, EventArgs e)
+    //Cerrar sesion desde profesor
+    private void button10_Click(object sender, EventArgs e)
     {
-      if (OnProfesorCerrarSesion != null)
-      {
-        OnProfesorCerrarSesion(this, logInArgs);
-      }
+      if (OnCerrarSesion != null) { 
+      //Admin
+      adminListTalleres.Items.Clear();
+      AdminLimpiarCrearTaller();
+      adminListAlumnos.Items.Clear();
+      AdminLimpiarCrearAlumno();
+      adminListProfesores.Items.Clear();
+      AdminLimpiarCrearProfesor();
+      adminListSalasTab.Items.Clear();
+      AdminLimpiarCrearSala();
+
+      //Profesor
+      ClearTalleresProfesor();
+
+      //Alumno
+      listTalleresInscritos.Items.Clear();
+      listTalleresDisponibles.Items.Clear();
+
+      //AlumnoWs
+      listForosTaller.Items.Clear();
+      temaForo.Clear();
+      listForosForoMenu.Items.Clear();
+      listMensajesForo.Items.Clear();
+      alumnoIngresarMensajeTexto.Clear();
+
+      //Taller Admin
+      listForosTallerAdmin.Items.Clear();
+      temaForoAdmin.Clear();
+      listForosForoMenuAdmin.Items.Clear();
+      listMensajesForoAdmin.Items.Clear();
+      adminIngresarMensajeTexto.Clear();
+      adminListProfesoresInscritosTaller.Items.Clear();
+      adminListProfesoresDisponibles.Items.Clear();
+      adminListAlumnosInscritosTaller.Items.Clear();
+      adminListAlumnosSistema.Items.Clear();
+      OnCerrarSesion(this, logInArgs);
     }
+  }
 
-    private void button1_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorCerrarSesion != null)
-      {
-        OnProfesorCerrarSesion(this, logInArgs);
-      }
 
-    }
-
-    private void button3_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorCerrarSesion != null)
-      {
-        OnProfesorCerrarSesion(this, logInArgs);
-      }
-
-    }
-
-    private void button2_Click(object sender, EventArgs e)
-    {
-      if (OnProfesorCerrarSesion != null)
-      {
-        OnProfesorCerrarSesion(this, logInArgs);
-      }
-
-    }
-    //**********************************************************************************
+    
     public void ClearLogIn()
     {
       nametxtbox.Clear();
