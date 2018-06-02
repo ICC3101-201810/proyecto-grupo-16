@@ -88,7 +88,7 @@ namespace Vistas
         logInArgs.credenciales = new List<string>();
         logInArgs.credenciales.Add(this.nametxtbox.Text);
         logInArgs.credenciales.Add(this.pwdtxtbox.Text);
-        logInArgs.panels = this.panels;
+        
         OnLogIn(this, logInArgs);
       }
     }
@@ -541,7 +541,7 @@ namespace Vistas
       foreach (String s in panels.Keys)
         if (!s.Equals("Login"))
           panels[s].Visible = false;
-
+      logInArgs.panels = this.panels;
     }
 
 
