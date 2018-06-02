@@ -2950,9 +2950,9 @@
       // 
       // panel6
       // 
+      this.panel6.Controls.Add(this.PanelMenuProfesor);
       this.panel6.Controls.Add(this.Panellogin);
       this.panel6.Controls.Add(this.PanelMenuAdmin);
-      this.panel6.Controls.Add(this.PanelMenuProfesor);
       this.panel6.Controls.Add(this.PanelstudentWSMenu);
       this.panel6.Controls.Add(this.PanelTallerAdmin);
       this.panel6.Controls.Add(this.PanelStudentMenu);
@@ -3202,7 +3202,7 @@
       this.profesorLeerForo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.profesorLeerForo.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Bold);
       this.profesorLeerForo.ForeColor = System.Drawing.Color.White;
-      this.profesorLeerForo.Location = new System.Drawing.Point(512, 159);
+      this.profesorLeerForo.Location = new System.Drawing.Point(512, 149);
       this.profesorLeerForo.Name = "profesorLeerForo";
       this.profesorLeerForo.Size = new System.Drawing.Size(95, 32);
       this.profesorLeerForo.TabIndex = 67;
@@ -3261,7 +3261,7 @@
       this.profesorIngresarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.profesorIngresarTaller.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Bold);
       this.profesorIngresarTaller.ForeColor = System.Drawing.Color.White;
-      this.profesorIngresarTaller.Location = new System.Drawing.Point(510, 80);
+      this.profesorIngresarTaller.Location = new System.Drawing.Point(508, 68);
       this.profesorIngresarTaller.Name = "profesorIngresarTaller";
       this.profesorIngresarTaller.Size = new System.Drawing.Size(95, 31);
       this.profesorIngresarTaller.TabIndex = 45;

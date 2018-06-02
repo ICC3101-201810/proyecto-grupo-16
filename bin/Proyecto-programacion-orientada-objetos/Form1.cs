@@ -744,7 +744,6 @@ namespace Vistas
       adminCuposTaller.ResetText();
       adminPrecioTaller.ResetText();
       adminListSalas.ResetText();
-      adminListProfesorCrearTaller.Items.Clear();
       for (int i = 0; i <= (horarioLunes.Items.Count - 1); i++)
       {
         horarioLunes.SetItemChecked(i, false);
@@ -1491,6 +1490,7 @@ namespace Vistas
       adminListTalleres.Items.Clear();
       AdminLimpiarCrearTaller();
       adminListAlumnos.Items.Clear();
+      adminListProfesorCrearTaller.Items.Clear();
       AdminLimpiarCrearAlumno();
       adminListProfesores.Items.Clear();
       AdminLimpiarCrearProfesor();
